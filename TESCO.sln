@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesco.UI", "Tesco.UI\Tesco.UI.csproj", "{AD14CD6A-96DF-4C84-8E09-046A7B6C128E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesco.DL", "Tesco.DL\Tesco.DL.csproj", "{7D657240-9D1C-485A-91F4-57750B959208}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesco.BL", "Tesco.BL\Tesco.BL.csproj", "{10C346B2-5252-4639-A86A-E1C52E19AFF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD14CD6A-96DF-4C84-8E09-046A7B6C128E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD14CD6A-96DF-4C84-8E09-046A7B6C128E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD14CD6A-96DF-4C84-8E09-046A7B6C128E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD14CD6A-96DF-4C84-8E09-046A7B6C128E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D657240-9D1C-485A-91F4-57750B959208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D657240-9D1C-485A-91F4-57750B959208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D657240-9D1C-485A-91F4-57750B959208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D657240-9D1C-485A-91F4-57750B959208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10C346B2-5252-4639-A86A-E1C52E19AFF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10C346B2-5252-4639-A86A-E1C52E19AFF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10C346B2-5252-4639-A86A-E1C52E19AFF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10C346B2-5252-4639-A86A-E1C52E19AFF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3BAFD25-7E60-4FAC-BC9D-EBECF721888C}
+	EndGlobalSection
+EndGlobal
