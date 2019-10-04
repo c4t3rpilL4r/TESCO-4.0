@@ -11,7 +11,7 @@ namespace Tesco.BL.Managers
 
 		public int Add<T>(T data) => Repository.Add(data);
 
-//		public int Delete<T>(int id) => Repository.Delete<T>(id: id);
+		public int Delete<T>(int id) => Repository.Delete<T>(id: id);
 
 		public List<T> RetrieveAll<T>() => Repository.RetrieveAll<T>();
 

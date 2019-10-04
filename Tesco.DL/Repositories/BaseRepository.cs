@@ -46,7 +46,7 @@ namespace Tesco.DL.Repositories
 			return _db.Query<int>($@"INSERT INTO {TableName} ({fields}) VALUES ({values}) SELECT CAST(SCOPE_IDENTITY() as int);", data).Single();
 		}
 
-//		public int Delete<T>(int id) => _db.Execute(sql: $"DELETE FROM {TableName} WHERE Id = '{id}';");
+		public int Delete<T>(int id) => _db.Execute(sql: $"DELETE FROM {TableName} WHERE Id = '{id}';");
 
 		public List<T> RetrieveAll<T>() => _db.Query<T>($"SELECT * FROM {TableName};").ToList();
 

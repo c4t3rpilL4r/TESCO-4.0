@@ -17,8 +17,8 @@ namespace Tesco.UI
 		private readonly List<OrderCustomer> _currentOrderCustomerList;
 		private readonly List<OrderCustomer> _unfinishedOrderCustomerList;
 		private User _user;
-		//private int _lastSelectedItemInCurrentListView = 0;
-		//private int _lastSelectedItemInUnfinishedListView = 0;
+		private int _lastSelectedItemInCurrentListView = 0;
+		private int _lastSelectedItemInUnfinishedListView = 0;
 
 		public frmUnfinishedTransaction(User user)
 		{
@@ -36,12 +36,14 @@ namespace Tesco.UI
 
 		private void LvCurrentOrder_Leave(object sender, EventArgs e)
 		{
-			//_lastSelectedItemInCurrentListView = int.Parse(lvCurrentOrder.SelectedItems[0].Text);
+			GetSelectedIndexOfCurrentOrderListView();
+			KeepLastSelectedItemFocusInCurrentOrderListView();
 		}
 
 		private void LvUnfinishedOrder_Leave(object sender, EventArgs e)
 		{
-			//_lastSelectedItemInUnfinishedListView = int.Parse(lvUnfinishedOrder.SelectedItems[0].Text);
+			GetSelectedIndexOfUnfinishedOrderListView();
+			KeepLastSelectedItemFocusInUnfinishedOrderListView();
 		}
 
 		private void btnMoveToUnfinishedTransaction_Click(object sender, EventArgs e)
@@ -101,8 +103,9 @@ namespace Tesco.UI
 						});
 					}
 
+					//GetSelectedIndexOfCurrentOrderListView();
 					PopulateListViewsWithData();
-					//KeepLastSelectedItemFocusInCurrentOrderListView();
+					KeepLastSelectedItemFocusInCurrentOrderListView();
 				}
 				else
 				{
@@ -168,8 +171,9 @@ namespace Tesco.UI
 						});
 					}
 
+					//GetSelectedIndexOfUnfinishedOrderListView();
 					PopulateListViewsWithData();
-					//KeepLastSelectedItemFocusInUnfinishedOrderListView();
+					KeepLastSelectedItemFocusInUnfinishedOrderListView();
 				}
 				else
 				{
@@ -186,7 +190,7 @@ namespace Tesco.UI
 			{
 				if (lvUnfinishedOrder.Items.Cast<ListViewItem>().Any(y => int.Parse(y.SubItems[0].Text) == int.Parse(x.SubItems[0].Text)))
 				{
-					var orderCustomer = _orderCustomerManager.RetrieveDataByWhereCondition(new OrderCustomer()
+					var currentCustomer = _orderCustomerManager.RetrieveDataByWhereCondition(new OrderCustomer()
 					{
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(x.SubItems[0].Text),
@@ -194,11 +198,18 @@ namespace Tesco.UI
 						IsUnpaid = true
 					});
 
-					orderCustomer.Quantity += int.Parse(x.SubItems[2].Text);
-					orderCustomer.Amount += int.Parse(x.SubItems[3].Text);
-					orderCustomer.IsCurrentOrder = false;
+					var unfinishedCustomer = _orderCustomerManager.RetrieveDataByWhereCondition(new OrderCustomer()
+					{
+						CustomerId = _user.CustomerId,
+						ItemId = int.Parse(x.SubItems[0].Text),
+						IsCurrentOrder = false,
+						IsUnpaid = true
+					});
 
-					_orderCustomerManager.Update(orderCustomer);
+					unfinishedCustomer.Quantity += currentCustomer.Quantity;
+					unfinishedCustomer.Amount += currentCustomer.Amount;
+
+					_orderCustomerManager.Delete<OrderCustomer>(currentCustomer.Id);
 				}
 				else
 				{
@@ -258,8 +269,40 @@ namespace Tesco.UI
 			return row;
 		}
 
-		//private void KeepLastSelectedItemFocusInCurrentOrderListView() => lvCurrentOrder.Items[_lastSelectedItemInCurrentListView - 1].Selected = _lastSelectedItemInCurrentListView > 0;
+		private void GetSelectedIndexOfCurrentOrderListView()
+		{
+			if (lvCurrentOrder.SelectedItems.Count > 0)
+			{
+				_lastSelectedItemInCurrentListView = int.Parse(lvCurrentOrder.SelectedItems[0].Text);
+			}
+		}
 
-		//private void KeepLastSelectedItemFocusInUnfinishedOrderListView() => lvUnfinishedOrder.Items[_lastSelectedItemInUnfinishedListView - 1].Selected = _lastSelectedItemInUnfinishedListView > 0;
+		private void GetSelectedIndexOfUnfinishedOrderListView()
+		{
+			if (lvUnfinishedOrder.SelectedItems.Count > 0)
+			{
+				_lastSelectedItemInUnfinishedListView = int.Parse(lvUnfinishedOrder.SelectedItems[0].Text);
+			}
+		}
+
+		private void KeepLastSelectedItemFocusInCurrentOrderListView()
+		{
+			var selectedItem = lvCurrentOrder.Items.Cast<ListViewItem>().Where(x => int.Parse(x.SubItems[0].Text) == _lastSelectedItemInCurrentListView).FirstOrDefault();
+
+			if (selectedItem != null)
+			{
+				selectedItem.Selected = true;
+			}
+		}
+
+		private void KeepLastSelectedItemFocusInUnfinishedOrderListView()
+		{
+			var selectedItem = lvUnfinishedOrder.Items.Cast<ListViewItem>().Where(x => int.Parse(x.SubItems[0].Text) == _lastSelectedItemInUnfinishedListView).FirstOrDefault();
+
+			if (selectedItem != null)
+			{
+				selectedItem.Selected = true;
+			}
+		}
 	}
 }

@@ -33,16 +33,16 @@ namespace Tesco.UI
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lvCurrentOrder = new System.Windows.Forms.ListView();
-            this.columnCartItemId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnCartItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnCartItemQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnCartItemAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCurrentOrderId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCurrentOrderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCurrentOrderQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCurrentOrderAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvUnfinishedOrder = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnUnfinishedOrderId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnUnfinishedOrderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnUnfinishedOrderQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnUnfinishedOrderAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnMoveToUnfinishedTransaction = new System.Windows.Forms.Button();
             this.btnMoveToCurrentOrder = new System.Windows.Forms.Button();
             this.btnCheckout = new System.Windows.Forms.Button();
@@ -64,42 +64,42 @@ namespace Tesco.UI
             // lvCurrentOrder
             // 
             this.lvCurrentOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnCartItemId,
-            this.columnCartItemName,
-            this.columnCartItemQuantity,
-            this.columnCartItemAmount});
+            this.columnCurrentOrderId,
+            this.columnCurrentOrderName,
+            this.columnCurrentOrderQuantity,
+            this.columnCurrentOrderAmount});
             this.lvCurrentOrder.FullRowSelect = true;
             this.lvCurrentOrder.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvCurrentOrder.HideSelection = false;
             this.lvCurrentOrder.Location = new System.Drawing.Point(6, 20);
             this.lvCurrentOrder.Name = "lvCurrentOrder";
             this.lvCurrentOrder.Size = new System.Drawing.Size(364, 304);
-            this.lvCurrentOrder.TabIndex = 4;
+            this.lvCurrentOrder.TabIndex = 9;
             this.lvCurrentOrder.UseCompatibleStateImageBehavior = false;
             this.lvCurrentOrder.View = System.Windows.Forms.View.Details;
             this.lvCurrentOrder.Leave += new System.EventHandler(this.LvCurrentOrder_Leave);
             // 
-            // columnCartItemId
+            // columnCurrentOrderId
             // 
-            this.columnCartItemId.Text = "";
-            this.columnCartItemId.Width = 0;
+            this.columnCurrentOrderId.Text = "";
+            this.columnCurrentOrderId.Width = 0;
             // 
-            // columnCartItemName
+            // columnCurrentOrderName
             // 
-            this.columnCartItemName.Text = "Name";
-            this.columnCartItemName.Width = 210;
+            this.columnCurrentOrderName.Text = "Name";
+            this.columnCurrentOrderName.Width = 210;
             // 
-            // columnCartItemQuantity
+            // columnCurrentOrderQuantity
             // 
-            this.columnCartItemQuantity.Text = "Quantity";
-            this.columnCartItemQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnCartItemQuantity.Width = 75;
+            this.columnCurrentOrderQuantity.Text = "Quantity";
+            this.columnCurrentOrderQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnCurrentOrderQuantity.Width = 75;
             // 
-            // columnCartItemAmount
+            // columnCurrentOrderAmount
             // 
-            this.columnCartItemAmount.Text = "Amount";
-            this.columnCartItemAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnCartItemAmount.Width = 75;
+            this.columnCurrentOrderAmount.Text = "Amount";
+            this.columnCurrentOrderAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnCurrentOrderAmount.Width = 75;
             // 
             // groupBox2
             // 
@@ -114,49 +114,49 @@ namespace Tesco.UI
             // lvUnfinishedOrder
             // 
             this.lvUnfinishedOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
+            this.columnUnfinishedOrderId,
+            this.columnUnfinishedOrderName,
+            this.columnUnfinishedOrderQuantity,
+            this.columnUnfinishedOrderAmount});
             this.lvUnfinishedOrder.FullRowSelect = true;
             this.lvUnfinishedOrder.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvUnfinishedOrder.HideSelection = false;
             this.lvUnfinishedOrder.Location = new System.Drawing.Point(6, 20);
             this.lvUnfinishedOrder.Name = "lvUnfinishedOrder";
             this.lvUnfinishedOrder.Size = new System.Drawing.Size(364, 304);
-            this.lvUnfinishedOrder.TabIndex = 4;
+            this.lvUnfinishedOrder.TabIndex = 10;
             this.lvUnfinishedOrder.UseCompatibleStateImageBehavior = false;
             this.lvUnfinishedOrder.View = System.Windows.Forms.View.Details;
             this.lvUnfinishedOrder.Leave += new System.EventHandler(this.LvUnfinishedOrder_Leave);
             // 
-            // columnHeader1
+            // columnUnfinishedOrderId
             // 
-            this.columnHeader1.Text = "";
-            this.columnHeader1.Width = 0;
+            this.columnUnfinishedOrderId.Text = "";
+            this.columnUnfinishedOrderId.Width = 0;
             // 
-            // columnHeader2
+            // columnUnfinishedOrderName
             // 
-            this.columnHeader2.Text = "Name";
-            this.columnHeader2.Width = 210;
+            this.columnUnfinishedOrderName.Text = "Name";
+            this.columnUnfinishedOrderName.Width = 210;
             // 
-            // columnHeader3
+            // columnUnfinishedOrderQuantity
             // 
-            this.columnHeader3.Text = "Quantity";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader3.Width = 75;
+            this.columnUnfinishedOrderQuantity.Text = "Quantity";
+            this.columnUnfinishedOrderQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnUnfinishedOrderQuantity.Width = 75;
             // 
-            // columnHeader4
+            // columnUnfinishedOrderAmount
             // 
-            this.columnHeader4.Text = "Amount";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader4.Width = 75;
+            this.columnUnfinishedOrderAmount.Text = "Amount";
+            this.columnUnfinishedOrderAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnUnfinishedOrderAmount.Width = 75;
             // 
             // btnMoveToUnfinishedTransaction
             // 
             this.btnMoveToUnfinishedTransaction.Location = new System.Drawing.Point(55, 356);
             this.btnMoveToUnfinishedTransaction.Name = "btnMoveToUnfinishedTransaction";
             this.btnMoveToUnfinishedTransaction.Size = new System.Drawing.Size(276, 23);
-            this.btnMoveToUnfinishedTransaction.TabIndex = 7;
+            this.btnMoveToUnfinishedTransaction.TabIndex = 0;
             this.btnMoveToUnfinishedTransaction.Text = "Move to Unfinished Transaction ->";
             this.btnMoveToUnfinishedTransaction.UseVisualStyleBackColor = true;
             this.btnMoveToUnfinishedTransaction.Click += new System.EventHandler(this.btnMoveToUnfinishedTransaction_Click);
@@ -166,7 +166,7 @@ namespace Tesco.UI
             this.btnMoveToCurrentOrder.Location = new System.Drawing.Point(497, 356);
             this.btnMoveToCurrentOrder.Name = "btnMoveToCurrentOrder";
             this.btnMoveToCurrentOrder.Size = new System.Drawing.Size(205, 23);
-            this.btnMoveToCurrentOrder.TabIndex = 8;
+            this.btnMoveToCurrentOrder.TabIndex = 1;
             this.btnMoveToCurrentOrder.Text = "<- Move to Current Order";
             this.btnMoveToCurrentOrder.UseVisualStyleBackColor = true;
             this.btnMoveToCurrentOrder.Click += new System.EventHandler(this.BtnMoveToCurrentOrder_Click);
@@ -176,7 +176,7 @@ namespace Tesco.UI
             this.btnCheckout.Location = new System.Drawing.Point(178, 400);
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(205, 23);
-            this.btnCheckout.TabIndex = 9;
+            this.btnCheckout.TabIndex = 2;
             this.btnCheckout.Text = "Continue to Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
             // 
@@ -185,7 +185,7 @@ namespace Tesco.UI
             this.btnShopping.Location = new System.Drawing.Point(412, 400);
             this.btnShopping.Name = "btnShopping";
             this.btnShopping.Size = new System.Drawing.Size(205, 23);
-            this.btnShopping.TabIndex = 10;
+            this.btnShopping.TabIndex = 3;
             this.btnShopping.Text = "Continue to Shopping";
             this.btnShopping.UseVisualStyleBackColor = true;
             // 
@@ -219,14 +219,14 @@ namespace Tesco.UI
         private System.Windows.Forms.Button btnShopping;
         private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.ListView lvCurrentOrder;
-        private System.Windows.Forms.ColumnHeader columnCartItemId;
-        private System.Windows.Forms.ColumnHeader columnCartItemName;
-        private System.Windows.Forms.ColumnHeader columnCartItemQuantity;
-        private System.Windows.Forms.ColumnHeader columnCartItemAmount;
+        private System.Windows.Forms.ColumnHeader columnCurrentOrderId;
+        private System.Windows.Forms.ColumnHeader columnCurrentOrderName;
+        private System.Windows.Forms.ColumnHeader columnCurrentOrderQuantity;
+        private System.Windows.Forms.ColumnHeader columnCurrentOrderAmount;
         private System.Windows.Forms.ListView lvUnfinishedOrder;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnUnfinishedOrderId;
+        private System.Windows.Forms.ColumnHeader columnUnfinishedOrderName;
+        private System.Windows.Forms.ColumnHeader columnUnfinishedOrderQuantity;
+        private System.Windows.Forms.ColumnHeader columnUnfinishedOrderAmount;
     }
 }
