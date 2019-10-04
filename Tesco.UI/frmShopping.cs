@@ -47,16 +47,7 @@ namespace Tesco.UI
 			}
 			
 			DisplayItemsInListView();
-
-			// Combobox of Name-Price Sort
-			cboSortByNamePrice.Items.Add("By Name: Ascending");
-			cboSortByNamePrice.Items.Add("By Name: Descending");
-			cboSortByNamePrice.Items.Add("By Price: Small to Big");
-			cboSortByNamePrice.Items.Add("By Price: Big to Small");
-
-			// Combobox of Type Sort
-
-			_itemTypeHandler.ItemTypeValuesHandler().ForEach(x => cboSortByType.Items.Add(x));
+			PopulateComboBoxes();
 		}
 
 		private void CboSortByNamePrice_SelectedIndexChanged(object sender, EventArgs e) => DisplayItemsInListView();
@@ -91,7 +82,13 @@ namespace Tesco.UI
 			btnAddToCart.Enabled = int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0;
 		}
 
-		private void LvItems_Leave(object sender, EventArgs e) => _lastSelectedItemInItemsListView = int.Parse(lvItems.SelectedItems[0].Text);
+		private void LvItems_Leave(object sender, EventArgs e)
+		{
+			if (lvItems.SelectedItems.Count > 0)
+			{
+				_lastSelectedItemInItemsListView = lvItems.Items.IndexOf(lvItems.SelectedItems[0]);
+			}
+		}
 
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
@@ -131,53 +128,54 @@ namespace Tesco.UI
 				var item = _itemManager.RetrieveDataById<Item>(int.Parse(lvItems.SelectedItems[0].SubItems[0].Text));
 
 				// check if there are stocks available
-				if (!(item.Stocks > 0)) return;
-				
-				// check if lvCart is not empty
-				if (lvCart.Items.Count > 0)
+				if (item.Stocks > 0)
 				{
-					var inList = false;
-
-					// check if item is already in lvCart
-					foreach (ListViewItem items in lvCart.Items)
+					// check if lvCart is not empty
+					if (lvCart.Items.Count > 0)
 					{
-						// comparison by itemId
-						if (item.Id != int.Parse(items.Text)) continue;
+						var inList = false;
 
-						// just change the number in quantity and price
-						items.SubItems[2].Text =
-							(int.Parse(items.SubItems[2].Text) + int.Parse(lblQuantity.Text))
-							.ToString();
-						items.SubItems[3].Text = (int.Parse(items.SubItems[3].Text) +
-														 (int.Parse(lblQuantity.Text) * int.Parse(lvItems.SelectedItems[0].SubItems[4].Text))
-														 ).ToString();
-						inList = true;
-						break;
+						// check if item is already in lvCart
+						foreach (ListViewItem items in lvCart.Items)
+						{
+							// comparison by itemId
+							if (item.Id != int.Parse(items.Text)) continue;
+
+							// just change the number in quantity and price
+							items.SubItems[2].Text =
+								(int.Parse(items.SubItems[2].Text) + int.Parse(lblQuantity.Text))
+								.ToString();
+							items.SubItems[3].Text = (int.Parse(items.SubItems[3].Text) +
+															 (int.Parse(lblQuantity.Text) * int.Parse(lvItems.SelectedItems[0].SubItems[4].Text))
+															 ).ToString();
+							inList = true;
+							break;
+						}
+
+						// item is not in lvCart
+						if (!inList)
+						{
+							AddItemToCartListView();
+						}
 					}
-
-					// item is not in lvCart
-					if (!inList)
+					else // if lvCart is empty
 					{
 						AddItemToCartListView();
 					}
+
+					// deduct item stocks number
+					item.Stocks -= int.Parse(lblQuantity.Text);
+					_itemManager.Update(item);
+
+					btnAdd.Enabled = item.Stocks > 0;
+					btnAddToCart.Enabled = item.Stocks > 0;
+
+					lblTotalAmount.Text = CalculateTotalAmountOfItemsInCart().ToString();
+					lblQuantity.Text = "1";
+
+					btnCheckout.Enabled = lvCart.Items.Count > 0;
+					DisplayItemsInListView();
 				}
-				else // if lvCart is empty
-				{
-					AddItemToCartListView();
-				}
-
-				// deduct item stocks number
-				item.Stocks -= int.Parse(lblQuantity.Text);
-				_itemManager.Update(item);
-
-				btnAdd.Enabled = item.Stocks > 0;
-				btnAddToCart.Enabled = item.Stocks > 0;
-
-				lblTotalAmount.Text = CalculateTotalAmountOfItemsInCart().ToString();
-				lblQuantity.Text = "1";
-
-				btnCheckout.Enabled = lvCart.Items.Count > 0;
-				DisplayItemsInListView();
 			}
 			else
 			{
@@ -246,7 +244,6 @@ namespace Tesco.UI
 				
 				var login = new frmRegisterLogin(0);
 				login.Show();
-				login.Dispose();
 			}
 		}
 
@@ -262,7 +259,6 @@ namespace Tesco.UI
 			var welcome = new frmWelcome();
 			this.Hide();
 			welcome.Show();
-			welcome.Dispose();
 		}
 		
 		private void frmShopping_FormClosing(object sender, FormClosingEventArgs e)
@@ -292,13 +288,11 @@ namespace Tesco.UI
 
 			var welcome = new frmWelcome();
 			welcome.Show();
-			welcome.Dispose();
 		}
 
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->
 
-		// handles the displaying of the items in the lvItems
 		private void DisplayItemsInListView()
 		{
 			lvItems.Items.Clear();
@@ -307,16 +301,27 @@ namespace Tesco.UI
 				.ForEach(x => lvItems.Items.Add(_listViewItemHandler.FormatListViewRow(x)));
 		}
 
-		// handles the displaying of the item details in the lblItemDetails
-		private void DisplayItemDetailsInLabel() => lblItemDetails.Text = $@"Name:     {lvItems.SelectedItems[0].SubItems[1].Text}
-Type:     {lvItems.SelectedItems[0].SubItems[2].Text}
-Price:    {lvItems.SelectedItems[0].SubItems[4].Text}
-Quantity: {(int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0 ? lblQuantity.Text : "")}
-Total:    {(int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lblQuantity.Text)).ToString()}";
+		private void PopulateComboBoxes()
+		{
+			// Combobox of Name-Price Sort
+			cboSortByNamePrice.Items.Add("By Name: Ascending");
+			cboSortByNamePrice.Items.Add("By Name: Descending");
+			cboSortByNamePrice.Items.Add("By Price: Small to Big");
+			cboSortByNamePrice.Items.Add("By Price: Big to Small");
 
-		private void KeepSelectedItemFocusInItemsListView() => lvItems.Items[_lastSelectedItemInItemsListView - 1].Selected = _lastSelectedItemInItemsListView > 0;
+			// Combobox of Type Sort
 
-		// handles the adding of the items from lvItems to lvCart
+			_itemTypeHandler.ItemTypeValuesHandler().ForEach(x => cboSortByType.Items.Add(x));
+		}
+
+		private void DisplayItemDetailsInLabel() => lblItemDetails.Text = $"Name:      {lvItems.SelectedItems[0].SubItems[1].Text}\n" +
+			$"Type:      {lvItems.SelectedItems[0].SubItems[2].Text}\n" +
+			$"Price:     {lvItems.SelectedItems[0].SubItems[4].Text}\n" +
+			$"Quantity:  {(int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0 ? lblQuantity.Text : "")}\n" +
+			$"Total:     {(int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lblQuantity.Text)).ToString()}";
+
+		private void KeepSelectedItemFocusInItemsListView() => lvItems.Items[_lastSelectedItemInItemsListView].Selected = _lastSelectedItemInItemsListView > 0;
+
 		private void AddItemToCartListView()
 		{
 			var row = new ListViewItem(lvItems.SelectedItems[0].Text);
@@ -326,10 +331,8 @@ Total:    {(int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lbl
 			lvCart.Items.Add(row);
 		}
 
-		// handles the calculation of the total amount of the items added to lvCart
 		private int CalculateTotalAmountOfItemsInCart() => lvCart.Items.Cast<ListViewItem>().Sum(x => int.Parse(x.SubItems[3].Text));
 		
-		// handles adding the items from lvCart to ItemCustomer db table when user signs off or closes the form
 		private void AddCartItemsToDatabase()
 		{
 			lvCart.Items.Cast<ListViewItem>().ToList().ForEach(x =>
