@@ -50,9 +50,19 @@ namespace Tesco.UI
 			PopulateComboBoxes();
 		}
 
-		private void CboSortByNamePrice_SelectedIndexChanged(object sender, EventArgs e) => DisplayItemsInListView();
+		private void CboSortByNamePrice_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			GetSelectedIndexOfItemsListView();
+			DisplayItemsInListView();
+			KeepSelectedItemFocusInItemsListView();
+		}
 
-		private void CboSortByType_SelectedIndexChanged(object sender, EventArgs e) => DisplayItemsInListView();
+		private void CboSortByType_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			GetSelectedIndexOfItemsListView();
+			DisplayItemsInListView();
+			KeepSelectedItemFocusInItemsListView();
+		}
 
 		private void BtnResetSort_Click(object sender, EventArgs e)
 		{
@@ -84,10 +94,8 @@ namespace Tesco.UI
 
 		private void LvItems_Leave(object sender, EventArgs e)
 		{
-			if (lvItems.SelectedItems.Count > 0)
-			{
-				_lastSelectedItemInItemsListView = lvItems.Items.IndexOf(lvItems.SelectedItems[0]);
-			}
+			GetSelectedIndexOfItemsListView();
+			KeepSelectedItemFocusInItemsListView();
 		}
 
 		private void BtnAdd_Click(object sender, EventArgs e)
@@ -127,43 +135,20 @@ namespace Tesco.UI
 			{
 				var item = _itemManager.RetrieveDataById<Item>(int.Parse(lvItems.SelectedItems[0].SubItems[0].Text));
 
-				// check if there are stocks available
 				if (item.Stocks > 0)
 				{
-					// check if lvCart is not empty
-					if (lvCart.Items.Count > 0)
+					var cartItem = lvCart.Items.Cast<ListViewItem>().Where(x => item.Id == int.Parse(x.SubItems[0].Text)).FirstOrDefault();
+
+					if (cartItem != null)
 					{
-						var inList = false;
-
-						// check if item is already in lvCart
-						foreach (ListViewItem items in lvCart.Items)
-						{
-							// comparison by itemId
-							if (item.Id != int.Parse(items.Text)) continue;
-
-							// just change the number in quantity and price
-							items.SubItems[2].Text =
-								(int.Parse(items.SubItems[2].Text) + int.Parse(lblQuantity.Text))
-								.ToString();
-							items.SubItems[3].Text = (int.Parse(items.SubItems[3].Text) +
-															 (int.Parse(lblQuantity.Text) * int.Parse(lvItems.SelectedItems[0].SubItems[4].Text))
-															 ).ToString();
-							inList = true;
-							break;
-						}
-
-						// item is not in lvCart
-						if (!inList)
-						{
-							AddItemToCartListView();
-						}
+						cartItem.SubItems[2].Text = (int.Parse(cartItem.SubItems[2].Text) + int.Parse(lblQuantity.Text)).ToString();
+						cartItem.SubItems[3].Text = (int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lblQuantity.Text) + int.Parse(cartItem.SubItems[3].Text)).ToString();
 					}
-					else // if lvCart is empty
+					else
 					{
 						AddItemToCartListView();
 					}
 
-					// deduct item stocks number
 					item.Stocks -= int.Parse(lblQuantity.Text);
 					_itemManager.Update(item);
 
@@ -174,7 +159,9 @@ namespace Tesco.UI
 					lblQuantity.Text = "1";
 
 					btnCheckout.Enabled = lvCart.Items.Count > 0;
+
 					DisplayItemsInListView();
+					KeepSelectedItemFocusInItemsListView();
 				}
 			}
 			else
@@ -320,7 +307,23 @@ namespace Tesco.UI
 			$"Quantity:  {(int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0 ? lblQuantity.Text : "")}\n" +
 			$"Total:     {(int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lblQuantity.Text)).ToString()}";
 
-		private void KeepSelectedItemFocusInItemsListView() => lvItems.Items[_lastSelectedItemInItemsListView].Selected = _lastSelectedItemInItemsListView > 0;
+		private void GetSelectedIndexOfItemsListView()
+		{
+			if (lvItems.SelectedItems.Count > 0)
+			{
+				_lastSelectedItemInItemsListView = int.Parse(lvItems.SelectedItems[0].Text);
+			}
+		}
+
+		private void KeepSelectedItemFocusInItemsListView()
+		{
+			var selectedItem = lvItems.Items.Cast<ListViewItem>().Where(x => int.Parse(x.SubItems[0].Text) == _lastSelectedItemInItemsListView).FirstOrDefault();
+
+			if (selectedItem != null)
+			{
+				selectedItem.Selected = true;
+			}
+		}
 
 		private void AddItemToCartListView()
 		{
