@@ -4,48 +4,48 @@ using System.Windows.Forms;
 using Tesco.BL.Managers;
 using Tesco.UI.Utilities;
 using Tesco.DL.Models;
-using System.Collections.Generic;
 using Tesco.UI.Interfaces;
 using Tesco.BL.Interfaces;
-using System.Drawing;
 
 namespace Tesco.UI
 {
 	public partial class frmShopping : Form
 	{
+		private readonly ICustomerManager _customerManager;
 		private readonly IItemManager _itemManager;
 		private readonly IItemTypeManager _itemTypeManager;
 		private readonly IOrderManager _orderManager;
 		private readonly IOrderCustomerManager _orderCustomerManager;
+		private readonly IUserManager _userManager;
 		private readonly IItemTypeHandler _itemTypeHandler;
 		private readonly IListViewItemHandler _listViewItemHandler;
 		private readonly ISortHandler _sortHandler;
+		private readonly Customer _customer;
 		private readonly User _user;
 		private int _lastSelectedItemInItemsListView = 0;
 
-		public frmShopping(User user = null)
+		public frmShopping(User user)
 		{
+			_customerManager = new CustomerManager();
 			_itemManager = new ItemManager();
 			_itemTypeManager = new ItemTypeManager();
 			_orderManager = new OrderManager();
 			_orderCustomerManager = new OrderCustomerManager();
+			_userManager = new UserManager();
 			_itemTypeHandler = new ItemTypeHandler();
 			_listViewItemHandler = new ListViewItemHandler();
 			_sortHandler = new SortHandler();
+			_customer = _customerManager.RetrieveDataById<Customer>(user.CustomerId);
 			_user = user;
 			InitializeComponent();
 		}
 
 		private void FrmShopping_Load(object sender, EventArgs e)
 		{
-			if (_user != null)
-			{
-				lblUserGreeting.Visible = true;
-				lblUserGreeting.Text = $"\tHello, {_user.Username}.";
-				btnSignOff.Enabled = true;
-				btnSignOff.Visible = true;
-			}
-			
+			btnSignOff.Enabled = _customer.IsGuest != true;
+			btnSignOff.Visible = _customer.IsGuest != true;
+			lblUserGreeting.Text = $"Hello, {(_customer.IsGuest != true ? _customer.FullName : "Guest")}.";
+
 			DisplayItemsInListView();
 			PopulateComboBoxes();
 		}
@@ -75,13 +75,14 @@ namespace Tesco.UI
 		private void LvItems_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (lvItems.SelectedItems.Count <= 0) return;
-			
+
 			DisplayItemDetailsInLabel();
 
 			// check item stocks number
 			if (int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0)
 			{
-				lblQuantity.Text = "1";
+
+				lblQuantity.Text = "0";
 			}
 			else
 			{
@@ -160,6 +161,7 @@ namespace Tesco.UI
 
 					btnCheckout.Enabled = lvCart.Items.Count > 0;
 
+					GetSelectedIndexOfItemsListView();
 					DisplayItemsInListView();
 					KeepSelectedItemFocusInItemsListView();
 				}
@@ -177,7 +179,6 @@ namespace Tesco.UI
 
 		private void BtnRemoveOrder_Click(object sender, EventArgs e)
 		{
-			// remove items
 			if (lvCart.SelectedItems.Count > 0)
 			{
 				var item = _itemManager.RetrieveDataById<Item>(int.Parse(lvCart.SelectedItems[0].SubItems[0].Text));
@@ -204,32 +205,45 @@ namespace Tesco.UI
 
 		private void BtnCheckout_Click(object sender, EventArgs e)
 		{
-			if (_user != null)
+			lvCart.Items.Cast<ListViewItem>().ToList().ForEach(x =>
 			{
-				lvCart.Items.Cast<ListViewItem>().ToList().ForEach(x =>
+				_orderCustomerManager.Add(new OrderCustomer()
 				{
-					_orderCustomerManager.Add(new OrderCustomer()
-					{
-						CustomerId = _user.CustomerId,
-						ItemId = int.Parse(x.SubItems[0].Text),
-						Quantity = int.Parse(x.SubItems[2].Text),
-						Amount = int.Parse(x.SubItems[3].Text),
-						IsCurrentOrder = true,
-						IsUnpaid = true
-					});
+					CustomerId = _user.CustomerId,
+					ItemId = int.Parse(x.SubItems[0].Text),
+					Quantity = int.Parse(x.SubItems[2].Text),
+					Amount = int.Parse(x.SubItems[3].Text),
+					IsCurrentOrder = true,
+					IsUnpaid = true
 				});
+			});
+
+			this.Hide();
+
+			if (_customer.IsGuest != true)
+			{
+				if (_orderCustomerManager.RetrieveAll<OrderCustomer>().Where(x => x.IsUnpaid == true).ToList().Count > 0)
+				{
+					if (MessageBox.Show("You have an unfinished transaction. Along with your current orders, would you like to proceed to it?",
+										"Unfinished Transaction",
+										MessageBoxButtons.YesNo,
+										MessageBoxIcon.Question) == DialogResult.Yes)
+					{
+						var unfinished = new frmUnfinishedTransaction(_user);
+						unfinished.Show();
+
+						return;
+					}
+				}
 
 				var checkOut = new frmCheckout(_user);
-
-				this.Hide();
 				checkOut.Show();
-				checkOut.Dispose();
 			}
 			else
 			{
-				MessageBox.Show("Please login to continue.");
+				MessageBox.Show("Please register/login to continue.");
 				
-				var login = new frmRegisterLogin(0);
+				var login = new frmRegisterLogin(0, _user);
 				login.Show();
 			}
 		}
@@ -250,7 +264,7 @@ namespace Tesco.UI
 		
 		private void frmShopping_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (_user != null)
+			if (_customer.IsGuest != true)
 			{
 				if (lvCart.Items.Count > 0)
 				{
@@ -261,7 +275,8 @@ namespace Tesco.UI
 			{
 				if (lvCart.Items.Count > 0)
 				{
-					lvCart.Items.Cast<ListViewItem>().ToList()
+					lvCart.Items.Cast<ListViewItem>()
+						.ToList()
 						.ForEach(x =>
 						{
 							var item = _itemManager.RetrieveDataById<Item>(int.Parse(x.SubItems[0].Text));
@@ -271,6 +286,10 @@ namespace Tesco.UI
 							_itemManager.Update(item);
 						});
 				}
+
+				_user.IsDeleted = true;
+
+				_userManager.Update<User>(_user);
 			}
 
 			var welcome = new frmWelcome();
@@ -319,10 +338,7 @@ namespace Tesco.UI
 		{
 			var selectedItem = lvItems.Items.Cast<ListViewItem>().Where(x => int.Parse(x.SubItems[0].Text) == _lastSelectedItemInItemsListView).FirstOrDefault();
 
-			if (selectedItem != null)
-			{
-				selectedItem.Selected = true;
-			}
+			selectedItem.Selected = selectedItem != null;
 		}
 
 		private void AddItemToCartListView()

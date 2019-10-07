@@ -20,12 +20,13 @@ namespace Tesco.UI
 		private bool _hasMessageBoxShown = false;
 		private int _pnlRegisterHeight;
 
-		public frmRegisterLogin(int pnlRegisterHeight)
+		public frmRegisterLogin(int pnlRegisterHeight, User user = null)
 		{
 			_customerManager = new CustomerManager();
 			_orderCustomerManager = new OrderCustomerManager();
 			_userManager = new UserManager();
 			_emailValidator = new EmailValidator();
+			_user = user;
 			_pnlRegisterHeight = pnlRegisterHeight;
 			InitializeComponent();
 		}
@@ -68,11 +69,9 @@ namespace Tesco.UI
 			}
 		}
 
-		private void linkForgotPassword_MouseEnter(object sender, EventArgs e) =>
-			linkForgotPassword.LinkColor = Color.Blue;
+		private void linkForgotPassword_MouseEnter(object sender, EventArgs e) => linkForgotPassword.LinkColor = Color.Blue;
 
-		private void linkForgotPassword_MouseLeave(object sender, EventArgs e) =>
-			linkForgotPassword.LinkColor = Color.Black;
+		private void linkForgotPassword_MouseLeave(object sender, EventArgs e) => linkForgotPassword.LinkColor = Color.Black;
 
 		private void linkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
@@ -87,36 +86,29 @@ namespace Tesco.UI
 			{
 				if (!string.IsNullOrWhiteSpace(txtFirstName.Text)
 					&& !string.IsNullOrWhiteSpace(txtLastName.Text)
-					&& !string.IsNullOrWhiteSpace(txtEmail.Text) &&
-					_emailValidator.CheckEmailIfValid(txtEmail.Text)
+					&& !string.IsNullOrWhiteSpace(txtEmail.Text) && _emailValidator.CheckEmailIfValid(txtEmail.Text)
 					&& !string.IsNullOrWhiteSpace(txtPhoneNumber.Text)
 					&& !string.IsNullOrWhiteSpace(txtUsername.Text)
 					&& !string.IsNullOrWhiteSpace(txtPassword.Text))
 				{
-					var customer = new Customer()
-					{
-						FullName = $"{txtFirstName.Text} {txtLastName.Text}",
-						Email = txtEmail.Text,
-						PhoneNumber = txtPhoneNumber.Text
-					};
+					var customer = _customerManager.RetrieveDataById<Customer>(_user.CustomerId);
 
-					_user = new User()
-					{
-						Username = txtUsername.Text,
-						Password = txtPassword.Text,
-						FullName = customer.FullName,
-						CustomerId = _customerManager.Add(customer),
-						Type = "customer",
-						IsDeleted = false
-					};
+					customer.FullName = $"{txtFirstName.Text} {txtLastName.Text}";
+					customer.Email = txtEmail.Text;
+					customer.PhoneNumber = txtPhoneNumber.Text;
+					customer.IsGuest = false;
 
-					var newUser = _userManager.Add(_user);
+					_customerManager.Update(customer);
 
-					if (newUser != 0)
+					_user.Username = txtUsername.Text;
+					_user.Password = txtPassword.Text;
+					_user.FullName = customer.FullName;
+
+					if (_userManager.Update(_user) != 0)
 					{
 						MessageBox.Show("Registration successful.");
 
-						var shopping = new frmShopping(_userManager.RetrieveDataById<User>(newUser));
+						var shopping = new frmShopping(_user);
 						this.Hide();
 						shopping.Show();
 					}
@@ -146,18 +138,14 @@ namespace Tesco.UI
 				if (!string.IsNullOrWhiteSpace(txtLoginUsername.Text)
 					&& !string.IsNullOrWhiteSpace(txtLoginPassword.Text))
 				{
-					if (_userManager.ValidateUserLogin(new User()
+					_user = _userManager.RetrieveDataByWhereCondition(new User()
 					{
 						Username = txtLoginUsername.Text,
 						Password = txtLoginPassword.Text
-					}))
+					});
+
+					if (_userManager.ValidateUserLogin(_user))
 					{
-						_user = _userManager.RetrieveDataByWhereCondition(new User()
-						{
-							Username = txtLoginUsername.Text,
-							Password = txtLoginPassword.Text
-						});
-						
 						MessageBox.Show("Login successful.");
 
 						this.Hide();
@@ -175,9 +163,8 @@ namespace Tesco.UI
 						else if (_user.Type.Equals("customer"))
 						{
 							if (_orderCustomerManager.RetrieveAll<OrderCustomer>()
-								.Where(x => x.CustomerId == _user.CustomerId && x.IsUnpaid == true)
-								.Select(x => x)
-								.ToList().Count > 0)
+										.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == false && x.IsUnpaid == true)
+										.ToList().Count > 0)
 							{
 								if (MessageBox.Show("You have an unfinished transaction. Would you like to proceed to it?",
 										"Unfinished Transaction",
@@ -189,6 +176,15 @@ namespace Tesco.UI
 
 									return;
 								}
+							}
+							else if (_orderCustomerManager.RetrieveAll<OrderCustomer>()
+										.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true)
+										.ToList().Count > 0)
+							{
+								var checkout = new frmCheckout(_user);
+								checkout.Show();
+
+								return;
 							}
 
 							var shopping = new frmShopping(_user);
@@ -220,6 +216,7 @@ namespace Tesco.UI
 			timer.Stop();
 			this.Refresh();
 		}
+
 
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->

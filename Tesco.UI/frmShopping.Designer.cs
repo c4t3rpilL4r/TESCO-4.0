@@ -209,7 +209,7 @@
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(14, 14);
             this.lblQuantity.TabIndex = 7;
-            this.lblQuantity.Text = "1";
+            this.lblQuantity.Text = "0";
             this.lblQuantity.TextChanged += new System.EventHandler(this.LblQuantity_TextChanged);
             // 
             // btnAdd
@@ -343,7 +343,6 @@
             this.lblUserGreeting.Name = "lblUserGreeting";
             this.lblUserGreeting.Size = new System.Drawing.Size(241, 19);
             this.lblUserGreeting.TabIndex = 6;
-            this.lblUserGreeting.Visible = false;
             // 
             // btnSignOff
             // 

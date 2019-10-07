@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Tesco.BL.Interfaces;
@@ -193,9 +192,24 @@ namespace Tesco.UI
 						IsUnpaid = true
 					});
 
+					var unfinishedOrder = _orderCustomerManager.RetrieveDataByWhereCondition<OrderCustomer>(new OrderCustomer()
+					{
+						CustomerId = _user.CustomerId,
+						ItemId = int.Parse(x.SubItems[0].Text),
+						IsCurrentOrder = false,
+						IsUnpaid = true
+					});
+
 					orderCustomer.IsCurrentOrder = false;
 
-					_orderCustomerManager.Update(orderCustomer);
+					if (unfinishedOrder != null)
+					{
+						_orderCustomerManager.Update(orderCustomer);
+					}
+					else
+					{
+						_orderCustomerManager.Add<OrderCustomer>(orderCustomer);
+					}
 				});
 
 			var welcome = new frmWelcome();

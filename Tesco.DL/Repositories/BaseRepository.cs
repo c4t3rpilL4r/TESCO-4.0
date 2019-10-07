@@ -46,7 +46,7 @@ namespace Tesco.DL.Repositories
 			return _db.Query<int>($@"INSERT INTO {TableName} ({fields}) VALUES ({values}) SELECT CAST(SCOPE_IDENTITY() as int);", data).Single();
 		}
 
-		public int Delete<T>(int id) => _db.Execute(sql: $"DELETE FROM {TableName} WHERE Id = '{id}';");
+		//public int Delete(int id) => _db.Execute(sql: $"DELETE FROM {TableName} WHERE Id = '{id}';");
 
 		public List<T> RetrieveAll<T>() => _db.Query<T>($"SELECT * FROM {TableName};").ToList();
 
@@ -73,10 +73,17 @@ namespace Tesco.DL.Repositories
 
 		public int Update<T>(T data)
 		{
+			var propertyToBeExcluded = new List<string>() { "id" };
+
 			var fields = string.Join(",", data.GetType().GetProperties().Where(x =>
 			{
 				var propertyName = $"{x.Name}".ToLower();
-				var propertyToBeExcluded = new List<string> {"id"};
+
+				if (x.GetValue(data) == null || x.GetValue(data).ToString().Equals("0"))
+				{
+					propertyToBeExcluded.Add(propertyName);
+				}
+
 				return !propertyToBeExcluded.Contains(value: propertyName);
 			}).Select(x => $"{x.Name} = @{x.Name}"));
 
