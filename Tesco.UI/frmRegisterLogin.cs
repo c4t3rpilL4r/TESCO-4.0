@@ -217,6 +217,38 @@ namespace Tesco.UI
 			this.Refresh();
 		}
 
+		private void FrmRegisterLogin_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			_orderCustomerManager.RetrieveAll<OrderCustomer>()
+				.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true)
+				.ToList()
+				.ForEach(x =>
+			{
+				var unfinishedOrder = _orderCustomerManager.RetrieveDataByWhereCondition<OrderCustomer>(new OrderCustomer()
+				{
+					CustomerId = x.CustomerId,
+					ItemId = x.ItemId,
+					IsCurrentOrder = false,
+					IsUnpaid = true
+				});
+
+				if (unfinishedOrder != null)
+				{
+					unfinishedOrder.Quantity += x.Quantity;
+					unfinishedOrder.Amount += x.Amount;
+
+					_orderCustomerManager.Update<OrderCustomer>(unfinishedOrder);
+
+					x.Quantity = 0;
+					x.Amount = 0;
+				}
+
+				x.IsCurrentOrder = false;
+
+				_orderCustomerManager.Update<OrderCustomer>(x);
+			});
+		}
+
 
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->

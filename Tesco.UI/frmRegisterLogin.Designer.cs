@@ -232,8 +232,7 @@ namespace Tesco.UI
             this.linkForgotPassword.TabIndex = 19;
             this.linkForgotPassword.TabStop = true;
             this.linkForgotPassword.Text = "Forgot Password?";
-            this.linkForgotPassword.LinkClicked +=
-                new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkForgotPassword_LinkClicked);
+            this.linkForgotPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkForgotPassword_LinkClicked);
             this.linkForgotPassword.MouseEnter += new System.EventHandler(this.linkForgotPassword_MouseEnter);
             this.linkForgotPassword.MouseLeave += new System.EventHandler(this.linkForgotPassword_MouseLeave);
             // 
@@ -282,10 +281,10 @@ namespace Tesco.UI
             this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.groupBox2);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmRegisterLogin";
             this.Text = "TESCO";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmRegisterLogin_FormClosing);
             this.Load += new System.EventHandler(this.FrmRegisterLogin_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -293,6 +292,7 @@ namespace Tesco.UI
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion
