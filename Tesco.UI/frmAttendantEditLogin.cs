@@ -40,24 +40,29 @@ namespace Tesco.UI
 							? "Login credentials edit successful."
 							: "Login credentials edit failed.");
 
-						frmAttendant frmAttendant = new frmAttendant(_user);
+						var frmAttendant = new frmAttendant(_user);
 						this.Hide();
 						frmAttendant.Show();
 					}
 					else
 					{
 						MessageBox.Show(@"Username is taken.");
+
+						txtUsername.Focus();
 					}
 				}
 				else
 				{
 					MessageBox.Show(@"No changes were made.");
+					this.Hide();
 				}
 			}
 			else
 			{
 				MessageBox.Show(@"Please fill up the details. Thank you.");
 			}
+			
+			
 		}
 	}
 }

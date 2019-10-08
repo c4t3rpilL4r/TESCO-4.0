@@ -14,6 +14,7 @@ namespace Tesco.UI
 	{
 		private readonly ICustomerManager _customerManager;
 		private readonly IItemCustomerManager _itemCustomerManager;
+		private readonly IItemManager _itemManager;
 		private readonly IUserManager _userManager;
 		private readonly IEmailValidator _emailValidator;
 		private User _user;
@@ -24,6 +25,7 @@ namespace Tesco.UI
 		{
 			_customerManager = new CustomerManager();
 			_itemCustomerManager = new ItemCustomerManager();
+			_itemManager = new ItemManager();
 			_userManager = new UserManager();
 			_emailValidator = new EmailValidator();
 			_user = user;
@@ -149,18 +151,27 @@ namespace Tesco.UI
 
 						if (_user.Type.Equals("admin"))
 						{
+							MessageBox.Show($"Hello, Admin {_user.FullName}.");
+							
 							var admin = new frmAdmin(_user);
 							admin.Show();
 						}
 						else if (_user.Type.Equals("attendant"))
 						{
+							MessageBox.Show($"Hello, Attendant {_user.FullName}.");
+							
 							var attendant = new frmAttendant(_user);
 							attendant.Show();
 						}
 						else if (_user.Type.Equals("customer"))
 						{
+							MessageBox.Show($"Hello, Customer {_user.FullName}.");
+							
 							if (_itemCustomerManager.RetrieveAll<ItemCustomer>()
-										.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == false && x.IsUnpaid == true)
+										.Where(x => x.CustomerId == _user.CustomerId
+										            && x.IsCurrentOrder == false
+										            && x.IsUnpaid == true
+										            && x.IsCancelled == false)
 										.ToList().Count > 0)
 							{
 								if (MessageBox.Show("You have an unfinished transaction. Would you like to proceed to it?",
@@ -175,7 +186,9 @@ namespace Tesco.UI
 								}
 							}
 							else if (_itemCustomerManager.RetrieveAll<ItemCustomer>()
-										.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true)
+										.Where(x => x.CustomerId == _user.CustomerId
+										            && x.IsCurrentOrder == true
+										            && x.IsUnpaid == true)
 										.ToList().Count > 0)
 							{
 								var checkout = new frmCheckout(_user);
@@ -217,33 +230,51 @@ namespace Tesco.UI
 		private void FrmRegisterLogin_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			_itemCustomerManager.RetrieveAll<ItemCustomer>()
-				.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true)
+				.Where(x => x.CustomerId == _user.CustomerId
+				            && x.IsCurrentOrder == true
+				            && x.IsUnpaid == true)
 				.ToList()
 				.ForEach(x =>
-			{
-				var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition<ItemCustomer>(new ItemCustomer()
 				{
-					CustomerId = x.CustomerId,
-					ItemId = x.ItemId,
-					IsCurrentOrder = false,
-					IsUnpaid = true
+					if (_customerManager.RetrieveDataById<Customer>(_user.CustomerId).IsGuest != true)
+					{
+						var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition<ItemCustomer>(
+							new ItemCustomer()
+							{
+								CustomerId = x.CustomerId,
+								ItemId = x.ItemId,
+								IsCurrentOrder = false,
+								IsUnpaid = true
+							});
+
+						if (unfinishedOrder != null)
+						{
+							unfinishedOrder.Quantity += x.Quantity;
+							unfinishedOrder.Amount += x.Amount;
+
+							_itemCustomerManager.Update(unfinishedOrder);
+
+							x.Quantity = 0;
+							x.Amount = 0;
+						}
+
+						x.IsCurrentOrder = false;
+
+						_itemCustomerManager.Update(x);
+					}
+					else
+					{
+						var item = _itemManager.RetrieveDataById<Item>(x.ItemId);
+
+						item.Stocks += x.Quantity;
+
+						_itemManager.Update(item);
+
+						x.IsCancelled = true;
+
+						_itemCustomerManager.Update(x);
+					}
 				});
-
-				if (unfinishedOrder != null)
-				{
-					unfinishedOrder.Quantity += x.Quantity;
-					unfinishedOrder.Amount += x.Amount;
-
-					_itemCustomerManager.Update(unfinishedOrder);
-
-					x.Quantity = 0;
-					x.Amount = 0;
-				}
-
-				x.IsCurrentOrder = false;
-
-				_itemCustomerManager.Update(x);
-			});
 		}
 
 

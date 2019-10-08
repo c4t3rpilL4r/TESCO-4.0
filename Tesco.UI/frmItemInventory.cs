@@ -142,7 +142,7 @@ namespace Tesco.UI
 		{
 			lvItems.Items.Clear();
 
-			_sortHandler.SortItems(cboSortByType.SelectedIndex, cboSortByNamePrice.SelectedIndex).ForEach(x => ConvertToListViewItem(x));
+			_sortHandler.SortItems(cboSortByType.SelectedIndex, cboSortByNamePrice.SelectedIndex).ForEach(x => lvItems.Items.Add(ConvertToListViewItem(x)));
 		}
 
 		private void PopulateComboBoxes()

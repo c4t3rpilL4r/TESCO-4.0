@@ -6,6 +6,6 @@ namespace Tesco.DL.Models
 	{
 		public int Id { get; set; }
 		public int TransactionId { get; set; }
-		public int OrderCustomerId { get; set; }
+		public int ItemCustomerId { get; set; }
 	}
 }

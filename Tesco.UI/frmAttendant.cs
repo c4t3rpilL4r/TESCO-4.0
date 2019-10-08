@@ -8,9 +8,9 @@ namespace Tesco.UI
 	{
 		private User _user;
 
-		public frmAttendant(User user = null)
+		public frmAttendant(User user)
 		{
-			_user = user ?? new User();
+			_user = user;
 			InitializeComponent();
 		}
 
@@ -30,8 +30,6 @@ namespace Tesco.UI
 
 		private void BtnLogoff_Click(object sender, EventArgs e)
 		{
-			_user = new User();
-
 			MessageBox.Show(@"Log off successfully.");
 
 			var welcome = new frmWelcome();

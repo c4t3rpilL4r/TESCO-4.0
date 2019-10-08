@@ -117,68 +117,67 @@ namespace Tesco.UI
 
 		private void BtnMoveToCurrentOrder_Click(object sender, EventArgs e)
 		{
-			if (lvUnfinishedOrder.SelectedItems.Count > 0)
+			if (lvUnfinishedOrder.SelectedItems.Count <= 0) return;
+			
+			if (int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[2].Text) > 0)
 			{
-				if (int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[2].Text) > 0)
-				{
-					var amount = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[3].Text) / int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[2].Text);
+				var amount = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[3].Text) / int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[2].Text);
 
-					var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
+				var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
+				{
+					CustomerId = _user.CustomerId,
+					ItemId = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text),
+					IsCurrentOrder = false,
+					IsUnpaid = true
+				});
+
+				unfinishedOrder.Quantity -= 1;
+				unfinishedOrder.Amount -= amount;
+
+				_itemCustomerManager.Update(unfinishedOrder);
+
+				if (unfinishedOrder.Quantity == 0)
+				{
+					lvCurrentOrder.SelectedItems[0].Remove();
+				}
+
+				if (lvCurrentOrder.Items.Cast<ListViewItem>()
+					.ToList()
+					.Any(x => int.Parse(x.SubItems[0].Text) == int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text)))
+				{
+					var currentOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
 					{
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text),
-						IsCurrentOrder = false,
+						IsCurrentOrder = true,
 						IsUnpaid = true
 					});
 
-					unfinishedOrder.Quantity -= 1;
-					unfinishedOrder.Amount -= amount;
+					currentOrder.Quantity += 1;
+					currentOrder.Amount += amount;
 
-					_itemCustomerManager.Update(unfinishedOrder);
-
-					if (unfinishedOrder.Quantity == 0)
-					{
-						lvCurrentOrder.SelectedItems[0].Remove();
-					}
-
-					if (lvCurrentOrder.Items.Cast<ListViewItem>()
-						.ToList()
-						.Any(x => int.Parse(x.SubItems[0].Text) == int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text)))
-					{
-						var currentOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
-						{
-							CustomerId = _user.CustomerId,
-							ItemId = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text),
-							IsCurrentOrder = true,
-							IsUnpaid = true
-						});
-
-						currentOrder.Quantity += 1;
-						currentOrder.Amount += amount;
-
-						_itemCustomerManager.Update(currentOrder);
-					}
-					else
-					{
-						_itemCustomerManager.Add(new ItemCustomer()
-						{
-							CustomerId = _user.CustomerId,
-							ItemId = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text),
-							Quantity = 1,
-							Amount = amount,
-							IsCurrentOrder = true,
-							IsUnpaid = true
-						});
-					}
-
-					//GetSelectedIndexOfUnfinishedOrderListView();
-					PopulateListViewsWithData();
-					KeepLastSelectedItemFocusInUnfinishedOrderListView();
+					_itemCustomerManager.Update(currentOrder);
 				}
 				else
 				{
-					lvUnfinishedOrder.SelectedItems[0].Remove();
+					_itemCustomerManager.Add(new ItemCustomer()
+					{
+						CustomerId = _user.CustomerId,
+						ItemId = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text),
+						Quantity = 1,
+						Amount = amount,
+						IsCurrentOrder = true,
+						IsUnpaid = true
+					});
 				}
+
+				//GetSelectedIndexOfUnfinishedOrderListView();
+				PopulateListViewsWithData();
+				KeepLastSelectedItemFocusInUnfinishedOrderListView();
+			}
+			else
+			{
+				lvUnfinishedOrder.SelectedItems[0].Remove();
 			}
 		}
 		
@@ -202,7 +201,8 @@ namespace Tesco.UI
 
 			lvCurrentOrder.Items.Cast<ListViewItem>().ToList().ForEach(x =>
 			{
-				if (Enumerable.Cast<ListViewItem>(lvUnfinishedOrder.Items).Any(y => int.Parse(y.SubItems[0].Text) == int.Parse(x.SubItems[0].Text)))
+				if (Enumerable.Cast<ListViewItem>(lvUnfinishedOrder.Items)
+					.Any(y => int.Parse(y.SubItems[0].Text) == int.Parse(x.SubItems[0].Text)))
 				{
 					var currentOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
 					{

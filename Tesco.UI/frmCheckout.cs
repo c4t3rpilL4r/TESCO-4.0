@@ -146,8 +146,7 @@ namespace Tesco.UI
 			};
 
 			_itemCustomerManager.RetrieveAll<ItemCustomer>()
-				.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true)
-				.Select(x => x)
+				.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true && x.IsCancelled == false)
 				.ToList()
 				.ForEach(x =>
 				{
@@ -164,7 +163,7 @@ namespace Tesco.UI
 					var order = new Order()
 					{
 						TransactionId = _transactionManager.Add(transaction),
-						OrderCustomerId = _itemCustomerManager.Add(itemCustomer)
+						ItemCustomerId = _itemCustomerManager.Add(itemCustomer)
 					};
 
 					_orderManager.Add(order);
@@ -179,20 +178,21 @@ namespace Tesco.UI
 		{
 			MessageBox.Show("You are signed off.");
 
-			lvCheckoutItems.Items.Cast<ListViewItem>().ToList()
+			lvCheckoutItems.Items.Cast<ListViewItem>()
+				.ToList()
 				.ForEach(x =>
 				{
-					var itemCustomer = _itemCustomerManager.RetrieveDataByWhereCondition<ItemCustomer>(new ItemCustomer()
+					var itemCustomer = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
 					{
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(x.SubItems[0].Text),
 						Quantity = int.Parse(x.SubItems[2].Text),
 						Amount = int.Parse(x.SubItems[3].Text),
 						IsCurrentOrder = true,
-						IsUnpaid = true
+						IsUnpaid = true,
 					});
 
-					var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition<ItemCustomer>(new ItemCustomer()
+					var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
 					{
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(x.SubItems[0].Text),
@@ -208,7 +208,7 @@ namespace Tesco.UI
 					}
 					else
 					{
-						_itemCustomerManager.Add<ItemCustomer>(itemCustomer);
+						_itemCustomerManager.Add(itemCustomer);
 					}
 				});
 

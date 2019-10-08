@@ -35,13 +35,15 @@ namespace Tesco.UI
 			// Combobox of Item Type
 			_itemTypeHandler.ItemTypeValuesHandler().ForEach(x => cboItemType.Items.Add(x));
 
-			if (!_modification.Equals("edit")) return;
-			
-			txtItemName.Text = _item.Name;
-			cboItemType.SelectedItem = _itemTypeManager.RetrieveDataById<ItemType>(_item.ItemTypeId).TypeDescription;
-			txtItemDiscount.Text = _item.Discount.ToString();
-			txtItemPrice.Text = _item.Price.ToString();
-			txtItemStocks.Text = _item.Stocks.ToString();
+			if (_modification.Equals("Edit"))
+			{
+				txtItemName.Text = _item.Name;
+				cboItemType.SelectedItem =
+					_itemTypeManager.RetrieveDataById<ItemType>(_item.ItemTypeId).TypeDescription;
+				txtItemDiscount.Text = _item.Discount.ToString();
+				txtItemPrice.Text = _item.Price.ToString();
+				txtItemStocks.Text = _item.Stocks.ToString();
+			}
 		}
 
 		private void TxtItemName_Leave(object sender, EventArgs e)
@@ -125,6 +127,14 @@ namespace Tesco.UI
 			var frmItemInventory = new frmItemInventory(_user);
 			this.Hide();
 			frmItemInventory.Show();
+		}
+
+		private void frmModifyItem_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			MessageBox.Show("You are signed off.");
+
+			var welcome = new frmWelcome();
+			welcome.Show();
 		}
 	}
 }

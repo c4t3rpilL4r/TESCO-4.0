@@ -222,13 +222,14 @@ namespace Tesco.UI
 					Quantity = int.Parse(x.SubItems[2].Text),
 					Amount = int.Parse(x.SubItems[3].Text),
 					IsCurrentOrder = true,
-					IsUnpaid = true
+					IsUnpaid = true,
+					IsCancelled = false
 				});
 			});
 
 			if (_customer.IsGuest != true)
 			{
-				if (_itemCustomerManager.RetrieveAll<ItemCustomer>().Where(x => x.IsUnpaid == true).ToList().Count > 0)
+				if (_itemCustomerManager.RetrieveAll<ItemCustomer>().Where(x => x.IsUnpaid == true && x.IsCancelled == false).ToList().Count > 0)
 				{
 					if (MessageBox.Show("You have an unfinished transaction. Along with your current orders, would you like to proceed to it?",
 										"Unfinished Transaction",
@@ -300,7 +301,7 @@ namespace Tesco.UI
 				_userManager.Update<User>(_user);
 			}
 
-			var welcome = new frmWelcome();
+			var welcome = new frmWelcome(_customer.IsGuest == true ? _user : null);
 			welcome.Show();
 		}
 

@@ -42,7 +42,7 @@ namespace Tesco.UI
 				.ToList()
 				.ForEach(x =>
 				{
-					var itemCustomer = _itemCustomerManager.RetrieveDataById<ItemCustomer>(x.OrderCustomerId);
+					var itemCustomer = _itemCustomerManager.RetrieveDataById<ItemCustomer>(x.ItemCustomerId);
 					var item = _itemManager.RetrieveDataById<Item>(itemCustomer.ItemId);
 					
 					var transactionDetails = $"{item.Name} @{itemCustomer.Amount / itemCustomer.Quantity} x{itemCustomer.Quantity}{Environment.NewLine}";

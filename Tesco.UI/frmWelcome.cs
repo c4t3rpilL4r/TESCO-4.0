@@ -17,7 +17,7 @@ namespace Tesco.UI
 		{
 			_customerManager = new CustomerManager();
 			_userManager = new UserManager();
-			_user = user ?? SetGuestValues();
+			_user = user ?? SetNewGuest();
 			InitializeComponent();
 		}
 
@@ -25,6 +25,11 @@ namespace Tesco.UI
 		{
 			linkRegister.LinkBehavior = LinkBehavior.NeverUnderline;
 			linkLogIn.LinkBehavior = LinkBehavior.NeverUnderline;
+
+			if (_userManager.RetrieveDataById<User>(_user.Id).IsDeleted == true)
+			{
+				_user = SetNewGuest();
+			}
 		}
 		
 		private void BtnStartShopping_Click(object sender, EventArgs e)
@@ -63,7 +68,7 @@ namespace Tesco.UI
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->
 
-		private User SetGuestValues()
+		private User SetNewGuest()
 		{
 			return _userManager.RetrieveDataById<User>(_userManager.Add<User>(new User()
 			{
