@@ -46,6 +46,11 @@ namespace Tesco.UI
 			btnSignOff.Visible = _customer.IsGuest != true;
 			lblUserGreeting.Text = $"Hello, {(_customer.IsGuest != true ? _customer.FullName : "Guest")}.";
 
+			if (_customer.IsGuest != true)
+			{
+				DisplayCartItems();
+			}
+
 			DisplayItemsInListView();
 			PopulateComboBoxes();
 		}
@@ -115,16 +120,14 @@ namespace Tesco.UI
 			DisplayItemDetailsInLabel();
 		}
 
-		private void LblQuantity_TextChanged(object sender, EventArgs e) => btnSubtract.Enabled = int.Parse(lblQuantity.Text) > 1;
+		private void LblQuantity_TextChanged(object sender, EventArgs e) => btnSubtract.Enabled = int.Parse(lblQuantity.Text) > 0;
 
 		private void BtnSubtract_Click(object sender, EventArgs e)
 		{
-			if (int.Parse(lblQuantity.Text) <= 1) return;
+			if (int.Parse(lblQuantity.Text) <= 0) return;
 			
-			// subtract 1 from label
 			lblQuantity.Text = (int.Parse(lblQuantity.Text) - 1).ToString();
-
-			// add 1 to item stocks
+			
 			lvItems.SelectedItems[0].SubItems[5].Text = (int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) + 1).ToString();
 
 			DisplayItemDetailsInLabel();
@@ -138,7 +141,7 @@ namespace Tesco.UI
 
 				if (item.Stocks > 0)
 				{
-					var cartItem = lvCart.Items.Cast<ListViewItem>().Where(x => item.Id == int.Parse(x.SubItems[0].Text)).FirstOrDefault();
+					var cartItem = lvCart.Items.Cast<ListViewItem>().FirstOrDefault(x => item.Id == int.Parse(x.SubItems[0].Text));
 
 					if (cartItem != null)
 					{
@@ -147,7 +150,12 @@ namespace Tesco.UI
 					}
 					else
 					{
-						AddItemToCartListView();
+						var row = new ListViewItem(lvItems.SelectedItems[0].Text);
+						row.SubItems.Add(lvItems.SelectedItems[0].SubItems[1].Text);
+						row.SubItems.Add(lblQuantity.Text);
+						row.SubItems.Add((int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lblQuantity.Text)).ToString());
+
+						lvCart.Items.Add(row);
 					}
 
 					item.Stocks -= int.Parse(lblQuantity.Text);
@@ -218,8 +226,6 @@ namespace Tesco.UI
 				});
 			});
 
-			this.Hide();
-
 			if (_customer.IsGuest != true)
 			{
 				if (_orderCustomerManager.RetrieveAll<OrderCustomer>().Where(x => x.IsUnpaid == true).ToList().Count > 0)
@@ -246,6 +252,8 @@ namespace Tesco.UI
 				var login = new frmRegisterLogin(0, _user);
 				login.Show();
 			}
+			
+			this.Hide();
 		}
 
 		private void BtnSignOff_Click(object sender, EventArgs e)
@@ -307,6 +315,21 @@ namespace Tesco.UI
 				.ForEach(x => lvItems.Items.Add(_listViewItemHandler.FormatListViewRow(x)));
 		}
 
+		private void DisplayCartItems()
+		{
+			Enumerable.Where(_orderCustomerManager.RetrieveAll<OrderCustomer>(), x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true)
+				.ToList()
+				.ForEach(x =>
+				{
+					var row = new ListViewItem(x.ItemId.ToString());
+					row.SubItems.Add(_itemManager.RetrieveDataById<Item>(x.ItemId).Name);
+					row.SubItems.Add(x.Quantity.ToString());
+					row.SubItems.Add(x.Amount.ToString());
+					
+					lvCart.Items.Add(row);
+				});
+		}
+
 		private void PopulateComboBoxes()
 		{
 			// Combobox of Name-Price Sort
@@ -320,7 +343,8 @@ namespace Tesco.UI
 			_itemTypeHandler.ItemTypeValuesHandler().ForEach(x => cboSortByType.Items.Add(x));
 		}
 
-		private void DisplayItemDetailsInLabel() => lblItemDetails.Text = $"Name:      {lvItems.SelectedItems[0].SubItems[1].Text}\n" +
+		private void DisplayItemDetailsInLabel() => lblItemDetails.Text =
+			$"Name:      {lvItems.SelectedItems[0].SubItems[1].Text}\n" +
 			$"Type:      {lvItems.SelectedItems[0].SubItems[2].Text}\n" +
 			$"Price:     {lvItems.SelectedItems[0].SubItems[4].Text}\n" +
 			$"Quantity:  {(int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0 ? lblQuantity.Text : "")}\n" +
@@ -336,18 +360,9 @@ namespace Tesco.UI
 
 		private void KeepSelectedItemFocusInItemsListView()
 		{
-			var selectedItem = lvItems.Items.Cast<ListViewItem>().Where(x => int.Parse(x.SubItems[0].Text) == _lastSelectedItemInItemsListView).FirstOrDefault();
+			var selectedItem = lvItems.Items.Cast<ListViewItem>().FirstOrDefault(x => int.Parse(x.SubItems[0].Text) == _lastSelectedItemInItemsListView);
 
 			selectedItem.Selected = selectedItem != null;
-		}
-
-		private void AddItemToCartListView()
-		{
-			var row = new ListViewItem(lvItems.SelectedItems[0].Text);
-			row.SubItems.Add(lvItems.SelectedItems[0].SubItems[1].Text);
-			row.SubItems.Add(lblQuantity.Text);
-			row.SubItems.Add((int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lblQuantity.Text)).ToString());
-			lvCart.Items.Add(row);
 		}
 
 		private int CalculateTotalAmountOfItemsInCart() => lvCart.Items.Cast<ListViewItem>().Sum(x => int.Parse(x.SubItems[3].Text));

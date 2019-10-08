@@ -42,9 +42,7 @@ namespace Tesco.UI
 		{
 			if (_emailValidator.CheckEmailIfValid(txtEmail.Text))
 			{
-				if (_customerManager.RetrieveDataByWhereCondition(new Customer() {Email = txtEmail.Text}) ==
-					null ||
-					_hasMessageBoxShown) return;
+				if (_customerManager.RetrieveDataByWhereCondition(new Customer() {Email = txtEmail.Text}) == null || _hasMessageBoxShown) return;
 
 				if (MessageBox.Show("Email is already used. Do you want to proceed to login instead?",
 						"Proceed to login?",
@@ -76,7 +74,6 @@ namespace Tesco.UI
 		private void linkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			var forgotPassword = new frmForgotPassword();
-
 			forgotPassword.Show();
 		}
 
@@ -237,7 +234,7 @@ namespace Tesco.UI
 					unfinishedOrder.Quantity += x.Quantity;
 					unfinishedOrder.Amount += x.Amount;
 
-					_orderCustomerManager.Update<OrderCustomer>(unfinishedOrder);
+					_orderCustomerManager.Update(unfinishedOrder);
 
 					x.Quantity = 0;
 					x.Amount = 0;
@@ -245,7 +242,7 @@ namespace Tesco.UI
 
 				x.IsCurrentOrder = false;
 
-				_orderCustomerManager.Update<OrderCustomer>(x);
+				_orderCustomerManager.Update(x);
 			});
 		}
 
