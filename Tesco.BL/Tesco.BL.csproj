@@ -48,7 +48,6 @@
     <Compile Include="Interfaces\IItemTypeManager.cs" />
     <Compile Include="Interfaces\IItemUserManager.cs" />
     <Compile Include="Interfaces\IManager.cs" />
-    <Compile Include="Interfaces\IOrderCustomerManager.cs" />
     <Compile Include="Interfaces\IOrderManager.cs" />
     <Compile Include="Interfaces\ITransactionManager.cs" />
     <Compile Include="Interfaces\IUserManager.cs" />
@@ -57,7 +56,6 @@
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\ItemTypeManager.cs" />
     <Compile Include="Managers\ItemUserManager.cs" />
-    <Compile Include="Managers\OrderCustomerManager.cs" />
     <Compile Include="Managers\OrderManager.cs" />
     <Compile Include="Managers\CustomerManager.cs" />
     <Compile Include="Managers\TransactionManager.cs" />

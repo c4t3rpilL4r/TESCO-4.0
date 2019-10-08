@@ -42,16 +42,16 @@ namespace Tesco.UI
 				.ToList()
 				.ForEach(x =>
 				{
-					var orderCustomer = _itemCustomerManager.RetrieveDataById<OrderCustomer>(x.OrderCustomerId);
-					var item = _itemManager.RetrieveDataById<Item>(orderCustomer.ItemId);
+					var itemCustomer = _itemCustomerManager.RetrieveDataById<ItemCustomer>(x.OrderCustomerId);
+					var item = _itemManager.RetrieveDataById<Item>(itemCustomer.ItemId);
 					
-					var transactionDetails = $"{item.Name} @{orderCustomer.Amount / orderCustomer.Quantity} x{orderCustomer.Quantity}{Environment.NewLine}";
+					var transactionDetails = $"{item.Name} @{itemCustomer.Amount / itemCustomer.Quantity} x{itemCustomer.Quantity}{Environment.NewLine}";
 					lblTransactionDetails.Text += transactionDetails;
 
-					var transactionAmount = $"{orderCustomer.Amount}{Environment.NewLine}";
+					var transactionAmount = $"{itemCustomer.Amount}{Environment.NewLine}";
 					lblTransactionAmount.Text += transactionAmount;
 
-					total += orderCustomer.Amount;
+					total += itemCustomer.Amount;
 				});
 
 			lblDateTime.Text = transaction.TransactDateTime.ToString(CultureInfo.CurrentCulture);

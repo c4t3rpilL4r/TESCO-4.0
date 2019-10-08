@@ -13,7 +13,7 @@ namespace Tesco.UI
 	public partial class frmRegisterLogin : Form
 	{
 		private readonly ICustomerManager _customerManager;
-		private readonly IOrderCustomerManager _orderCustomerManager;
+		private readonly IItemCustomerManager _itemCustomerManager;
 		private readonly IUserManager _userManager;
 		private readonly IEmailValidator _emailValidator;
 		private User _user;
@@ -23,7 +23,7 @@ namespace Tesco.UI
 		public frmRegisterLogin(int pnlRegisterHeight, User user = null)
 		{
 			_customerManager = new CustomerManager();
-			_orderCustomerManager = new OrderCustomerManager();
+			_itemCustomerManager = new ItemCustomerManager();
 			_userManager = new UserManager();
 			_emailValidator = new EmailValidator();
 			_user = user;
@@ -159,7 +159,7 @@ namespace Tesco.UI
 						}
 						else if (_user.Type.Equals("customer"))
 						{
-							if (_orderCustomerManager.RetrieveAll<OrderCustomer>()
+							if (_itemCustomerManager.RetrieveAll<ItemCustomer>()
 										.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == false && x.IsUnpaid == true)
 										.ToList().Count > 0)
 							{
@@ -174,7 +174,7 @@ namespace Tesco.UI
 									return;
 								}
 							}
-							else if (_orderCustomerManager.RetrieveAll<OrderCustomer>()
+							else if (_itemCustomerManager.RetrieveAll<ItemCustomer>()
 										.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true)
 										.ToList().Count > 0)
 							{
@@ -216,12 +216,12 @@ namespace Tesco.UI
 
 		private void FrmRegisterLogin_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			_orderCustomerManager.RetrieveAll<OrderCustomer>()
+			_itemCustomerManager.RetrieveAll<ItemCustomer>()
 				.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true)
 				.ToList()
 				.ForEach(x =>
 			{
-				var unfinishedOrder = _orderCustomerManager.RetrieveDataByWhereCondition<OrderCustomer>(new OrderCustomer()
+				var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition<ItemCustomer>(new ItemCustomer()
 				{
 					CustomerId = x.CustomerId,
 					ItemId = x.ItemId,
@@ -234,7 +234,7 @@ namespace Tesco.UI
 					unfinishedOrder.Quantity += x.Quantity;
 					unfinishedOrder.Amount += x.Amount;
 
-					_orderCustomerManager.Update(unfinishedOrder);
+					_itemCustomerManager.Update(unfinishedOrder);
 
 					x.Quantity = 0;
 					x.Amount = 0;
@@ -242,7 +242,7 @@ namespace Tesco.UI
 
 				x.IsCurrentOrder = false;
 
-				_orderCustomerManager.Update(x);
+				_itemCustomerManager.Update(x);
 			});
 		}
 

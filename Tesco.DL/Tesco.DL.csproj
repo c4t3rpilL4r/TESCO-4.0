@@ -50,7 +50,6 @@
     <Compile Include="Interfaces\IItemRepository.cs" />
     <Compile Include="Interfaces\IItemTypeRepository.cs" />
     <Compile Include="Interfaces\IItemUserRepository.cs" />
-    <Compile Include="Interfaces\IOrderCustomerRepository.cs" />
     <Compile Include="Interfaces\IOrderRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\ITransactionRepository.cs" />
@@ -61,7 +60,6 @@
     <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\ItemUser.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderCustomer.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,7 +74,6 @@
     <Compile Include="Repositories\ItemRepository.cs" />
     <Compile Include="Repositories\ItemTypeRepository.cs" />
     <Compile Include="Repositories\ItemUserRepository.cs" />
-    <Compile Include="Repositories\OrderCustomerRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

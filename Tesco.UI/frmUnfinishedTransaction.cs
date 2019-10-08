@@ -12,10 +12,7 @@ namespace Tesco.UI
 	{
 		private readonly IItemCustomerManager _itemCustomerManager;
 		private readonly IItemManager _itemManager;
-		private readonly IOrderCustomerManager _orderCustomerManager;
 		private readonly IOrderManager _orderManager;
-		private readonly List<OrderCustomer> _currentOrderCustomerList;
-		private readonly List<OrderCustomer> _unfinishedOrderCustomerList;
 		private readonly User _user;
 		private int _lastSelectedItemInCurrentListView = 0;
 		private int _lastSelectedItemInUnfinishedListView = 0;
@@ -24,10 +21,7 @@ namespace Tesco.UI
 		{
 			_itemCustomerManager = new ItemCustomerManager();
 			_itemManager = new ItemManager();
-			_orderCustomerManager = new OrderCustomerManager();
 			_orderManager = new OrderManager();
-			_currentOrderCustomerList = new List<OrderCustomer>();
-			_unfinishedOrderCustomerList = new List<OrderCustomer>();
 			_user = user;
 			InitializeComponent();
 		}
@@ -62,7 +56,7 @@ namespace Tesco.UI
 			{
 				var amount = int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[3].Text) / int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[2].Text);
 
-				var currentOrder = _orderCustomerManager.RetrieveDataByWhereCondition(new OrderCustomer()
+				var currentOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
 				{
 					CustomerId = _user.CustomerId,
 					ItemId = int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[0].Text),
@@ -73,7 +67,7 @@ namespace Tesco.UI
 				currentOrder.Quantity -= 1;
 				currentOrder.Amount -= amount;
 
-				_orderCustomerManager.Update(currentOrder);
+				_itemCustomerManager.Update(currentOrder);
 
 				if (currentOrder.Quantity == 0)
 				{
@@ -83,7 +77,7 @@ namespace Tesco.UI
 				if (lvUnfinishedOrder.Items.Cast<ListViewItem>()
 					.Any(x => int.Parse(x.SubItems[0].Text) == int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[0].Text)))
 				{
-					var unfinishedOrder = _orderCustomerManager.RetrieveDataByWhereCondition(new OrderCustomer()
+					var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
 					{
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[0].Text),
@@ -94,13 +88,13 @@ namespace Tesco.UI
 					unfinishedOrder.Quantity += 1;
 					unfinishedOrder.Amount += amount;
 
-					_orderCustomerManager.Update(unfinishedOrder);
+					_itemCustomerManager.Update(unfinishedOrder);
 
 					PopulateListViewsWithData();
 				}
 				else
 				{
-					_orderCustomerManager.Add(new OrderCustomer()
+					_itemCustomerManager.Add(new ItemCustomer()
 					{
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[0].Text),
@@ -129,7 +123,7 @@ namespace Tesco.UI
 				{
 					var amount = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[3].Text) / int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[2].Text);
 
-					var unfinishedOrder = _orderCustomerManager.RetrieveDataByWhereCondition(new OrderCustomer()
+					var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
 					{
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text),
@@ -140,7 +134,7 @@ namespace Tesco.UI
 					unfinishedOrder.Quantity -= 1;
 					unfinishedOrder.Amount -= amount;
 
-					_orderCustomerManager.Update(unfinishedOrder);
+					_itemCustomerManager.Update(unfinishedOrder);
 
 					if (unfinishedOrder.Quantity == 0)
 					{
@@ -151,7 +145,7 @@ namespace Tesco.UI
 						.ToList()
 						.Any(x => int.Parse(x.SubItems[0].Text) == int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text)))
 					{
-						var currentOrder = _orderCustomerManager.RetrieveDataByWhereCondition(new OrderCustomer()
+						var currentOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
 						{
 							CustomerId = _user.CustomerId,
 							ItemId = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text),
@@ -162,11 +156,11 @@ namespace Tesco.UI
 						currentOrder.Quantity += 1;
 						currentOrder.Amount += amount;
 
-						_orderCustomerManager.Update(currentOrder);
+						_itemCustomerManager.Update(currentOrder);
 					}
 					else
 					{
-						_orderCustomerManager.Add(new OrderCustomer()
+						_itemCustomerManager.Add(new ItemCustomer()
 						{
 							CustomerId = _user.CustomerId,
 							ItemId = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text),
@@ -210,7 +204,7 @@ namespace Tesco.UI
 			{
 				if (Enumerable.Cast<ListViewItem>(lvUnfinishedOrder.Items).Any(y => int.Parse(y.SubItems[0].Text) == int.Parse(x.SubItems[0].Text)))
 				{
-					var currentOrder = _orderCustomerManager.RetrieveDataByWhereCondition(new OrderCustomer()
+					var currentOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
 					{
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(x.SubItems[0].Text),
@@ -218,7 +212,7 @@ namespace Tesco.UI
 						IsUnpaid = true
 					});
 
-					var unfinishedOrder = _orderCustomerManager.RetrieveDataByWhereCondition(new OrderCustomer()
+					var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
 					{
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(x.SubItems[0].Text),
@@ -233,12 +227,12 @@ namespace Tesco.UI
 					currentOrder.Quantity = 0;
 					currentOrder.Amount = 0;
 
-					_orderCustomerManager.Update(unfinishedOrder);
-					_orderCustomerManager.Update(currentOrder);
+					_itemCustomerManager.Update(unfinishedOrder);
+					_itemCustomerManager.Update(currentOrder);
 				}
 				else
 				{
-					_orderCustomerManager.Add(new OrderCustomer()
+					_itemCustomerManager.Add(new ItemCustomer()
 					{
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(x.SubItems[0].Text),
@@ -263,33 +257,29 @@ namespace Tesco.UI
 			lvCurrentOrder.Items.Clear();
 			lvUnfinishedOrder.Items.Clear();
 
-			Enumerable.Where(_orderCustomerManager.RetrieveAll<OrderCustomer>(), x => x.CustomerId == _user.CustomerId && x.IsUnpaid == true)
+			Enumerable.Where(_itemCustomerManager.RetrieveAll<ItemCustomer>(), x => x.CustomerId == _user.CustomerId && x.IsUnpaid == true)
 				.ToList()
 				.ForEach(x =>
 				{
 					if (x.IsCurrentOrder == true)
 					{
 						lvCurrentOrder.Items.Add(ConvertToListViewItem(x));
-
-						_currentOrderCustomerList.Add(x);
 					}
 					else
 					{
 						if (x.Quantity == 0) return;
 
 						lvUnfinishedOrder.Items.Add(ConvertToListViewItem(x));
-
-						_unfinishedOrderCustomerList.Add(x);
 					}
 				});
 		}
 		
-		private ListViewItem ConvertToListViewItem(OrderCustomer orderCustomer)
+		private ListViewItem ConvertToListViewItem(ItemCustomer itemCustomer)
 		{
-			var row = new ListViewItem(_itemManager.RetrieveDataById<Item>(orderCustomer.ItemId).Id.ToString());
-			row.SubItems.Add(_itemManager.RetrieveDataById<Item>(orderCustomer.ItemId).Name);
-			row.SubItems.Add(orderCustomer.Quantity.ToString());
-			row.SubItems.Add(orderCustomer.Amount.ToString());
+			var row = new ListViewItem(_itemManager.RetrieveDataById<Item>(itemCustomer.ItemId).Id.ToString());
+			row.SubItems.Add(_itemManager.RetrieveDataById<Item>(itemCustomer.ItemId).Name);
+			row.SubItems.Add(itemCustomer.Quantity.ToString());
+			row.SubItems.Add(itemCustomer.Amount.ToString());
 
 			return row;
 		}
