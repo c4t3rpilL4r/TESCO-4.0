@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\ICustomerRepository.cs" />
-    <Compile Include="Interfaces\IItemCustomerRepository.cs" />
     <Compile Include="Interfaces\IItemRepository.cs" />
     <Compile Include="Interfaces\IItemTypeRepository.cs" />
     <Compile Include="Interfaces\IItemUserRepository.cs" />
@@ -56,7 +55,6 @@
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\ItemCustomer.cs" />
     <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\ItemUser.cs" />
     <Compile Include="Models\Order.cs" />
@@ -70,7 +68,6 @@
     </Compile>
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
-    <Compile Include="Repositories\ItemCustomerRepository.cs" />
     <Compile Include="Repositories\ItemRepository.cs" />
     <Compile Include="Repositories\ItemTypeRepository.cs" />
     <Compile Include="Repositories\ItemUserRepository.cs" />

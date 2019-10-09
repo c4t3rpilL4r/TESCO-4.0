@@ -12,7 +12,6 @@ namespace Tesco.UI
 	public partial class frmCheckout : Form
 	{
 		private readonly ICustomerManager _customerManager;
-		private readonly IItemCustomerManager _itemCustomerManager;
 		private readonly IItemManager _itemManager;
 		private readonly IOrderManager _orderManager;
 		private readonly ITransactionManager _transactionManager;
@@ -24,7 +23,6 @@ namespace Tesco.UI
 		public frmCheckout(User user)
 		{
 			_customerManager = new CustomerManager();
-			_itemCustomerManager = new ItemCustomerManager();
 			_itemManager = new ItemManager();
 			_orderManager = new OrderManager();
 			_transactionManager = new TransactionManager();
@@ -38,7 +36,7 @@ namespace Tesco.UI
 		{
 			txtCashOnHand.Focus();
 			
-			_itemCustomerManager.RetrieveAll<ItemCustomer>()
+			_orderManager.RetrieveAll<Order>()
 				.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true)
 				.Select(x => x)
 				.ToList()
@@ -139,28 +137,23 @@ namespace Tesco.UI
 				TransactDateTime = DateTime.Now
 			};
 
-			_itemCustomerManager.RetrieveAll<ItemCustomer>()
-				.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true && x.IsCancelled == false)
+			_orderManager.RetrieveAll<Order>()
+				.Where(x => x.CustomerId == _user.CustomerId
+				            && x.IsCurrentOrder == true
+				            && x.IsUnpaid == true)
 				.ToList()
 				.ForEach(x =>
 				{
-					var itemCustomer = new ItemCustomer()
+					_orderManager.Add(new Order()
 					{
+						TransactionId = _transactionManager.Add(transaction),
 						CustomerId = _user.CustomerId,
 						ItemId = x.ItemId,
 						Quantity = x.Quantity,
 						Amount = x.Amount,
 						IsCurrentOrder = false,
 						IsUnpaid = false
-					};
-
-					var order = new Order()
-					{
-						TransactionId = _transactionManager.Add(transaction),
-						ItemCustomerId = _itemCustomerManager.Add(itemCustomer)
-					};
-
-					_orderManager.Add(order);
+					});
 				});
 
 			var frmReceipt = new frmReceipt(transaction.Id);
@@ -182,7 +175,7 @@ namespace Tesco.UI
 					.ToList()
 					.ForEach(x =>
 					{
-						var itemCustomer = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
+						var currentOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
 						{
 							CustomerId = _user.CustomerId,
 							ItemId = int.Parse(x.SubItems[0].Text),
@@ -192,7 +185,7 @@ namespace Tesco.UI
 							IsUnpaid = true,
 						});
 
-						var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
+						var unfinishedOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
 						{
 							CustomerId = _user.CustomerId,
 							ItemId = int.Parse(x.SubItems[0].Text),
@@ -200,15 +193,15 @@ namespace Tesco.UI
 							IsUnpaid = true
 						});
 
-						itemCustomer.IsCurrentOrder = false;
+						currentOrder.IsCurrentOrder = false;
 
 						if (unfinishedOrder != null)
 						{
-							_itemCustomerManager.Update(itemCustomer);
+							_orderManager.Update(currentOrder);
 						}
 						else
 						{
-							_itemCustomerManager.Add(itemCustomer);
+							_orderManager.Add(currentOrder);
 						}
 					});
 

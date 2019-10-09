@@ -11,9 +11,8 @@ namespace Tesco.UI
 {
 	public partial class frmShopping : Form
 	{
-		private readonly ICustomerManager _customerManager;
 		private readonly IItemManager _itemManager;
-		private readonly IItemCustomerManager _itemCustomerManager;
+		private readonly IOrderManager _orderManager;
 		private readonly IUserManager _userManager;
 		private readonly IItemTypeHandler _itemTypeHandler;
 		private readonly IListViewItemHandler _listViewItemHandler;
@@ -23,9 +22,8 @@ namespace Tesco.UI
 
 		public frmShopping(User user = null)
 		{
-			_customerManager = new CustomerManager();
 			_itemManager = new ItemManager();
-			_itemCustomerManager = new ItemCustomerManager();
+			_orderManager = new OrderManager();
 			_userManager = new UserManager();
 			_itemTypeHandler = new ItemTypeHandler();
 			_listViewItemHandler = new ListViewItemHandler();
@@ -218,20 +216,20 @@ namespace Tesco.UI
 		{
 			lvCart.Items.Cast<ListViewItem>().ToList().ForEach(x =>
 			{
-				_itemCustomerManager.Add(new ItemCustomer()
+				_orderManager.Add(new Order()
 				{
 					CustomerId = _user.CustomerId,
 					ItemId = int.Parse(x.SubItems[0].Text),
 					Quantity = int.Parse(x.SubItems[2].Text),
 					Amount = int.Parse(x.SubItems[3].Text),
 					IsCurrentOrder = true,
-					IsUnpaid = true,
-					IsCancelled = false
+					IsUnpaid = true
 				});
 			});
 
-			if (_itemCustomerManager.RetrieveAll<ItemCustomer>()
-				    .Where(x => x.IsUnpaid == true && x.IsCancelled == false).ToList().Count > 0)
+			if (_orderManager.RetrieveAll<Order>()
+				    .Where(x => x.IsUnpaid == true)
+				    .ToList().Count > 0)
 			{
 				if (MessageBox.Show(
 					    "You have an unfinished transaction. Along with your current orders, would you like to proceed to it?",
@@ -301,7 +299,10 @@ namespace Tesco.UI
 
 		private void DisplayCartItems()
 		{
-			Enumerable.Where(_itemCustomerManager.RetrieveAll<ItemCustomer>(), x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true)
+			Enumerable.Where(_orderManager.RetrieveAll<Order>(),
+					x => x.CustomerId == _user.CustomerId
+					     && x.IsCurrentOrder == true
+					     && x.IsUnpaid == true)
 				.ToList()
 				.ForEach(x =>
 				{
@@ -357,7 +358,7 @@ namespace Tesco.UI
 		{
 			lvCart.Items.Cast<ListViewItem>().ToList().ForEach(x =>
 			{
-				_itemCustomerManager.Add(new ItemCustomer()
+				_orderManager.Add(new Order()
 				{
 					CustomerId = _user.CustomerId,
 					ItemId = int.Parse(x.SubItems[0].Text),

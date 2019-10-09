@@ -11,7 +11,6 @@ namespace Tesco.UI
 {
 	public partial class frmReceipt : Form
 	{
-		private readonly IItemCustomerManager _itemCustomerManager;
 		private readonly IItemManager _itemManager;
 		private readonly IOrderManager _orderManager;
 		private readonly ITransactionManager _transactionManager;
@@ -19,7 +18,6 @@ namespace Tesco.UI
 
 		public frmReceipt(int transactionId)
 		{
-			_itemCustomerManager = new ItemCustomerManager();
 			_itemManager = new ItemManager();
 			_orderManager = new OrderManager();
 			_transactionManager = new TransactionManager();
@@ -40,16 +38,15 @@ namespace Tesco.UI
 				.ToList()
 				.ForEach(x =>
 				{
-					var itemCustomer = _itemCustomerManager.RetrieveDataById<ItemCustomer>(x.ItemCustomerId);
-					var item = _itemManager.RetrieveDataById<Item>(itemCustomer.ItemId);
+					var item = _itemManager.RetrieveDataById<Item>(x.ItemId);
 					
-					var transactionDetails = $"{item.Name} @{itemCustomer.Amount / itemCustomer.Quantity} x{itemCustomer.Quantity}{Environment.NewLine}";
+					var transactionDetails = $"{item.Name} @{x.Amount / x.Quantity} x{x.Quantity}{Environment.NewLine}";
 					lblTransactionDetails.Text += transactionDetails;
 
-					var transactionAmount = $"{itemCustomer.Amount}{Environment.NewLine}";
+					var transactionAmount = $"{x.Amount}{Environment.NewLine}";
 					lblTransactionAmount.Text += transactionAmount;
 
-					total += itemCustomer.Amount;
+					total += x.Amount;
 				});
 
 			lblDateTime.Text = transaction.TransactDateTime.ToString(CultureInfo.CurrentCulture);

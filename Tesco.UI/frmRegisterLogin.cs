@@ -13,8 +13,8 @@ namespace Tesco.UI
 	public partial class frmRegisterLogin : Form
 	{
 		private readonly ICustomerManager _customerManager;
-		private readonly IItemCustomerManager _itemCustomerManager;
 		private readonly IItemManager _itemManager;
+		private readonly IOrderManager _orderManager;
 		private readonly IUserManager _userManager;
 		private readonly IEmailValidator _emailValidator;
 		private User _user;
@@ -24,8 +24,8 @@ namespace Tesco.UI
 		public frmRegisterLogin(int pnlRegisterHeight, User user = null)
 		{
 			_customerManager = new CustomerManager();
-			_itemCustomerManager = new ItemCustomerManager();
 			_itemManager = new ItemManager();
+			_orderManager = new OrderManager();
 			_userManager = new UserManager();
 			_emailValidator = new EmailValidator();
 			_user = user;
@@ -167,11 +167,10 @@ namespace Tesco.UI
 						}
 						else if (_user.Type.Equals("customer"))
 						{
-							if (_itemCustomerManager.RetrieveAll<ItemCustomer>()
+							if (_orderManager.RetrieveAll<Order>()
 										.Where(x => x.CustomerId == _user.CustomerId
 										            && x.IsCurrentOrder == false
-										            && x.IsUnpaid == true
-										            && x.IsCancelled == false)
+										            && x.IsUnpaid == true)
 										.ToList().Count > 0)
 							{
 								if (MessageBox.Show("You have an unfinished transaction. Would you like to proceed to it?",
@@ -185,7 +184,7 @@ namespace Tesco.UI
 									return;
 								}
 							}
-							else if (_itemCustomerManager.RetrieveAll<ItemCustomer>()
+							else if (_orderManager.RetrieveAll<Order>()
 										.Where(x => x.CustomerId == _user.CustomerId
 										            && x.IsCurrentOrder == true
 										            && x.IsUnpaid == true)
@@ -234,7 +233,7 @@ namespace Tesco.UI
 				    MessageBoxButtons.OKCancel,
 				    MessageBoxIcon.Question) == DialogResult.OK)
 			{
-				_itemCustomerManager.RetrieveAll<ItemCustomer>()
+				_orderManager.RetrieveAll<Order>()
 					.Where(x => x.CustomerId == _user.CustomerId
 					            && x.IsCurrentOrder == true
 					            && x.IsUnpaid == true)
@@ -243,8 +242,8 @@ namespace Tesco.UI
 					{
 						if (_user != null)
 						{
-							var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition<ItemCustomer>(
-								new ItemCustomer()
+							var unfinishedOrder = _orderManager.RetrieveDataByWhereCondition<Order>(
+								new Order()
 								{
 									CustomerId = x.CustomerId,
 									ItemId = x.ItemId,
@@ -257,7 +256,7 @@ namespace Tesco.UI
 								unfinishedOrder.Quantity += x.Quantity;
 								unfinishedOrder.Amount += x.Amount;
 
-								_itemCustomerManager.Update(unfinishedOrder);
+								_orderManager.Update(unfinishedOrder);
 
 								x.Quantity = 0;
 								x.Amount = 0;
@@ -265,7 +264,7 @@ namespace Tesco.UI
 
 							x.IsCurrentOrder = false;
 
-							_itemCustomerManager.Update(x);
+							_orderManager.Update(x);
 						}
 						else
 						{
@@ -275,9 +274,7 @@ namespace Tesco.UI
 
 							_itemManager.Update(item);
 
-							x.IsCancelled = true;
-
-							_itemCustomerManager.Update(x);
+							_orderManager.Update(x);
 						}
 					});
 
