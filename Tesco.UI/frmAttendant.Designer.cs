@@ -71,11 +71,12 @@
             this.Controls.Add(this.btnLogoff);
             this.Controls.Add(this.btnItemInventory);
             this.Controls.Add(this.btnEditLogin);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.Name = "frmAttendant";
             this.Text = "TESCO Attendant";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAttendant_FormClosing);
             this.ResumeLayout(false);
-
         }
 
         #endregion

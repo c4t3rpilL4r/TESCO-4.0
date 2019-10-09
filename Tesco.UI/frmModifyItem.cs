@@ -80,11 +80,11 @@ namespace Tesco.UI
 
 		private void BtnSave_Click(object sender, System.EventArgs e)
 		{
-			if (!string.IsNullOrEmpty(txtItemName.Text) && !string.IsNullOrWhiteSpace(txtItemName.Text)
+			if (!string.IsNullOrWhiteSpace(txtItemName.Text)
 				&& cboItemType.SelectedIndex != -1
-				&& !string.IsNullOrEmpty(txtItemDiscount.Text) && !string.IsNullOrWhiteSpace(txtItemDiscount.Text)
-				&& !string.IsNullOrEmpty(txtItemPrice.Text) && !string.IsNullOrWhiteSpace(txtItemPrice.Text)
-				&& !string.IsNullOrEmpty(txtItemStocks.Text) && !string.IsNullOrWhiteSpace(txtItemStocks.Text))
+				&& !string.IsNullOrWhiteSpace(txtItemDiscount.Text)
+				&& !string.IsNullOrWhiteSpace(txtItemPrice.Text)
+				&& !string.IsNullOrWhiteSpace(txtItemStocks.Text))
 			{
 				var itemUser = new ItemUser()
 				{
@@ -131,10 +131,17 @@ namespace Tesco.UI
 
 		private void frmModifyItem_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			MessageBox.Show("You are signed off.");
-
-			var welcome = new frmWelcome();
-			welcome.Show();
+			if (MessageBox.Show("Are you sure you want to close the window?",
+				"Close Window?",
+				MessageBoxButtons.OKCancel,
+				MessageBoxIcon.Question) == DialogResult.OK)
+			{
+				MessageBox.Show("Item not saved.");
+			}
+			else
+			{
+				e.Cancel = true;
+			}
 		}
 	}
 }

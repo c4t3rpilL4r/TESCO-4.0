@@ -8,7 +8,7 @@ namespace Tesco.UI
 {
 	public partial class frmAddAttendant : Form
 	{
-		private IUserManager _userManager;
+		private readonly IUserManager _userManager;
 
 		public frmAddAttendant()
 		{
@@ -18,7 +18,8 @@ namespace Tesco.UI
 
 		private void BtnAddAttendant_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show(!string.IsNullOrEmpty(txtFullName.Text) && !string.IsNullOrWhiteSpace(txtFullName.Text)
+			MessageBox.Show(
+				!string.IsNullOrEmpty(txtFullName.Text) && !string.IsNullOrWhiteSpace(txtFullName.Text)
 				&& !string.IsNullOrEmpty(txtUsername.Text) && !string.IsNullOrWhiteSpace(txtUsername.Text)
 				&& !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrWhiteSpace(txtPassword.Text)
 					? _userManager.Add(new User()
@@ -26,13 +27,14 @@ namespace Tesco.UI
 							Username = txtUsername.Text,
 							Password = txtPassword.Text,
 							FullName = txtFullName.Text,
-							Type = "attendant"
+							Type = "attendant",
+							IsDeleted = false
 						}) > 0
 							? "Store attendant adding successful."
 							: "Store attendant adding failed."
 					: "Please fill up all the details. Thank you.");
 
-			frmAdminAttendant frmAdminAttendant = new frmAdminAttendant();
+			var frmAdminAttendant = new frmAdminAttendant();
 			this.Hide();
 			frmAdminAttendant.Show();
 		}

@@ -99,14 +99,16 @@
             this.ClientSize = new System.Drawing.Size(386, 143);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.Name = "frmAttendantEditLogin";
             this.Text = "TESCO Attendant Edit Login";
+            this.FormClosing +=
+                new System.Windows.Forms.FormClosingEventHandler(this.frmAttendantEditLogin_FormClosing);
             this.Load += new System.EventHandler(this.FrmAttendantEditLogin_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion

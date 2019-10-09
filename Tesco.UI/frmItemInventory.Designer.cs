@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.lvItems = new System.Windows.Forms.ListView();
-            this.columnItemId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnItemType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnItemDiscount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnItemPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnItemStocks = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnItemId = new System.Windows.Forms.ColumnHeader();
+            this.columnItemName = new System.Windows.Forms.ColumnHeader();
+            this.columnItemType = new System.Windows.Forms.ColumnHeader();
+            this.columnItemDiscount = new System.Windows.Forms.ColumnHeader();
+            this.columnItemPrice = new System.Windows.Forms.ColumnHeader();
+            this.columnItemStocks = new System.Windows.Forms.ColumnHeader();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnResetSort = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,13 +57,11 @@
             // 
             // lvItems
             // 
-            this.lvItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnItemId,
-            this.columnItemName,
-            this.columnItemType,
-            this.columnItemDiscount,
-            this.columnItemPrice,
-            this.columnItemStocks});
+            this.lvItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[]
+            {
+                this.columnItemId, this.columnItemName, this.columnItemType, this.columnItemDiscount,
+                this.columnItemPrice, this.columnItemStocks
+            });
             this.lvItems.FullRowSelect = true;
             this.lvItems.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvItems.HideSelection = false;
@@ -157,7 +155,8 @@
             this.cboSortByNamePrice.Name = "cboSortByNamePrice";
             this.cboSortByNamePrice.Size = new System.Drawing.Size(141, 22);
             this.cboSortByNamePrice.TabIndex = 1;
-            this.cboSortByNamePrice.SelectedIndexChanged += new System.EventHandler(this.CboSortByNamePrice_SelectedIndexChanged);
+            this.cboSortByNamePrice.SelectedIndexChanged +=
+                new System.EventHandler(this.CboSortByNamePrice_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -272,9 +271,11 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lvItems);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.Name = "frmItemInventory";
             this.Text = "TESCO Item Inventory Page";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmItemInventory_FormClosing);
             this.Load += new System.EventHandler(this.FrmItemInventory_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -282,7 +283,6 @@
             this.grpItemTypes.ResumeLayout(false);
             this.grpItemTypes.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion

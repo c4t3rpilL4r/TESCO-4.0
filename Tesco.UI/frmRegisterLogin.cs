@@ -18,7 +18,7 @@ namespace Tesco.UI
 		private readonly IUserManager _userManager;
 		private readonly IEmailValidator _emailValidator;
 		private User _user;
-		private bool _hasMessageBoxShown = false;
+		private bool _hasMessageBoxShown;
 		private int _pnlRegisterHeight;
 
 		public frmRegisterLogin(int pnlRegisterHeight, User user = null)
@@ -79,6 +79,8 @@ namespace Tesco.UI
 			forgotPassword.Show();
 		}
 
+		private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+		
 		private void BtnRegister_Click(object sender, System.EventArgs e)
 		{
 			if (_pnlRegisterHeight > 0)
@@ -95,7 +97,6 @@ namespace Tesco.UI
 					customer.FullName = $"{txtFirstName.Text} {txtLastName.Text}";
 					customer.Email = txtEmail.Text;
 					customer.PhoneNumber = txtPhoneNumber.Text;
-					customer.IsGuest = false;
 
 					_customerManager.Update(customer);
 
@@ -137,6 +138,7 @@ namespace Tesco.UI
 				if (!string.IsNullOrWhiteSpace(txtLoginUsername.Text)
 					&& !string.IsNullOrWhiteSpace(txtLoginPassword.Text))
 				{
+					
 					_user = _userManager.RetrieveDataByWhereCondition(new User()
 					{
 						Username = txtLoginUsername.Text,
@@ -165,8 +167,6 @@ namespace Tesco.UI
 						}
 						else if (_user.Type.Equals("customer"))
 						{
-							MessageBox.Show($"Hello, Customer {_user.FullName}.");
-							
 							if (_itemCustomerManager.RetrieveAll<ItemCustomer>()
 										.Where(x => x.CustomerId == _user.CustomerId
 										            && x.IsCurrentOrder == false
@@ -229,52 +229,69 @@ namespace Tesco.UI
 
 		private void FrmRegisterLogin_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			_itemCustomerManager.RetrieveAll<ItemCustomer>()
-				.Where(x => x.CustomerId == _user.CustomerId
-				            && x.IsCurrentOrder == true
-				            && x.IsUnpaid == true)
-				.ToList()
-				.ForEach(x =>
-				{
-					if (_customerManager.RetrieveDataById<Customer>(_user.CustomerId).IsGuest != true)
+			if (MessageBox.Show("Are you sure you want to close the window?",
+				    "Close Window?",
+				    MessageBoxButtons.OKCancel,
+				    MessageBoxIcon.Question) == DialogResult.OK)
+			{
+				_itemCustomerManager.RetrieveAll<ItemCustomer>()
+					.Where(x => x.CustomerId == _user.CustomerId
+					            && x.IsCurrentOrder == true
+					            && x.IsUnpaid == true)
+					.ToList()
+					.ForEach(x =>
 					{
-						var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition<ItemCustomer>(
-							new ItemCustomer()
-							{
-								CustomerId = x.CustomerId,
-								ItemId = x.ItemId,
-								IsCurrentOrder = false,
-								IsUnpaid = true
-							});
-
-						if (unfinishedOrder != null)
+						if (_user != null)
 						{
-							unfinishedOrder.Quantity += x.Quantity;
-							unfinishedOrder.Amount += x.Amount;
+							var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition<ItemCustomer>(
+								new ItemCustomer()
+								{
+									CustomerId = x.CustomerId,
+									ItemId = x.ItemId,
+									IsCurrentOrder = false,
+									IsUnpaid = true
+								});
 
-							_itemCustomerManager.Update(unfinishedOrder);
+							if (unfinishedOrder != null)
+							{
+								unfinishedOrder.Quantity += x.Quantity;
+								unfinishedOrder.Amount += x.Amount;
 
-							x.Quantity = 0;
-							x.Amount = 0;
+								_itemCustomerManager.Update(unfinishedOrder);
+
+								x.Quantity = 0;
+								x.Amount = 0;
+							}
+
+							x.IsCurrentOrder = false;
+
+							_itemCustomerManager.Update(x);
 						}
+						else
+						{
+							var item = _itemManager.RetrieveDataById<Item>(x.ItemId);
 
-						x.IsCurrentOrder = false;
+							item.Stocks += x.Quantity;
 
-						_itemCustomerManager.Update(x);
-					}
-					else
-					{
-						var item = _itemManager.RetrieveDataById<Item>(x.ItemId);
+							_itemManager.Update(item);
 
-						item.Stocks += x.Quantity;
+							x.IsCancelled = true;
 
-						_itemManager.Update(item);
+							_itemCustomerManager.Update(x);
+						}
+					});
 
-						x.IsCancelled = true;
+				_user.IsDeleted = true;
 
-						_itemCustomerManager.Update(x);
-					}
-				});
+				_userManager.Update(_user);
+
+				var welcome = new frmWelcome();
+				welcome.Show();
+			}
+			else
+			{
+				e.Cancel = true;
+			}
 		}
 
 

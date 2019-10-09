@@ -13,7 +13,6 @@ namespace Tesco.UI
 		private readonly IItemManager _itemManager;
 		private readonly IItemTypeManager _itemTypeManager;
 		private readonly IItemTypeHandler _itemTypeHandler;
-		private readonly IListViewItemHandler _listViewItemHandler;
 		private readonly ISortHandler _sortHandler;
 		private readonly User _user;
 
@@ -22,7 +21,6 @@ namespace Tesco.UI
 			_itemManager = new ItemManager();
 			_itemTypeManager = new ItemTypeManager();
 			_itemTypeHandler = new ItemTypeHandler();
-			_listViewItemHandler = new ListViewItemHandler();
 			_sortHandler = new SortHandler();
 			_user = user;
 			InitializeComponent();
@@ -113,7 +111,11 @@ namespace Tesco.UI
 		private void BtnAddItemType_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show(!string.IsNullOrWhiteSpace(txtType.Text)
-				? _itemTypeManager.Add(new ItemType() { TypeDescription = txtType.Text }) != 0
+				? _itemTypeManager.Add(new ItemType()
+				{
+					TypeDescription = txtType.Text,
+					IsDeleted = false
+				}) != 0
 					? "Item type adding successful."
 					: "Item type adding failed."
 				: "Please enter a valid item type.");
@@ -124,7 +126,11 @@ namespace Tesco.UI
 		private void BtnDeleteItemType_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show(!cboSortByType.Items.Contains(cboType.SelectedText)
-				? _itemTypeManager.Delete(_itemTypeManager.RetrieveDataByWhereCondition(new ItemType() { TypeDescription = cboType.SelectedItem.ToString() }).Id) > 0
+				? _itemTypeManager.Delete(_itemTypeManager.RetrieveDataByWhereCondition(new ItemType()
+				{
+					TypeDescription = cboType.SelectedItem.ToString(),
+					IsDeleted = false
+				}).Id) > 0
 					? "Item type deletion successful."
 					: "Item type deletion failed."
 				: "Cannot delete. Item type has item stocks.");
@@ -134,15 +140,24 @@ namespace Tesco.UI
 
 		private void CboType_SelectedIndexChanged(object sender, EventArgs e) => btnDeleteItemType.Enabled = cboType.SelectedIndex != -1;
 
+		private void frmItemInventory_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			e.Cancel = MessageBox.Show("Are you sure you want to close the window?",
+				           "Close Window?",
+				           MessageBoxButtons.OKCancel,
+				           MessageBoxIcon.Question) == DialogResult.Cancel;
+		}
+		
+
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->
 
-		// handles the displaying of the items in the lvItems
 		private void DisplayItemsInListView()
 		{
 			lvItems.Items.Clear();
 
-			_sortHandler.SortItems(cboSortByType.SelectedIndex, cboSortByNamePrice.SelectedIndex).ForEach(x => lvItems.Items.Add(ConvertToListViewItem(x)));
+			_sortHandler.SortItems(cboSortByType.SelectedIndex, cboSortByNamePrice.SelectedIndex)
+				.ForEach(x => lvItems.Items.Add(ConvertToItemsListViewItem(x)));
 		}
 
 		private void PopulateComboBoxes()
@@ -164,7 +179,7 @@ namespace Tesco.UI
 			_itemTypeManager.RetrieveAll<ItemType>().ForEach(x => cboType.Items.Add(x.TypeDescription));
 		}
 
-		private ListViewItem ConvertToListViewItem(Item item)
+		private ListViewItem ConvertToItemsListViewItem(Item item)
 		{
 			var row = new ListViewItem(item.Id.ToString());
 			row.SubItems.Add(item.Name);

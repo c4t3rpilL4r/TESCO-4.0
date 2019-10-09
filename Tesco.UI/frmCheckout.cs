@@ -80,18 +80,17 @@ namespace Tesco.UI
 		{
 			_customer = _customerManager.RetrieveDataById<Customer>(_user.CustomerId);
 
-			if (!_user.FullName.SequenceEqual(txtFullName.Text))
+			if (_user.FullName.SequenceEqual(txtFullName.Text)) return;
+			
+			if (CheckIfDataIsNew())
 			{
-				if (CheckIfDataIsNew())
-				{
-					_customer.FullName = txtFullName.Text;
+				_customer.FullName = txtFullName.Text;
 
-					MessageBox.Show(_customerManager.Update(_customer) != 0 ? "Update successful." : "Update failed.");
-				}
-				else
-				{
-					txtFullName.Text = _customer.FullName;
-				}
+				MessageBox.Show(_customerManager.Update(_customer) != 0 ? "Update successful." : "Update failed.");
+			}
+			else
+			{
+				txtFullName.Text = _customer.FullName;
 			}
 		}
 
@@ -99,18 +98,17 @@ namespace Tesco.UI
 		{
 			_customer = _customerManager.RetrieveDataById<Customer>(_user.CustomerId);
 
-			if (!_customer.Email.SequenceEqual(txtEmail.Text))
+			if (_customer.Email.SequenceEqual(txtEmail.Text)) return;
+			
+			if (CheckIfDataIsNew())
 			{
-				if (CheckIfDataIsNew())
-				{
-					_customer.Email = txtEmail.Text;
+				_customer.Email = txtEmail.Text;
 
-					MessageBox.Show(_customerManager.Update(_customer) != 0 ? "Update successful." : "Update failed.");
-				}
-				else
-				{
-					txtEmail.Text = _customer.Email;
-				}
+				MessageBox.Show(_customerManager.Update(_customer) != 0 ? "Update successful." : "Update failed.");
+			}
+			else
+			{
+				txtEmail.Text = _customer.Email;
 			}
 		}
 
@@ -118,21 +116,17 @@ namespace Tesco.UI
 		{
 			_customer = _customerManager.RetrieveDataById<Customer>(_user.CustomerId);
 
-			// if textbox value is not the same with db customer record
-			if (!_customer.PhoneNumber.SequenceEqual(txtPhoneNumber.Text))
+			if (_customer.PhoneNumber.SequenceEqual(txtPhoneNumber.Text)) return;
+			
+			if (CheckIfDataIsNew())
 			{
+				_customer.PhoneNumber = txtPhoneNumber.Text;
 
-				// ask customer if new data is for update
-				if (CheckIfDataIsNew())
-				{
-					_customer.PhoneNumber = txtPhoneNumber.Text;
-
-					MessageBox.Show(_customerManager.Update(_customer) != 0 ? "Update successful." : "Update failed.");
-				}
-				else
-				{
-					txtPhoneNumber.Text = _customer.PhoneNumber;
-				}
+				MessageBox.Show(_customerManager.Update(_customer) != 0 ? "Update successful." : "Update failed.");
+			}
+			else
+			{
+				txtPhoneNumber.Text = _customer.PhoneNumber;
 			}
 		}
 
@@ -176,46 +170,59 @@ namespace Tesco.UI
 
 		private void FrmCheckout_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			MessageBox.Show("You are signed off.");
+			if (MessageBox.Show("Are you sure you want to close the window?",
+				    "Close Window?",
+				    MessageBoxButtons.OKCancel,
+				    MessageBoxIcon.Question) == DialogResult.OK)
+			{
 
-			lvCheckoutItems.Items.Cast<ListViewItem>()
-				.ToList()
-				.ForEach(x =>
-				{
-					var itemCustomer = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
+				MessageBox.Show("You are signed off.");
+
+				lvCheckoutItems.Items.Cast<ListViewItem>()
+					.ToList()
+					.ForEach(x =>
 					{
-						CustomerId = _user.CustomerId,
-						ItemId = int.Parse(x.SubItems[0].Text),
-						Quantity = int.Parse(x.SubItems[2].Text),
-						Amount = int.Parse(x.SubItems[3].Text),
-						IsCurrentOrder = true,
-						IsUnpaid = true,
+						var itemCustomer = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
+						{
+							CustomerId = _user.CustomerId,
+							ItemId = int.Parse(x.SubItems[0].Text),
+							Quantity = int.Parse(x.SubItems[2].Text),
+							Amount = int.Parse(x.SubItems[3].Text),
+							IsCurrentOrder = true,
+							IsUnpaid = true,
+						});
+
+						var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
+						{
+							CustomerId = _user.CustomerId,
+							ItemId = int.Parse(x.SubItems[0].Text),
+							IsCurrentOrder = false,
+							IsUnpaid = true
+						});
+
+						itemCustomer.IsCurrentOrder = false;
+
+						if (unfinishedOrder != null)
+						{
+							_itemCustomerManager.Update(itemCustomer);
+						}
+						else
+						{
+							_itemCustomerManager.Add(itemCustomer);
+						}
 					});
 
-					var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
-					{
-						CustomerId = _user.CustomerId,
-						ItemId = int.Parse(x.SubItems[0].Text),
-						IsCurrentOrder = false,
-						IsUnpaid = true
-					});
-
-					itemCustomer.IsCurrentOrder = false;
-
-					if (unfinishedOrder != null)
-					{
-						_itemCustomerManager.Update(itemCustomer);
-					}
-					else
-					{
-						_itemCustomerManager.Add(itemCustomer);
-					}
-				});
-
-			var welcome = new frmWelcome();
-			welcome.Show();
+				var welcome = new frmWelcome();
+				welcome.Show();
+			}
+			else
+			{
+				e.Cancel = true;
+			}
 		}
 
+		
+		
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->
 

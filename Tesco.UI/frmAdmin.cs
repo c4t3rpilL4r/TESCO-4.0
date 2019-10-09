@@ -17,15 +17,31 @@ namespace Tesco.UI
 		private void BtnItemInventory_Click(object sender, EventArgs e)
 		{
 			var itemInventory = new frmItemInventory(_user);
-			this.Hide();
 			itemInventory.Show();
 		}
 
 		private void BtnAttendant_Click(object sender, EventArgs e)
 		{
 			var attendant = new frmAdminAttendant();
-			this.Hide();
 			attendant.Show();
+		}
+
+		private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (MessageBox.Show("Are you sure you want to close the window?",
+				    "Close Window?",
+				    MessageBoxButtons.OKCancel,
+				    MessageBoxIcon.Question) == DialogResult.OK)
+			{
+				MessageBox.Show("Admin has logged out.");
+
+				var welcome = new frmWelcome();
+				welcome.Show();
+			}
+			else
+			{
+				e.Cancel = true;
+			}
 		}
 	}
 }

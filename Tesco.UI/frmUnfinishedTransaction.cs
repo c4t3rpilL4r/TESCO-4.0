@@ -197,55 +197,66 @@ namespace Tesco.UI
 
 		private void FrmUnfinishedTransaction_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (lvCurrentOrder.Items.Count <= 0) return;
-
-			lvCurrentOrder.Items.Cast<ListViewItem>().ToList().ForEach(x =>
+			if (MessageBox.Show("Are you sure you want to close the window?",
+				    "Close Window?",
+				    MessageBoxButtons.OKCancel,
+				    MessageBoxIcon.Question) == DialogResult.OK)
 			{
-				if (Enumerable.Cast<ListViewItem>(lvUnfinishedOrder.Items)
-					.Any(y => int.Parse(y.SubItems[0].Text) == int.Parse(x.SubItems[0].Text)))
+
+				if (lvCurrentOrder.Items.Count <= 0) return;
+
+				lvCurrentOrder.Items.Cast<ListViewItem>().ToList().ForEach(x =>
 				{
-					var currentOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
+					if (Enumerable.Cast<ListViewItem>(lvUnfinishedOrder.Items)
+						.Any(y => int.Parse(y.SubItems[0].Text) == int.Parse(x.SubItems[0].Text)))
 					{
-						CustomerId = _user.CustomerId,
-						ItemId = int.Parse(x.SubItems[0].Text),
-						IsCurrentOrder = true,
-						IsUnpaid = true
-					});
+						var currentOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
+						{
+							CustomerId = _user.CustomerId,
+							ItemId = int.Parse(x.SubItems[0].Text),
+							IsCurrentOrder = true,
+							IsUnpaid = true
+						});
 
-					var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
+						var unfinishedOrder = _itemCustomerManager.RetrieveDataByWhereCondition(new ItemCustomer()
+						{
+							CustomerId = _user.CustomerId,
+							ItemId = int.Parse(x.SubItems[0].Text),
+							IsCurrentOrder = false,
+							IsUnpaid = true
+						});
+
+						unfinishedOrder.Quantity += currentOrder.Quantity;
+						unfinishedOrder.Amount += currentOrder.Amount;
+
+						currentOrder.IsCurrentOrder = false;
+						currentOrder.Quantity = 0;
+						currentOrder.Amount = 0;
+
+						_itemCustomerManager.Update(unfinishedOrder);
+						_itemCustomerManager.Update(currentOrder);
+					}
+					else
 					{
-						CustomerId = _user.CustomerId,
-						ItemId = int.Parse(x.SubItems[0].Text),
-						IsCurrentOrder = false,
-						IsUnpaid = true
-					});
+						_itemCustomerManager.Add(new ItemCustomer()
+						{
+							CustomerId = _user.CustomerId,
+							ItemId = int.Parse(x.SubItems[0].Text),
+							Quantity = int.Parse(x.SubItems[2].Text),
+							Amount = int.Parse(x.SubItems[3].Text),
+							IsCurrentOrder = false,
+							IsUnpaid = true
+						});
+					}
+				});
 
-					unfinishedOrder.Quantity += currentOrder.Quantity;
-					unfinishedOrder.Amount += currentOrder.Amount;
-
-					currentOrder.IsCurrentOrder = false;
-					currentOrder.Quantity = 0;
-					currentOrder.Amount = 0;
-
-					_itemCustomerManager.Update(unfinishedOrder);
-					_itemCustomerManager.Update(currentOrder);
-				}
-				else
-				{
-					_itemCustomerManager.Add(new ItemCustomer()
-					{
-						CustomerId = _user.CustomerId,
-						ItemId = int.Parse(x.SubItems[0].Text),
-						Quantity = int.Parse(x.SubItems[2].Text),
-						Amount = int.Parse(x.SubItems[3].Text),
-						IsCurrentOrder = false,
-						IsUnpaid = true
-					});
-				}
-			});
-
-			var welcome = new frmWelcome();
-			welcome.Show();
+				var welcome = new frmWelcome();
+				welcome.Show();
+			}
+			else
+			{
+				e.Cancel = true;
+			}
 		}
 
 

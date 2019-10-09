@@ -6,7 +6,7 @@ namespace Tesco.UI
 {
 	public partial class frmAttendant : Form
 	{
-		private User _user;
+		private readonly User _user;
 
 		public frmAttendant(User user)
 		{
@@ -35,6 +35,14 @@ namespace Tesco.UI
 			var welcome = new frmWelcome();
 			this.Hide();
 			welcome.Show();
+		}
+
+		private void frmAttendant_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			e.Cancel = MessageBox.Show("Are you sure you want to close the window?",
+				           "Close Window?",
+				           MessageBoxButtons.OKCancel,
+				           MessageBoxIcon.Question) == DialogResult.Cancel;
 		}
 	}
 }
