@@ -17,8 +17,8 @@ namespace Tesco.DL.Repositories
 
 		public int Add<T>(T data)
 		{
-			var propertyToBeExcludedFields = new List<string>();
-			var propertyToBeExcludedValues = new List<string>();
+			var propertyToBeExcludedFields = new List<string>() { "id" };
+			var propertyToBeExcludedValues = new List<string>() { "id" };
 			
 			var fields = string.Join(",", data.GetType().GetProperties().Where(x =>
 			{

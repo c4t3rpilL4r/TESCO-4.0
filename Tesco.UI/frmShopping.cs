@@ -228,8 +228,10 @@ namespace Tesco.UI
 			});
 
 			if (_orderManager.RetrieveAll<Order>()
-				    .Where(x => x.IsUnpaid == true)
-				    .ToList().Count > 0)
+				    .Where(x => x.IsCurrentOrder == false
+				                && x.IsUnpaid == true)
+				    .ToList()
+				    .Count > 0)
 			{
 				if (MessageBox.Show(
 					    "You have an unfinished transaction. Along with your current orders, would you like to proceed to it?",

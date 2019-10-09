@@ -37,7 +37,9 @@ namespace Tesco.UI
 			txtCashOnHand.Focus();
 			
 			_orderManager.RetrieveAll<Order>()
-				.Where(x => x.CustomerId == _user.CustomerId && x.IsCurrentOrder == true && x.IsUnpaid == true)
+				.Where(x => x.CustomerId == _user.CustomerId
+				            && x.IsCurrentOrder == true
+				            && x.IsUnpaid == true)
 				.Select(x => x)
 				.ToList()
 				.ForEach(x =>
@@ -179,8 +181,8 @@ namespace Tesco.UI
 						{
 							CustomerId = _user.CustomerId,
 							ItemId = int.Parse(x.SubItems[0].Text),
-							Quantity = int.Parse(x.SubItems[2].Text),
-							Amount = int.Parse(x.SubItems[3].Text),
+							Quantity = int.Parse(x.SubItems[3].Text),
+							Amount = int.Parse(x.SubItems[4].Text),
 							IsCurrentOrder = true,
 							IsUnpaid = true,
 						});
@@ -197,12 +199,14 @@ namespace Tesco.UI
 
 						if (unfinishedOrder != null)
 						{
-							_orderManager.Update(currentOrder);
+							unfinishedOrder.Quantity += currentOrder.Quantity;
+							unfinishedOrder.Amount += currentOrder.Amount;
+
+							currentOrder.Quantity = 0;
+							currentOrder.Amount = 0;
 						}
-						else
-						{
-							_orderManager.Add(currentOrder);
-						}
+						
+						_orderManager.Update(currentOrder);
 					});
 
 				var welcome = new frmWelcome();

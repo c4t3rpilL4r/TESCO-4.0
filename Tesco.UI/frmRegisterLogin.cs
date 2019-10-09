@@ -18,7 +18,6 @@ namespace Tesco.UI
 		private readonly IUserManager _userManager;
 		private readonly IEmailValidator _emailValidator;
 		private User _user;
-		private bool _hasMessageBoxShown;
 		private int _pnlRegisterHeight;
 
 		public frmRegisterLogin(int pnlRegisterHeight, User user = null)
@@ -44,7 +43,7 @@ namespace Tesco.UI
 		{
 			if (_emailValidator.CheckEmailIfValid(txtEmail.Text))
 			{
-				if (_customerManager.RetrieveDataByWhereCondition(new Customer() {Email = txtEmail.Text}) == null || _hasMessageBoxShown) return;
+				if (_customerManager.RetrieveDataByWhereCondition(new Customer() { Email = txtEmail.Text }) == null) return;
 
 				if (MessageBox.Show("Email is already used. Do you want to proceed to login instead?",
 						"Proceed to login?",
@@ -52,11 +51,7 @@ namespace Tesco.UI
 						MessageBoxIcon.Question) == DialogResult.Yes)
 				{
 					_pnlRegisterHeight = 0;
-					_hasMessageBoxShown = true;
-
-					txtEmail.Text = string.Empty;
 					CheckWhatPanelToDisplay();
-					timer.Start();
 				}
 				else
 				{
@@ -65,8 +60,13 @@ namespace Tesco.UI
 			}
 			else
 			{
-				txtEmail.Focus();
+				if (_pnlRegisterHeight != 0)
+				{
+					MessageBox.Show("Not a valid email.");
+				}
 			}
+
+			txtEmail.Focus();
 		}
 
 		private void linkForgotPassword_MouseEnter(object sender, EventArgs e) => linkForgotPassword.LinkColor = Color.Blue;
@@ -92,19 +92,26 @@ namespace Tesco.UI
 					&& !string.IsNullOrWhiteSpace(txtUsername.Text)
 					&& !string.IsNullOrWhiteSpace(txtPassword.Text))
 				{
-					var customer = _customerManager.RetrieveDataById<Customer>(_user.CustomerId);
-
-					customer.FullName = $"{txtFirstName.Text} {txtLastName.Text}";
-					customer.Email = txtEmail.Text;
-					customer.PhoneNumber = txtPhoneNumber.Text;
-
-					_customerManager.Update(customer);
-
-					_user.Username = txtUsername.Text;
-					_user.Password = txtPassword.Text;
-					_user.FullName = customer.FullName;
-
-					if (_userManager.Update(_user) != 0)
+					if (_user != null) return;
+					
+					var customerId = _customerManager.Add(new Customer()
+					{
+						FullName = $"{txtFirstName.Text} {txtLastName.Text}",
+						Email = txtEmail.Text,
+						PhoneNumber = txtPhoneNumber.Text
+					});
+						
+					_user = new User()
+					{
+						Username = txtUsername.Text,
+						Password = txtPassword.Text,
+						FullName = $"{txtFirstName.Text} {txtLastName.Text}",
+						CustomerId = customerId,
+						Type = "customer",
+						IsDeleted = false
+					};
+						
+					if (_userManager.Add(_user) > 0)
 					{
 						MessageBox.Show("Registration successful.");
 
@@ -233,55 +240,54 @@ namespace Tesco.UI
 				    MessageBoxButtons.OKCancel,
 				    MessageBoxIcon.Question) == DialogResult.OK)
 			{
-				_orderManager.RetrieveAll<Order>()
-					.Where(x => x.CustomerId == _user.CustomerId
-					            && x.IsCurrentOrder == true
-					            && x.IsUnpaid == true)
-					.ToList()
-					.ForEach(x =>
-					{
-						if (_user != null)
+				if (_user != null)
+				{
+					_orderManager.RetrieveAll<Order>()
+						.Where(x => x.CustomerId == _user.CustomerId
+						            && x.IsCurrentOrder == true
+						            && x.IsUnpaid == true)
+						.ToList()
+						.ForEach(x =>
 						{
-							var unfinishedOrder = _orderManager.RetrieveDataByWhereCondition<Order>(
-								new Order()
-								{
-									CustomerId = x.CustomerId,
-									ItemId = x.ItemId,
-									IsCurrentOrder = false,
-									IsUnpaid = true
-								});
-
-							if (unfinishedOrder != null)
+							if (_user != null)
 							{
-								unfinishedOrder.Quantity += x.Quantity;
-								unfinishedOrder.Amount += x.Amount;
+								var unfinishedOrder = _orderManager.RetrieveDataByWhereCondition<Order>(
+									new Order()
+									{
+										CustomerId = x.CustomerId,
+										ItemId = x.ItemId,
+										IsCurrentOrder = false,
+										IsUnpaid = true
+									});
 
-								_orderManager.Update(unfinishedOrder);
+								if (unfinishedOrder != null)
+								{
+									unfinishedOrder.Quantity += x.Quantity;
+									unfinishedOrder.Amount += x.Amount;
 
-								x.Quantity = 0;
-								x.Amount = 0;
+									_orderManager.Update(unfinishedOrder);
+
+									x.Quantity = 0;
+									x.Amount = 0;
+								}
+
+								x.IsCurrentOrder = false;
+
+								_orderManager.Update(x);
 							}
+							else
+							{
+								var item = _itemManager.RetrieveDataById<Item>(x.ItemId);
 
-							x.IsCurrentOrder = false;
+								item.Stocks += x.Quantity;
 
-							_orderManager.Update(x);
-						}
-						else
-						{
-							var item = _itemManager.RetrieveDataById<Item>(x.ItemId);
+								_itemManager.Update(item);
 
-							item.Stocks += x.Quantity;
-
-							_itemManager.Update(item);
-
-							_orderManager.Update(x);
-						}
-					});
-
-				_user.IsDeleted = true;
-
-				_userManager.Update(_user);
-
+								_orderManager.Update(x);
+							}
+						});
+				}
+				
 				var welcome = new frmWelcome();
 				welcome.Show();
 			}
@@ -301,6 +307,27 @@ namespace Tesco.UI
 			pnlRegister.Visible = _pnlRegisterHeight > 0;
 
 			this.Text = _pnlRegisterHeight > 0 ? "TESCO Registration" : "TESCO Log In";
+			timer.Start();
+
+			ClearTextBoxes();
+		}
+
+		private void ClearTextBoxes()
+		{
+			if (_pnlRegisterHeight == 0)
+			{
+				txtFirstName.Text = string.Empty;
+				txtLastName.Text = string.Empty;
+				txtEmail.Text = string.Empty;
+				txtPhoneNumber.Text = string.Empty;
+				txtUsername.Text = string.Empty;
+				txtPassword.Text = string.Empty;
+			}
+			else
+			{
+				txtLoginUsername.Text = string.Empty;
+				txtLoginPassword.Text = string.Empty;
+			}
 		}
 	}
 }

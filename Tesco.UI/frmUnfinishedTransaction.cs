@@ -203,9 +203,11 @@ namespace Tesco.UI
 
 				if (lvCurrentOrder.Items.Count <= 0) return;
 
-				lvCurrentOrder.Items.Cast<ListViewItem>().ToList().ForEach(x =>
+				lvCurrentOrder.Items.Cast<ListViewItem>()
+					.ToList()
+					.ForEach(x =>
 				{
-					if (Enumerable.Cast<ListViewItem>(lvUnfinishedOrder.Items)
+					if (lvUnfinishedOrder.Items.Cast<ListViewItem>()
 						.Any(y => int.Parse(y.SubItems[0].Text) == int.Parse(x.SubItems[0].Text)))
 					{
 						var currentOrder = _orderManager.RetrieveDataByWhereCondition(new Order()

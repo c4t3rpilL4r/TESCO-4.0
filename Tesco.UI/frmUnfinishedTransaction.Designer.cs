@@ -47,16 +47,19 @@ namespace Tesco.UI
             this.btnMoveToCurrentOrder = new System.Windows.Forms.Button();
             this.btnCheckout = new System.Windows.Forms.Button();
             this.btnShopping = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lvCurrentOrder);
-            this.groupBox1.Location = new System.Drawing.Point(14, 14);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(376, 337);
+            this.groupBox1.Size = new System.Drawing.Size(376, 286);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Current Order";
@@ -73,7 +76,7 @@ namespace Tesco.UI
             this.lvCurrentOrder.HideSelection = false;
             this.lvCurrentOrder.Location = new System.Drawing.Point(6, 20);
             this.lvCurrentOrder.Name = "lvCurrentOrder";
-            this.lvCurrentOrder.Size = new System.Drawing.Size(364, 304);
+            this.lvCurrentOrder.Size = new System.Drawing.Size(364, 260);
             this.lvCurrentOrder.TabIndex = 9;
             this.lvCurrentOrder.UseCompatibleStateImageBehavior = false;
             this.lvCurrentOrder.View = System.Windows.Forms.View.Details;
@@ -106,12 +109,12 @@ namespace Tesco.UI
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lvUnfinishedOrder);
-            this.groupBox2.Location = new System.Drawing.Point(406, 14);
+            this.groupBox2.Location = new System.Drawing.Point(410, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(376, 337);
+            this.groupBox2.Size = new System.Drawing.Size(376, 286);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Unfinished Transaction";
+            this.groupBox2.Text = "Unfinished Order";
             // 
             // lvUnfinishedOrder
             // 
@@ -125,7 +128,7 @@ namespace Tesco.UI
             this.lvUnfinishedOrder.HideSelection = false;
             this.lvUnfinishedOrder.Location = new System.Drawing.Point(6, 20);
             this.lvUnfinishedOrder.Name = "lvUnfinishedOrder";
-            this.lvUnfinishedOrder.Size = new System.Drawing.Size(364, 304);
+            this.lvUnfinishedOrder.Size = new System.Drawing.Size(364, 260);
             this.lvUnfinishedOrder.TabIndex = 10;
             this.lvUnfinishedOrder.UseCompatibleStateImageBehavior = false;
             this.lvUnfinishedOrder.View = System.Windows.Forms.View.Details;
@@ -158,7 +161,7 @@ namespace Tesco.UI
             // btnMoveToUnfinishedTransaction
             // 
             this.btnMoveToUnfinishedTransaction.Enabled = false;
-            this.btnMoveToUnfinishedTransaction.Location = new System.Drawing.Point(55, 356);
+            this.btnMoveToUnfinishedTransaction.Location = new System.Drawing.Point(62, 313);
             this.btnMoveToUnfinishedTransaction.Name = "btnMoveToUnfinishedTransaction";
             this.btnMoveToUnfinishedTransaction.Size = new System.Drawing.Size(276, 23);
             this.btnMoveToUnfinishedTransaction.TabIndex = 0;
@@ -170,7 +173,7 @@ namespace Tesco.UI
             // btnMoveToCurrentOrder
             // 
             this.btnMoveToCurrentOrder.Enabled = false;
-            this.btnMoveToCurrentOrder.Location = new System.Drawing.Point(497, 356);
+            this.btnMoveToCurrentOrder.Location = new System.Drawing.Point(504, 313);
             this.btnMoveToCurrentOrder.Name = "btnMoveToCurrentOrder";
             this.btnMoveToCurrentOrder.Size = new System.Drawing.Size(205, 23);
             this.btnMoveToCurrentOrder.TabIndex = 1;
@@ -181,7 +184,7 @@ namespace Tesco.UI
             // btnCheckout
             // 
             this.btnCheckout.Enabled = false;
-            this.btnCheckout.Location = new System.Drawing.Point(178, 400);
+            this.btnCheckout.Location = new System.Drawing.Point(185, 357);
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(205, 23);
             this.btnCheckout.TabIndex = 2;
@@ -191,7 +194,7 @@ namespace Tesco.UI
             // 
             // btnShopping
             // 
-            this.btnShopping.Location = new System.Drawing.Point(412, 400);
+            this.btnShopping.Location = new System.Drawing.Point(419, 357);
             this.btnShopping.Name = "btnShopping";
             this.btnShopping.Size = new System.Drawing.Size(205, 23);
             this.btnShopping.TabIndex = 3;
@@ -199,11 +202,32 @@ namespace Tesco.UI
             this.btnShopping.UseVisualStyleBackColor = true;
             this.btnShopping.Click += new System.EventHandler(this.btnShopping_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Location = new System.Drawing.Point(12, 399);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(774, 54);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Note:";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(762, 28);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "If you want to continue shopping along with your items, move your items from the " +
+                               "Unfinished Order to the Current Order. Then click the Continue to Shopping butto" +
+                               "n.";
+            // 
             // frmUnfinishedTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 438);
+            this.ClientSize = new System.Drawing.Size(798, 462);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnShopping);
             this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.btnMoveToCurrentOrder);
@@ -219,6 +243,7 @@ namespace Tesco.UI
             this.Load += new System.EventHandler(this.frmUnfinishedTransaction_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
@@ -239,5 +264,7 @@ namespace Tesco.UI
         private System.Windows.Forms.ColumnHeader columnUnfinishedOrderName;
         private System.Windows.Forms.ColumnHeader columnUnfinishedOrderQuantity;
         private System.Windows.Forms.ColumnHeader columnUnfinishedOrderAmount;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label1;
     }
 }
