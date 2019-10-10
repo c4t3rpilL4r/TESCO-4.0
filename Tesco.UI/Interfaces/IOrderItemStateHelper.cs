@@ -4,6 +4,6 @@ namespace Tesco.UI.Interfaces
 {
     public interface IOrderItemStateHelper
     {
-        void DetermineOrderItemStatus(Order order);
+        void ChangeOrderItemStatusToUnfinished(Order order);
     }
 }

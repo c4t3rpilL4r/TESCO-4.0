@@ -18,6 +18,7 @@ namespace Tesco.UI
 		private readonly IItemTypeHelper _itemTypeHandler;
 		private readonly IListViewItemHelper _listViewItemHelper;
 		private readonly IItemSortHelper _itemSortHandler;
+		private readonly IOrderItemStateHelper _orderItemStateHelper;
 		private readonly User _user;
 		private int _lastSelectedItemInItemsListView = 0;
 
@@ -29,6 +30,7 @@ namespace Tesco.UI
 			_itemTypeHandler = new ItemTypeHelper();
 			_listViewItemHelper = new ListViewItemHelper();
 			_itemSortHandler = new ItemSortHelper();
+			_orderItemStateHelper = new OrderItemStateHelper();
 			_user = user;
 			InitializeComponent();
 		}
@@ -258,7 +260,7 @@ namespace Tesco.UI
 		{
 			if (lvCart.Items.Count > 0)
 			{
-				AddCartItemsToDatabase();
+				AddCartItemsToDatabaseUponSignOff();
 			}
 			
 			MessageBox.Show("You have signed off.");
@@ -277,7 +279,7 @@ namespace Tesco.UI
 			{
 				if (lvCart.Items.Count > 0)
 				{
-					AddCartItemsToDatabase();
+					AddCartItemsToDatabaseUponSignOff();
 				}
 
 				var welcome = new frmWelcome();
@@ -357,11 +359,17 @@ namespace Tesco.UI
 
 		private int CalculateTotalAmountOfItemsInCart() => lvCart.Items.Cast<ListViewItem>().Sum(x => int.Parse(x.SubItems[3].Text));
 		
-		private void AddCartItemsToDatabase()
+		private void AddCartItemsToDatabaseUponSignOff()
 		{
 			lvCart.Items.Cast<ListViewItem>().ToList().ForEach(x =>
 			{
-				
+				_orderItemStateHelper.ChangeOrderItemStatusToUnfinished(new Order()
+				{
+					CustomerId = _user.CustomerId,
+					ItemId = int.Parse(x.SubItems[0].Text),
+					Quantity = int.Parse(x.SubItems[2].Text),
+					Amount = int.Parse(x.SubItems[3].Text)
+				});
 			});
 		}
 	}

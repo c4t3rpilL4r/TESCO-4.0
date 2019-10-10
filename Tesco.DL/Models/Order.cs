@@ -12,5 +12,6 @@ namespace Tesco.DL.Models
 		public int? Amount { get; set; }
 		public bool? IsCurrentOrder { get; set; }
 		public bool? IsUnpaid { get; set; }
+		public bool? IsCancelled { get; set; }
 	}
 }

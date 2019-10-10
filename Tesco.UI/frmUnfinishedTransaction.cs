@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.DL.Models;
+using Tesco.UI.Helpers;
+using Tesco.UI.Interfaces;
 
 namespace Tesco.UI
 {
@@ -12,6 +14,7 @@ namespace Tesco.UI
 	{
 		private readonly IItemManager _itemManager;
 		private readonly IOrderManager _orderManager;
+		private readonly IOrderItemStateHelper _orderItemStateHelper;
 		private readonly User _user;
 		private int _lastSelectedItemInCurrentListView = 0;
 		private int _lastSelectedItemInUnfinishedListView = 0;
@@ -20,6 +23,7 @@ namespace Tesco.UI
 		{
 			_itemManager = new ItemManager();
 			_orderManager = new OrderManager();
+			_orderItemStateHelper = new OrderItemStateHelper();
 			_user = user;
 			InitializeComponent();
 		}
@@ -197,47 +201,11 @@ namespace Tesco.UI
 					.ToList()
 					.ForEach(x =>
 				{
-					if (lvUnfinishedOrder.Items.Cast<ListViewItem>()
-						.Any(y => int.Parse(y.SubItems[0].Text) == int.Parse(x.SubItems[0].Text)))
+					_orderItemStateHelper.ChangeOrderItemStatusToUnfinished(new Order()
 					{
-						var currentOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
-						{
-							CustomerId = _user.CustomerId,
-							ItemId = int.Parse(x.SubItems[0].Text),
-							IsCurrentOrder = true,
-							IsUnpaid = true
-						});
-
-						var unfinishedOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
-						{
-							CustomerId = _user.CustomerId,
-							ItemId = int.Parse(x.SubItems[0].Text),
-							IsCurrentOrder = false,
-							IsUnpaid = true
-						});
-
-						unfinishedOrder.Quantity += currentOrder.Quantity;
-						unfinishedOrder.Amount += currentOrder.Amount;
-
-						currentOrder.IsCurrentOrder = false;
-						currentOrder.Quantity = 0;
-						currentOrder.Amount = 0;
-
-						_orderManager.Update(unfinishedOrder);
-						_orderManager.Update(currentOrder);
-					}
-					else
-					{
-						_orderManager.Add(new Order()
-						{
-							CustomerId = _user.CustomerId,
-							ItemId = int.Parse(x.SubItems[0].Text),
-							Quantity = int.Parse(x.SubItems[2].Text),
-							Amount = int.Parse(x.SubItems[3].Text),
-							IsCurrentOrder = false,
-							IsUnpaid = true
-						});
-					}
+						CustomerId = _user.CustomerId,
+						ItemId = int.Parse(x.SubItems[0].Text)
+					});
 				});
 
 				var welcome = new frmWelcome();
