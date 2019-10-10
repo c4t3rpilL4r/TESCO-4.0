@@ -3,7 +3,7 @@ using Tesco.DL.Models;
 
 namespace Tesco.UI.Interfaces
 {
-	internal interface IListViewItemHandler
+	internal interface IListViewItemHelper
 	{
 		ListViewItem FormatListViewRow(Item item, string userType = "customer");
 	}

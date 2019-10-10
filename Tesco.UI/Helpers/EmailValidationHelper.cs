@@ -1,10 +1,9 @@
 ﻿using System.Text.RegularExpressions;
-using System.Windows.Forms;
 using Tesco.UI.Interfaces;
 
-namespace Tesco.UI.Utilities
+namespace Tesco.UI.Helpers
 {
-    public class EmailValidator : IEmailValidator
+    public class EmailValidationHelper : IEmailValidationHelper
     {
         public bool CheckEmailIfValid(string email)
         {

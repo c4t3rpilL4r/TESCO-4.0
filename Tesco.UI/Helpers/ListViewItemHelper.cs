@@ -5,13 +5,13 @@ using Tesco.BL.Managers;
 using Tesco.DL.Models;
 using Tesco.UI.Interfaces;
 
-namespace Tesco.UI.Utilities
+namespace Tesco.UI.Helpers
 {
-	public class ListViewItemHandler : IListViewItemHandler
+	public class ListViewItemHelper : IListViewItemHelper
 	{
 		private readonly IItemTypeManager _itemTypeManager;
 
-		public ListViewItemHandler()
+		public ListViewItemHelper()
 		{
 			_itemTypeManager = new ItemTypeManager();
 		}
@@ -20,7 +20,7 @@ namespace Tesco.UI.Utilities
 		{
 			var row = new ListViewItem(item.Id.ToString()) {UseItemStyleForSubItems = false};
 			row.SubItems.Add(item.Name);
-			row.SubItems.Add(_itemTypeManager.RetrieveDataById<ItemType>(item.ItemTypeId).TypeDescription);
+			row.SubItems.Add(_itemTypeManager.RetrieveDataById<ItemType>((int) item.ItemTypeId).TypeDescription);
 			
 			if (item.Discount > 0 && userType.Equals("customer"))
 			{

@@ -67,13 +67,9 @@ namespace Tesco.UI
 
 				_orderManager.Update(currentOrder);
 
-				if (currentOrder.Quantity == 0)
-				{
-					lvCurrentOrder.SelectedItems[0].Remove();
-				}
-
 				if (lvUnfinishedOrder.Items.Cast<ListViewItem>()
-					.Any(x => int.Parse(x.SubItems[0].Text) == int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[0].Text)))
+					.Any(x => int.Parse(x.SubItems[0].Text) ==
+					          int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[0].Text)))
 				{
 					var unfinishedOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
 					{
@@ -103,7 +99,6 @@ namespace Tesco.UI
 					});
 				}
 
-				//GetSelectedIndexOfCurrentOrderListView();
 				PopulateListViewsWithData();
 				KeepLastSelectedItemFocusInCurrentOrderListView();
 			}
@@ -133,15 +128,11 @@ namespace Tesco.UI
 				unfinishedOrder.Amount -= amount;
 
 				_orderManager.Update(unfinishedOrder);
-
-				if (unfinishedOrder.Quantity == 0)
-				{
-					lvCurrentOrder.SelectedItems[0].Remove();
-				}
-
+				
 				if (lvCurrentOrder.Items.Cast<ListViewItem>()
 					.ToList()
-					.Any(x => int.Parse(x.SubItems[0].Text) == int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text)))
+					.Any(x => int.Parse(x.SubItems[0].Text) ==
+					          int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text)))
 				{
 					var currentOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
 					{
@@ -169,7 +160,6 @@ namespace Tesco.UI
 					});
 				}
 
-				//GetSelectedIndexOfUnfinishedOrderListView();
 				PopulateListViewsWithData();
 				KeepLastSelectedItemFocusInUnfinishedOrderListView();
 			}
@@ -196,9 +186,9 @@ namespace Tesco.UI
 		private void FrmUnfinishedTransaction_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			if (MessageBox.Show("Are you sure you want to close the window?",
-				    "Close Window?",
-				    MessageBoxButtons.OKCancel,
-				    MessageBoxIcon.Question) == DialogResult.OK)
+					"Close Window?",
+					MessageBoxButtons.OKCancel,
+					MessageBoxIcon.Question) == DialogResult.OK)
 			{
 
 				if (lvCurrentOrder.Items.Count <= 0) return;
@@ -270,7 +260,7 @@ namespace Tesco.UI
 
 			Enumerable.Where(_orderManager.RetrieveAll<Order>(),
 					x => x.CustomerId == _user.CustomerId
-					     && x.IsUnpaid == true)
+						 && x.IsUnpaid == true)
 				.ToList()
 				.ForEach(x =>
 				{
@@ -289,8 +279,8 @@ namespace Tesco.UI
 		
 		private ListViewItem ConvertToListViewItem(Order order)
 		{
-			var row = new ListViewItem(_itemManager.RetrieveDataById<Item>(order.ItemId).Id.ToString());
-			row.SubItems.Add(_itemManager.RetrieveDataById<Item>(order.ItemId).Name);
+			var row = new ListViewItem(_itemManager.RetrieveDataById<Item>((int) order.ItemId).Id.ToString());
+			row.SubItems.Add(_itemManager.RetrieveDataById<Item>((int) order.ItemId).Name);
 			row.SubItems.Add(order.Quantity.ToString());
 			row.SubItems.Add(order.Amount.ToString());
 

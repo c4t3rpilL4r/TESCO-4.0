@@ -38,7 +38,7 @@ namespace Tesco.UI
 				.ToList()
 				.ForEach(x =>
 				{
-					var item = _itemManager.RetrieveDataById<Item>(x.ItemId);
+					var item = _itemManager.RetrieveDataById<Item>((int) x.ItemId);
 					
 					var transactionDetails = $"{item.Name} @{x.Amount / x.Quantity} x{x.Quantity}{Environment.NewLine}";
 					lblTransactionDetails.Text += transactionDetails;
@@ -46,7 +46,7 @@ namespace Tesco.UI
 					var transactionAmount = $"{x.Amount}{Environment.NewLine}";
 					lblTransactionAmount.Text += transactionAmount;
 
-					total += x.Amount;
+					total += (int) x.Amount;
 				});
 
 			lblDateTime.Text = transaction.TransactDateTime.ToString(CultureInfo.CurrentCulture);

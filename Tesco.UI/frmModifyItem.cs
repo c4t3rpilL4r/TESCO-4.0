@@ -3,8 +3,8 @@ using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.DL.Models;
+using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using Tesco.UI.Utilities;
 
 namespace Tesco.UI
 {
@@ -13,7 +13,7 @@ namespace Tesco.UI
 		private readonly IItemManager _itemManager;
 		private readonly IItemTypeManager _itemTypeManager;
 		private readonly IItemUserManager _itemUserManager;
-		private readonly IItemTypeHandler _itemTypeHandler;
+		private readonly IItemTypeHelper _itemTypeHelper;
 		private readonly Item _item;
 		private readonly User _user;
 		private string _modification;
@@ -23,7 +23,7 @@ namespace Tesco.UI
 			_itemManager = new ItemManager();
 			_itemTypeManager = new ItemTypeManager();
 			_itemUserManager = new ItemUserManager();
-			_itemTypeHandler = new ItemTypeHandler();
+			_itemTypeHelper = new ItemTypeHelper();
 			_item = item;
 			_user = user;
 			_modification = modification;
@@ -33,13 +33,13 @@ namespace Tesco.UI
 		private void FrmModifyItem_Load(object sender, System.EventArgs e)
 		{
 			// Combobox of Item Type
-			_itemTypeHandler.ItemTypeValuesHandler().ForEach(x => cboItemType.Items.Add(x));
+			_itemTypeHelper.ItemTypeValuesHandler().ForEach(x => cboItemType.Items.Add(x));
 
 			if (_modification.Equals("Edit"))
 			{
 				txtItemName.Text = _item.Name;
 				cboItemType.SelectedItem =
-					_itemTypeManager.RetrieveDataById<ItemType>(_item.ItemTypeId).TypeDescription;
+					_itemTypeManager.RetrieveDataById<ItemType>((int) _item.ItemTypeId).TypeDescription;
 				txtItemDiscount.Text = _item.Discount.ToString();
 				txtItemPrice.Text = _item.Price.ToString();
 				txtItemStocks.Text = _item.Stocks.ToString();
@@ -53,7 +53,7 @@ namespace Tesco.UI
 			if (checkItem == null) return;
 			if (MessageBox.Show("Another item has the same name:\n" +
 			                          $"Name:\t\t{checkItem.Name}\n" +
-			                          $"Type:\t\t{_itemTypeManager.RetrieveDataById<ItemType>(checkItem.ItemTypeId).TypeDescription}\n" +
+			                          $"Type:\t\t{_itemTypeManager.RetrieveDataById<ItemType>((int) checkItem.ItemTypeId).TypeDescription}\n" +
 			                          $"Discount:\t{checkItem.Discount}\n" +
 			                          $"Price:\t\t{checkItem.Price}\n" +
 			                          $"Stocks:\t\t{checkItem.Stocks}\n\n" +
@@ -64,7 +64,7 @@ namespace Tesco.UI
 			{
 				_modification = "Edit";
 				txtItemName.Text = checkItem.Name;
-				cboItemType.Text = _itemTypeManager.RetrieveDataById<ItemType>(checkItem.ItemTypeId).TypeDescription;
+				cboItemType.Text = _itemTypeManager.RetrieveDataById<ItemType>((int) checkItem.ItemTypeId).TypeDescription;
 				txtItemDiscount.Text = checkItem.Discount.ToString();
 				txtItemPrice.Text = checkItem.Price.ToString();
 				txtItemStocks.Text = checkItem.Stocks.ToString();
@@ -110,7 +110,7 @@ namespace Tesco.UI
 				}
 				else if (_modification.Equals("Edit"))
 				{
-					itemUser.ItemId = _item.Id;
+					itemUser.ItemId = (int) _item.Id;
 					itemUser.Modification = _modification;
 					_itemUserManager.Add(itemUser);
 

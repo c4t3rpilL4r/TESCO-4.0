@@ -2,7 +2,7 @@
 
 namespace Tesco.UI.Interfaces
 {
-	internal interface IItemTypeHandler
+	internal interface IItemTypeHelper
 	{
 		List<string> ItemTypeValuesHandler();
 	}

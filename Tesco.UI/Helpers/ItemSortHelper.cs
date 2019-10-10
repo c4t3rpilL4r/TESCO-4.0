@@ -5,19 +5,19 @@ using Tesco.BL.Managers;
 using Tesco.DL.Models;
 using Tesco.UI.Interfaces;
 
-namespace Tesco.UI.Utilities
+namespace Tesco.UI.Helpers
 {
-	public class SortHandler : ISortHandler
+	public class ItemSortHelper : IItemSortHelper
 	{
 		private readonly IItemManager _itemManager;
+		private readonly IItemTypeHelper _itemTypeHelper;
 		private readonly IItemTypeManager _itemTypeManager;
-		private readonly IItemTypeHandler _itemTypeHandler;
 
-		public SortHandler()
+		public ItemSortHelper()
 		{
 			_itemManager = new ItemManager();
+			_itemTypeHelper = new ItemTypeHelper();
 			_itemTypeManager = new ItemTypeManager();
-			_itemTypeHandler = new ItemTypeHandler();
 		}
 
 		public List<Item> SortItems(int sortByType, int sortByNameOrPrice)
@@ -26,9 +26,9 @@ namespace Tesco.UI.Utilities
 
 			if (sortByType != -1)
 			{
-				var type = _itemTypeHandler.ItemTypeValuesHandler()[sortByType];
+				var type = _itemTypeHelper.ItemTypeValuesHandler()[sortByType];
 
-				itemList = itemList.Where(x => _itemTypeManager.RetrieveDataById<ItemType>(x.ItemTypeId).TypeDescription == type).Select(x => x).ToList();
+				itemList = itemList.Where(x => _itemTypeManager.RetrieveDataById<ItemType>((int) x.ItemTypeId).TypeDescription == type).Select(x => x).ToList();
 			}
 
 			return sortByNameOrPrice == 0

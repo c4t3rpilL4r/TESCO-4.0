@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Windows.Forms;
 using Tesco.BL.Managers;
-using Tesco.UI.Utilities;
-using Tesco.DL.Models;
-using Tesco.UI.Interfaces;
 using Tesco.BL.Interfaces;
+using Tesco.DL.Models;
+using Tesco.UI.Helpers;
+using Tesco.UI.Interfaces;
+
 
 namespace Tesco.UI
 {
@@ -14,9 +15,9 @@ namespace Tesco.UI
 		private readonly IItemManager _itemManager;
 		private readonly IOrderManager _orderManager;
 		private readonly IUserManager _userManager;
-		private readonly IItemTypeHandler _itemTypeHandler;
-		private readonly IListViewItemHandler _listViewItemHandler;
-		private readonly ISortHandler _sortHandler;
+		private readonly IItemTypeHelper _itemTypeHandler;
+		private readonly IListViewItemHelper _listViewItemHelper;
+		private readonly IItemSortHelper _itemSortHandler;
 		private readonly User _user;
 		private int _lastSelectedItemInItemsListView = 0;
 
@@ -25,9 +26,9 @@ namespace Tesco.UI
 			_itemManager = new ItemManager();
 			_orderManager = new OrderManager();
 			_userManager = new UserManager();
-			_itemTypeHandler = new ItemTypeHandler();
-			_listViewItemHandler = new ListViewItemHandler();
-			_sortHandler = new SortHandler();
+			_itemTypeHandler = new ItemTypeHelper();
+			_listViewItemHelper = new ListViewItemHelper();
+			_itemSortHandler = new ItemSortHelper();
 			_user = user;
 			InitializeComponent();
 		}
@@ -295,8 +296,8 @@ namespace Tesco.UI
 		{
 			lvItems.Items.Clear();
 
-			_sortHandler.SortItems(cboSortByType.SelectedIndex, cboSortByNamePrice.SelectedIndex)
-				.ForEach(x => lvItems.Items.Add(_listViewItemHandler.FormatListViewRow(x)));
+			_itemSortHandler.SortItems(cboSortByType.SelectedIndex, cboSortByNamePrice.SelectedIndex)
+				.ForEach(x => lvItems.Items.Add(_listViewItemHelper.FormatListViewRow(x)));
 		}
 
 		private void DisplayCartItems()
@@ -309,7 +310,7 @@ namespace Tesco.UI
 				.ForEach(x =>
 				{
 					var row = new ListViewItem(x.ItemId.ToString());
-					row.SubItems.Add(_itemManager.RetrieveDataById<Item>(x.ItemId).Name);
+					row.SubItems.Add(_itemManager.RetrieveDataById<Item>((int) x.ItemId).Name);
 					row.SubItems.Add(x.Quantity.ToString());
 					row.SubItems.Add(x.Amount.ToString());
 					
@@ -360,15 +361,7 @@ namespace Tesco.UI
 		{
 			lvCart.Items.Cast<ListViewItem>().ToList().ForEach(x =>
 			{
-				_orderManager.Add(new Order()
-				{
-					CustomerId = _user.CustomerId,
-					ItemId = int.Parse(x.SubItems[0].Text),
-					Quantity = int.Parse(x.SubItems[2].Text),
-					Amount = int.Parse(x.SubItems[3].Text),
-					IsCurrentOrder = false,
-					IsUnpaid = true
-				});
+				
 			});
 		}
 	}

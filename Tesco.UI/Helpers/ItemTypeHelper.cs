@@ -3,13 +3,13 @@ using Tesco.BL.Managers;
 using Tesco.DL.Models;
 using Tesco.UI.Interfaces;
 
-namespace Tesco.UI.Utilities
+namespace Tesco.UI.Helpers
 {
-	public class ItemTypeHandler : IItemTypeHandler
+	public class ItemTypeHelper : IItemTypeHelper
 	{
 		private BaseManager _itemManager, _itemTypeManager;
 
-		public ItemTypeHandler()
+		public ItemTypeHelper()
 		{
 			_itemManager = new ItemManager();
 			_itemTypeManager = new ItemTypeManager();

@@ -3,8 +3,8 @@ using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.DL.Models;
+using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using Tesco.UI.Utilities;
 
 namespace Tesco.UI
 {
@@ -12,16 +12,16 @@ namespace Tesco.UI
 	{
 		private readonly IItemManager _itemManager;
 		private readonly IItemTypeManager _itemTypeManager;
-		private readonly IItemTypeHandler _itemTypeHandler;
-		private readonly ISortHandler _sortHandler;
+		private readonly IItemTypeHelper _itemTypeHelper;
+		private readonly IItemSortHelper _itemSortHelper;
 		private readonly User _user;
 
 		public frmItemInventory(User user)
 		{
 			_itemManager = new ItemManager();
 			_itemTypeManager = new ItemTypeManager();
-			_itemTypeHandler = new ItemTypeHandler();
-			_sortHandler = new SortHandler();
+			_itemTypeHelper = new ItemTypeHelper();
+			_itemSortHelper = new ItemSortHelper();
 			_user = user;
 			InitializeComponent();
 		}
@@ -125,12 +125,14 @@ namespace Tesco.UI
 
 		private void BtnDeleteItemType_Click(object sender, EventArgs e)
 		{
+			var item = _itemTypeManager.RetrieveDataByWhereCondition(new ItemType()
+			{
+				TypeDescription = cboType.SelectedItem.ToString(),
+				IsDeleted = false
+			});
+			
 			MessageBox.Show(!cboSortByType.Items.Contains(cboType.SelectedText)
-				? _itemTypeManager.Delete(_itemTypeManager.RetrieveDataByWhereCondition(new ItemType()
-				{
-					TypeDescription = cboType.SelectedItem.ToString(),
-					IsDeleted = false
-				}).Id) > 0
+				? item.Id != null && _itemTypeManager.Delete((int) item.Id) > 0
 					? "Item type deletion successful."
 					: "Item type deletion failed."
 				: "Cannot delete. Item type has item stocks.");
@@ -156,7 +158,7 @@ namespace Tesco.UI
 		{
 			lvItems.Items.Clear();
 
-			_sortHandler.SortItems(cboSortByType.SelectedIndex, cboSortByNamePrice.SelectedIndex)
+			_itemSortHelper.SortItems(cboSortByType.SelectedIndex, cboSortByNamePrice.SelectedIndex)
 				.ForEach(x => lvItems.Items.Add(ConvertToItemsListViewItem(x)));
 		}
 
@@ -173,7 +175,7 @@ namespace Tesco.UI
 			cboSortByNamePrice.Items.Add("By Price: Big to Small");
 
 			// Combobox of Type Sort
-			_itemTypeHandler.ItemTypeValuesHandler().ForEach(x => cboSortByType.Items.Add(x));
+			_itemTypeHelper.ItemTypeValuesHandler().ForEach(x => cboSortByType.Items.Add(x));
 
 			// Combobox of Type
 			_itemTypeManager.RetrieveAll<ItemType>().ForEach(x => cboType.Items.Add(x.TypeDescription));
@@ -183,7 +185,7 @@ namespace Tesco.UI
 		{
 			var row = new ListViewItem(item.Id.ToString());
 			row.SubItems.Add(item.Name);
-			row.SubItems.Add(_itemTypeManager.RetrieveDataById<ItemType>(item.ItemTypeId).TypeDescription);
+			row.SubItems.Add(_itemTypeManager.RetrieveDataById<ItemType>((int) item.ItemTypeId).TypeDescription);
 			row.SubItems.Add(item.Discount.ToString());
 			row.SubItems.Add(item.Price.ToString());
 			row.SubItems.Add(item.Stocks.ToString());

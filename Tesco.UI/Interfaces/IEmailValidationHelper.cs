@@ -1,6 +1,6 @@
 ﻿namespace Tesco.UI.Interfaces
 {
-    public interface IEmailValidator
+    public interface IEmailValidationHelper
     {
         bool CheckEmailIfValid(string email);
     }

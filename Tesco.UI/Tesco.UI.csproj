@@ -130,16 +130,18 @@
     <Compile Include="frmWelcome.Designer.cs">
       <DependentUpon>frmWelcome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IEmailValidator.cs" />
-    <Compile Include="Interfaces\IItemTypeHandler.cs" />
-    <Compile Include="Interfaces\IListViewItemHandler.cs" />
-    <Compile Include="Interfaces\ISortHandler.cs" />
+    <Compile Include="Interfaces\IEmailValidationHelper.cs" />
+    <Compile Include="Interfaces\IItemTypeHelper.cs" />
+    <Compile Include="Interfaces\IListViewItemHelper.cs" />
+    <Compile Include="Interfaces\IItemSortHelper.cs" />
+    <Compile Include="Interfaces\IOrderItemStateHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\EmailValidator.cs" />
-    <Compile Include="Utilities\ItemTypeHandler.cs" />
-    <Compile Include="Utilities\ListViewItemHandler.cs" />
-    <Compile Include="Utilities\SortHandler.cs" />
+    <Compile Include="Helpers\EmailValidationHelper.cs" />
+    <Compile Include="Helpers\ItemTypeHelper.cs" />
+    <Compile Include="Helpers\ListViewItemHelper.cs" />
+    <Compile Include="Helpers\OrderItemStateHelper.cs" />
+    <Compile Include="Helpers\ItemSortHelper.cs" />
     <EmbeddedResource Include="frmAddAttendant.resx">
       <DependentUpon>frmAddAttendant.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +216,5 @@
       <Name>Tesco.DL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

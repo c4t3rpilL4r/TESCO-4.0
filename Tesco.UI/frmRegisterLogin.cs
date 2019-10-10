@@ -5,8 +5,8 @@ using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.DL.Models;
+using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using Tesco.UI.Utilities;
 
 namespace Tesco.UI
 {
@@ -16,7 +16,7 @@ namespace Tesco.UI
 		private readonly IItemManager _itemManager;
 		private readonly IOrderManager _orderManager;
 		private readonly IUserManager _userManager;
-		private readonly IEmailValidator _emailValidator;
+		private readonly IEmailValidationHelper _emailValidationHelper;
 		private User _user;
 		private int _pnlRegisterHeight;
 
@@ -26,7 +26,7 @@ namespace Tesco.UI
 			_itemManager = new ItemManager();
 			_orderManager = new OrderManager();
 			_userManager = new UserManager();
-			_emailValidator = new EmailValidator();
+			_emailValidationHelper = new EmailValidationHelper();
 			_user = user;
 			_pnlRegisterHeight = pnlRegisterHeight;
 			InitializeComponent();
@@ -41,7 +41,7 @@ namespace Tesco.UI
 
 		private void txtEmail_Leave(object sender, EventArgs e)
 		{
-			if (_emailValidator.CheckEmailIfValid(txtEmail.Text))
+			if (_emailValidationHelper.CheckEmailIfValid(txtEmail.Text))
 			{
 				if (_customerManager.RetrieveDataByWhereCondition(new Customer() { Email = txtEmail.Text }) == null) return;
 
@@ -87,7 +87,7 @@ namespace Tesco.UI
 			{
 				if (!string.IsNullOrWhiteSpace(txtFirstName.Text)
 					&& !string.IsNullOrWhiteSpace(txtLastName.Text)
-					&& !string.IsNullOrWhiteSpace(txtEmail.Text) && _emailValidator.CheckEmailIfValid(txtEmail.Text)
+					&& !string.IsNullOrWhiteSpace(txtEmail.Text) && _emailValidationHelper.CheckEmailIfValid(txtEmail.Text)
 					&& !string.IsNullOrWhiteSpace(txtPhoneNumber.Text)
 					&& !string.IsNullOrWhiteSpace(txtUsername.Text)
 					&& !string.IsNullOrWhiteSpace(txtPassword.Text))
@@ -277,7 +277,7 @@ namespace Tesco.UI
 							}
 							else
 							{
-								var item = _itemManager.RetrieveDataById<Item>(x.ItemId);
+								var item = _itemManager.RetrieveDataById<Item>((int) x.ItemId);
 
 								item.Stocks += x.Quantity;
 

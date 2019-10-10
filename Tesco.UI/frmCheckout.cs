@@ -4,8 +4,8 @@ using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.DL.Models;
+using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using Tesco.UI.Utilities;
 
 namespace Tesco.UI
 {
@@ -15,9 +15,9 @@ namespace Tesco.UI
 		private readonly IItemManager _itemManager;
 		private readonly IOrderManager _orderManager;
 		private readonly ITransactionManager _transactionManager;
-		private readonly IEmailValidator _emailValidator;
+		private readonly IEmailValidationHelper _emailValidationHelper;
 		private readonly User _user;
-		private Customer _customer;
+		private readonly Customer _customer;
 		private int _total = 0;
 
 		public frmCheckout(User user)
@@ -26,9 +26,9 @@ namespace Tesco.UI
 			_itemManager = new ItemManager();
 			_orderManager = new OrderManager();
 			_transactionManager = new TransactionManager();
-			_emailValidator = new EmailValidator();
+			_emailValidationHelper = new EmailValidationHelper();
+			_customer = _customerManager.RetrieveDataById<Customer>((int) user.CustomerId);
 			_user = user;
-			_customer = _customerManager.RetrieveDataById<Customer>(_user.CustomerId);
 			InitializeComponent();
 		}
 
@@ -44,7 +44,7 @@ namespace Tesco.UI
 				.ToList()
 				.ForEach(x =>
 				{
-					var item = _itemManager.RetrieveDataById<Item>(x.ItemId);
+					var item = _itemManager.RetrieveDataById<Item>((int) x.ItemId);
 
 					var row = new ListViewItem(item.Id.ToString());
 					row.SubItems.Add(item.Name);
@@ -54,7 +54,7 @@ namespace Tesco.UI
 
 					lvCheckoutItems.Items.Add(row);
 
-					_total += x.Amount;
+					_total += (int) x.Amount;
 				});
 
 			lblAmountToPay.Text = _total.ToString();
@@ -67,7 +67,7 @@ namespace Tesco.UI
 		private void TxtCashOnHand_TextChanged(object sender, EventArgs e)
 		{
 			btnPayOrder.Enabled = !string.IsNullOrWhiteSpace(txtFullName.Text)
-				&& !string.IsNullOrWhiteSpace(txtEmail.Text) && _emailValidator.CheckEmailIfValid(txtEmail.Text)
+				&& !string.IsNullOrWhiteSpace(txtEmail.Text) && _emailValidationHelper.CheckEmailIfValid(txtEmail.Text)
 				&& !string.IsNullOrWhiteSpace(txtPhoneNumber.Text)
 				&& int.Parse(txtCashOnHand.Text) >= _total;
 		}
@@ -78,8 +78,6 @@ namespace Tesco.UI
 
 		private void TxtFullName_Leave(object sender, EventArgs e)
 		{
-			_customer = _customerManager.RetrieveDataById<Customer>(_user.CustomerId);
-
 			if (_user.FullName.SequenceEqual(txtFullName.Text)) return;
 			
 			if (CheckIfDataIsNew())
@@ -96,8 +94,6 @@ namespace Tesco.UI
 
 		private void TxtEmail_Leave(object sender, EventArgs e)
 		{
-			_customer = _customerManager.RetrieveDataById<Customer>(_user.CustomerId);
-
 			if (_customer.Email.SequenceEqual(txtEmail.Text)) return;
 			
 			if (CheckIfDataIsNew())
@@ -114,8 +110,6 @@ namespace Tesco.UI
 
 		private void TxtPhoneNumber_Leave(object sender, EventArgs e)
 		{
-			_customer = _customerManager.RetrieveDataById<Customer>(_user.CustomerId);
-
 			if (_customer.PhoneNumber.SequenceEqual(txtPhoneNumber.Text)) return;
 			
 			if (CheckIfDataIsNew())
@@ -158,7 +152,7 @@ namespace Tesco.UI
 					});
 				});
 
-			var frmReceipt = new frmReceipt(transaction.Id);
+			var frmReceipt = new frmReceipt((int) transaction.Id);
 			this.Hide();
 			frmReceipt.Show();
 		}

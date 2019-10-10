@@ -24,7 +24,7 @@ namespace Tesco.DL.Repositories
 			{
 				var propertyName = $"{x.Name}".ToLower();
 
-				if (x.GetValue(data) == null || x.GetValue(data).ToString().Equals("0"))
+				if (x.GetValue(data) == null)
 				{
 					propertyToBeExcludedFields.Add(propertyName);
 				}
@@ -36,7 +36,7 @@ namespace Tesco.DL.Repositories
 			{
 				var propertyName = $"{x.Name}".ToLower();
 				
-				if (x.GetValue(data) == null || x.GetValue(data).ToString().Equals("0"))
+				if (x.GetValue(data) == null)
 				{
 					propertyToBeExcludedValues.Add(propertyName);
 				}
@@ -60,7 +60,7 @@ namespace Tesco.DL.Repositories
 			{
 				var propertyName = $"{x.Name}".ToLower();
 
-				if (x.GetValue(data) == null || x.GetValue(data).ToString().Equals("0"))
+				if (x.GetValue(data) == null)
 				{
 					propertyToBeExcluded.Add(propertyName);
 				}
@@ -79,7 +79,7 @@ namespace Tesco.DL.Repositories
 			{
 				var propertyName = $"{x.Name}".ToLower();
 
-				if (x.GetValue(data) == null || x.GetValue(data).ToString().Equals("0"))
+				if (x.GetValue(data) == null)
 				{
 					propertyToBeExcluded.Add(propertyName);
 				}
