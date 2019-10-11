@@ -16,6 +16,7 @@ namespace Tesco.UI
 		private readonly IOrderManager _orderManager;
 		private readonly ITransactionManager _transactionManager;
 		private readonly IEmailValidationHelper _emailValidationHelper;
+		private readonly IOrderItemStateHelper _orderItemStateHelper;
 		private readonly User _user;
 		private readonly Customer _customer;
 		private int _total = 0;
@@ -27,6 +28,7 @@ namespace Tesco.UI
 			_orderManager = new OrderManager();
 			_transactionManager = new TransactionManager();
 			_emailValidationHelper = new EmailValidationHelper();
+			_orderItemStateHelper = new OrderItemStateHelper();
 			_customer = _customerManager.RetrieveDataById<Customer>((int) user.CustomerId);
 			_user = user;
 			InitializeComponent();
@@ -34,12 +36,10 @@ namespace Tesco.UI
 
 		private void FrmCheckout_Load(object sender, EventArgs e)
 		{
-			txtCashOnHand.Focus();
-			
 			_orderManager.RetrieveAll<Order>()
 				.Where(x => x.CustomerId == _user.CustomerId
-				            && x.IsCurrentOrder == true
-				            && x.IsUnpaid == true)
+							&& x.IsCurrentOrder == true
+							&& x.IsUnpaid == true)
 				.Select(x => x)
 				.ToList()
 				.ForEach(x =>
@@ -62,6 +62,8 @@ namespace Tesco.UI
 			txtFullName.Text = _user.FullName;
 			txtEmail.Text = _customer.Email;
 			txtPhoneNumber.Text = _customer.PhoneNumber;
+			
+			txtCashOnHand.Focus();
 		}
 
 		private void TxtCashOnHand_TextChanged(object sender, EventArgs e)
@@ -135,8 +137,8 @@ namespace Tesco.UI
 
 			_orderManager.RetrieveAll<Order>()
 				.Where(x => x.CustomerId == _user.CustomerId
-				            && x.IsCurrentOrder == true
-				            && x.IsUnpaid == true)
+							&& x.IsCurrentOrder == true
+							&& x.IsUnpaid == true)
 				.ToList()
 				.ForEach(x =>
 				{
@@ -160,9 +162,9 @@ namespace Tesco.UI
 		private void FrmCheckout_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			if (MessageBox.Show("Are you sure you want to close the window?",
-				    "Close Window?",
-				    MessageBoxButtons.OKCancel,
-				    MessageBoxIcon.Question) == DialogResult.OK)
+					"Close Window?",
+					MessageBoxButtons.OKCancel,
+					MessageBoxIcon.Question) == DialogResult.OK)
 			{
 
 				MessageBox.Show("You are signed off.");
@@ -171,36 +173,13 @@ namespace Tesco.UI
 					.ToList()
 					.ForEach(x =>
 					{
-						var currentOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
+						_orderItemStateHelper.ChangeOrderItemStatusToUnfinished(new Order()
 						{
 							CustomerId = _user.CustomerId,
 							ItemId = int.Parse(x.SubItems[0].Text),
 							Quantity = int.Parse(x.SubItems[3].Text),
-							Amount = int.Parse(x.SubItems[4].Text),
-							IsCurrentOrder = true,
-							IsUnpaid = true,
+							Amount = int.Parse(x.SubItems[4].Text)
 						});
-
-						var unfinishedOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
-						{
-							CustomerId = _user.CustomerId,
-							ItemId = int.Parse(x.SubItems[0].Text),
-							IsCurrentOrder = false,
-							IsUnpaid = true
-						});
-
-						currentOrder.IsCurrentOrder = false;
-
-						if (unfinishedOrder != null)
-						{
-							unfinishedOrder.Quantity += currentOrder.Quantity;
-							unfinishedOrder.Amount += currentOrder.Amount;
-
-							currentOrder.Quantity = 0;
-							currentOrder.Amount = 0;
-						}
-						
-						_orderManager.Update(currentOrder);
 					});
 
 				var welcome = new frmWelcome();
@@ -211,7 +190,6 @@ namespace Tesco.UI
 				e.Cancel = true;
 			}
 		}
-
 		
 		
 

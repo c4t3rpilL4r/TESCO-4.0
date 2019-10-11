@@ -16,6 +16,8 @@ namespace Tesco.UI.Helpers
 		
 		public void ChangeOrderItemStatusToUnfinished(Order order)
 		{
+			var inDb = false;
+			
 			var unfinishedOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
 			{
 				CustomerId = order.CustomerId,
@@ -24,18 +26,7 @@ namespace Tesco.UI.Helpers
 				IsUnpaid = true,
 				IsCancelled = false
 			});
-			
-			if (unfinishedOrder != null)
-			{
-				unfinishedOrder.Quantity += order.Quantity;
-				unfinishedOrder.Amount += order.Amount;
 
-				order.Quantity = 0;
-				order.Amount = 0;
-				
-				_orderManager.Update(unfinishedOrder);
-			}
-			
 			var currentOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
 			{
 				CustomerId = order.CustomerId,
@@ -44,17 +35,33 @@ namespace Tesco.UI.Helpers
 				IsUnpaid = true,
 				IsCancelled = false
 			});
+
+			if (unfinishedOrder != null)
+			{
+				unfinishedOrder.Quantity += order.Quantity;
+				unfinishedOrder.Amount += order.Amount;
+
+				order.Quantity = 0;
+				order.Amount = 0;
+
+				inDb = true;
+				
+				_orderManager.Update(unfinishedOrder);
+			}
 			
 			if (currentOrder != null)
 			{
 				currentOrder.Quantity = order.Quantity;
 				currentOrder.Amount = order.Amount;
 				currentOrder.IsCurrentOrder = false;
-				currentOrder.IsCancelled = true;
-				
+				currentOrder.IsCancelled = currentOrder.Quantity == 0;
+
+				inDb = true;
+
 				_orderManager.Update(currentOrder);
 			}
-			else
+
+			if (!inDb)
 			{
 				_orderManager.Add(new Order()
 				{
@@ -67,9 +74,6 @@ namespace Tesco.UI.Helpers
 					IsCancelled = false
 				});
 			}
-			
-			_orderManager.Update(currentOrder);
-
 		}
 	}
 }

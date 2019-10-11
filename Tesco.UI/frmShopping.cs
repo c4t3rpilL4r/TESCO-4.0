@@ -226,21 +226,22 @@ namespace Tesco.UI
 					Quantity = int.Parse(x.SubItems[2].Text),
 					Amount = int.Parse(x.SubItems[3].Text),
 					IsCurrentOrder = true,
-					IsUnpaid = true
+					IsUnpaid = true,
+					IsCancelled = false
 				});
 			});
 
 			if (_orderManager.RetrieveAll<Order>()
-				    .Where(x => x.IsCurrentOrder == false
-				                && x.IsUnpaid == true)
-				    .ToList()
-				    .Count > 0)
+					.Where(x => x.IsCurrentOrder == false
+								&& x.IsUnpaid == true)
+					.ToList()
+					.Count > 0)
 			{
 				if (MessageBox.Show(
-					    "You have an unfinished transaction. Along with your current orders, would you like to proceed to it?",
-					    "Unfinished Transaction",
-					    MessageBoxButtons.YesNo,
-					    MessageBoxIcon.Question) == DialogResult.Yes)
+						"You have an unfinished transaction. Along with your current orders, would you like to proceed to it?",
+						"Unfinished Transaction",
+						MessageBoxButtons.YesNo,
+						MessageBoxIcon.Question) == DialogResult.Yes)
 				{
 					var unfinished = new frmUnfinishedTransaction(_user);
 					this.Hide();
@@ -306,8 +307,8 @@ namespace Tesco.UI
 		{
 			Enumerable.Where(_orderManager.RetrieveAll<Order>(),
 					x => x.CustomerId == _user.CustomerId
-					     && x.IsCurrentOrder == true
-					     && x.IsUnpaid == true)
+						 && x.IsCurrentOrder == true
+						 && x.IsUnpaid == true)
 				.ToList()
 				.ForEach(x =>
 				{

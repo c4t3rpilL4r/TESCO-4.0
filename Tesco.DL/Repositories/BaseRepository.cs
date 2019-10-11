@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using Tesco.DL.Interfaces;
-using Tesco.DL.Models;
 
 namespace Tesco.DL.Repositories
 {

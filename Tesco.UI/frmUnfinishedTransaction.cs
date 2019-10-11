@@ -63,7 +63,8 @@ namespace Tesco.UI
 					CustomerId = _user.CustomerId,
 					ItemId = int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[0].Text),
 					IsCurrentOrder = true,
-					IsUnpaid = true
+					IsUnpaid = true,
+					IsCancelled = false
 				});
 
 				currentOrder.Quantity -= 1;
@@ -80,15 +81,14 @@ namespace Tesco.UI
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[0].Text),
 						IsCurrentOrder = false,
-						IsUnpaid = true
+						IsUnpaid = true,
+						IsCancelled = false
 					});
 
 					unfinishedOrder.Quantity += 1;
 					unfinishedOrder.Amount += amount;
 
 					_orderManager.Update(unfinishedOrder);
-
-					PopulateListViewsWithData();
 				}
 				else
 				{
@@ -99,7 +99,8 @@ namespace Tesco.UI
 						Quantity = 1,
 						Amount = amount,
 						IsCurrentOrder = false,
-						IsUnpaid = true
+						IsUnpaid = true,
+						IsCancelled = false
 					});
 				}
 
@@ -125,7 +126,8 @@ namespace Tesco.UI
 					CustomerId = _user.CustomerId,
 					ItemId = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text),
 					IsCurrentOrder = false,
-					IsUnpaid = true
+					IsUnpaid = true,
+					IsCancelled = false
 				});
 
 				unfinishedOrder.Quantity -= 1;
@@ -143,7 +145,8 @@ namespace Tesco.UI
 						CustomerId = _user.CustomerId,
 						ItemId = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text),
 						IsCurrentOrder = true,
-						IsUnpaid = true
+						IsUnpaid = true,
+						IsCancelled = false
 					});
 
 					currentOrder.Quantity += 1;
@@ -160,7 +163,8 @@ namespace Tesco.UI
 						Quantity = 1,
 						Amount = amount,
 						IsCurrentOrder = true,
-						IsUnpaid = true
+						IsUnpaid = true,
+						IsCancelled = false
 					});
 				}
 
@@ -228,7 +232,8 @@ namespace Tesco.UI
 
 			Enumerable.Where(_orderManager.RetrieveAll<Order>(),
 					x => x.CustomerId == _user.CustomerId
-						 && x.IsUnpaid == true)
+						 && x.IsUnpaid == true
+						 && x.IsCancelled == false)
 				.ToList()
 				.ForEach(x =>
 				{
