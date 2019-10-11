@@ -44,6 +44,8 @@ namespace Tesco.UI
 			if (_user != null)
 			{
 				DisplayCartItems();
+				btnProceedToUnfinishedOrder.Enabled = _orderManager.RetrieveAll<Order>().Count(x => x.CustomerId == _user.CustomerId && x.IsUnpaid == true) > 0;
+				btnProceedToUnfinishedOrder.Visible = _orderManager.RetrieveAll<Order>().Count(x => x.CustomerId == _user.CustomerId && x.IsUnpaid == true) > 0;
 			}
 
 			DisplayItemsInListView();
@@ -225,6 +227,7 @@ namespace Tesco.UI
 					ItemId = int.Parse(x.SubItems[0].Text),
 					Quantity = int.Parse(x.SubItems[2].Text),
 					Amount = int.Parse(x.SubItems[3].Text),
+					OrderDateTime = DateTime.Now,
 					IsCurrentOrder = true,
 					IsUnpaid = true,
 					IsCancelled = false
@@ -255,6 +258,13 @@ namespace Tesco.UI
 			this.Hide();
 			checkOut.Show();
 		
+		}
+		
+		private void btnProceedToUnfinishedOrder_Click(object sender, EventArgs e)
+		{
+			var unfinished = new frmUnfinishedTransaction(_user);
+			this.Hide();
+			unfinished.Show();
 		}
 
 		private void BtnSignOff_Click(object sender, EventArgs e)

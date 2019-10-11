@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.lvItems = new System.Windows.Forms.ListView();
-            this.columnItemId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnItemType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnItemDiscount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnItemPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnItemStocks = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnItemId = new System.Windows.Forms.ColumnHeader();
+            this.columnItemName = new System.Windows.Forms.ColumnHeader();
+            this.columnItemType = new System.Windows.Forms.ColumnHeader();
+            this.columnItemDiscount = new System.Windows.Forms.ColumnHeader();
+            this.columnItemPrice = new System.Windows.Forms.ColumnHeader();
+            this.columnItemStocks = new System.Windows.Forms.ColumnHeader();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnResetSort = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,10 +48,10 @@
             this.btnSubtract = new System.Windows.Forms.Button();
             this.lblItemDetails = new System.Windows.Forms.Label();
             this.lvCart = new System.Windows.Forms.ListView();
-            this.columnCartItemId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnCartItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnCartItemQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnCartItemAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCartItemId = new System.Windows.Forms.ColumnHeader();
+            this.columnCartItemName = new System.Windows.Forms.ColumnHeader();
+            this.columnCartItemQuantity = new System.Windows.Forms.ColumnHeader();
+            this.columnCartItemAmount = new System.Windows.Forms.ColumnHeader();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCheckout = new System.Windows.Forms.Button();
             this.lblTotalAmount = new System.Windows.Forms.Label();
@@ -59,6 +59,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lblUserGreeting = new System.Windows.Forms.Label();
             this.btnSignOff = new System.Windows.Forms.Button();
+            this.btnProceedToUnfinishedOrder = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -67,13 +68,11 @@
             // 
             // lvItems
             // 
-            this.lvItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnItemId,
-            this.columnItemName,
-            this.columnItemType,
-            this.columnItemDiscount,
-            this.columnItemPrice,
-            this.columnItemStocks});
+            this.lvItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[]
+            {
+                this.columnItemId, this.columnItemName, this.columnItemType, this.columnItemDiscount,
+                this.columnItemPrice, this.columnItemStocks
+            });
             this.lvItems.FullRowSelect = true;
             this.lvItems.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvItems.HideSelection = false;
@@ -167,7 +166,8 @@
             this.cboSortByNamePrice.Name = "cboSortByNamePrice";
             this.cboSortByNamePrice.Size = new System.Drawing.Size(141, 22);
             this.cboSortByNamePrice.TabIndex = 1;
-            this.cboSortByNamePrice.SelectedIndexChanged += new System.EventHandler(this.CboSortByNamePrice_SelectedIndexChanged);
+            this.cboSortByNamePrice.SelectedIndexChanged +=
+                new System.EventHandler(this.CboSortByNamePrice_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -244,11 +244,10 @@
             // 
             // lvCart
             // 
-            this.lvCart.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnCartItemId,
-            this.columnCartItemName,
-            this.columnCartItemQuantity,
-            this.columnCartItemAmount});
+            this.lvCart.Columns.AddRange(new System.Windows.Forms.ColumnHeader[]
+            {
+                this.columnCartItemId, this.columnCartItemName, this.columnCartItemQuantity, this.columnCartItemAmount
+            });
             this.lvCart.FullRowSelect = true;
             this.lvCart.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvCart.HideSelection = false;
@@ -356,11 +355,24 @@
             this.btnSignOff.Visible = false;
             this.btnSignOff.Click += new System.EventHandler(this.BtnSignOff_Click);
             // 
+            // btnProceedToUnfinishedOrder
+            // 
+            this.btnProceedToUnfinishedOrder.Enabled = false;
+            this.btnProceedToUnfinishedOrder.Location = new System.Drawing.Point(617, 518);
+            this.btnProceedToUnfinishedOrder.Name = "btnProceedToUnfinishedOrder";
+            this.btnProceedToUnfinishedOrder.Size = new System.Drawing.Size(239, 23);
+            this.btnProceedToUnfinishedOrder.TabIndex = 8;
+            this.btnProceedToUnfinishedOrder.Text = "Proceed to Unfinished Order";
+            this.btnProceedToUnfinishedOrder.UseVisualStyleBackColor = true;
+            this.btnProceedToUnfinishedOrder.Visible = false;
+            this.btnProceedToUnfinishedOrder.Click += new System.EventHandler(this.btnProceedToUnfinishedOrder_Click);
+            // 
             // frmShopping
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 562);
+            this.ClientSize = new System.Drawing.Size(933, 563);
+            this.Controls.Add(this.btnProceedToUnfinishedOrder);
             this.Controls.Add(this.btnSignOff);
             this.Controls.Add(this.lblUserGreeting);
             this.Controls.Add(this.groupBox4);
@@ -368,7 +380,8 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lvItems);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.Name = "frmShopping";
             this.Text = "frmShopping";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShopping_FormClosing);
@@ -381,7 +394,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -417,5 +429,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnSignOff;
         private System.Windows.Forms.Label lblUserGreeting;
+        private System.Windows.Forms.Button btnProceedToUnfinishedOrder;
     }
 }

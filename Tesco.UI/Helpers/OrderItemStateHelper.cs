@@ -1,4 +1,5 @@
-﻿using Tesco.BL.Interfaces;
+﻿using System;
+using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.DL.Models;
 using Tesco.UI.Interfaces;
@@ -16,8 +17,6 @@ namespace Tesco.UI.Helpers
 		
 		public void ChangeOrderItemStatusToUnfinished(Order order)
 		{
-			var inDb = false;
-			
 			var unfinishedOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
 			{
 				CustomerId = order.CustomerId,
@@ -44,8 +43,6 @@ namespace Tesco.UI.Helpers
 				order.Quantity = 0;
 				order.Amount = 0;
 
-				inDb = true;
-				
 				_orderManager.Update(unfinishedOrder);
 			}
 			
@@ -56,12 +53,9 @@ namespace Tesco.UI.Helpers
 				currentOrder.IsCurrentOrder = false;
 				currentOrder.IsCancelled = currentOrder.Quantity == 0;
 
-				inDb = true;
-
 				_orderManager.Update(currentOrder);
 			}
-
-			if (!inDb)
+			else
 			{
 				_orderManager.Add(new Order()
 				{
@@ -69,6 +63,7 @@ namespace Tesco.UI.Helpers
 					ItemId = order.ItemId,
 					Quantity = order.Quantity,
 					Amount = order.Amount,
+					OrderDateTime = DateTime.Now,
 					IsCurrentOrder = false,
 					IsUnpaid = true,
 					IsCancelled = false

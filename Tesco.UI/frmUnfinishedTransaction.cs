@@ -98,6 +98,7 @@ namespace Tesco.UI
 						ItemId = int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[0].Text),
 						Quantity = 1,
 						Amount = amount,
+						OrderDateTime = DateTime.Now,
 						IsCurrentOrder = false,
 						IsUnpaid = true,
 						IsCancelled = false
@@ -111,6 +112,9 @@ namespace Tesco.UI
 			{
 				lvCurrentOrder.SelectedItems[0].Remove();
 			}
+
+			btnMoveToCurrentOrder.Enabled = lvCurrentOrder.Items.Count > 0;
+			btnMoveToUnfinishedTransaction.Enabled = lvUnfinishedOrder.Items.Count > 0;
 		}
 
 		private void BtnMoveToCurrentOrder_Click(object sender, EventArgs e)
@@ -162,6 +166,7 @@ namespace Tesco.UI
 						ItemId = int.Parse(lvUnfinishedOrder.SelectedItems[0].SubItems[0].Text),
 						Quantity = 1,
 						Amount = amount,
+						OrderDateTime = DateTime.Now,
 						IsCurrentOrder = true,
 						IsUnpaid = true,
 						IsCancelled = false
@@ -175,6 +180,10 @@ namespace Tesco.UI
 			{
 				lvUnfinishedOrder.SelectedItems[0].Remove();
 			}
+
+			btnMoveToCurrentOrder.Enabled = lvUnfinishedOrder.Items.Count > 0;
+			btnMoveToUnfinishedTransaction.Enabled = lvCurrentOrder.Items.Count > 0;
+			btnCheckout.Enabled = lvCurrentOrder.Items.Count > 0;
 		}
 		
 		private void btnCheckout_Click(object sender, EventArgs e)
