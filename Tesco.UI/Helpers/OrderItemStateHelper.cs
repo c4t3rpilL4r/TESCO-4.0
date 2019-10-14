@@ -47,11 +47,11 @@ namespace Tesco.UI.Helpers
 			{
 				unfinishedOrder.Quantity += order.Quantity;
 				unfinishedOrder.Amount += order.Amount;
+				
+				_orderManager.Update(unfinishedOrder);
 
 				order.Quantity = 0;
 				order.Amount = 0;
-
-				_orderManager.Update(unfinishedOrder);
 			}
 			
 			if (currentOrder != null)

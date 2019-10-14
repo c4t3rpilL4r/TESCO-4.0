@@ -235,7 +235,8 @@ namespace Tesco.UI
 
 			if (_orderManager.RetrieveAll<Order>()
 					.Where(x => x.IsCurrentOrder == false
-								&& x.IsUnpaid == true)
+								&& x.IsUnpaid == true
+								&& x.IsCancelled == false)
 					.ToList()
 					.Count > 0)
 			{

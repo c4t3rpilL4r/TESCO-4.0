@@ -89,7 +89,7 @@ namespace Tesco.UI
 
                 KeepLastSelectedItemFocusInCurrentOrderListView();
 
-                if (quantity == 0)
+                if (int.Parse(lvCurrentOrder.SelectedItems[0].SubItems[0].Text) == 0)
                 {
                     var currentOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
                     {
@@ -178,21 +178,7 @@ namespace Tesco.UI
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            lvCurrentOrder.Items.Cast<ListViewItem>()
-                .ToList()
-                .ForEach(x =>
-                {
-                    _orderManager.Add(new Order()
-                    {
-                        CustomerId = _user.CustomerId,
-                        ItemId = int.Parse(x.SubItems[0].Text),
-                        Quantity = int.Parse(x.SubItems[2].Text),
-                        Amount = int.Parse(x.SubItems[3].Text),
-                        IsCurrentOrder = true,
-                        IsUnpaid = true,
-                        IsCancelled = false
-                    });
-                });
+            UpdateOrderItem();
 
             var checkout = new frmCheckout(_user);
             this.Hide();
@@ -201,21 +187,7 @@ namespace Tesco.UI
 
         private void btnShopping_Click(object sender, EventArgs e)
         {
-            lvCurrentOrder.Items.Cast<ListViewItem>()
-                .ToList()
-                .ForEach(x =>
-                {
-                    _orderManager.Add(new Order()
-                    {
-                        CustomerId = _user.CustomerId,
-                        ItemId = int.Parse(x.SubItems[0].Text),
-                        Quantity = int.Parse(x.SubItems[2].Text),
-                        Amount = int.Parse(x.SubItems[3].Text),
-                        IsCurrentOrder = true,
-                        IsUnpaid = true,
-                        IsCancelled = false
-                    });
-                });
+            UpdateOrderItem();
 
             var shopping = new frmShopping(_user);
             this.Hide();
@@ -326,6 +298,75 @@ namespace Tesco.UI
             {
                 selectedItem.Selected = true;
             }
+        }
+
+        private void UpdateOrderItem()
+        {
+            lvCurrentOrder.Items.Cast<ListViewItem>()
+                .ToList()
+                .ForEach(x =>
+                {
+                    var currentOrder = new Order()
+                    {
+                        CustomerId = _user.CustomerId,
+                        ItemId = int.Parse(x.SubItems[0].Text),
+                        Quantity = int.Parse(x.SubItems[2].Text),
+                        Amount = int.Parse(x.SubItems[3].Text),
+                        IsCurrentOrder = true,
+                        IsUnpaid = true,
+                        IsCancelled = false
+                    };
+
+                    if (_orderManager.RetrieveAll<Order>()
+                        .Any(y => y.CustomerId == currentOrder.CustomerId
+                            && y.ItemId == currentOrder.ItemId
+                            && y.IsCurrentOrder == true
+                            && y.IsUnpaid == true
+                            && y.IsCancelled == false))
+                    {
+                        _orderManager.Update(currentOrder);
+                    }
+                    else
+                    {
+                        _orderManager.Add(currentOrder);
+                    }
+                });
+            
+            lvUnfinishedOrder.Items.Cast<ListViewItem>()
+                .ToList()
+                .ForEach(x =>
+                {
+                    var unfinishedOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
+                    {
+                        CustomerId = _user.CustomerId,
+                        ItemId = int.Parse(x.SubItems[0].Text),
+                        IsCurrentOrder = false,
+                        IsUnpaid = true,
+                        IsCancelled = false
+                    });
+
+                    if (unfinishedOrder != null)
+                    {
+                        unfinishedOrder.Quantity = int.Parse(x.SubItems[2].Text);
+                        unfinishedOrder.Amount = int.Parse(x.SubItems[3].Text);
+                        unfinishedOrder.IsCancelled = unfinishedOrder.Quantity == 0;
+                        
+                        _orderManager.Update(unfinishedOrder);
+                    }
+                    else
+                    {
+                        _orderManager.Add(new Order()
+                        {
+                            CustomerId = _user.CustomerId,
+                            ItemId = int.Parse(x.SubItems[0].Text),
+                            Quantity = int.Parse(x.SubItems[2].Text),
+                            Amount = int.Parse(x.SubItems[3].Text),
+                            IsCurrentOrder = false,
+                            IsUnpaid = true,
+                            IsCancelled = false
+                        });
+                    }
+                });
         }
     }
 }
