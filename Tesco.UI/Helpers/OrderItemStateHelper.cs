@@ -1,5 +1,4 @@
-﻿using System;
-using Tesco.BL.Interfaces;
+﻿using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.DL.Models;
 using Tesco.UI.Interfaces;
@@ -34,6 +33,15 @@ namespace Tesco.UI.Helpers
 				IsUnpaid = true,
 				IsCancelled = false
 			});
+			
+			var cancelledOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
+			{
+				CustomerId = order.CustomerId,
+				ItemId = order.ItemId,
+				Quantity = 0,
+				Amount = 0,
+				IsCancelled = true
+			});
 
 			if (unfinishedOrder != null)
 			{
@@ -57,17 +65,27 @@ namespace Tesco.UI.Helpers
 			}
 			else
 			{
-				_orderManager.Add(new Order()
+				if (cancelledOrder != null)
 				{
-					CustomerId = order.CustomerId,
-					ItemId = order.ItemId,
-					Quantity = order.Quantity,
-					Amount = order.Amount,
-					OrderDateTime = DateTime.Now,
-					IsCurrentOrder = false,
-					IsUnpaid = true,
-					IsCancelled = false
-				});
+					cancelledOrder.Quantity = order.Quantity;
+					cancelledOrder.Amount = order.Amount;
+					cancelledOrder.IsCancelled = false;
+
+					_orderManager.Update(cancelledOrder);
+				}
+				else
+				{
+					_orderManager.Add(new Order()
+					{
+						CustomerId = order.CustomerId,
+						ItemId = order.ItemId,
+						Quantity = order.Quantity,
+						Amount = order.Amount,
+						IsCurrentOrder = false,
+						IsUnpaid = true,
+						IsCancelled = false
+					});
+				}
 			}
 		}
 	}

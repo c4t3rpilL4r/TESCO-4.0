@@ -227,7 +227,6 @@ namespace Tesco.UI
 					ItemId = int.Parse(x.SubItems[0].Text),
 					Quantity = int.Parse(x.SubItems[2].Text),
 					Amount = int.Parse(x.SubItems[3].Text),
-					OrderDateTime = DateTime.Now,
 					IsCurrentOrder = true,
 					IsUnpaid = true,
 					IsCancelled = false

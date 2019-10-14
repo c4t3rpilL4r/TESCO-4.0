@@ -135,6 +135,8 @@ namespace Tesco.UI
 				TransactDateTime = DateTime.Now
 			};
 
+			var transactionId = _transactionManager.Add(transaction);
+
 			_orderManager.RetrieveAll<Order>()
 				.Where(x => x.CustomerId == _user.CustomerId
 							&& x.IsCurrentOrder == true
@@ -144,7 +146,7 @@ namespace Tesco.UI
 				{
 					_orderManager.Add(new Order()
 					{
-						TransactionId = _transactionManager.Add(transaction),
+						TransactionId = transactionId,
 						CustomerId = _user.CustomerId,
 						ItemId = x.ItemId,
 						Quantity = x.Quantity,
@@ -154,7 +156,7 @@ namespace Tesco.UI
 					});
 				});
 
-			var frmReceipt = new frmReceipt((int) transaction.Id);
+			var frmReceipt = new frmReceipt(transactionId);
 			this.Hide();
 			frmReceipt.Show();
 		}
