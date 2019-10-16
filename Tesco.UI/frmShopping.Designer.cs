@@ -59,7 +59,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lblUserGreeting = new System.Windows.Forms.Label();
             this.btnSignOff = new System.Windows.Forms.Button();
-            this.btnProceedToUnfinishedOrder = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -355,24 +354,11 @@
             this.btnSignOff.Visible = false;
             this.btnSignOff.Click += new System.EventHandler(this.BtnSignOff_Click);
             // 
-            // btnProceedToUnfinishedOrder
-            // 
-            this.btnProceedToUnfinishedOrder.Enabled = false;
-            this.btnProceedToUnfinishedOrder.Location = new System.Drawing.Point(617, 518);
-            this.btnProceedToUnfinishedOrder.Name = "btnProceedToUnfinishedOrder";
-            this.btnProceedToUnfinishedOrder.Size = new System.Drawing.Size(239, 23);
-            this.btnProceedToUnfinishedOrder.TabIndex = 8;
-            this.btnProceedToUnfinishedOrder.Text = "Proceed to Unfinished Order";
-            this.btnProceedToUnfinishedOrder.UseVisualStyleBackColor = true;
-            this.btnProceedToUnfinishedOrder.Visible = false;
-            this.btnProceedToUnfinishedOrder.Click += new System.EventHandler(this.btnProceedToUnfinishedOrder_Click);
-            // 
             // frmShopping
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(933, 563);
-            this.Controls.Add(this.btnProceedToUnfinishedOrder);
             this.Controls.Add(this.btnSignOff);
             this.Controls.Add(this.lblUserGreeting);
             this.Controls.Add(this.groupBox4);
@@ -429,6 +415,5 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnSignOff;
         private System.Windows.Forms.Label lblUserGreeting;
-        private System.Windows.Forms.Button btnProceedToUnfinishedOrder;
     }
 }

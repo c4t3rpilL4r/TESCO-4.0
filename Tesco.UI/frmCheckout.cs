@@ -16,7 +16,6 @@ namespace Tesco.UI
 		private readonly IOrderManager _orderManager;
 		private readonly ITransactionManager _transactionManager;
 		private readonly IEmailValidationHelper _emailValidationHelper;
-		private readonly IOrderItemStateHelper _orderItemStateHelper;
 		private readonly User _user;
 		private readonly Customer _customer;
 		private int _total = 0;
@@ -28,7 +27,6 @@ namespace Tesco.UI
 			_orderManager = new OrderManager();
 			_transactionManager = new TransactionManager();
 			_emailValidationHelper = new EmailValidationHelper();
-			_orderItemStateHelper = new OrderItemStateHelper();
 			_customer = _customerManager.RetrieveDataById<Customer>((int) user.CustomerId);
 			_user = user;
 			InitializeComponent();
@@ -38,7 +36,6 @@ namespace Tesco.UI
 		{
 			_orderManager.RetrieveAll<Order>()
 				.Where(x => x.CustomerId == _user.CustomerId
-							&& x.IsCurrentOrder == true
 							&& x.IsUnpaid == true)
 				.Select(x => x)
 				.ToList()
@@ -130,7 +127,6 @@ namespace Tesco.UI
 		{
 			var transaction = new Transaction()
 			{
-				CustomerId = _user.CustomerId,
 				CashOnHand = int.Parse(txtCashOnHand.Text),
 				TransactDateTime = DateTime.Now
 			};
@@ -139,21 +135,14 @@ namespace Tesco.UI
 
 			_orderManager.RetrieveAll<Order>()
 				.Where(x => x.CustomerId == _user.CustomerId
-							&& x.IsCurrentOrder == true
 							&& x.IsUnpaid == true)
 				.ToList()
 				.ForEach(x =>
 				{
-					_orderManager.Add(new Order()
-					{
-						TransactionId = transactionId,
-						CustomerId = _user.CustomerId,
-						ItemId = x.ItemId,
-						Quantity = x.Quantity,
-						Amount = x.Amount,
-						IsCurrentOrder = false,
-						IsUnpaid = false
-					});
+					x.TransactionId = transactionId;
+					x.IsUnpaid = false;
+
+					_orderManager.Update(x);
 				});
 
 			var frmReceipt = new frmReceipt(transactionId);
@@ -168,21 +157,7 @@ namespace Tesco.UI
 					MessageBoxButtons.OKCancel,
 					MessageBoxIcon.Question) == DialogResult.OK)
 			{
-
 				MessageBox.Show("You are signed off.");
-
-				lvCheckoutItems.Items.Cast<ListViewItem>()
-					.ToList()
-					.ForEach(x =>
-					{
-						_orderItemStateHelper.ChangeOrderItemStatusToUnfinished(new Order()
-						{
-							CustomerId = _user.CustomerId,
-							ItemId = int.Parse(x.SubItems[0].Text),
-							Quantity = int.Parse(x.SubItems[3].Text),
-							Amount = int.Parse(x.SubItems[4].Text)
-						});
-					});
 
 				var welcome = new frmWelcome();
 				welcome.Show();

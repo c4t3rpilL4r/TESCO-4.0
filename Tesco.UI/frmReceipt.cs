@@ -34,7 +34,6 @@ namespace Tesco.UI
 			
 			_orderManager.RetrieveAll<Order>()
 				.Where(x => x.TransactionId == _transactionId)
-				.Select(x => x)
 				.ToList()
 				.ForEach(x =>
 				{

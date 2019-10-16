@@ -34,6 +34,11 @@ namespace Tesco.UI
 
 		private void FrmRegisterLogin_Load(object sender, System.EventArgs e)
 		{
+			if (_pnlRegisterHeight > 0)
+			{
+				txtFirstName.Focus();
+			}
+
 			linkForgotPassword.LinkBehavior = LinkBehavior.NeverUnderline;
 			CheckWhatPanelToDisplay();
 			timer.Start();
@@ -145,15 +150,14 @@ namespace Tesco.UI
 				if (!string.IsNullOrWhiteSpace(txtLoginUsername.Text)
 					&& !string.IsNullOrWhiteSpace(txtLoginPassword.Text))
 				{
-					
-					_user = _userManager.RetrieveDataByWhereCondition(new User()
+					if (_userManager.ValidateUserLogin(new User() { Username = txtLoginUsername.Text, Password = txtLoginPassword.Text }))
 					{
-						Username = txtLoginUsername.Text,
-						Password = txtLoginPassword.Text
-					});
+						_user = _userManager.RetrieveDataByWhereCondition(new User()
+						{
+							Username = txtLoginUsername.Text,
+							Password = txtLoginPassword.Text
+						});
 
-					if (_userManager.ValidateUserLogin(_user))
-					{
 						MessageBox.Show("Login successful.");
 
 						this.Hide();
@@ -175,41 +179,33 @@ namespace Tesco.UI
 						else if (_user.Type.Equals("customer"))
 						{
 							if (_orderManager.RetrieveAll<Order>()
-										.Where(x => x.CustomerId == _user.CustomerId
-										            && x.IsCurrentOrder == false
-										            && x.IsUnpaid == true)
-										.ToList().Count > 0)
+									.Where(x => x.CustomerId == _user.CustomerId 
+												&& x.IsUnpaid == true
+												&& x.IsCancelled == false)
+									.ToList()
+									.Count > 0)
 							{
-								if (MessageBox.Show("You have an unfinished transaction. Would you like to proceed to it?",
+								if (MessageBox.Show("You have an unfinished transaction. Would you like to proceed to checkout?",
 										"Unfinished Transaction",
 										MessageBoxButtons.YesNo,
 										MessageBoxIcon.Question) == DialogResult.Yes)
 								{
-									var unfinishedTransaction = new frmUnfinishedTransaction(_user);
-									unfinishedTransaction.Show();
+									var checkout = new frmCheckout(_user);
+									checkout.Show();
 
 									return;
 								}
 							}
-							else if (_orderManager.RetrieveAll<Order>()
-										.Where(x => x.CustomerId == _user.CustomerId
-										            && x.IsCurrentOrder == true
-										            && x.IsUnpaid == true)
-										.ToList().Count > 0)
-							{
-								var checkout = new frmCheckout(_user);
-								checkout.Show();
-
-								return;
-							}
-
+							
 							var shopping = new frmShopping(_user);
 							shopping.Show();
 						}
 					}
 					else
 					{
-						MessageBox.Show("Login failed.");
+						MessageBox.Show(_userManager.RetrieveDataByWhereCondition(new User() { Username = txtLoginUsername.Text, Password = txtLoginPassword.Text }) == null
+							? "Your credentials are not registered."
+							: "Login failed. Please check details.");
 					}
 				}
 				else
@@ -236,16 +232,15 @@ namespace Tesco.UI
 		private void FrmRegisterLogin_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			if (MessageBox.Show("Are you sure you want to close the window?",
-				    "Close Window?",
-				    MessageBoxButtons.OKCancel,
-				    MessageBoxIcon.Question) == DialogResult.OK)
+					"Close Window?",
+					MessageBoxButtons.OKCancel,
+					MessageBoxIcon.Question) == DialogResult.OK)
 			{
 				if (_user != null)
 				{
 					_orderManager.RetrieveAll<Order>()
 						.Where(x => x.CustomerId == _user.CustomerId
-						            && x.IsCurrentOrder == true
-						            && x.IsUnpaid == true)
+									&& x.IsUnpaid == true)
 						.ToList()
 						.ForEach(x =>
 						{
@@ -256,7 +251,6 @@ namespace Tesco.UI
 									{
 										CustomerId = x.CustomerId,
 										ItemId = x.ItemId,
-										IsCurrentOrder = false,
 										IsUnpaid = true
 									});
 
@@ -270,8 +264,6 @@ namespace Tesco.UI
 									x.Quantity = 0;
 									x.Amount = 0;
 								}
-
-								x.IsCurrentOrder = false;
 
 								_orderManager.Update(x);
 							}

@@ -14,23 +14,19 @@ namespace Tesco.UI
 	{
 		private readonly IItemManager _itemManager;
 		private readonly IOrderManager _orderManager;
-		private readonly IUserManager _userManager;
 		private readonly IItemTypeHelper _itemTypeHandler;
 		private readonly IListViewItemHelper _listViewItemHelper;
 		private readonly IItemSortHelper _itemSortHandler;
-		private readonly IOrderItemStateHelper _orderItemStateHelper;
 		private readonly User _user;
-		private int _lastSelectedItemInItemsListView = 0;
+		private int _lastSelectedItemInItemsListView = 0, _lastSelectedItemInCartListView = 0;
 
 		public frmShopping(User user = null)
 		{
 			_itemManager = new ItemManager();
 			_orderManager = new OrderManager();
-			_userManager = new UserManager();
 			_itemTypeHandler = new ItemTypeHelper();
 			_listViewItemHelper = new ListViewItemHelper();
 			_itemSortHandler = new ItemSortHelper();
-			_orderItemStateHelper = new OrderItemStateHelper();
 			_user = user;
 			InitializeComponent();
 		}
@@ -44,27 +40,17 @@ namespace Tesco.UI
 			if (_user != null)
 			{
 				DisplayCartItems();
-				btnProceedToUnfinishedOrder.Enabled = _orderManager.RetrieveAll<Order>().Count(x => x.CustomerId == _user.CustomerId && x.IsUnpaid == true) > 0;
-				btnProceedToUnfinishedOrder.Visible = _orderManager.RetrieveAll<Order>().Count(x => x.CustomerId == _user.CustomerId && x.IsUnpaid == true) > 0;
 			}
+
+			btnCheckout.Enabled = lvCart.Items.Count > 0;
 
 			DisplayItemsInListView();
 			PopulateComboBoxes();
 		}
 
-		private void CboSortByNamePrice_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			GetSelectedIndexOfItemsListView();
-			DisplayItemsInListView();
-			KeepSelectedItemFocusInItemsListView();
-		}
+		private void CboSortByNamePrice_SelectedIndexChanged(object sender, EventArgs e) => RunMethodsForComboboxes();
 
-		private void CboSortByType_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			GetSelectedIndexOfItemsListView();
-			DisplayItemsInListView();
-			KeepSelectedItemFocusInItemsListView();
-		}
+		private void CboSortByType_SelectedIndexChanged(object sender, EventArgs e) => RunMethodsForComboboxes();
 
 		private void BtnResetSort_Click(object sender, EventArgs e)
 		{
@@ -138,36 +124,60 @@ namespace Tesco.UI
 
 					if (item.Stocks > 0)
 					{
-						var cartItem = lvCart.Items.Cast<ListViewItem>().FirstOrDefault(x => item.Id == int.Parse(x.SubItems[0].Text));
-
-						if (cartItem != null)
+						var amount = int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lblQuantity.Text);
+						
+						var cancelledOrder = _orderManager.RetrieveDataByWhereCondition(new Order()
 						{
-							cartItem.SubItems[2].Text = (int.Parse(cartItem.SubItems[2].Text) + int.Parse(lblQuantity.Text)).ToString();
-							cartItem.SubItems[3].Text = (int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lblQuantity.Text) + int.Parse(cartItem.SubItems[3].Text)).ToString();
+							CustomerId = _user.CustomerId,
+							ItemId = item.Id,
+							IsCancelled = true
+						});
+						
+						var order = _orderManager.RetrieveDataByWhereCondition(new Order()
+						{
+							CustomerId = _user.CustomerId,
+							ItemId = item.Id,
+							IsUnpaid = true,
+							IsCancelled = false
+						});
+
+						if (cancelledOrder != null)
+						{
+							cancelledOrder.Quantity += int.Parse(lblQuantity.Text);
+							cancelledOrder.Amount += amount;
+							cancelledOrder.IsCancelled = false;
+
+							_orderManager.Update(cancelledOrder);
+						}
+						else if (order != null)
+						{
+							order.Quantity += int.Parse(lblQuantity.Text);
+							order.Amount += amount;
+
+							_orderManager.Update(order);
 						}
 						else
 						{
-							var row = new ListViewItem(lvItems.SelectedItems[0].Text);
-							row.SubItems.Add(lvItems.SelectedItems[0].SubItems[1].Text);
-							row.SubItems.Add(lblQuantity.Text);
-							row.SubItems.Add((int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lblQuantity.Text)).ToString());
-
-							lvCart.Items.Add(row);
+							_orderManager.Add(new Order()
+							{
+								CustomerId = _user.CustomerId,
+								ItemId = item.Id,
+								Quantity = int.Parse(lblQuantity.Text),
+								Amount = amount,
+								IsUnpaid = true,
+								IsCancelled = false
+							});
 						}
 
 						item.Stocks -= int.Parse(lblQuantity.Text);
 						_itemManager.Update(item);
-
+						
 						btnAdd.Enabled = item.Stocks > 0;
 						btnAddToCart.Enabled = item.Stocks > 0;
 
-						lblTotalAmount.Text = CalculateTotalAmountOfItemsInCart().ToString();
-						lblQuantity.Text = "1";
-
-						btnCheckout.Enabled = lvCart.Items.Count > 0;
-
 						GetSelectedIndexOfItemsListView();
 						DisplayItemsInListView();
+						DisplayCartItems();
 						KeepSelectedItemFocusInItemsListView();
 					}
 				}
@@ -187,6 +197,8 @@ namespace Tesco.UI
 			}
 
 			KeepSelectedItemFocusInItemsListView();
+
+			btnCheckout.Enabled = lvCart.Items.Count > 0;
 		}
 
 		private void LvCart_SelectedIndexChanged(object sender, EventArgs e) => btnRemoveOrder.Enabled = lvCart.SelectedItems.Count > 0;
@@ -200,80 +212,58 @@ namespace Tesco.UI
 				_itemManager.Update(item);
 				
 				var amount = int.Parse(lvCart.SelectedItems[0].SubItems[3].Text) / int.Parse(lvCart.SelectedItems[0].SubItems[2].Text);
-				
-				lvCart.SelectedItems[0].SubItems[2].Text = (int.Parse(lvCart.SelectedItems[0].SubItems[2].Text) - 1).ToString();
-				lvCart.SelectedItems[0].SubItems[3].Text = (int.Parse(lvCart.SelectedItems[0].SubItems[2].Text) * amount).ToString();
+
+				var cartItem = _orderManager.RetrieveDataByWhereCondition(new Order()
+				{
+					CustomerId = _user.CustomerId,
+					ItemId = int.Parse(lvCart.SelectedItems[0].SubItems[0].Text),
+					IsUnpaid = true
+				});
+
+				cartItem.Quantity -= 1;
+				cartItem.Amount -= amount;
+
+				_orderManager.Update(cartItem);
 
 				btnRemoveOrder.Enabled = int.Parse(lvCart.SelectedItems[0].SubItems[2].Text) > 0;
-				
-				if (int.Parse(lvCart.SelectedItems[0].SubItems[2].Text) == 0)
-				{
-					lvCart.SelectedItems[0].Remove();
-				}
 			}
 
+			GetSelectedIndexOfCartListView();
 			DisplayItemsInListView();
+			DisplayCartItems();
+			KeepSelectedItemFocusInCartListView();
+			
+			if (int.Parse(lvCart.SelectedItems[0].SubItems[2].Text) == 0)
+			{
+				var order = _orderManager.RetrieveDataByWhereCondition(new Order()
+				{
+					CustomerId = _user.CustomerId,
+					ItemId = int.Parse(lvCart.SelectedItems[0].SubItems[0].Text),
+					IsUnpaid = true,
+					IsCancelled = false
+				});
+
+				order.IsCancelled = true;
+
+				_orderManager.Update(order);
+				
+				lvCart.SelectedItems[0].Remove();
+			}
 
 			lblTotalAmount.Text = CalculateTotalAmountOfItemsInCart().ToString();
+			btnCheckout.Enabled = lvCart.Items.Count > 0;
 		}
 
 		private void BtnCheckout_Click(object sender, EventArgs e)
 		{
-			lvCart.Items.Cast<ListViewItem>().ToList().ForEach(x =>
-			{
-				_orderManager.Add(new Order()
-				{
-					CustomerId = _user.CustomerId,
-					ItemId = int.Parse(x.SubItems[0].Text),
-					Quantity = int.Parse(x.SubItems[2].Text),
-					Amount = int.Parse(x.SubItems[3].Text),
-					IsCurrentOrder = true,
-					IsUnpaid = true,
-					IsCancelled = false
-				});
-			});
-
-			if (_orderManager.RetrieveAll<Order>()
-					.Where(x => x.IsCurrentOrder == false
-								&& x.IsUnpaid == true
-								&& x.IsCancelled == false)
-					.ToList()
-					.Count > 0)
-			{
-				if (MessageBox.Show(
-						"You have an unfinished transaction. Along with your current orders, would you like to proceed to it?",
-						"Unfinished Transaction",
-						MessageBoxButtons.YesNo,
-						MessageBoxIcon.Question) == DialogResult.Yes)
-				{
-					var unfinished = new frmUnfinishedTransaction(_user);
-					this.Hide();
-					unfinished.Show();
-
-					return;
-				}
-			}
-
 			var checkOut = new frmCheckout(_user);
 			this.Hide();
 			checkOut.Show();
 		
 		}
-		
-		private void btnProceedToUnfinishedOrder_Click(object sender, EventArgs e)
-		{
-			var unfinished = new frmUnfinishedTransaction(_user);
-			this.Hide();
-			unfinished.Show();
-		}
 
 		private void BtnSignOff_Click(object sender, EventArgs e)
 		{
-			if (lvCart.Items.Count > 0)
-			{
-				AddCartItemsToDatabaseUponSignOff();
-			}
-			
 			MessageBox.Show("You have signed off.");
 			
 			var welcome = new frmWelcome();
@@ -288,11 +278,6 @@ namespace Tesco.UI
 					MessageBoxButtons.OKCancel,
 					MessageBoxIcon.Question) == DialogResult.OK)
 			{
-				if (lvCart.Items.Count > 0)
-				{
-					AddCartItemsToDatabaseUponSignOff();
-				}
-
 				var welcome = new frmWelcome();
 				welcome.Show();
 			}
@@ -315,20 +300,28 @@ namespace Tesco.UI
 
 		private void DisplayCartItems()
 		{
+			lvCart.Items.Clear();
+			
 			Enumerable.Where(_orderManager.RetrieveAll<Order>(),
 					x => x.CustomerId == _user.CustomerId
-						 && x.IsCurrentOrder == true
-						 && x.IsUnpaid == true)
+						 && x.IsUnpaid == true
+						 && x.IsCancelled == false)
 				.ToList()
 				.ForEach(x =>
 				{
-					var row = new ListViewItem(x.ItemId.ToString());
-					row.SubItems.Add(_itemManager.RetrieveDataById<Item>((int) x.ItemId).Name);
-					row.SubItems.Add(x.Quantity.ToString());
-					row.SubItems.Add(x.Amount.ToString());
-					
-					lvCart.Items.Add(row);
+					if (!lvCart.Items.Cast<ListViewItem>()
+						.Any(y => x.ItemId == int.Parse(y.SubItems[0].Text)))
+					{
+						var row = new ListViewItem(x.ItemId.ToString());
+						row.SubItems.Add(_itemManager.RetrieveDataById<Item>((int)x.ItemId).Name);
+						row.SubItems.Add(x.Quantity.ToString());
+						row.SubItems.Add(x.Amount.ToString());
+
+						lvCart.Items.Add(row);
+					}
 				});
+			
+			lblTotalAmount.Text = CalculateTotalAmountOfItemsInCart().ToString();
 		}
 
 		private void PopulateComboBoxes()
@@ -358,6 +351,14 @@ namespace Tesco.UI
 			}
 		}
 
+		private void GetSelectedIndexOfCartListView()
+		{
+			if (lvCart.SelectedItems.Count > 0)
+			{
+				_lastSelectedItemInCartListView = int.Parse(lvCart.SelectedItems[0].Text);
+			}
+		}
+
 		private void KeepSelectedItemFocusInItemsListView()
 		{
 			var selectedItem = lvItems.Items.Cast<ListViewItem>().FirstOrDefault(x => int.Parse(x.SubItems[0].Text) == _lastSelectedItemInItemsListView);
@@ -368,20 +369,23 @@ namespace Tesco.UI
 			}
 		}
 
-		private int CalculateTotalAmountOfItemsInCart() => lvCart.Items.Cast<ListViewItem>().Sum(x => int.Parse(x.SubItems[3].Text));
-		
-		private void AddCartItemsToDatabaseUponSignOff()
+		private void KeepSelectedItemFocusInCartListView()
 		{
-			lvCart.Items.Cast<ListViewItem>().ToList().ForEach(x =>
+			var selectedItem = lvCart.Items.Cast<ListViewItem>().FirstOrDefault(x => int.Parse(x.SubItems[0].Text) == _lastSelectedItemInCartListView);
+
+			if (selectedItem != null)
 			{
-				_orderItemStateHelper.ChangeOrderItemStatusToUnfinished(new Order()
-				{
-					CustomerId = _user.CustomerId,
-					ItemId = int.Parse(x.SubItems[0].Text),
-					Quantity = int.Parse(x.SubItems[2].Text),
-					Amount = int.Parse(x.SubItems[3].Text)
-				});
-			});
+				selectedItem.Selected = true;
+			}
 		}
+
+		private void RunMethodsForComboboxes()
+		{
+			GetSelectedIndexOfItemsListView();
+			DisplayItemsInListView();
+			KeepSelectedItemFocusInItemsListView();
+		}
+
+		private int CalculateTotalAmountOfItemsInCart() => lvCart.Items.Cast<ListViewItem>().Sum(x => int.Parse(x.SubItems[3].Text));
 	}
 }
