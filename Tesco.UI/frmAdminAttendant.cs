@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
-using Tesco.DL.Models;
+using Tesco.BL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
 using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
@@ -34,7 +34,7 @@ namespace Tesco.UI
 
 		private void BtnDeleteAttendant_Click(object sender, System.EventArgs e)
 		{
-			MessageBox.Show(_userManager.Delete(int.Parse(lvAttendants.SelectedItems[0].SubItems[0].Text)) > 0
+			MessageBox.Show(_userManager.Delete<User>(int.Parse(lvAttendants.SelectedItems[0].SubItems[0].Text)) > 0
 							? _resource.DeleteAttendantSuccessful
 							: _resource.DeleteAttendantFailed);
 

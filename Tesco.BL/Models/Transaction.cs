@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Tesco.DL.Models
+namespace Tesco.BL.Models
 {
 	public class Transaction
 	{

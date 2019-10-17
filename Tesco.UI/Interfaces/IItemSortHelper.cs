@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Tesco.DL.Models;
+using Tesco.BL.Models;
 
 namespace Tesco.UI.Interfaces
 {

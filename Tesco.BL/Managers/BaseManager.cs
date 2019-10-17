@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Tesco.BL.Interfaces;
 using Tesco.DL.Interfaces;
 
@@ -11,7 +10,12 @@ namespace Tesco.BL.Managers
 
 		public int Add<T>(T data) => Repository.Add(data);
 
-		//public int Delete(int id) => Repository.Delete(id: id);
+		public int Delete<T>(int id)
+		{
+			var data = RetrieveDataById<T>(id);
+
+			return Update<T>(data);
+		}
 
 		public List<T> RetrieveAll<T>() => Repository.RetrieveAll<T>();
 

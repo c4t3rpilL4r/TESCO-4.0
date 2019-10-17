@@ -1,5 +1,4 @@
 ﻿using Tesco.DL.Interfaces;
-using Tesco.DL.Models;
 
 namespace Tesco.DL.Repositories
 {
@@ -7,6 +6,6 @@ namespace Tesco.DL.Repositories
 	{
 		protected override string TableName => "Users";
 
-		public bool ValidateUserLogin(User user) => RetrieveDataByWhereCondition(user) != null;
+		public bool ValidateUserLogin<T>(T user) => RetrieveDataByWhereCondition(user) != null;
 	}
 }

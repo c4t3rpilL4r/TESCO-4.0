@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using Tesco.BL.Interfaces;
+﻿using Tesco.BL.Interfaces;
 using Tesco.DL.Interfaces;
-using Tesco.DL.Models;
 using Tesco.DL.Repositories;
 
 namespace Tesco.BL.Managers

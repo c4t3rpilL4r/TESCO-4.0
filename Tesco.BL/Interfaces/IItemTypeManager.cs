@@ -1,6 +1,6 @@
 ﻿namespace Tesco.BL.Interfaces
 {
-	public interface IItemTypeManager : IManager, IDeleteHandler
+	public interface IItemTypeManager : IManager
 	{
 	}
 }

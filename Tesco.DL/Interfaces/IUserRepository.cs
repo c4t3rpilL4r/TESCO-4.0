@@ -1,9 +1,7 @@
-﻿using Tesco.DL.Models;
-
-namespace Tesco.DL.Interfaces
+﻿namespace Tesco.DL.Interfaces
 {
 	public interface IUserRepository : IRepository
 	{
-		bool ValidateUserLogin(User user);
+		bool ValidateUserLogin<T>(T user);
 	}
 }

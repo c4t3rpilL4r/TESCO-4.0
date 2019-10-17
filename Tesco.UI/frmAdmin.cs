@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Tesco.DL.Models;
+using Tesco.BL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
 

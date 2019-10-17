@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
-using Tesco.DL.Models;
+using Tesco.BL.Models;
 using Tesco.UI.Interfaces;
 
 namespace Tesco.UI.Helpers

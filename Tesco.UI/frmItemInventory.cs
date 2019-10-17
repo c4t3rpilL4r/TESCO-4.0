@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
-using Tesco.DL.Models;
+using Tesco.BL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
 using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
@@ -81,7 +81,8 @@ namespace Tesco.UI
 				ItemTypeId = _itemTypeManager.RetrieveDataByWhereCondition(new ItemType() { TypeDescription = lvItems.SelectedItems[0].SubItems[2].Text }).Id,
 				Discount = int.Parse(lvItems.SelectedItems[0].SubItems[3].Text),
 				Price = int.Parse(lvItems.SelectedItems[0].SubItems[4].Text),
-				Stocks = int.Parse(lvItems.SelectedItems[0].SubItems[5].Text)
+				Stocks = int.Parse(lvItems.SelectedItems[0].SubItems[5].Text),
+				IsDeleted = false
 			};
 
 			var frmModifyItem = new frmModifyItem(item, _user, "Edit")
@@ -95,7 +96,7 @@ namespace Tesco.UI
 
 		private void BtnDeleteItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show(_itemManager.Delete(int.Parse(lvItems.SelectedItems[0].SubItems[0].Text)) > 0
+			MessageBox.Show(_itemManager.Delete<Item>(int.Parse(lvItems.SelectedItems[0].SubItems[0].Text)) > 0
 				? _resource.DeleteItemSuccessful
 				: _resource.DeleteItemFailed);
 
@@ -135,7 +136,7 @@ namespace Tesco.UI
 			});
 			
 			MessageBox.Show(!cboSortByType.Items.Contains(cboType.SelectedText)
-				? item.Id != null && _itemTypeManager.Delete((int) item.Id) > 0
+				? item.Id != null && _itemTypeManager.Delete<ItemType>((int) item.Id) > 0
 					? _resource.DeleteItemTypeSuccessful
 					: _resource.DeleteItemTypeFailed
 				: _resource.ItemTypeDeletionNotification);
