@@ -6,6 +6,7 @@ using Tesco.BL.Interfaces;
 using Tesco.DL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
+using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
 
 
 namespace Tesco.UI
@@ -14,6 +15,7 @@ namespace Tesco.UI
 	{
 		private readonly IItemManager _itemManager;
 		private readonly IOrderManager _orderManager;
+		private readonly ICloseWindowHelper _closeWindowHelper;
 		private readonly IItemTypeHelper _itemTypeHandler;
 		private readonly IListViewItemHelper _listViewItemHelper;
 		private readonly IItemSortHelper _itemSortHandler;
@@ -24,6 +26,7 @@ namespace Tesco.UI
 		{
 			_itemManager = new ItemManager();
 			_orderManager = new OrderManager();
+			_closeWindowHelper = new CloseWindowHelper();
 			_itemTypeHandler = new ItemTypeHelper();
 			_listViewItemHelper = new ListViewItemHelper();
 			_itemSortHandler = new ItemSortHelper();
@@ -35,7 +38,9 @@ namespace Tesco.UI
 		{
 			btnSignOff.Enabled = _user != null;
 			btnSignOff.Visible = _user != null;
-			lblUserGreeting.Text = $"Hello, {(_user != null ? _user.FullName : "Guest")}.";
+			lblUserGreeting.Text = _user != null
+				? string.Format(_resource.UserGreeting, _user.FullName)
+				: _resource.GuestGreeting;
 
 			if (_user != null)
 			{
@@ -48,9 +53,9 @@ namespace Tesco.UI
 			PopulateComboBoxes();
 		}
 
-		private void CboSortByNamePrice_SelectedIndexChanged(object sender, EventArgs e) => RunMethodsForComboboxes();
+		private void CboSortByNamePrice_SelectedIndexChanged(object sender, EventArgs e) => RunMethodsForCombobox();
 
-		private void CboSortByType_SelectedIndexChanged(object sender, EventArgs e) => RunMethodsForComboboxes();
+		private void CboSortByType_SelectedIndexChanged(object sender, EventArgs e) => RunMethodsForCombobox();
 
 		private void BtnResetSort_Click(object sender, EventArgs e)
 		{
@@ -68,11 +73,11 @@ namespace Tesco.UI
 
 			if (int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0)
 			{
-				lblQuantity.Text = "0";
+				lblQuantity.Text = Resources.Strings.en_US.Resources.QuantityLabelDefaultValue;
 			}
 			else
 			{
-				MessageBox.Show(@"Sorry. Item is out of stocks.");
+				MessageBox.Show(Resources.Strings.en_US.Resources.OutOfStocks);
 			}
 
 			btnAdd.Enabled = int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0;
@@ -183,7 +188,7 @@ namespace Tesco.UI
 				}
 				else
 				{
-					MessageBox.Show("Please register/login to continue.");
+					MessageBox.Show(_resource.LoginNotification);
 				
 					var login = new frmRegisterLogin(0, _user);
 					this.Hide();
@@ -192,8 +197,7 @@ namespace Tesco.UI
 			}
 			else
 			{
-				MessageBox.Show(@"Please make sure that the item you want to add to cart is seen and is highlighted.
-								Try pressing the Reset Sort Order button to show all the items.");
+				MessageBox.Show(_resource.SelectItemNotification);
 			}
 
 			KeepSelectedItemFocusInItemsListView();
@@ -259,33 +263,18 @@ namespace Tesco.UI
 			var checkOut = new frmCheckout(_user);
 			this.Hide();
 			checkOut.Show();
-		
 		}
 
 		private void BtnSignOff_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("You have signed off.");
+			MessageBox.Show(_resource.SignOffNotification);
 			
 			var welcome = new frmWelcome();
 			this.Hide();
 			welcome.Show();
 		}
 		
-		private void frmShopping_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			if (MessageBox.Show("Are you sure you want to close the window?",
-					"Close Window?",
-					MessageBoxButtons.OKCancel,
-					MessageBoxIcon.Question) == DialogResult.OK)
-			{
-				var welcome = new frmWelcome();
-				welcome.Show();
-			}
-			else
-			{
-				e.Cancel = true;
-			}
-		}
+		private void frmShopping_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
 
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->
@@ -309,8 +298,7 @@ namespace Tesco.UI
 				.ToList()
 				.ForEach(x =>
 				{
-					if (!lvCart.Items.Cast<ListViewItem>()
-						.Any(y => x.ItemId == int.Parse(y.SubItems[0].Text)))
+					if (lvCart.Items.Cast<ListViewItem>().All(y => x.ItemId != int.Parse(y.SubItems[0].Text)))
 					{
 						var row = new ListViewItem(x.ItemId.ToString());
 						row.SubItems.Add(_itemManager.RetrieveDataById<Item>((int)x.ItemId).Name);
@@ -327,21 +315,22 @@ namespace Tesco.UI
 		private void PopulateComboBoxes()
 		{
 			// Combobox of Name-Price Sort
-			cboSortByNamePrice.Items.Add("By Name: Ascending");
-			cboSortByNamePrice.Items.Add("By Name: Descending");
-			cboSortByNamePrice.Items.Add("By Price: Small to Big");
-			cboSortByNamePrice.Items.Add("By Price: Big to Small");
+			cboSortByNamePrice.Items.Add(_resource.SortByAscending);
+			cboSortByNamePrice.Items.Add(_resource.SortByDescending);
+			cboSortByNamePrice.Items.Add(_resource.SortBySmallToBig);
+			cboSortByNamePrice.Items.Add(_resource.SortByBigToSmall);
 
 			// Combobox of Type Sort
 			_itemTypeHandler.ItemTypeValuesHandler().ForEach(x => cboSortByType.Items.Add(x));
 		}
 
 		private void DisplayItemDetailsInLabel() => lblItemDetails.Text =
-			$"Name:      {lvItems.SelectedItems[0].SubItems[1].Text}\n" +
-			$"Type:      {lvItems.SelectedItems[0].SubItems[2].Text}\n" +
-			$"Price:     {lvItems.SelectedItems[0].SubItems[4].Text}\n" +
-			$"Quantity:  {(int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0 ? lblQuantity.Text : "")}\n" +
-			$"Total:     {(int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lblQuantity.Text)).ToString()}";
+			string.Format(_resource.ItemDetailsLabelText,
+				lvItems.SelectedItems[0].SubItems[1].Text,
+				lvItems.SelectedItems[0].SubItems[2].Text,
+				lvItems.SelectedItems[0].SubItems[4].Text,
+				int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0 ? lblQuantity.Text : string.Empty,
+				(int.Parse(lvItems.SelectedItems[0].SubItems[4].Text) * int.Parse(lblQuantity.Text)).ToString());
 
 		private void GetSelectedIndexOfItemsListView()
 		{
@@ -379,7 +368,7 @@ namespace Tesco.UI
 			}
 		}
 
-		private void RunMethodsForComboboxes()
+		private void RunMethodsForCombobox()
 		{
 			GetSelectedIndexOfItemsListView();
 			DisplayItemsInListView();

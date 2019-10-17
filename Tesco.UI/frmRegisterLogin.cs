@@ -7,15 +7,16 @@ using Tesco.BL.Managers;
 using Tesco.DL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
+using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
 
 namespace Tesco.UI
 {
 	public partial class frmRegisterLogin : Form
 	{
 		private readonly ICustomerManager _customerManager;
-		private readonly IItemManager _itemManager;
 		private readonly IOrderManager _orderManager;
 		private readonly IUserManager _userManager;
+		private readonly ICloseWindowHelper _closeWindowHelper;
 		private readonly IEmailValidationHelper _emailValidationHelper;
 		private User _user;
 		private int _pnlRegisterHeight;
@@ -23,9 +24,9 @@ namespace Tesco.UI
 		public frmRegisterLogin(int pnlRegisterHeight, User user = null)
 		{
 			_customerManager = new CustomerManager();
-			_itemManager = new ItemManager();
 			_orderManager = new OrderManager();
 			_userManager = new UserManager();
+			_closeWindowHelper = new CloseWindowHelper();
 			_emailValidationHelper = new EmailValidationHelper();
 			_user = user;
 			_pnlRegisterHeight = pnlRegisterHeight;
@@ -50,8 +51,8 @@ namespace Tesco.UI
 			{
 				if (_customerManager.RetrieveDataByWhereCondition(new Customer() { Email = txtEmail.Text }) == null) return;
 
-				if (MessageBox.Show("Email is already used. Do you want to proceed to login instead?",
-						"Proceed to login?",
+				if (MessageBox.Show(_resource.UsedEmailNotification,
+						_resource.UsedEmailTitle,
 						MessageBoxButtons.YesNo,
 						MessageBoxIcon.Question) == DialogResult.Yes)
 				{
@@ -60,14 +61,14 @@ namespace Tesco.UI
 				}
 				else
 				{
-					MessageBox.Show("Please change the email. Thank you.");
+					MessageBox.Show(_resource.ChangeEmailNotification);
 				}
 			}
 			else
 			{
 				if (_pnlRegisterHeight != 0)
 				{
-					MessageBox.Show("Not a valid email.");
+					MessageBox.Show(_resource.InvalidEmailNotification);
 				}
 			}
 
@@ -118,7 +119,7 @@ namespace Tesco.UI
 						
 					if (_userManager.Add(_user) > 0)
 					{
-						MessageBox.Show("Registration successful.");
+						MessageBox.Show(_resource.RegistrationSuccessful);
 
 						var shopping = new frmShopping(_user);
 						this.Hide();
@@ -126,12 +127,12 @@ namespace Tesco.UI
 					}
 					else
 					{
-						MessageBox.Show("Registration failed. Please check details again if all are correct.");
+						MessageBox.Show(_resource.RegistrationFailed);
 					}
 				}
 				else
 				{
-					MessageBox.Show("Please fill up all the details. Thank you");
+					MessageBox.Show(_resource.EmptyTextboxNotification);
 				}
 			}
 			else
@@ -158,20 +159,20 @@ namespace Tesco.UI
 							Password = txtLoginPassword.Text
 						});
 
-						MessageBox.Show("Login successful.");
+						MessageBox.Show(_resource.LoginSuccessful);
 
 						this.Hide();
 
 						if (_user.Type.Equals("admin"))
 						{
-							MessageBox.Show($"Hello, Admin {_user.FullName}.");
+							MessageBox.Show(string.Format(_resource.AdminGreeting, _user.FullName));
 							
 							var admin = new frmAdmin(_user);
 							admin.Show();
 						}
 						else if (_user.Type.Equals("attendant"))
 						{
-							MessageBox.Show($"Hello, Attendant {_user.FullName}.");
+							MessageBox.Show(string.Format(_resource.AttendantGreeting, _user.FullName));
 							
 							var attendant = new frmAttendant(_user);
 							attendant.Show();
@@ -179,24 +180,22 @@ namespace Tesco.UI
 						else if (_user.Type.Equals("customer"))
 						{
 							if (_orderManager.RetrieveAll<Order>()
-									.Where(x => x.CustomerId == _user.CustomerId 
+									.Where(x => x.CustomerId == _user.CustomerId
 												&& x.IsUnpaid == true
 												&& x.IsCancelled == false)
 									.ToList()
-									.Count > 0)
-							{
-								if (MessageBox.Show("You have an unfinished transaction. Would you like to proceed to checkout?",
-										"Unfinished Transaction",
+									.Count > 0
+									&& MessageBox.Show(_resource.UnfinishedTransactionNotification,
+										_resource.UnfinishedTransactionTitle,
 										MessageBoxButtons.YesNo,
 										MessageBoxIcon.Question) == DialogResult.Yes)
-								{
-									var checkout = new frmCheckout(_user);
-									checkout.Show();
+							{
+								var checkout = new frmCheckout(_user);
+								checkout.Show();
 
-									return;
-								}
+								return;
 							}
-							
+
 							var shopping = new frmShopping(_user);
 							shopping.Show();
 						}
@@ -204,13 +203,13 @@ namespace Tesco.UI
 					else
 					{
 						MessageBox.Show(_userManager.RetrieveDataByWhereCondition(new User() { Username = txtLoginUsername.Text, Password = txtLoginPassword.Text }) == null
-							? "Your credentials are not registered."
-							: "Login failed. Please check details.");
+							? _resource.UnregisteredLoginCredentials
+							: _resource.LoginFailed);
 					}
 				}
 				else
 				{
-					MessageBox.Show("Please fill up all the details. Thank you");
+					MessageBox.Show(_resource.EmptyTextboxNotification);
 				}
 			}
 			else
@@ -229,65 +228,7 @@ namespace Tesco.UI
 			this.Refresh();
 		}
 
-		private void FrmRegisterLogin_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			if (MessageBox.Show("Are you sure you want to close the window?",
-					"Close Window?",
-					MessageBoxButtons.OKCancel,
-					MessageBoxIcon.Question) == DialogResult.OK)
-			{
-				if (_user != null)
-				{
-					_orderManager.RetrieveAll<Order>()
-						.Where(x => x.CustomerId == _user.CustomerId
-									&& x.IsUnpaid == true)
-						.ToList()
-						.ForEach(x =>
-						{
-							if (_user != null)
-							{
-								var unfinishedOrder = _orderManager.RetrieveDataByWhereCondition<Order>(
-									new Order()
-									{
-										CustomerId = x.CustomerId,
-										ItemId = x.ItemId,
-										IsUnpaid = true
-									});
-
-								if (unfinishedOrder != null)
-								{
-									unfinishedOrder.Quantity += x.Quantity;
-									unfinishedOrder.Amount += x.Amount;
-
-									_orderManager.Update(unfinishedOrder);
-
-									x.Quantity = 0;
-									x.Amount = 0;
-								}
-
-								_orderManager.Update(x);
-							}
-							else
-							{
-								var item = _itemManager.RetrieveDataById<Item>((int) x.ItemId);
-
-								item.Stocks += x.Quantity;
-
-								_itemManager.Update(item);
-
-								_orderManager.Update(x);
-							}
-						});
-				}
-				
-				var welcome = new frmWelcome();
-				welcome.Show();
-			}
-			else
-			{
-				e.Cancel = true;
-			}
-		}
+		private void FrmRegisterLogin_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
 
 
 
@@ -298,7 +239,9 @@ namespace Tesco.UI
 			pnlRegister.Enabled = _pnlRegisterHeight > 0;
 			pnlRegister.Visible = _pnlRegisterHeight > 0;
 
-			this.Text = _pnlRegisterHeight > 0 ? "TESCO Registration" : "TESCO Log In";
+			this.Text = _pnlRegisterHeight > 0
+				? _resource.RegistrationTitle
+				: _resource.LoginTitle;
 			timer.Start();
 
 			ClearTextBoxes();

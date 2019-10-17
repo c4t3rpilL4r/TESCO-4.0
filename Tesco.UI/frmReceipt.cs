@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.DL.Models;
+using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
 
 namespace Tesco.UI
 {
@@ -39,11 +40,12 @@ namespace Tesco.UI
 				{
 					var item = _itemManager.RetrieveDataById<Item>((int) x.ItemId);
 					
-					var transactionDetails = $"{item.Name} @{x.Amount / x.Quantity} x{x.Quantity}{Environment.NewLine}";
-					lblTransactionDetails.Text += transactionDetails;
+					lblTransactionDetails.Text += string.Format(_resource.TransactionDetails,
+						item.Name,
+						x.Amount / x.Quantity,
+						x.Quantity);
 
-					var transactionAmount = $"{x.Amount}{Environment.NewLine}";
-					lblTransactionAmount.Text += transactionAmount;
+					lblTransactionAmount.Text += string.Format(_resource.TransactionAmount, x.Amount);
 
 					total += (int) x.Amount;
 				});

@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Windows.Forms;
 using Tesco.DL.Models;
+using Tesco.UI.Helpers;
+using Tesco.UI.Interfaces;
+using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
 
 namespace Tesco.UI
 {
 	public partial class frmAttendant : Form
 	{
+		private readonly ICloseWindowHelper _closeWindowHelper;
 		private readonly User _user;
 
 		public frmAttendant(User user)
 		{
+			_closeWindowHelper = new CloseWindowHelper();
 			_user = user;
 			InitializeComponent();
 		}
@@ -30,19 +35,13 @@ namespace Tesco.UI
 
 		private void BtnLogoff_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show(@"Log off successfully.");
+			MessageBox.Show(_resource.LogoffSuccessful);
 
 			var welcome = new frmWelcome();
 			this.Hide();
 			welcome.Show();
 		}
 
-		private void frmAttendant_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			e.Cancel = MessageBox.Show("Are you sure you want to close the window?",
-				           "Close Window?",
-				           MessageBoxButtons.OKCancel,
-				           MessageBoxIcon.Question) == DialogResult.Cancel;
-		}
+		private void frmAttendant_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
 	}
 }

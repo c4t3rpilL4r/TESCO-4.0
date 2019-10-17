@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.DL.Models;
+using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
 
 namespace Tesco.UI
 {
@@ -30,9 +31,9 @@ namespace Tesco.UI
 							Type = "attendant",
 							IsDeleted = false
 						}) > 0
-							? "Store attendant adding successful."
-							: "Store attendant adding failed."
-					: "Please fill up all the details. Thank you.");
+							? _resource.AddAttendantSuccessful
+							: _resource.AddAttendantFailed
+					: _resource.EmptyTextboxNotification);
 
 			var frmAdminAttendant = new frmAdminAttendant();
 			this.Hide();

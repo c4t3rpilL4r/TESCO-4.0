@@ -5,6 +5,7 @@ using Tesco.BL.Managers;
 using Tesco.DL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
+using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
 
 namespace Tesco.UI
 {
@@ -12,6 +13,7 @@ namespace Tesco.UI
 	{
 		private readonly IItemManager _itemManager;
 		private readonly IItemTypeManager _itemTypeManager;
+		private readonly ICloseWindowHelper _closeWindowHelper;
 		private readonly IItemTypeHelper _itemTypeHelper;
 		private readonly IItemSortHelper _itemSortHelper;
 		private readonly User _user;
@@ -20,6 +22,7 @@ namespace Tesco.UI
 		{
 			_itemManager = new ItemManager();
 			_itemTypeManager = new ItemTypeManager();
+			_closeWindowHelper = new CloseWindowHelper();
 			_itemTypeHelper = new ItemTypeHelper();
 			_itemSortHelper = new ItemSortHelper();
 			_user = user;
@@ -63,7 +66,7 @@ namespace Tesco.UI
 			var item = new Item();
 			var frmModifyItem = new frmModifyItem(item, _user, "Add")
 			{
-				Text = "TESCO Add Item"
+				Text = _resource.AddItemTitle
 			};
 
 			this.Hide();
@@ -83,7 +86,7 @@ namespace Tesco.UI
 
 			var frmModifyItem = new frmModifyItem(item, _user, "Edit")
 			{
-				Text = "TESCO Edit Item"
+				Text = _resource.EditItemTitle
 			};
 
 			this.Hide();
@@ -93,8 +96,8 @@ namespace Tesco.UI
 		private void BtnDeleteItem_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show(_itemManager.Delete(int.Parse(lvItems.SelectedItems[0].SubItems[0].Text)) > 0
-				? "Item deletion successful."
-				: "Item deletion failed.");
+				? _resource.DeleteItemSuccessful
+				: _resource.DeleteItemFailed);
 
 			DisplayItemsInListView();
 		}
@@ -103,7 +106,7 @@ namespace Tesco.UI
 		{
 			if (_itemTypeManager.RetrieveDataByWhereCondition(new ItemType() { TypeDescription = txtType.Text }) == null) return;
 			
-			MessageBox.Show($@"Item type: {txtType.Text} is registered already.");
+			MessageBox.Show(string.Format(_resource.RegisteredItemNotification, txtType.Text));
 			txtType.Text = string.Empty;
 			txtType.Focus();
 		}
@@ -116,9 +119,9 @@ namespace Tesco.UI
 					TypeDescription = txtType.Text,
 					IsDeleted = false
 				}) != 0
-					? "Item type adding successful."
-					: "Item type adding failed."
-				: "Please enter a valid item type.");
+					? _resource.AddItemTypeSuccessful
+					: _resource.AddItemTypeFailed
+				: _resource.ValidItemTypeNotification);
 
 			DisplayItemsInListView();
 		}
@@ -133,23 +136,17 @@ namespace Tesco.UI
 			
 			MessageBox.Show(!cboSortByType.Items.Contains(cboType.SelectedText)
 				? item.Id != null && _itemTypeManager.Delete((int) item.Id) > 0
-					? "Item type deletion successful."
-					: "Item type deletion failed."
-				: "Cannot delete. Item type has item stocks.");
+					? _resource.DeleteItemTypeSuccessful
+					: _resource.DeleteItemTypeFailed
+				: _resource.ItemTypeDeletionNotification);
 
 			DisplayItemsInListView();
 		}
 
 		private void CboType_SelectedIndexChanged(object sender, EventArgs e) => btnDeleteItemType.Enabled = cboType.SelectedIndex != -1;
 
-		private void frmItemInventory_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			e.Cancel = MessageBox.Show("Are you sure you want to close the window?",
-				           "Close Window?",
-				           MessageBoxButtons.OKCancel,
-				           MessageBoxIcon.Question) == DialogResult.Cancel;
-		}
-		
+		private void frmItemInventory_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
+
 
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->
@@ -169,10 +166,10 @@ namespace Tesco.UI
 			cboType.Items.Clear();
 
 			// Combobox of Name-Price Sort
-			cboSortByNamePrice.Items.Add("By Name: Ascending");
-			cboSortByNamePrice.Items.Add("By Name: Descending");
-			cboSortByNamePrice.Items.Add("By Price: Small to Big");
-			cboSortByNamePrice.Items.Add("By Price: Big to Small");
+			cboSortByNamePrice.Items.Add(_resource.SortByAscending);
+			cboSortByNamePrice.Items.Add(_resource.SortByDescending);
+			cboSortByNamePrice.Items.Add(_resource.SortBySmallToBig);
+			cboSortByNamePrice.Items.Add(_resource.SortByBigToSmall);
 
 			// Combobox of Type Sort
 			_itemTypeHelper.ItemTypeValuesHandler().ForEach(x => cboSortByType.Items.Add(x));

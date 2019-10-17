@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tesco.UI.Resources.Strings {
+namespace Tesco.UI.Resources.Strings.en_US {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace Tesco.UI.Resources.Strings {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -39,7 +39,7 @@ namespace Tesco.UI.Resources.Strings {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tesco.UI.Resources.Strings.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tesco.UI.Resources.Strings.en_US.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,605 @@ namespace Tesco.UI.Resources.Strings {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store attendant adding failed..
+        /// </summary>
+        internal static string AddAttendantFailed {
+            get {
+                return ResourceManager.GetString("AddAttendantFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store attendant adding successful..
+        /// </summary>
+        internal static string AddAttendantSuccessful {
+            get {
+                return ResourceManager.GetString("AddAttendantSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item adding failed..
+        /// </summary>
+        internal static string AddItemFailed {
+            get {
+                return ResourceManager.GetString("AddItemFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item adding successful..
+        /// </summary>
+        internal static string AddItemSuccessful {
+            get {
+                return ResourceManager.GetString("AddItemSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TESCO Add Item.
+        /// </summary>
+        internal static string AddItemTitle {
+            get {
+                return ResourceManager.GetString("AddItemTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item type adding failed..
+        /// </summary>
+        internal static string AddItemTypeFailed {
+            get {
+                return ResourceManager.GetString("AddItemTypeFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item type adding successful..
+        /// </summary>
+        internal static string AddItemTypeSuccessful {
+            get {
+                return ResourceManager.GetString("AddItemTypeSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello, Admin {0}..
+        /// </summary>
+        internal static string AdminGreeting {
+            get {
+                return ResourceManager.GetString("AdminGreeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello, Attendant {0}..
+        /// </summary>
+        internal static string AttendantGreeting {
+            get {
+                return ResourceManager.GetString("AttendantGreeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please change the email. Thank you..
+        /// </summary>
+        internal static string ChangeEmailNotification {
+            get {
+                return ResourceManager.GetString("ChangeEmailNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please check your email for instructions on how to reset your password..
+        /// </summary>
+        internal static string CheckEmailNotification {
+            get {
+                return ResourceManager.GetString("CheckEmailNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to close the window?.
+        /// </summary>
+        internal static string CloseWindowNotification {
+            get {
+                return ResourceManager.GetString("CloseWindowNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close Window.
+        /// </summary>
+        internal static string CloseWindowTitle {
+            get {
+                return ResourceManager.GetString("CloseWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to update your data from:
+        ///FullName:      {0}
+        ///Email:         {1}
+        ///PhoneNumber:   {2}
+        ///
+        ///into:
+        ///
+        ///FullName:      {3}
+        ///Email:         {4}
+        ///PhoneNumber:   {5}.
+        /// </summary>
+        internal static string CustomerUpdateDataNotification {
+            get {
+                return ResourceManager.GetString("CustomerUpdateDataNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attendant deletion failed..
+        /// </summary>
+        internal static string DeleteAttendantFailed {
+            get {
+                return ResourceManager.GetString("DeleteAttendantFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attendant deletion successful..
+        /// </summary>
+        internal static string DeleteAttendantSuccessful {
+            get {
+                return ResourceManager.GetString("DeleteAttendantSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item deletion failed..
+        /// </summary>
+        internal static string DeleteItemFailed {
+            get {
+                return ResourceManager.GetString("DeleteItemFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item deletion successful..
+        /// </summary>
+        internal static string DeleteItemSuccessful {
+            get {
+                return ResourceManager.GetString("DeleteItemSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item type deletion failed..
+        /// </summary>
+        internal static string DeleteItemTypeFailed {
+            get {
+                return ResourceManager.GetString("DeleteItemTypeFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item type deletion successful..
+        /// </summary>
+        internal static string DeleteItemTypeSuccessful {
+            get {
+                return ResourceManager.GetString("DeleteItemTypeSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item editing failed..
+        /// </summary>
+        internal static string EditItemFailed {
+            get {
+                return ResourceManager.GetString("EditItemFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item editing successful..
+        /// </summary>
+        internal static string EditItemSuccessful {
+            get {
+                return ResourceManager.GetString("EditItemSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TESCO Edit Item.
+        /// </summary>
+        internal static string EditItemTitle {
+            get {
+                return ResourceManager.GetString("EditItemTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill up all the details. Thank you..
+        /// </summary>
+        internal static string EmptyTextboxNotification {
+            get {
+                return ResourceManager.GetString("EmptyTextboxNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello, Guest..
+        /// </summary>
+        internal static string GuestGreeting {
+            get {
+                return ResourceManager.GetString("GuestGreeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not a valid email..
+        /// </summary>
+        internal static string InvalidEmailNotification {
+            get {
+                return ResourceManager.GetString("InvalidEmailNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:      {0}
+        ///Type:      {1}
+        ///Price:     {2}
+        ///Quantity:  {3}
+        ///Total:     {4}.
+        /// </summary>
+        internal static string ItemDetailsLabelText {
+            get {
+                return ResourceManager.GetString("ItemDetailsLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot delete. Item type has item stocks..
+        /// </summary>
+        internal static string ItemTypeDeletionNotification {
+            get {
+                return ResourceManager.GetString("ItemTypeDeletionNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Another item has the same name:
+        ///Name:       {0}
+        ///Type:       {1}
+        ///Discount:   {2}
+        ///Price:      {3}
+        ///Stocks:     {4}
+        ///
+        ///Is this the same item?.
+        /// </summary>
+        internal static string ItemUpdateDataNotification {
+            get {
+                return ResourceManager.GetString("ItemUpdateDataNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verify item..
+        /// </summary>
+        internal static string ItemVerification {
+            get {
+                return ResourceManager.GetString("ItemVerification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login credentials edit failed..
+        /// </summary>
+        internal static string LoginCredentialsEditFailed {
+            get {
+                return ResourceManager.GetString("LoginCredentialsEditFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login credentials edit successful..
+        /// </summary>
+        internal static string LoginCredentialsEditSuccessful {
+            get {
+                return ResourceManager.GetString("LoginCredentialsEditSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login failed. Please check details..
+        /// </summary>
+        internal static string LoginFailed {
+            get {
+                return ResourceManager.GetString("LoginFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please register/login to continue..
+        /// </summary>
+        internal static string LoginNotification {
+            get {
+                return ResourceManager.GetString("LoginNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login successful..
+        /// </summary>
+        internal static string LoginSuccessful {
+            get {
+                return ResourceManager.GetString("LoginSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TESCO Log In.
+        /// </summary>
+        internal static string LoginTitle {
+            get {
+                return ResourceManager.GetString("LoginTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log off successfully..
+        /// </summary>
+        internal static string LogoffSuccessful {
+            get {
+                return ResourceManager.GetString("LogoffSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No changes were made..
+        /// </summary>
+        internal static string NoChangesNotification {
+            get {
+                return ResourceManager.GetString("NoChangesNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry. Item is out of stocks..
+        /// </summary>
+        internal static string OutOfStocks {
+            get {
+                return ResourceManager.GetString("OutOfStocks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0.
+        /// </summary>
+        internal static string QuantityLabelDefaultValue {
+            get {
+                return ResourceManager.GetString("QuantityLabelDefaultValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item type: {0} is registered already..
+        /// </summary>
+        internal static string RegisteredItemNotification {
+            get {
+                return ResourceManager.GetString("RegisteredItemNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration failed. Please check details again if all are correct..
+        /// </summary>
+        internal static string RegistrationFailed {
+            get {
+                return ResourceManager.GetString("RegistrationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration successful..
+        /// </summary>
+        internal static string RegistrationSuccessful {
+            get {
+                return ResourceManager.GetString("RegistrationSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TESCO Registration.
+        /// </summary>
+        internal static string RegistrationTitle {
+            get {
+                return ResourceManager.GetString("RegistrationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please make sure that the item you want to add to cart is seen and is highlighted.
+        ///You can try pressing the Reset Sort Order button to show all the items if sorting has been done..
+        /// </summary>
+        internal static string SelectItemNotification {
+            get {
+                return ResourceManager.GetString("SelectItemNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have signed off..
+        /// </summary>
+        internal static string SignOffNotification {
+            get {
+                return ResourceManager.GetString("SignOffNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Name: Ascending.
+        /// </summary>
+        internal static string SortByAscending {
+            get {
+                return ResourceManager.GetString("SortByAscending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Price: Big to Small.
+        /// </summary>
+        internal static string SortByBigToSmall {
+            get {
+                return ResourceManager.GetString("SortByBigToSmall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Name: Descending.
+        /// </summary>
+        internal static string SortByDescending {
+            get {
+                return ResourceManager.GetString("SortByDescending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Price: Small to Big.
+        /// </summary>
+        internal static string SortBySmallToBig {
+            get {
+                return ResourceManager.GetString("SortBySmallToBig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}
+        ///.
+        /// </summary>
+        internal static string TransactionAmount {
+            get {
+                return ResourceManager.GetString("TransactionAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} @{1} x{2}
+        ///.
+        /// </summary>
+        internal static string TransactionDetails {
+            get {
+                return ResourceManager.GetString("TransactionDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have an unfinished transaction. Would you like to proceed to checkout?.
+        /// </summary>
+        internal static string UnfinishedTransactionNotification {
+            get {
+                return ResourceManager.GetString("UnfinishedTransactionNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unfinished Transaction.
+        /// </summary>
+        internal static string UnfinishedTransactionTitle {
+            get {
+                return ResourceManager.GetString("UnfinishedTransactionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your credentials are not registered..
+        /// </summary>
+        internal static string UnregisteredLoginCredentials {
+            get {
+                return ResourceManager.GetString("UnregisteredLoginCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Data.
+        /// </summary>
+        internal static string UpdateDataTitle {
+            get {
+                return ResourceManager.GetString("UpdateDataTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update failed..
+        /// </summary>
+        internal static string UpdateFailed {
+            get {
+                return ResourceManager.GetString("UpdateFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update successful..
+        /// </summary>
+        internal static string UpdateSuccessful {
+            get {
+                return ResourceManager.GetString("UpdateSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email is already used. Do you want to proceed to login instead?.
+        /// </summary>
+        internal static string UsedEmailNotification {
+            get {
+                return ResourceManager.GetString("UsedEmailNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceed to Login.
+        /// </summary>
+        internal static string UsedEmailTitle {
+            get {
+                return ResourceManager.GetString("UsedEmailTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item name is taken. Please change item name..
+        /// </summary>
+        internal static string UsedItemNameNotification {
+            get {
+                return ResourceManager.GetString("UsedItemNameNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username is taken..
+        /// </summary>
+        internal static string UsedUsernameNotification {
+            get {
+                return ResourceManager.GetString("UsedUsernameNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello, {0}..
+        /// </summary>
+        internal static string UserGreeting {
+            get {
+                return ResourceManager.GetString("UserGreeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid item type..
+        /// </summary>
+        internal static string ValidItemTypeNotification {
+            get {
+                return ResourceManager.GetString("ValidItemTypeNotification", resourceCulture);
             }
         }
     }

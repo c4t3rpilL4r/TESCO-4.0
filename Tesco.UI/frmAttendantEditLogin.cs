@@ -3,17 +3,22 @@ using System.Linq;
 using System.Windows.Forms;
 using Tesco.BL.Managers;
 using Tesco.DL.Models;
+using Tesco.UI.Helpers;
+using Tesco.UI.Interfaces;
+using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
 
 namespace Tesco.UI
 {
 	public partial class frmAttendantEditLogin : Form
 	{
-		private UserManager _userManager;
+		private readonly UserManager _userManager;
+		private readonly ICloseWindowHelper _closeWindowHelper; 
 		private User _user;
 
 		public frmAttendantEditLogin(User user)
 		{
 			_userManager = new UserManager();
+			_closeWindowHelper = new CloseWindowHelper();
 			_user = user;
 			InitializeComponent();
 		}
@@ -37,8 +42,8 @@ namespace Tesco.UI
 						_user.Password = txtPassword.Text;
 
 						MessageBox.Show(_userManager.Update(_user) != 0
-							? "Login credentials edit successful."
-							: "Login credentials edit failed.");
+							? _resource.LoginCredentialsEditSuccessful
+							: _resource.LoginCredentialsEditFailed);
 
 						var frmAttendant = new frmAttendant(_user);
 						this.Hide();
@@ -46,31 +51,23 @@ namespace Tesco.UI
 					}
 					else
 					{
-						MessageBox.Show(@"Username is taken.");
+						MessageBox.Show(_resource.UsedUsernameNotification);
 
 						txtUsername.Focus();
 					}
 				}
 				else
 				{
-					MessageBox.Show(@"No changes were made.");
+					MessageBox.Show(_resource.NoChangesNotification);
 					this.Hide();
 				}
 			}
 			else
 			{
-				MessageBox.Show(@"Please fill up the details. Thank you.");
+				MessageBox.Show(_resource.EmptyTextboxNotification);
 			}
-			
-			
 		}
 
-		private void frmAttendantEditLogin_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			e.Cancel = MessageBox.Show("Are you sure you want to close the window?",
-				"Close Window?",
-				MessageBoxButtons.OKCancel,
-				MessageBoxIcon.Question) == DialogResult.Cancel;
-		}
+		private void frmAttendantEditLogin_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
 	}
 }

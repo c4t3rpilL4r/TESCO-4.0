@@ -1,21 +1,335 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <root>
-    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <xsd:element name="root" msdata:IsDataSet="true">
-            
-        </xsd:element>
-    </xsd:schema>
-    <resheader name="resmimetype">
-        <value>text/microsoft-resx</value>
-    </resheader>
-    <resheader name="version">
-        <value>1.3</value>
-    </resheader>
-    <resheader name="reader">
-        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-    </resheader>
-    <resheader name="writer">
-        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-    </resheader>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OutOfStocks" xml:space="preserve">
+    <value>Sorry. Item is out of stocks.</value>
+  </data>
+  <data name="QuantityLabelDefaultValue" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="UserGreeting" xml:space="preserve">
+    <value>Hello, {0}.</value>
+  </data>
+  <data name="GuestGreeting" xml:space="preserve">
+    <value>Hello, Guest.</value>
+  </data>
+  <data name="LoginNotification" xml:space="preserve">
+    <value>Please register/login to continue.</value>
+  </data>
+  <data name="SelectItemNotification" xml:space="preserve">
+    <value>Please make sure that the item you want to add to cart is seen and is highlighted.
+You can try pressing the Reset Sort Order button to show all the items if sorting has been done.</value>
+  </data>
+  <data name="CloseWindowNotification" xml:space="preserve">
+    <value>Are you sure you want to close the window?</value>
+  </data>
+  <data name="CloseWindowTitle" xml:space="preserve">
+    <value>Close Window</value>
+  </data>
+  <data name="SignOffNotification" xml:space="preserve">
+    <value>You have signed off.</value>
+  </data>
+  <data name="ItemDetailsLabelText" xml:space="preserve">
+    <value>Name:      {0}
+Type:      {1}
+Price:     {2}
+Quantity:  {3}
+Total:     {4}</value>
+  </data>
+  <data name="SortByAscending" xml:space="preserve">
+    <value>By Name: Ascending</value>
+  </data>
+  <data name="SortByBigToSmall" xml:space="preserve">
+    <value>By Price: Big to Small</value>
+  </data>
+  <data name="SortByDescending" xml:space="preserve">
+    <value>By Name: Descending</value>
+  </data>
+  <data name="SortBySmallToBig" xml:space="preserve">
+    <value>By Price: Small to Big</value>
+  </data>
+  <data name="UpdateFailed" xml:space="preserve">
+    <value>Update failed.</value>
+  </data>
+  <data name="UpdateSuccessful" xml:space="preserve">
+    <value>Update successful.</value>
+  </data>
+  <data name="AddAttendantFailed" xml:space="preserve">
+    <value>Store attendant adding failed.</value>
+  </data>
+  <data name="AddAttendantSuccessful" xml:space="preserve">
+    <value>Store attendant adding successful.</value>
+  </data>
+  <data name="AddItemFailed" xml:space="preserve">
+    <value>Item adding failed.</value>
+  </data>
+  <data name="AddItemSuccessful" xml:space="preserve">
+    <value>Item adding successful.</value>
+  </data>
+  <data name="AddItemTitle" xml:space="preserve">
+    <value>TESCO Add Item</value>
+  </data>
+  <data name="AddItemTypeFailed" xml:space="preserve">
+    <value>Item type adding failed.</value>
+  </data>
+  <data name="AddItemTypeSuccessful" xml:space="preserve">
+    <value>Item type adding successful.</value>
+  </data>
+  <data name="AdminGreeting" xml:space="preserve">
+    <value>Hello, Admin {0}.</value>
+  </data>
+  <data name="AttendantGreeting" xml:space="preserve">
+    <value>Hello, Attendant {0}.</value>
+  </data>
+  <data name="ChangeEmailNotification" xml:space="preserve">
+    <value>Please change the email. Thank you.</value>
+  </data>
+  <data name="CheckEmailNotification" xml:space="preserve">
+    <value>Please check your email for instructions on how to reset your password.</value>
+  </data>
+  <data name="CustomerUpdateDataNotification" xml:space="preserve">
+    <value>Do you want to update your data from:
+FullName:      {0}
+Email:         {1}
+PhoneNumber:   {2}
+
+into:
+
+FullName:      {3}
+Email:         {4}
+PhoneNumber:   {5}</value>
+  </data>
+  <data name="DeleteAttendantFailed" xml:space="preserve">
+    <value>Attendant deletion failed.</value>
+  </data>
+  <data name="DeleteAttendantSuccessful" xml:space="preserve">
+    <value>Attendant deletion successful.</value>
+  </data>
+  <data name="DeleteItemFailed" xml:space="preserve">
+    <value>Item deletion failed.</value>
+  </data>
+  <data name="DeleteItemSuccessful" xml:space="preserve">
+    <value>Item deletion successful.</value>
+  </data>
+  <data name="DeleteItemTypeFailed" xml:space="preserve">
+    <value>Item type deletion failed.</value>
+  </data>
+  <data name="DeleteItemTypeSuccessful" xml:space="preserve">
+    <value>Item type deletion successful.</value>
+  </data>
+  <data name="EditItemFailed" xml:space="preserve">
+    <value>Item editing failed.</value>
+  </data>
+  <data name="EditItemSuccessful" xml:space="preserve">
+    <value>Item editing successful.</value>
+  </data>
+  <data name="EditItemTitle" xml:space="preserve">
+    <value>TESCO Edit Item</value>
+  </data>
+  <data name="EmptyTextboxNotification" xml:space="preserve">
+    <value>Please fill up all the details. Thank you.</value>
+  </data>
+  <data name="InvalidEmailNotification" xml:space="preserve">
+    <value>Not a valid email.</value>
+  </data>
+  <data name="ItemTypeDeletionNotification" xml:space="preserve">
+    <value>Cannot delete. Item type has item stocks.</value>
+  </data>
+  <data name="ItemUpdateDataNotification" xml:space="preserve">
+    <value>Another item has the same name:
+Name:       {0}
+Type:       {1}
+Discount:   {2}
+Price:      {3}
+Stocks:     {4}
+
+Is this the same item?</value>
+  </data>
+  <data name="ItemVerification" xml:space="preserve">
+    <value>Verify item.</value>
+  </data>
+  <data name="LoginCredentialsEditFailed" xml:space="preserve">
+    <value>Login credentials edit failed.</value>
+  </data>
+  <data name="LoginCredentialsEditSuccessful" xml:space="preserve">
+    <value>Login credentials edit successful.</value>
+  </data>
+  <data name="LoginFailed" xml:space="preserve">
+    <value>Login failed. Please check details.</value>
+  </data>
+  <data name="LoginSuccessful" xml:space="preserve">
+    <value>Login successful.</value>
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>TESCO Log In</value>
+  </data>
+  <data name="LogoffSuccessful" xml:space="preserve">
+    <value>Log off successfully.</value>
+  </data>
+  <data name="NoChangesNotification" xml:space="preserve">
+    <value>No changes were made.</value>
+  </data>
+  <data name="RegisteredItemNotification" xml:space="preserve">
+    <value>Item type: {0} is registered already.</value>
+  </data>
+  <data name="RegistrationFailed" xml:space="preserve">
+    <value>Registration failed. Please check details again if all are correct.</value>
+  </data>
+  <data name="RegistrationSuccessful" xml:space="preserve">
+    <value>Registration successful.</value>
+  </data>
+  <data name="RegistrationTitle" xml:space="preserve">
+    <value>TESCO Registration</value>
+  </data>
+  <data name="TransactionAmount" xml:space="preserve">
+    <value>{0}
+</value>
+  </data>
+  <data name="TransactionDetails" xml:space="preserve">
+    <value>{0} @{1} x{2}
+</value>
+  </data>
+  <data name="UnfinishedTransactionNotification" xml:space="preserve">
+    <value>You have an unfinished transaction. Would you like to proceed to checkout?</value>
+  </data>
+  <data name="UnfinishedTransactionTitle" xml:space="preserve">
+    <value>Unfinished Transaction</value>
+  </data>
+  <data name="UnregisteredLoginCredentials" xml:space="preserve">
+    <value>Your credentials are not registered.</value>
+  </data>
+  <data name="UpdateDataTitle" xml:space="preserve">
+    <value>Update Data</value>
+  </data>
+  <data name="UsedEmailNotification" xml:space="preserve">
+    <value>Email is already used. Do you want to proceed to login instead?</value>
+  </data>
+  <data name="UsedEmailTitle" xml:space="preserve">
+    <value>Proceed to Login</value>
+  </data>
+  <data name="UsedItemNameNotification" xml:space="preserve">
+    <value>Item name is taken. Please change item name.</value>
+  </data>
+  <data name="UsedUsernameNotification" xml:space="preserve">
+    <value>Username is taken.</value>
+  </data>
+  <data name="ValidItemTypeNotification" xml:space="preserve">
+    <value>Please enter a valid item type.</value>
+  </data>
 </root>

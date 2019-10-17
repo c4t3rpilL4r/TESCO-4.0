@@ -5,6 +5,8 @@ using Tesco.BL.Managers;
 using Tesco.DL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
+using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+
 
 namespace Tesco.UI
 {
@@ -13,6 +15,7 @@ namespace Tesco.UI
 		private readonly IItemManager _itemManager;
 		private readonly IItemTypeManager _itemTypeManager;
 		private readonly IItemUserManager _itemUserManager;
+		private readonly ICloseWindowHelper _closeWindowHelper;
 		private readonly IItemTypeHelper _itemTypeHelper;
 		private readonly Item _item;
 		private readonly User _user;
@@ -23,6 +26,7 @@ namespace Tesco.UI
 			_itemManager = new ItemManager();
 			_itemTypeManager = new ItemTypeManager();
 			_itemUserManager = new ItemUserManager();
+			_closeWindowHelper = new CloseWindowHelper();
 			_itemTypeHelper = new ItemTypeHelper();
 			_item = item;
 			_user = user;
@@ -51,16 +55,16 @@ namespace Tesco.UI
 			var checkItem = _itemManager.RetrieveDataByWhereCondition(new Item() { Name = txtItemName.Text});
 
 			if (checkItem == null) return;
-			if (MessageBox.Show("Another item has the same name:\n" +
-			                          $"Name:\t\t{checkItem.Name}\n" +
-			                          $"Type:\t\t{_itemTypeManager.RetrieveDataById<ItemType>((int) checkItem.ItemTypeId).TypeDescription}\n" +
-			                          $"Discount:\t{checkItem.Discount}\n" +
-			                          $"Price:\t\t{checkItem.Price}\n" +
-			                          $"Stocks:\t\t{checkItem.Stocks}\n\n" +
-			                          $"Is this the same item?",
-				    "Verify Item",
-				    MessageBoxButtons.YesNo,
-				    MessageBoxIcon.Question) == DialogResult.Yes)
+
+			if (MessageBox.Show(string.Format(_resource.ItemUpdateDataNotification,
+					checkItem.Name,
+					_itemTypeManager.RetrieveDataById<ItemType>((int)checkItem.ItemTypeId).TypeDescription,
+					checkItem.Discount,
+					checkItem.Price,
+					checkItem.Stocks),
+				_resource.ItemVerification,
+				MessageBoxButtons.YesNo,
+				MessageBoxIcon.Question) == DialogResult.Yes)
 			{
 				_modification = "Edit";
 				txtItemName.Text = checkItem.Name;
@@ -72,7 +76,7 @@ namespace Tesco.UI
 			}
 			else
 			{
-				MessageBox.Show(@"Item name is taken. Please change item name.");
+				MessageBox.Show(_resource.UsedItemNameNotification);
 				txtItemName.Text = string.Empty;
 				txtItemName.Focus();
 			}
@@ -105,8 +109,8 @@ namespace Tesco.UI
 					_itemUserManager.Add(itemUser);
 
 					MessageBox.Show(itemUser.ItemId != 0
-						? "Item adding successful."
-						: "Item adding failed.");
+						? _resource.AddItemSuccessful
+						: _resource.AddItemFailed);
 				}
 				else if (_modification.Equals("Edit"))
 				{
@@ -115,13 +119,13 @@ namespace Tesco.UI
 					_itemUserManager.Add(itemUser);
 
 					MessageBox.Show(_itemManager.Update(_item) != 0
-						? "Item editing successful."
-						: "Item editing failed.");
+						? _resource.EditItemSuccessful
+						: _resource.EditItemFailed);
 				}
 			}
 			else
 			{
-				MessageBox.Show(@"Please fill up all the details. Thank you.");
+				MessageBox.Show(_resource.EmptyTextboxNotification);
 			}
 
 			var frmItemInventory = new frmItemInventory(_user);
@@ -129,19 +133,6 @@ namespace Tesco.UI
 			frmItemInventory.Show();
 		}
 
-		private void frmModifyItem_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			if (MessageBox.Show("Are you sure you want to close the window?",
-				"Close Window?",
-				MessageBoxButtons.OKCancel,
-				MessageBoxIcon.Question) == DialogResult.OK)
-			{
-				MessageBox.Show("Item not saved.");
-			}
-			else
-			{
-				e.Cancel = true;
-			}
-		}
+		private void frmModifyItem_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
 	}
 }

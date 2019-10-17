@@ -126,6 +126,8 @@
     <Compile Include="frmWelcome.Designer.cs">
       <DependentUpon>frmWelcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CloseWindowHelper.cs" />
+    <Compile Include="Interfaces\ICloseWindowHelper.cs" />
     <Compile Include="Interfaces\IEmailValidationHelper.cs" />
     <Compile Include="Interfaces\IItemTypeHelper.cs" />
     <Compile Include="Interfaces\IListViewItemHelper.cs" />

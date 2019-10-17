@@ -3,18 +3,21 @@ using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.DL.Models;
+using Tesco.UI.Helpers;
+using Tesco.UI.Interfaces;
+using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
 
 namespace Tesco.UI
 {
 	public partial class frmAdminAttendant : Form
 	{
-		private readonly IItemManager _itemManager;
 		private readonly IUserManager _userManager;
+		private readonly ICloseWindowHelper _closeWindowHelper;
 
 		public frmAdminAttendant()
 		{
-			_itemManager = new ItemManager();
 			_userManager = new UserManager();
+			_closeWindowHelper = new CloseWindowHelper();
 			InitializeComponent();
 		}
 
@@ -32,31 +35,14 @@ namespace Tesco.UI
 		private void BtnDeleteAttendant_Click(object sender, System.EventArgs e)
 		{
 			MessageBox.Show(_userManager.Delete(int.Parse(lvAttendants.SelectedItems[0].SubItems[0].Text)) > 0
-			                ? "Attendant deletion successful."
-			                : "Attendant deletion failed.");
+							? _resource.DeleteAttendantSuccessful
+							: _resource.DeleteAttendantFailed);
 
 			DisplayDataInAttendantListView();
 		}
-		
-		private void frmAdminAttendant_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			if (MessageBox.Show("Are you sure you want to close the window?",
-				"Close Window?",
-				MessageBoxButtons.OKCancel,
-				MessageBoxIcon.Question) == DialogResult.OK)
-			{
-				MessageBox.Show("Admin has signed out.");
 
-				var welcome = new frmWelcome();
-				this.Hide();
-				welcome.Show();
-			}
-			else
-			{
-				e.Cancel = true;
-			}
-		}
-		
+		private void frmAdminAttendant_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
+
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->
 

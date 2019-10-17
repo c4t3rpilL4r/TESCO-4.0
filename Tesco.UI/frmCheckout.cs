@@ -6,6 +6,8 @@ using Tesco.BL.Managers;
 using Tesco.DL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
+using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+
 
 namespace Tesco.UI
 {
@@ -15,6 +17,7 @@ namespace Tesco.UI
 		private readonly IItemManager _itemManager;
 		private readonly IOrderManager _orderManager;
 		private readonly ITransactionManager _transactionManager;
+		private readonly ICloseWindowHelper _closeWindowHelper;
 		private readonly IEmailValidationHelper _emailValidationHelper;
 		private readonly User _user;
 		private readonly Customer _customer;
@@ -26,6 +29,7 @@ namespace Tesco.UI
 			_itemManager = new ItemManager();
 			_orderManager = new OrderManager();
 			_transactionManager = new TransactionManager();
+			_closeWindowHelper = new CloseWindowHelper();
 			_emailValidationHelper = new EmailValidationHelper();
 			_customer = _customerManager.RetrieveDataById<Customer>((int) user.CustomerId);
 			_user = user;
@@ -83,7 +87,9 @@ namespace Tesco.UI
 			{
 				_customer.FullName = txtFullName.Text;
 
-				MessageBox.Show(_customerManager.Update(_customer) != 0 ? "Update successful." : "Update failed.");
+				MessageBox.Show(_customerManager.Update(_customer) != 0
+					? _resource.UpdateSuccessful
+					: _resource.UpdateFailed);
 			}
 			else
 			{
@@ -99,7 +105,9 @@ namespace Tesco.UI
 			{
 				_customer.Email = txtEmail.Text;
 
-				MessageBox.Show(_customerManager.Update(_customer) != 0 ? "Update successful." : "Update failed.");
+				MessageBox.Show(_customerManager.Update(_customer) != 0
+					? _resource.UpdateSuccessful
+					: _resource.UpdateFailed);
 			}
 			else
 			{
@@ -115,7 +123,9 @@ namespace Tesco.UI
 			{
 				_customer.PhoneNumber = txtPhoneNumber.Text;
 
-				MessageBox.Show(_customerManager.Update(_customer) != 0 ? "Update successful." : "Update failed.");
+				MessageBox.Show(_customerManager.Update(_customer) != 0
+					? _resource.UpdateSuccessful
+					: _resource.UpdateFailed);
 			}
 			else
 			{
@@ -150,40 +160,23 @@ namespace Tesco.UI
 			frmReceipt.Show();
 		}
 
-		private void FrmCheckout_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			if (MessageBox.Show("Are you sure you want to close the window?",
-					"Close Window?",
-					MessageBoxButtons.OKCancel,
-					MessageBoxIcon.Question) == DialogResult.OK)
-			{
-				MessageBox.Show("You are signed off.");
+		private void FrmCheckout_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
 
-				var welcome = new frmWelcome();
-				welcome.Show();
-			}
-			else
-			{
-				e.Cancel = true;
-			}
-		}
-		
-		
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->
 
 		private bool CheckIfDataIsNew()
 		{
-			return MessageBox.Show($"Do you want to update your data from:" +
-								   $"FullName:\t{_user.FullName}\n" +
-								   $"Email:\t\t{_customer.Email}\n" +
-								   $"PhoneNumber:\t{_customer.PhoneNumber}\n\ninto:\n" +
-								   $"FullName:\t{txtFullName.Text}\n" +
-								   $"Email:\t\t{txtEmail.Text}\n" +
-								   $"PhoneNumber:\t{txtPhoneNumber.Text}?",
-								   "Do you want to update?",
-								   MessageBoxButtons.YesNo,
-								   MessageBoxIcon.Question) == DialogResult.Yes;
+			return MessageBox.Show(string.Format(_resource.CustomerUpdateDataNotification,
+					_user.FullName,
+					_customer.Email,
+					_customer.PhoneNumber,
+					txtFullName.Text,
+					txtEmail.Text,
+					txtPhoneNumber.Text),
+				_resource.UpdateDataTitle,
+				MessageBoxButtons.YesNo,
+				MessageBoxIcon.Question) == DialogResult.Yes;
 		}
 	}
 }
