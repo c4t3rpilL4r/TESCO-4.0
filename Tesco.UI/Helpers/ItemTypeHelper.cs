@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.BL.Models;
 using Tesco.UI.Interfaces;
@@ -7,7 +8,8 @@ namespace Tesco.UI.Helpers
 {
 	public class ItemTypeHelper : IItemTypeHelper
 	{
-		private BaseManager _itemManager, _itemTypeManager;
+		private readonly IItemManager _itemManager;
+		private readonly IItemTypeManager _itemTypeManager;
 
 		public ItemTypeHelper()
 		{
@@ -23,12 +25,9 @@ namespace Tesco.UI.Helpers
 			{
 				foreach (var type in _itemTypeManager.RetrieveAll<ItemType>())
 				{
-					if (item.ItemTypeId == type.Id)
+					if (item.ItemTypeId == type.Id && !itemTypeList.Contains(type.TypeDescription))
 					{
-						if (!itemTypeList.Contains(type.TypeDescription))
-						{
-							itemTypeList.Add(type.TypeDescription);
-						}
+						itemTypeList.Add(type.TypeDescription);
 					}
 				}
 			}

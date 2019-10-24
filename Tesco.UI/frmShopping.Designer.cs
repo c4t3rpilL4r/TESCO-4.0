@@ -29,49 +29,51 @@
         private void InitializeComponent()
         {
             this.lvItems = new System.Windows.Forms.ListView();
-            this.columnItemId = new System.Windows.Forms.ColumnHeader();
-            this.columnItemName = new System.Windows.Forms.ColumnHeader();
-            this.columnItemType = new System.Windows.Forms.ColumnHeader();
-            this.columnItemDiscount = new System.Windows.Forms.ColumnHeader();
-            this.columnItemPrice = new System.Windows.Forms.ColumnHeader();
-            this.columnItemStocks = new System.Windows.Forms.ColumnHeader();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.columnItemId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnItemType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnItemDiscount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnItemPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnItemStocks = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.grpSorting = new System.Windows.Forms.GroupBox();
             this.btnResetSort = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblSortByType = new System.Windows.Forms.Label();
             this.cboSortByType = new System.Windows.Forms.ComboBox();
             this.cboSortByNamePrice = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblSortByNamePrice = new System.Windows.Forms.Label();
+            this.grpAddToCart = new System.Windows.Forms.GroupBox();
             this.btnAddToCart = new System.Windows.Forms.Button();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnSubtract = new System.Windows.Forms.Button();
             this.lblItemDetails = new System.Windows.Forms.Label();
             this.lvCart = new System.Windows.Forms.ListView();
-            this.columnCartItemId = new System.Windows.Forms.ColumnHeader();
-            this.columnCartItemName = new System.Windows.Forms.ColumnHeader();
-            this.columnCartItemQuantity = new System.Windows.Forms.ColumnHeader();
-            this.columnCartItemAmount = new System.Windows.Forms.ColumnHeader();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.columnCartItemId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCartItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCartItemQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCartItemAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.grpCart = new System.Windows.Forms.GroupBox();
             this.btnCheckout = new System.Windows.Forms.Button();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.btnRemoveOrder = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.grpItemDetails = new System.Windows.Forms.GroupBox();
             this.lblUserGreeting = new System.Windows.Forms.Label();
             this.btnSignOff = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.grpSorting.SuspendLayout();
+            this.grpAddToCart.SuspendLayout();
+            this.grpCart.SuspendLayout();
+            this.grpItemDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvItems
             // 
-            this.lvItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[]
-            {
-                this.columnItemId, this.columnItemName, this.columnItemType, this.columnItemDiscount,
-                this.columnItemPrice, this.columnItemStocks
-            });
+            this.lvItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnItemId,
+            this.columnItemName,
+            this.columnItemType,
+            this.columnItemDiscount,
+            this.columnItemPrice,
+            this.columnItemStocks});
             this.lvItems.FullRowSelect = true;
             this.lvItems.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvItems.HideSelection = false;
@@ -91,12 +93,12 @@
             // 
             // columnItemName
             // 
-            this.columnItemName.Text = "Name";
+            this.columnItemName.Text = "";
             this.columnItemName.Width = 240;
             // 
             // columnItemType
             // 
-            this.columnItemType.Text = "Type";
+            this.columnItemType.Text = "";
             this.columnItemType.Width = 100;
             // 
             // columnItemDiscount
@@ -107,28 +109,27 @@
             // 
             // columnItemPrice
             // 
-            this.columnItemPrice.Text = "Price";
+            this.columnItemPrice.Text = "";
             this.columnItemPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnItemPrice.Width = 50;
             // 
             // columnItemStocks
             // 
-            this.columnItemStocks.Text = "Stocks";
+            this.columnItemStocks.Text = "";
             this.columnItemStocks.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // groupBox1
+            // grpSorting
             // 
-            this.groupBox1.Controls.Add(this.btnResetSort);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cboSortByType);
-            this.groupBox1.Controls.Add(this.cboSortByNamePrice);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(507, 83);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Sorting";
+            this.grpSorting.Controls.Add(this.btnResetSort);
+            this.grpSorting.Controls.Add(this.lblSortByType);
+            this.grpSorting.Controls.Add(this.cboSortByType);
+            this.grpSorting.Controls.Add(this.cboSortByNamePrice);
+            this.grpSorting.Controls.Add(this.lblSortByNamePrice);
+            this.grpSorting.Location = new System.Drawing.Point(12, 12);
+            this.grpSorting.Name = "grpSorting";
+            this.grpSorting.Size = new System.Drawing.Size(507, 83);
+            this.grpSorting.TabIndex = 1;
+            this.grpSorting.TabStop = false;
             // 
             // btnResetSort
             // 
@@ -136,18 +137,16 @@
             this.btnResetSort.Name = "btnResetSort";
             this.btnResetSort.Size = new System.Drawing.Size(140, 22);
             this.btnResetSort.TabIndex = 4;
-            this.btnResetSort.Text = "Reset Sort Order";
             this.btnResetSort.UseVisualStyleBackColor = true;
             this.btnResetSort.Click += new System.EventHandler(this.BtnResetSort_Click);
             // 
-            // label2
+            // lblSortByType
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(181, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 14);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "By Type:";
+            this.lblSortByType.AutoSize = true;
+            this.lblSortByType.Location = new System.Drawing.Point(181, 24);
+            this.lblSortByType.Name = "lblSortByType";
+            this.lblSortByType.Size = new System.Drawing.Size(0, 14);
+            this.lblSortByType.TabIndex = 3;
             // 
             // cboSortByType
             // 
@@ -165,30 +164,27 @@
             this.cboSortByNamePrice.Name = "cboSortByNamePrice";
             this.cboSortByNamePrice.Size = new System.Drawing.Size(141, 22);
             this.cboSortByNamePrice.TabIndex = 1;
-            this.cboSortByNamePrice.SelectedIndexChanged +=
-                new System.EventHandler(this.CboSortByNamePrice_SelectedIndexChanged);
+            this.cboSortByNamePrice.SelectedIndexChanged += new System.EventHandler(this.CboSortByNamePrice_SelectedIndexChanged);
             // 
-            // label1
+            // lblSortByNamePrice
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 14);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "By Name/Price:";
+            this.lblSortByNamePrice.AutoSize = true;
+            this.lblSortByNamePrice.Location = new System.Drawing.Point(10, 24);
+            this.lblSortByNamePrice.Name = "lblSortByNamePrice";
+            this.lblSortByNamePrice.Size = new System.Drawing.Size(0, 14);
+            this.lblSortByNamePrice.TabIndex = 0;
             // 
-            // groupBox2
+            // grpAddToCart
             // 
-            this.groupBox2.Controls.Add(this.btnAddToCart);
-            this.groupBox2.Controls.Add(this.lblQuantity);
-            this.groupBox2.Controls.Add(this.btnAdd);
-            this.groupBox2.Controls.Add(this.btnSubtract);
-            this.groupBox2.Location = new System.Drawing.Point(27, 394);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(134, 131);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Add To Cart";
+            this.grpAddToCart.Controls.Add(this.btnAddToCart);
+            this.grpAddToCart.Controls.Add(this.lblQuantity);
+            this.grpAddToCart.Controls.Add(this.btnAdd);
+            this.grpAddToCart.Controls.Add(this.btnSubtract);
+            this.grpAddToCart.Location = new System.Drawing.Point(27, 394);
+            this.grpAddToCart.Name = "grpAddToCart";
+            this.grpAddToCart.Size = new System.Drawing.Size(134, 131);
+            this.grpAddToCart.TabIndex = 2;
+            this.grpAddToCart.TabStop = false;
             // 
             // btnAddToCart
             // 
@@ -197,7 +193,6 @@
             this.btnAddToCart.Name = "btnAddToCart";
             this.btnAddToCart.Size = new System.Drawing.Size(111, 22);
             this.btnAddToCart.TabIndex = 5;
-            this.btnAddToCart.Text = "Add To Cart";
             this.btnAddToCart.UseVisualStyleBackColor = true;
             this.btnAddToCart.Click += new System.EventHandler(this.BtnAddToCart_Click);
             // 
@@ -243,10 +238,11 @@
             // 
             // lvCart
             // 
-            this.lvCart.Columns.AddRange(new System.Windows.Forms.ColumnHeader[]
-            {
-                this.columnCartItemId, this.columnCartItemName, this.columnCartItemQuantity, this.columnCartItemAmount
-            });
+            this.lvCart.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnCartItemId,
+            this.columnCartItemName,
+            this.columnCartItemQuantity,
+            this.columnCartItemAmount});
             this.lvCart.FullRowSelect = true;
             this.lvCart.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvCart.HideSelection = false;
@@ -265,33 +261,32 @@
             // 
             // columnCartItemName
             // 
-            this.columnCartItemName.Text = "Name";
+            this.columnCartItemName.Text = "";
             this.columnCartItemName.Width = 210;
             // 
             // columnCartItemQuantity
             // 
-            this.columnCartItemQuantity.Text = "Quantity";
+            this.columnCartItemQuantity.Text = "";
             this.columnCartItemQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnCartItemQuantity.Width = 75;
             // 
             // columnCartItemAmount
             // 
-            this.columnCartItemAmount.Text = "Amount";
+            this.columnCartItemAmount.Text = "";
             this.columnCartItemAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnCartItemAmount.Width = 75;
             // 
-            // groupBox3
+            // grpCart
             // 
-            this.groupBox3.Controls.Add(this.btnCheckout);
-            this.groupBox3.Controls.Add(this.lblTotalAmount);
-            this.groupBox3.Controls.Add(this.btnRemoveOrder);
-            this.groupBox3.Controls.Add(this.lvCart);
-            this.groupBox3.Location = new System.Drawing.Point(545, 91);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(376, 406);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Cart";
+            this.grpCart.Controls.Add(this.btnCheckout);
+            this.grpCart.Controls.Add(this.lblTotalAmount);
+            this.grpCart.Controls.Add(this.btnRemoveOrder);
+            this.grpCart.Controls.Add(this.lvCart);
+            this.grpCart.Location = new System.Drawing.Point(545, 91);
+            this.grpCart.Name = "grpCart";
+            this.grpCart.Size = new System.Drawing.Size(376, 406);
+            this.grpCart.TabIndex = 4;
+            this.grpCart.TabStop = false;
             // 
             // btnCheckout
             // 
@@ -300,7 +295,6 @@
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(109, 23);
             this.btnCheckout.TabIndex = 10;
-            this.btnCheckout.Text = "Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
             this.btnCheckout.Click += new System.EventHandler(this.BtnCheckout_Click);
             // 
@@ -321,19 +315,17 @@
             this.btnRemoveOrder.Name = "btnRemoveOrder";
             this.btnRemoveOrder.Size = new System.Drawing.Size(109, 23);
             this.btnRemoveOrder.TabIndex = 4;
-            this.btnRemoveOrder.Text = "Remove Order";
             this.btnRemoveOrder.UseVisualStyleBackColor = true;
             this.btnRemoveOrder.Click += new System.EventHandler(this.BtnRemoveOrder_Click);
             // 
-            // groupBox4
+            // grpItemDetails
             // 
-            this.groupBox4.Controls.Add(this.lblItemDetails);
-            this.groupBox4.Location = new System.Drawing.Point(167, 394);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(337, 131);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Item Details";
+            this.grpItemDetails.Controls.Add(this.lblItemDetails);
+            this.grpItemDetails.Location = new System.Drawing.Point(167, 394);
+            this.grpItemDetails.Name = "grpItemDetails";
+            this.grpItemDetails.Size = new System.Drawing.Size(337, 131);
+            this.grpItemDetails.TabIndex = 5;
+            this.grpItemDetails.TabStop = false;
             // 
             // lblUserGreeting
             // 
@@ -349,7 +341,6 @@
             this.btnSignOff.Name = "btnSignOff";
             this.btnSignOff.Size = new System.Drawing.Size(75, 23);
             this.btnSignOff.TabIndex = 7;
-            this.btnSignOff.Text = "Sign Off";
             this.btnSignOff.UseVisualStyleBackColor = true;
             this.btnSignOff.Visible = false;
             this.btnSignOff.Click += new System.EventHandler(this.BtnSignOff_Click);
@@ -361,25 +352,24 @@
             this.ClientSize = new System.Drawing.Size(933, 563);
             this.Controls.Add(this.btnSignOff);
             this.Controls.Add(this.lblUserGreeting);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpItemDetails);
+            this.Controls.Add(this.grpCart);
+            this.Controls.Add(this.grpAddToCart);
+            this.Controls.Add(this.grpSorting);
             this.Controls.Add(this.lvItems);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmShopping";
-            this.Text = "frmShopping";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShopping_FormClosing);
             this.Load += new System.EventHandler(this.FrmShopping_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.grpSorting.ResumeLayout(false);
+            this.grpSorting.PerformLayout();
+            this.grpAddToCart.ResumeLayout(false);
+            this.grpAddToCart.PerformLayout();
+            this.grpCart.ResumeLayout(false);
+            this.grpItemDetails.ResumeLayout(false);
+            this.grpItemDetails.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -391,12 +381,12 @@
         private System.Windows.Forms.ColumnHeader columnItemDiscount;
         private System.Windows.Forms.ColumnHeader columnItemPrice;
         private System.Windows.Forms.ColumnHeader columnItemStocks;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpSorting;
+        private System.Windows.Forms.GroupBox grpAddToCart;
         private System.Windows.Forms.ComboBox cboSortByNamePrice;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSortByNamePrice;
         private System.Windows.Forms.Button btnResetSort;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblSortByType;
         private System.Windows.Forms.ComboBox cboSortByType;
         private System.Windows.Forms.Button btnAddToCart;
         private System.Windows.Forms.Label lblQuantity;
@@ -408,11 +398,11 @@
         private System.Windows.Forms.ColumnHeader columnCartItemName;
         private System.Windows.Forms.ColumnHeader columnCartItemQuantity;
         private System.Windows.Forms.ColumnHeader columnCartItemAmount;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grpCart;
         private System.Windows.Forms.Button btnRemoveOrder;
         private System.Windows.Forms.Label lblTotalAmount;
         private System.Windows.Forms.Button btnCheckout;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox grpItemDetails;
         private System.Windows.Forms.Button btnSignOff;
         private System.Windows.Forms.Label lblUserGreeting;
     }

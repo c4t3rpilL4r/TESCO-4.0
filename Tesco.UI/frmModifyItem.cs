@@ -39,7 +39,7 @@ namespace Tesco.UI
 			// Combobox of Item Type
 			_itemTypeHelper.ItemTypeValuesHandler().ForEach(x => cboItemType.Items.Add(x));
 
-			if (_modification.Equals("Edit"))
+			if (_modification.Equals(ItemUser.ModificationTypes.Edit))
 			{
 				txtItemName.Text = _item.Name;
 				cboItemType.SelectedItem =
@@ -66,7 +66,7 @@ namespace Tesco.UI
 				MessageBoxButtons.YesNo,
 				MessageBoxIcon.Question) == DialogResult.Yes)
 			{
-				_modification = "Edit";
+				_modification = ItemUser.ModificationTypes.Edit.ToString();
 				txtItemName.Text = checkItem.Name;
 				cboItemType.Text = _itemTypeManager.RetrieveDataById<ItemType>((int) checkItem.ItemTypeId).TypeDescription;
 				txtItemDiscount.Text = checkItem.Discount.ToString();
@@ -93,7 +93,7 @@ namespace Tesco.UI
 				var itemUser = new ItemUser()
 				{
 					ModifiedBy = _user.Id,
-					DateTimeModification = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss tt")
+					DateTimeModification = DateTime.Now.ToString(_resource.DateTimeFormat)
 				};
 
 				_item.Name = txtItemName.Text;
@@ -102,7 +102,7 @@ namespace Tesco.UI
 				_item.Price = int.Parse(txtItemPrice.Text);
 				_item.Stocks = int.Parse(txtItemStocks.Text);
 
-				if (_modification.Equals("Add"))
+				if (_modification.Equals(ItemUser.ModificationTypes.Add))
 				{
 					itemUser.ItemId = _itemManager.Add(_item);
 					itemUser.Modification = _modification;
@@ -112,7 +112,7 @@ namespace Tesco.UI
 						? _resource.AddItemSuccessful
 						: _resource.AddItemFailed);
 				}
-				else if (_modification.Equals("Edit"))
+				else if (_modification.Equals(ItemUser.ModificationTypes.Edit))
 				{
 					itemUser.ItemId = (int) _item.Id;
 					itemUser.Modification = _modification;
@@ -133,6 +133,6 @@ namespace Tesco.UI
 			frmItemInventory.Show();
 		}
 
-		private void frmModifyItem_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
+		private void frmModifyItem_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow(_user);
 	}
 }

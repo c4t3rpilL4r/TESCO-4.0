@@ -36,6 +36,26 @@ namespace Tesco.UI
 
 		private void FrmShopping_Load(object sender, EventArgs e)
 		{
+			this.Text = _resource.TextFormShopping;
+			grpSorting.Text = _resource.TextGroupboxSorting;
+			lblSortByNamePrice.Text = _resource.TextLabelSortByNamePrice;
+			lblSortByType.Text = _resource.TextLabelSortByType;
+			btnResetSort.Text = _resource.TextButtonResetSort;
+			lvItems.Columns.Cast<ColumnHeader>().ToArray()[1].Text = _resource.TextListViewColumnName;
+			lvItems.Columns.Cast<ColumnHeader>().ToArray()[2].Text = _resource.TextListViewColumnType;
+			lvItems.Columns.Cast<ColumnHeader>().ToArray()[4].Text = _resource.TextListViewColumnPrice;
+			lvItems.Columns.Cast<ColumnHeader>().ToArray()[5].Text = _resource.TextListViewColumnStocks;
+			grpAddToCart.Text = _resource.TextAddToCart;
+			btnAddToCart.Text = _resource.TextAddToCart;
+			grpItemDetails.Text = _resource.TextGroupboxItemDetails;
+			btnSignOff.Text = _resource.TextButtonSignOff;
+			grpCart.Text = _resource.TextGroupboxCart;
+			lvCart.Columns.Cast<ColumnHeader>().ToArray()[1].Text = _resource.TextListViewColumnName;
+			lvCart.Columns.Cast<ColumnHeader>().ToArray()[2].Text = _resource.TextListViewColumnQuantity;
+			lvCart.Columns.Cast<ColumnHeader>().ToArray()[3].Text = _resource.TextListViewColumnAmount;
+			btnRemoveOrder.Text = _resource.TextButtonRemoveOrder;
+			btnCheckout.Text = _resource.TextButtonCheckout;
+
 			btnSignOff.Enabled = _user != null;
 			btnSignOff.Visible = _user != null;
 			lblUserGreeting.Text = _user != null
@@ -274,7 +294,7 @@ namespace Tesco.UI
 			welcome.Show();
 		}
 		
-		private void frmShopping_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
+		private void frmShopping_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow(_user);
 
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->

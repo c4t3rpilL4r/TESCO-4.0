@@ -10,10 +10,12 @@ namespace Tesco.UI
 	public partial class frmAddAttendant : Form
 	{
 		private readonly IUserManager _userManager;
+		private readonly User _user;
 
-		public frmAddAttendant()
+		public frmAddAttendant(User user)
 		{
 			_userManager = new UserManager();
+			_user = user;
 			InitializeComponent();
 		}
 
@@ -28,14 +30,14 @@ namespace Tesco.UI
 							Username = txtUsername.Text,
 							Password = txtPassword.Text,
 							FullName = txtFullName.Text,
-							Type = "attendant",
+							Type = User.UserTypes.attendant.ToString(),
 							IsDeleted = false
 						}) > 0
 							? _resource.AddAttendantSuccessful
 							: _resource.AddAttendantFailed
 					: _resource.EmptyTextboxNotification);
 
-			var frmAdminAttendant = new frmAdminAttendant();
+			var frmAdminAttendant = new frmAdminAttendant(_user);
 			this.Hide();
 			frmAdminAttendant.Show();
 		}

@@ -9,5 +9,11 @@
 		public int? CustomerId { get; set; }
 		public string Type { get; set; }
 		public bool? IsDeleted { get; set; }
+		public enum UserTypes
+		{
+			admin,
+			attendant,
+			customer
+		}
 	}
 }

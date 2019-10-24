@@ -7,5 +7,10 @@
 		public int? ModifiedBy { get; set; }
 		public string Modification { get; set; }
 		public string DateTimeModification { get; set; }
+		public enum ModificationTypes
+		{
+			Add,
+			Edit
+		}
 	}
 }

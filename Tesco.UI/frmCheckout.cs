@@ -38,6 +38,21 @@ namespace Tesco.UI
 
 		private void FrmCheckout_Load(object sender, EventArgs e)
 		{
+			this.Text = _resource.TextFormCheckout;
+			grpCustomerDetails.Text = _resource.TextGroupboxCustomerDetails;
+			lblFullName.Text = _resource.TextLabelFullName;
+			lblEmail.Text = _resource.TextLabelEmail;
+			lblPhoneNumber.Text = _resource.TextLabelPhoneNumber;
+			lblCashInHand.Text = _resource.TextLabelCashInHand;
+			lblAmountToPay.Text = _resource.TextLabelAmountToPay;
+			btnPayOrder.Text = _resource.TextButtonPayOrder;
+			grpCheckoutDetails.Text = _resource.TextGroupboxCheckoutDetails;
+			lvCheckoutItems.Columns.Cast<ColumnHeader>().ToArray()[1].Text = _resource.TextListViewColumnName;
+			lvCheckoutItems.Columns.Cast<ColumnHeader>().ToArray()[2].Text = _resource.TextListViewColumnPrice;
+			lvCheckoutItems.Columns.Cast<ColumnHeader>().ToArray()[3].Text = _resource.TextListViewColumnQuantity;
+			lvCheckoutItems.Columns.Cast<ColumnHeader>().ToArray()[4].Text = _resource.TextListViewColumnAmount;
+
+
 			_orderManager.RetrieveAll<Order>()
 				.Where(x => x.CustomerId == _user.CustomerId
 							&& x.IsUnpaid == true)
@@ -58,7 +73,7 @@ namespace Tesco.UI
 					_total += (int) x.Amount;
 				});
 
-			lblAmountToPay.Text = _total.ToString();
+			lblAmount.Text = _total.ToString();
 
 			txtFullName.Text = _user.FullName;
 			txtEmail.Text = _customer.Email;
@@ -160,7 +175,7 @@ namespace Tesco.UI
 			frmReceipt.Show();
 		}
 
-		private void FrmCheckout_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
+		private void FrmCheckout_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow(_user);
 
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->

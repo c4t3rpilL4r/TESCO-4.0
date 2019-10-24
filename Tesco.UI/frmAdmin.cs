@@ -26,10 +26,10 @@ namespace Tesco.UI
 
 		private void BtnAttendant_Click(object sender, EventArgs e)
 		{
-			var attendant = new frmAdminAttendant();
+			var attendant = new frmAdminAttendant(_user);
 			attendant.Show();
 		}
 
-		private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
+		private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow(_user);
 	}
 }

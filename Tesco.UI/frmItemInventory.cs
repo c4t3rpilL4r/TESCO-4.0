@@ -37,7 +37,7 @@ namespace Tesco.UI
 			txtType.Text = string.Empty;
 			cboType.Text = string.Empty;
 
-			if (_user.Type != "attendant") return;
+			if (!_user.Type.Equals(User.UserTypes.attendant)) return;
 			
 			btnDeleteItem.Visible = false;
 			grpItemTypes.Visible = false;
@@ -64,7 +64,7 @@ namespace Tesco.UI
 		private void BtnAddItem_Click(object sender, EventArgs e)
 		{
 			var item = new Item();
-			var frmModifyItem = new frmModifyItem(item, _user, "Add")
+			var frmModifyItem = new frmModifyItem(item, _user, ItemUser.ModificationTypes.Add.ToString())
 			{
 				Text = _resource.AddItemTitle
 			};
@@ -85,7 +85,7 @@ namespace Tesco.UI
 				IsDeleted = false
 			};
 
-			var frmModifyItem = new frmModifyItem(item, _user, "Edit")
+			var frmModifyItem = new frmModifyItem(item, _user, ItemUser.ModificationTypes.Edit.ToString())
 			{
 				Text = _resource.EditItemTitle
 			};
@@ -146,7 +146,7 @@ namespace Tesco.UI
 
 		private void CboType_SelectedIndexChanged(object sender, EventArgs e) => btnDeleteItemType.Enabled = cboType.SelectedIndex != -1;
 
-		private void frmItemInventory_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
+		private void frmItemInventory_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow(_user);
 
 
 

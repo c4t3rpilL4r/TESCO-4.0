@@ -35,6 +35,20 @@ namespace Tesco.UI
 
 		private void FrmRegisterLogin_Load(object sender, System.EventArgs e)
 		{
+			grpRegistrationDetails.Text = _resource.TextGroupboxRegistrationDetails;
+			lblFirstName.Text = _resource.TextLabelFirstName;
+			lblLastName.Text = _resource.TextLabelLastName;
+			lblEmail.Text = _resource.TextLabelEmail;
+			lblPhoneNumber.Text = _resource.TextLabelPhoneNumber;
+			lblUserName.Text = _resource.TextLabelUserName;
+			lblPassword.Text = _resource.TextLabelPassword;
+			btnRegister.Text = _resource.TextButtonLinkRegister;
+			btnLogIn.Text = _resource.TextButtonLinkLogin;
+			grpLogin.Text = _resource.TextGroupboxLogInDetails;
+			lblLoginUserName.Text = _resource.TextLabelUserName;
+			lblLoginPassword.Text = _resource.TextLabelPassword;
+			linkForgotPassword.Text = _resource.TextLinkForgotPassword;
+
 			if (_pnlRegisterHeight > 0)
 			{
 				txtFirstName.Focus();
@@ -113,7 +127,7 @@ namespace Tesco.UI
 						Password = txtPassword.Text,
 						FullName = $"{txtFirstName.Text} {txtLastName.Text}",
 						CustomerId = customerId,
-						Type = "customer",
+						Type = User.UserTypes.customer.ToString(),
 						IsDeleted = false
 					};
 						
@@ -163,21 +177,21 @@ namespace Tesco.UI
 
 						this.Hide();
 
-						if (_user.Type.Equals("admin"))
+						if (_user.Type.Equals(User.UserTypes.admin))
 						{
 							MessageBox.Show(string.Format(_resource.AdminGreeting, _user.FullName));
 							
 							var admin = new frmAdmin(_user);
 							admin.Show();
 						}
-						else if (_user.Type.Equals("attendant"))
+						else if (_user.Type.Equals(User.UserTypes.attendant))
 						{
 							MessageBox.Show(string.Format(_resource.AttendantGreeting, _user.FullName));
 							
 							var attendant = new frmAttendant(_user);
 							attendant.Show();
 						}
-						else if (_user.Type.Equals("customer"))
+						else if (_user.Type.Equals(User.UserTypes.customer))
 						{
 							if (_orderManager.RetrieveAll<Order>()
 									.Where(x => x.CustomerId == _user.CustomerId
@@ -228,7 +242,7 @@ namespace Tesco.UI
 			this.Refresh();
 		}
 
-		private void FrmRegisterLogin_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
+		private void FrmRegisterLogin_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow(_user);
 
 
 

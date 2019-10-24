@@ -13,11 +13,13 @@ namespace Tesco.UI
 	{
 		private readonly IUserManager _userManager;
 		private readonly ICloseWindowHelper _closeWindowHelper;
+		private readonly User _user;
 
-		public frmAdminAttendant()
+		public frmAdminAttendant(User user)
 		{
 			_userManager = new UserManager();
 			_closeWindowHelper = new CloseWindowHelper();
+			_user = user;
 			InitializeComponent();
 		}
 
@@ -25,7 +27,7 @@ namespace Tesco.UI
 
 		private void BtnAddAttendant_Click(object sender, System.EventArgs e)
 		{
-			var frmAddAttendant = new frmAddAttendant();
+			var frmAddAttendant = new frmAddAttendant(_user);
 			this.Hide();
 			frmAddAttendant.Show();
 		}
@@ -41,18 +43,17 @@ namespace Tesco.UI
 			DisplayDataInAttendantListView();
 		}
 
-		private void frmAdminAttendant_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
+		private void frmAdminAttendant_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow(_user);
 
 
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->
 
-		// handles the displaying of the items in the lvItems
 		private void DisplayDataInAttendantListView()
 		{
 			lvAttendants.Items.Clear();
 
 			_userManager.RetrieveAll<User>()
-				.Where(x => x.Type == "attendant")
+				.Where(x => x.Type.Equals(User.UserTypes.attendant))
 				.ToList()
 				.ForEach(x => lvAttendants.Items.Add(ConvertToAttendantListViewItem(x)));
 		}

@@ -68,6 +68,6 @@ namespace Tesco.UI
 			}
 		}
 
-		private void frmAttendantEditLogin_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow();
+		private void frmAttendantEditLogin_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow(_user);
 	}
 }

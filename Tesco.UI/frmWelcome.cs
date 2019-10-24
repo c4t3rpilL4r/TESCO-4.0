@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
 
 namespace Tesco.UI
 {
@@ -13,6 +14,13 @@ namespace Tesco.UI
 
 		private void frmWelcome_Load(object sender, EventArgs e)
 		{
+			this.Text = _resource.TextFormWelcome;
+			lblWelcome.Text = _resource.TextLabelWelcome;
+			lblTo.Text = _resource.TextLabelTo;
+			btnStartShopping.Text = _resource.TextButtonStartShopping;
+			linkRegister.Text = _resource.TextButtonLinkRegister;
+			linkLogIn.Text = _resource.TextButtonLinkLogin;
+
 			linkRegister.LinkBehavior = LinkBehavior.NeverUnderline;
 			linkLogIn.LinkBehavior = LinkBehavior.NeverUnderline;
 			this.ControlBox = false;
