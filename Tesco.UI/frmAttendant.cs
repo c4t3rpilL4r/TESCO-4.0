@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using Tesco.BL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+using _resource = Tesco.UI.Resources.Resources;
 
 namespace Tesco.UI
 {

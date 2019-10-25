@@ -5,7 +5,7 @@ using Tesco.BL.Managers;
 using Tesco.BL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+using _resource = Tesco.UI.Resources.Resources;
 
 namespace Tesco.UI
 {
@@ -51,20 +51,20 @@ namespace Tesco.UI
 					}
 					else
 					{
-						MessageBox.Show(_resource.UsedUsernameNotification);
+						MessageBox.Show(_resource.NotificationUsedUsername);
 
 						txtUsername.Focus();
 					}
 				}
 				else
 				{
-					MessageBox.Show(_resource.NoChangesNotification);
+					MessageBox.Show(_resource.NotificationNoChanges);
 					this.Hide();
 				}
 			}
 			else
 			{
-				MessageBox.Show(_resource.EmptyTextboxNotification);
+				MessageBox.Show(_resource.NotificationEmptyTextbox);
 			}
 		}
 

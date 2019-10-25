@@ -5,7 +5,7 @@ using Tesco.BL.Managers;
 using Tesco.BL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+using _resource = Tesco.UI.Resources.Resources;
 
 namespace Tesco.UI
 {
@@ -53,7 +53,7 @@ namespace Tesco.UI
 			lvAttendants.Items.Clear();
 
 			_userManager.RetrieveAll<User>()
-				.Where(x => x.Type.Equals(User.UserTypes.attendant))
+				.Where(x => x.Type.Equals(User.UserTypes.attendant.ToString()))
 				.ToList()
 				.ForEach(x => lvAttendants.Items.Add(ConvertToAttendantListViewItem(x)));
 		}

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmModifyItem));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtItemStocks = new System.Windows.Forms.TextBox();
@@ -45,6 +46,7 @@
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtItemStocks);
             this.groupBox1.Controls.Add(this.label5);
@@ -56,120 +58,80 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtItemName);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(415, 225);
-            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Item Details";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(160, 182);
+            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(113, 23);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // txtItemStocks
             // 
-            this.txtItemStocks.Location = new System.Drawing.Point(86, 143);
+            resources.ApplyResources(this.txtItemStocks, "txtItemStocks");
             this.txtItemStocks.Name = "txtItemStocks";
-            this.txtItemStocks.Size = new System.Drawing.Size(139, 22);
-            this.txtItemStocks.TabIndex = 5;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 146);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 14);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Stocks:";
             // 
             // txtItemPrice
             // 
-            this.txtItemPrice.Location = new System.Drawing.Point(86, 115);
+            resources.ApplyResources(this.txtItemPrice, "txtItemPrice");
             this.txtItemPrice.Name = "txtItemPrice";
-            this.txtItemPrice.Size = new System.Drawing.Size(139, 22);
-            this.txtItemPrice.TabIndex = 4;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 118);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 14);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Price:";
             // 
             // cboItemType
             // 
+            resources.ApplyResources(this.cboItemType, "cboItemType");
             this.cboItemType.FormattingEnabled = true;
-            this.cboItemType.Location = new System.Drawing.Point(86, 57);
             this.cboItemType.Name = "cboItemType";
-            this.cboItemType.Size = new System.Drawing.Size(169, 22);
-            this.cboItemType.TabIndex = 2;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 60);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 14);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Type:";
             // 
             // txtItemDiscount
             // 
-            this.txtItemDiscount.Location = new System.Drawing.Point(86, 87);
+            resources.ApplyResources(this.txtItemDiscount, "txtItemDiscount");
             this.txtItemDiscount.Name = "txtItemDiscount";
-            this.txtItemDiscount.Size = new System.Drawing.Size(139, 22);
-            this.txtItemDiscount.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 90);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 14);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Discount:";
             // 
             // txtItemName
             // 
-            this.txtItemName.Location = new System.Drawing.Point(86, 29);
+            resources.ApplyResources(this.txtItemName, "txtItemName");
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(310, 22);
-            this.txtItemName.TabIndex = 1;
             this.txtItemName.Leave += new System.EventHandler(this.TxtItemName_Leave);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 32);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 14);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name:";
             // 
             // frmModifyItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 246);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.Name = "frmModifyItem";
-            this.Text = "TESCO Modify Item";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmModifyItem_FormClosing);
             this.Load += new System.EventHandler(this.FrmModifyItem_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion

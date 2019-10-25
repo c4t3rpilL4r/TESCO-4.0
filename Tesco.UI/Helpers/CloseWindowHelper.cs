@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using Tesco.BL.Models;
 using Tesco.UI.Interfaces;
-using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+using _resource = Tesco.UI.Resources.Resources;
 
 namespace Tesco.UI.Helpers
 {
@@ -9,14 +9,14 @@ namespace Tesco.UI.Helpers
 	{
 		public bool NotifyUserForCloseWindow(User user = null)
 		{
-			if (MessageBox.Show(_resource.CloseWindowNotification,
-					_resource.CloseWindowTitle,
+			if (MessageBox.Show(_resource.NotificationCloseWindow,
+					_resource.TitleCloseWindow,
 					MessageBoxButtons.OKCancel,
 					MessageBoxIcon.Question) == DialogResult.OK)
 			{
 				if (user != null)
 				{
-					MessageBox.Show(_resource.SignOffNotification);
+					MessageBox.Show(_resource.NotificationSignOff);
 				}
 
 				var welcome = new frmWelcome();

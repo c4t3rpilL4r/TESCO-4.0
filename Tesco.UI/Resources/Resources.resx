@@ -117,32 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="OutOfStocks" xml:space="preserve">
+  <data name="NotificationOutOfStocks" xml:space="preserve">
     <value>Sorry. Item is out of stocks.</value>
   </data>
   <data name="QuantityLabelDefaultValue" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="UserGreeting" xml:space="preserve">
+  <data name="GreetingUser" xml:space="preserve">
     <value>Hello, {0}.</value>
   </data>
-  <data name="GuestGreeting" xml:space="preserve">
+  <data name="GreetingGuest" xml:space="preserve">
     <value>Hello, Guest.</value>
   </data>
-  <data name="LoginNotification" xml:space="preserve">
+  <data name="NotificationLogin" xml:space="preserve">
     <value>Please register/login to continue.</value>
   </data>
-  <data name="SelectItemNotification" xml:space="preserve">
+  <data name="NotificationSelectItem" xml:space="preserve">
     <value>Please make sure that the item you want to add to cart is seen and is highlighted.
 You can try pressing the Reset Sort Order button to show all the items if sorting has been done.</value>
   </data>
-  <data name="CloseWindowNotification" xml:space="preserve">
+  <data name="NotificationCloseWindow" xml:space="preserve">
     <value>Are you sure you want to close the window?</value>
   </data>
-  <data name="CloseWindowTitle" xml:space="preserve">
+  <data name="TitleCloseWindow" xml:space="preserve">
     <value>Close Window</value>
   </data>
-  <data name="SignOffNotification" xml:space="preserve">
+  <data name="NotificationSignOff" xml:space="preserve">
     <value>You have signed off.</value>
   </data>
   <data name="ItemDetailsLabelText" xml:space="preserve">
@@ -182,7 +182,7 @@ Total:     {4}</value>
   <data name="AddItemSuccessful" xml:space="preserve">
     <value>Item adding successful.</value>
   </data>
-  <data name="AddItemTitle" xml:space="preserve">
+  <data name="TitleAddItem" xml:space="preserve">
     <value>TESCO Add Item</value>
   </data>
   <data name="AddItemTypeFailed" xml:space="preserve">
@@ -191,19 +191,19 @@ Total:     {4}</value>
   <data name="AddItemTypeSuccessful" xml:space="preserve">
     <value>Item type adding successful.</value>
   </data>
-  <data name="AdminGreeting" xml:space="preserve">
+  <data name="GreetingAdmin" xml:space="preserve">
     <value>Hello, Admin {0}.</value>
   </data>
-  <data name="AttendantGreeting" xml:space="preserve">
+  <data name="GreetingAttendant" xml:space="preserve">
     <value>Hello, Attendant {0}.</value>
   </data>
-  <data name="ChangeEmailNotification" xml:space="preserve">
+  <data name="NotificationChangeEmail" xml:space="preserve">
     <value>Please change the email. Thank you.</value>
   </data>
-  <data name="CheckEmailNotification" xml:space="preserve">
+  <data name="NotificationCheckEmail" xml:space="preserve">
     <value>Please check your email for instructions on how to reset your password.</value>
   </data>
-  <data name="CustomerUpdateDataNotification" xml:space="preserve">
+  <data name="NotificationCustomerUpdateData" xml:space="preserve">
     <value>Do you want to update your data from:
 FullName:      {0}
 Email:         {1}
@@ -239,19 +239,19 @@ PhoneNumber:   {5}</value>
   <data name="EditItemSuccessful" xml:space="preserve">
     <value>Item editing successful.</value>
   </data>
-  <data name="EditItemTitle" xml:space="preserve">
+  <data name="TitleEditItem" xml:space="preserve">
     <value>TESCO Edit Item</value>
   </data>
-  <data name="EmptyTextboxNotification" xml:space="preserve">
+  <data name="NotificationEmptyTextbox" xml:space="preserve">
     <value>Please fill up all the details. Thank you.</value>
   </data>
-  <data name="InvalidEmailNotification" xml:space="preserve">
+  <data name="NotificationInvalidEmail" xml:space="preserve">
     <value>Not a valid email.</value>
   </data>
-  <data name="ItemTypeDeletionNotification" xml:space="preserve">
+  <data name="NotificationItemTypeDeletion" xml:space="preserve">
     <value>Cannot delete. Item type has item stocks.</value>
   </data>
-  <data name="ItemUpdateDataNotification" xml:space="preserve">
+  <data name="NotificationItemUpdateData" xml:space="preserve">
     <value>Another item has the same name:
 Name:       {0}
 Type:       {1}
@@ -276,16 +276,16 @@ Is this the same item?</value>
   <data name="LoginSuccessful" xml:space="preserve">
     <value>Login successful.</value>
   </data>
-  <data name="LoginTitle" xml:space="preserve">
+  <data name="TitleLogin" xml:space="preserve">
     <value>TESCO Log In</value>
   </data>
   <data name="LogoffSuccessful" xml:space="preserve">
     <value>Log off successfully.</value>
   </data>
-  <data name="NoChangesNotification" xml:space="preserve">
+  <data name="NotificationNoChanges" xml:space="preserve">
     <value>No changes were made.</value>
   </data>
-  <data name="RegisteredItemNotification" xml:space="preserve">
+  <data name="NotificationRegisteredItem" xml:space="preserve">
     <value>Item type: {0} is registered already.</value>
   </data>
   <data name="RegistrationFailed" xml:space="preserve">
@@ -294,38 +294,38 @@ Is this the same item?</value>
   <data name="RegistrationSuccessful" xml:space="preserve">
     <value>Registration successful.</value>
   </data>
-  <data name="RegistrationTitle" xml:space="preserve">
+  <data name="TitleRegistration" xml:space="preserve">
     <value>TESCO Registration</value>
   </data>
   <data name="TransactionDetails" xml:space="preserve">
     <value>{0} @{1} x{2}
 </value>
   </data>
-  <data name="UnfinishedTransactionNotification" xml:space="preserve">
+  <data name="NotificationUnfinishedTransaction" xml:space="preserve">
     <value>You have an unfinished transaction. Would you like to proceed to checkout?</value>
   </data>
-  <data name="UnfinishedTransactionTitle" xml:space="preserve">
+  <data name="TitleUnfinishedTransaction" xml:space="preserve">
     <value>Unfinished Transaction</value>
   </data>
   <data name="UnregisteredLoginCredentials" xml:space="preserve">
     <value>Your credentials are not registered.</value>
   </data>
-  <data name="UpdateDataTitle" xml:space="preserve">
+  <data name="TitleUpdateData" xml:space="preserve">
     <value>Update Data</value>
   </data>
-  <data name="UsedEmailNotification" xml:space="preserve">
+  <data name="NotificationUsedEmail" xml:space="preserve">
     <value>Email is already used. Do you want to proceed to login instead?</value>
   </data>
-  <data name="UsedEmailTitle" xml:space="preserve">
+  <data name="TitleUsedEmail" xml:space="preserve">
     <value>Proceed to Login</value>
   </data>
-  <data name="UsedItemNameNotification" xml:space="preserve">
+  <data name="NotificationUsedItemName" xml:space="preserve">
     <value>Item name is taken. Please change item name.</value>
   </data>
-  <data name="UsedUsernameNotification" xml:space="preserve">
+  <data name="NotificationUsedUsername" xml:space="preserve">
     <value>Username is taken.</value>
   </data>
-  <data name="ValidItemTypeNotification" xml:space="preserve">
+  <data name="NotificationValidItemType" xml:space="preserve">
     <value>Please enter a valid item type.</value>
   </data>
   <data name="FontFaceConsolas" xml:space="preserve">
@@ -333,5 +333,8 @@ Is this the same item?</value>
   </data>
   <data name="DateTimeFormat" xml:space="preserve">
     <value>dddd, dd MMMM yyyy HH:mm:ss tt</value>
+  </data>
+  <data name="Regex" xml:space="preserve">
+    <value>^[-!#$%&amp;'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&amp;'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$</value>
   </data>
 </root>

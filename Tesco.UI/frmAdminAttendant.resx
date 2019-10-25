@@ -117,4 +117,150 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnDeleteAttendant.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnDeleteAttendant.Location" type="System.Drawing.Point, System.Drawing">
+    <value>337, 360</value>
+  </data>
+  <data name="&gt;&gt;lvAttendants.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteAttendant.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lvAttendants.Name" xml:space="preserve">
+    <value>lvAttendants</value>
+  </data>
+  <data name="btnDeleteAttendant.Text" xml:space="preserve">
+    <value>Delete Attendant</value>
+  </data>
+  <data name="btnAddAttendant.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="&gt;&gt;btnAddAttendant.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnAttendantFullName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAddAttendant.Name" xml:space="preserve">
+    <value>btnAddAttendant</value>
+  </data>
+  <data name="lvAttendants.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnAddAttendant.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 360</value>
+  </data>
+  <data name="columnAttendantId.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="columnAttendantPassword.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="columnAttendantId.Text" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="columnAttendantFullName.Text" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>629, 398</value>
+  </data>
+  <data name="columnAttendantUsername.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="columnAttendantUsername.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="btnDeleteAttendant.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;columnAttendantId.Name" xml:space="preserve">
+    <value>columnAttendantId</value>
+  </data>
+  <data name="lvAttendants.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteAttendant.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteAttendant.Name" xml:space="preserve">
+    <value>btnDeleteAttendant</value>
+  </data>
+  <data name="btnAddAttendant.Text" xml:space="preserve">
+    <value>Add Attendant</value>
+  </data>
+  <data name="&gt;&gt;columnAttendantPassword.Name" xml:space="preserve">
+    <value>columnAttendantPassword</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmAdminAttendant</value>
+  </data>
+  <data name="columnAttendantFullName.Width" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
+  <data name="lvAttendants.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 333</value>
+  </data>
+  <data name="&gt;&gt;columnAttendantUsername.Name" xml:space="preserve">
+    <value>columnAttendantUsername</value>
+  </data>
+  <data name="&gt;&gt;btnAddAttendant.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteAttendant.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;columnAttendantId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lvAttendants.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnDeleteAttendant.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="&gt;&gt;columnAttendantFullName.Name" xml:space="preserve">
+    <value>columnAttendantFullName</value>
+  </data>
+  <data name="&gt;&gt;columnAttendantUsername.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnAttendantPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lvAttendants.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 14</value>
+  </data>
+  <data name="columnAttendantPassword.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>TESCO Admin Attendant Page</value>
+  </data>
+  <data name="btnAddAttendant.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnAddAttendant.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Consolas, 9pt</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>sv-SE</value>
+  </metadata>
 </root>

@@ -138,24 +138,48 @@
     <Compile Include="Helpers\ItemTypeHelper.cs" />
     <Compile Include="Helpers\ListViewItemHelper.cs" />
     <Compile Include="Helpers\ItemSortHelper.cs" />
-    <Compile Include="Resources\Strings\en-US\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
+    <Compile Include="Resources\Resources.sv-SE.Designer.cs">
+      <DependentUpon>Resources.sv-SE.resx</DependentUpon>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Strings\sv-SE\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Include="Resources\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmAddAttendant.resx">
       <DependentUpon>frmAddAttendant.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddAttendant.sv-SE.resx">
+      <DependentUpon>frmAddAttendant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdmin.sv-SE.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminAttendant.sv-SE.resx">
+      <DependentUpon>frmAdminAttendant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAttendant.sv-SE.resx">
+      <DependentUpon>frmAttendant.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAttendantEditLogin.resx">
       <DependentUpon>frmAttendantEditLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAttendantEditLogin.sv-SE.resx">
+      <DependentUpon>frmAttendantEditLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCheckout.sv-SE.resx">
+      <DependentUpon>frmCheckout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmForgotPassword.resx">
       <DependentUpon>frmForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmForgotPassword.sv-SE.resx">
+      <DependentUpon>frmForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmItemInventory.sv-SE.resx">
+      <DependentUpon>frmItemInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmModifyItem.resx">
       <DependentUpon>frmModifyItem.cs</DependentUpon>
@@ -175,7 +199,13 @@
     <EmbeddedResource Include="frmItemInventory.resx">
       <DependentUpon>frmItemInventory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmModifyItem.sv-SE.resx">
+      <DependentUpon>frmModifyItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmReceipt.resx">
+      <DependentUpon>frmReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReceipt.sv-SE.resx">
       <DependentUpon>frmReceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegisterLogin.resx">
@@ -184,7 +214,13 @@
     <EmbeddedResource Include="frmShopping.resx">
       <DependentUpon>frmShopping.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmShopping.sv-SE.resx">
+      <DependentUpon>frmShopping.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmWelcome.resx">
+      <DependentUpon>frmWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWelcome.sv-SE.resx">
       <DependentUpon>frmWelcome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -197,11 +233,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Resources\Strings\en-US\Resources.resx">
+    <EmbeddedResource Include="Resources\Resources.sv-SE.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.sv-SE.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Strings\sv-SE\Resources.resx">
+    <EmbeddedResource Include="Resources\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>

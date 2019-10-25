@@ -5,7 +5,7 @@ using Tesco.BL.Managers;
 using Tesco.BL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+using _resource = Tesco.UI.Resources.Resources;
 
 namespace Tesco.UI
 {
@@ -37,7 +37,7 @@ namespace Tesco.UI
 			txtType.Text = string.Empty;
 			cboType.Text = string.Empty;
 
-			if (!_user.Type.Equals(User.UserTypes.attendant)) return;
+			if (!_user.Type.Equals(User.UserTypes.attendant.ToString())) return;
 			
 			btnDeleteItem.Visible = false;
 			grpItemTypes.Visible = false;
@@ -66,7 +66,7 @@ namespace Tesco.UI
 			var item = new Item();
 			var frmModifyItem = new frmModifyItem(item, _user, ItemUser.ModificationTypes.Add.ToString())
 			{
-				Text = _resource.AddItemTitle
+				Text = _resource.TitleAddItem
 			};
 
 			this.Hide();
@@ -87,7 +87,7 @@ namespace Tesco.UI
 
 			var frmModifyItem = new frmModifyItem(item, _user, ItemUser.ModificationTypes.Edit.ToString())
 			{
-				Text = _resource.EditItemTitle
+				Text = _resource.TitleEditItem
 			};
 
 			this.Hide();
@@ -107,7 +107,7 @@ namespace Tesco.UI
 		{
 			if (_itemTypeManager.RetrieveDataByWhereCondition(new ItemType() { TypeDescription = txtType.Text }) == null) return;
 			
-			MessageBox.Show(string.Format(_resource.RegisteredItemNotification, txtType.Text));
+			MessageBox.Show(string.Format(_resource.NotificationRegisteredItem, txtType.Text));
 			txtType.Text = string.Empty;
 			txtType.Focus();
 		}
@@ -122,7 +122,7 @@ namespace Tesco.UI
 				}) != 0
 					? _resource.AddItemTypeSuccessful
 					: _resource.AddItemTypeFailed
-				: _resource.ValidItemTypeNotification);
+				: _resource.NotificationValidItemType);
 
 			DisplayItemsInListView();
 		}
@@ -139,7 +139,7 @@ namespace Tesco.UI
 				? item.Id != null && _itemTypeManager.Delete<ItemType>((int) item.Id) > 0
 					? _resource.DeleteItemTypeSuccessful
 					: _resource.DeleteItemTypeFailed
-				: _resource.ItemTypeDeletionNotification);
+				: _resource.NotificationItemTypeDeletion);
 
 			DisplayItemsInListView();
 		}

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+using _resource = Tesco.UI.Resources.Resources;
 
 namespace Tesco.UI
 {
@@ -18,6 +18,6 @@ namespace Tesco.UI
 
 		private void txtEmail_Leave(object sender, EventArgs e) => _emailValidationHelper.CheckEmailIfValid(txtEmail.Text);
 
-		private void btnSend_Click(object sender, EventArgs e) => MessageBox.Show(_resource.CheckEmailNotification);
+		private void btnSend_Click(object sender, EventArgs e) => MessageBox.Show(_resource.NotificationCheckEmail);
 	}
 }

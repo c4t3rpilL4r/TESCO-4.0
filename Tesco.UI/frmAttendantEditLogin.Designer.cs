@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAttendantEditLogin));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,76 +40,54 @@
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtUsername);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(361, 94);
-            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Login Details";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(93, 56);
+            resources.ApplyResources(this.txtPassword, "txtPassword");
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(242, 22);
-            this.txtPassword.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 59);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 14);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Password:";
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(93, 28);
+            resources.ApplyResources(this.txtUsername, "txtUsername");
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(242, 22);
-            this.txtUsername.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 31);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 14);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Username:";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(136, 112);
+            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(113, 23);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // frmAttendantEditLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 143);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.Name = "frmAttendantEditLogin";
-            this.Text = "TESCO Attendant Edit Login";
-            this.FormClosing +=
-                new System.Windows.Forms.FormClosingEventHandler(this.frmAttendantEditLogin_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAttendantEditLogin_FormClosing);
             this.Load += new System.EventHandler(this.FrmAttendantEditLogin_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion

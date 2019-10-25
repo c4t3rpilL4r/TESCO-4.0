@@ -6,7 +6,7 @@ using Tesco.BL.Managers;
 using Tesco.BL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+using _resource = Tesco.UI.Resources.Resources;
 
 
 namespace Tesco.UI
@@ -167,14 +167,14 @@ namespace Tesco.UI
 
 		private bool CheckIfDataIsNew()
 		{
-			return MessageBox.Show(string.Format(_resource.CustomerUpdateDataNotification,
+			return MessageBox.Show(string.Format(_resource.NotificationCustomerUpdateData,
 					_user.FullName,
 					_customer.Email,
 					_customer.PhoneNumber,
 					txtFullName.Text,
 					txtEmail.Text,
 					txtPhoneNumber.Text),
-				_resource.UpdateDataTitle,
+				_resource.TitleUpdateData,
 				MessageBoxButtons.YesNo,
 				MessageBoxIcon.Question) == DialogResult.Yes;
 		}

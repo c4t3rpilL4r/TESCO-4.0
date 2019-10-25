@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OutOfStocks" xml:space="preserve">
+    <value>Förlåt. Varan är slut.</value>
+  </data>
+  <data name="QuantityLabelDefaultValue" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GreetingUser" xml:space="preserve">
+    <value>Hej, {0}.</value>
+  </data>
+  <data name="GreetingGuest" xml:space="preserve">
+    <value>Hej, Gäst.</value>
+  </data>
+  <data name="LoginNotification" xml:space="preserve">
+    <value>Registrera / logga in för att fortsätta.</value>
+  </data>
+  <data name="NotificationSelectItem" xml:space="preserve">
+    <value>Se till att objektet du vill lägga till i kundvagnen ses och markeras.
+Du kan försöka trycka på knappen Återställ sorteringsordning för att visa alla objekt om sortering har gjorts.</value>
+  </data>
+  <data name="NotificationCloseWindow" xml:space="preserve">
+    <value>Är du säker på att du vill stänga fönstret?</value>
+  </data>
+  <data name="TitleCloseWindow" xml:space="preserve">
+    <value>Stäng fönstret</value>
+  </data>
+  <data name="NotificationSignOff" xml:space="preserve">
+    <value>Du har loggat ut.</value>
+  </data>
+  <data name="ItemDetailsLabelText" xml:space="preserve">
+    <value>Namn:      {0}
+Typ:       {1}
+Pris:      {2}
+Kvantitet: {3}
+Total:     {4}</value>
+  </data>
+  <data name="SortByAscending" xml:space="preserve">
+    <value>Namn: Stigande</value>
+  </data>
+  <data name="SortByBigToSmall" xml:space="preserve">
+    <value>Med Pris: Stor till liten</value>
+  </data>
+  <data name="SortByDescending" xml:space="preserve">
+    <value>Namn: Fallande</value>
+  </data>
+  <data name="SortBySmallToBig" xml:space="preserve">
+    <value>Med Pris: Liten till stor</value>
+  </data>
+  <data name="UpdateFailed" xml:space="preserve">
+    <value>Uppdateringen misslyckades.</value>
+  </data>
+  <data name="UpdateSuccessful" xml:space="preserve">
+    <value>Uppdatering lyckades.</value>
+  </data>
+  <data name="AddAttendantFailed" xml:space="preserve">
+    <value>Lagring av butiksdeltagare misslyckades.</value>
+  </data>
+  <data name="AddAttendantSuccessful" xml:space="preserve">
+    <value>Butiksmedarbetare lägger till framgångsrikt.</value>
+  </data>
+  <data name="AddItemFailed" xml:space="preserve">
+    <value>Objekttillägg misslyckades.</value>
+  </data>
+  <data name="AddItemSuccessful" xml:space="preserve">
+    <value>Objektet läggs till.</value>
+  </data>
+  <data name="TitleAddItem" xml:space="preserve">
+    <value>TESCO Lägg till artikel</value>
+  </data>
+  <data name="AddItemTypeFailed" xml:space="preserve">
+    <value>Objekttyptillägg misslyckades.</value>
+  </data>
+  <data name="AddItemTypeSuccessful" xml:space="preserve">
+    <value>Objekttypen läggs till.</value>
+  </data>
+  <data name="GreetingAdmin" xml:space="preserve">
+    <value>Hej, Admin {0}.</value>
+  </data>
+  <data name="GreetingAttendant" xml:space="preserve">
+    <value>Hej, Åtföljande {0}.</value>
+  </data>
+  <data name="NotificationChangeEmail" xml:space="preserve">
+    <value>Ändra e-postmeddelandet. Tack.</value>
+  </data>
+  <data name="NotificationCheckEmail" xml:space="preserve">
+    <value>Kontrollera din e-post för instruktioner om hur du återställer ditt lösenord.</value>
+  </data>
+  <data name="NotificationCustomerUpdateData" xml:space="preserve">
+    <value>Vill du uppdatera dina data från:
+Fullständiga namn:  {0}
+E-post:             {1}
+Telefonnummer:      {2}
+
+in i:
+
+Fullständiga namn:  {3}
+E-post:             {4}
+Telefonnummer:      {5}</value>
+  </data>
+  <data name="DeleteAttendantFailed" xml:space="preserve">
+    <value>Raderingen av skötare misslyckades.</value>
+  </data>
+  <data name="DeleteAttendantSuccessful" xml:space="preserve">
+    <value>Att raderingen av deltagaren lyckades.</value>
+  </data>
+  <data name="DeleteItemFailed" xml:space="preserve">
+    <value>Radering av objekt misslyckades.</value>
+  </data>
+  <data name="DeleteItemSuccessful" xml:space="preserve">
+    <value>Radering av artikeln lyckades.</value>
+  </data>
+  <data name="DeleteItemTypeFailed" xml:space="preserve">
+    <value>Radering av objekttyp misslyckades.</value>
+  </data>
+  <data name="DeleteItemTypeSuccessful" xml:space="preserve">
+    <value>Radering av objekttypen lyckades.</value>
+  </data>
+  <data name="EditItemFailed" xml:space="preserve">
+    <value>Objektredigering misslyckades.</value>
+  </data>
+  <data name="EditItemSuccessful" xml:space="preserve">
+    <value>Objektredigering lyckades.</value>
+  </data>
+  <data name="TitleEditItem" xml:space="preserve">
+    <value>TESCO Redigera Artikel</value>
+  </data>
+  <data name="NotificationEmptyTextbox" xml:space="preserve">
+    <value>Fyll i alla detaljer. Tack.</value>
+  </data>
+  <data name="NotificationInvalidEmail" xml:space="preserve">
+    <value>Inte ett giltigt e-postmeddelande.</value>
+  </data>
+  <data name="NotificationItemTypeDeletion" xml:space="preserve">
+    <value>Det går inte att ta bort. Objekttypen har varulager.</value>
+  </data>
+  <data name="NotificationItemUpdateData" xml:space="preserve">
+    <value>En annan artikel har samma namn:
+Namn:    {0}
+Typ:     {1}
+Rabatt:  {2}
+Pris:    {3}
+Lager:   {4}
+
+Är det samma objekt?</value>
+  </data>
+  <data name="ItemVerification" xml:space="preserve">
+    <value>Verifiera artikeln.</value>
+  </data>
+  <data name="LoginCredentialsEditFailed" xml:space="preserve">
+    <value>Inloggningsuppgifterna redigerades misslyckades.</value>
+  </data>
+  <data name="LoginCredentialsEditSuccessful" xml:space="preserve">
+    <value>Inloggningsuppgifterna redigeras.</value>
+  </data>
+  <data name="LoginFailed" xml:space="preserve">
+    <value>Inloggningen misslyckades. Kontrollera detaljer.</value>
+  </data>
+  <data name="LoginSuccessful" xml:space="preserve">
+    <value>Inloggningen lyckades.</value>
+  </data>
+  <data name="TitleLogin" xml:space="preserve">
+    <value>TESCO Logga in</value>
+  </data>
+  <data name="LogoffSuccessful" xml:space="preserve">
+    <value>Logga ut framgångsrikt.</value>
+  </data>
+  <data name="NotificationNoChanges" xml:space="preserve">
+    <value>Inga ändringar gjordes.</value>
+  </data>
+  <data name="NotificationRegisteredItem" xml:space="preserve">
+    <value>Objekttyp: {0} är redan registrerad.</value>
+  </data>
+  <data name="RegistrationFailed" xml:space="preserve">
+    <value>Registreringen misslyckades. Kontrollera informationen igen om alla är korrekta.</value>
+  </data>
+  <data name="RegistrationSuccessful" xml:space="preserve">
+    <value>Registrering lyckad.</value>
+  </data>
+  <data name="TitleRegistration" xml:space="preserve">
+    <value>TESCO Registrering</value>
+  </data>
+  <data name="TransactionDetails" xml:space="preserve">
+    <value>{0} @{1} x{2}
+</value>
+  </data>
+  <data name="NotificationUnfinishedTransaction" xml:space="preserve">
+    <value>Du har en oavslutad transaktion. Vill du gå vidare till kassan?</value>
+  </data>
+  <data name="TitleUnfinishedTransaction" xml:space="preserve">
+    <value>Oavslutad Transaktion</value>
+  </data>
+  <data name="UnregisteredLoginCredentials" xml:space="preserve">
+    <value>Dina referenser är inte registrerade.</value>
+  </data>
+  <data name="TitleUpdateData" xml:space="preserve">
+    <value>Uppdatera data</value>
+  </data>
+  <data name="NotificationUsedEmail" xml:space="preserve">
+    <value>E-postmeddelanden används redan. Vill du fortsätta att logga in istället?</value>
+  </data>
+  <data name="TitleUsedEmail" xml:space="preserve">
+    <value>Fortsätt till Inloggning</value>
+  </data>
+  <data name="NotificationUsedItemName" xml:space="preserve">
+    <value>Artikelnamnet tas. Ändra artikelnamn.</value>
+  </data>
+  <data name="NotificationUsedUsername" xml:space="preserve">
+    <value>Användarnamnet är taget.</value>
+  </data>
+  <data name="NotificationValidItemType" xml:space="preserve">
+    <value>Ange en giltig artikeltyp.</value>
+  </data>
+  <data name="FontFaceConsolas" xml:space="preserve">
+    <value>Consolas</value>
+  </data>
+  <data name="DateTimeFormat" xml:space="preserve">
+    <value>dddd, dd MMMM yyyy HH:mm:ss tt</value>
+  </data>
+</root>

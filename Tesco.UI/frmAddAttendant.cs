@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using Tesco.BL.Interfaces;
 using Tesco.BL.Managers;
 using Tesco.BL.Models;
-using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+using _resource = Tesco.UI.Resources.Resources;
 
 namespace Tesco.UI
 {
@@ -35,7 +35,7 @@ namespace Tesco.UI
 						}) > 0
 							? _resource.AddAttendantSuccessful
 							: _resource.AddAttendantFailed
-					: _resource.EmptyTextboxNotification);
+					: _resource.NotificationEmptyTextbox);
 
 			var frmAdminAttendant = new frmAdminAttendant(_user);
 			this.Hide();

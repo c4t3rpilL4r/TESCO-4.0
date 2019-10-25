@@ -117,4 +117,698 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnCheckout.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;lvItems.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="btnSubtract.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblTotalAmount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 19</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="columnItemPrice.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="lblItemDetails.Text" xml:space="preserve">
+    <value>Name:
+Type:
+Price:
+Quantity:
+Total:</value>
+  </data>
+  <data name="&gt;&gt;lvCart.Parent" xml:space="preserve">
+    <value>grpCart</value>
+  </data>
+  <data name="&gt;&gt;btnAddToCart.Parent" xml:space="preserve">
+    <value>grpAddToCart</value>
+  </data>
+  <data name="&gt;&gt;columnCartItemAmount.Name" xml:space="preserve">
+    <value>columnCartItemAmount</value>
+  </data>
+  <data name="&gt;&gt;lblItemDetails.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lvItems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>507, 287</value>
+  </data>
+  <data name="grpAddToCart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 394</value>
+  </data>
+  <data name="columnCartItemId.Width" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cboSortByType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 22</value>
+  </data>
+  <data name="lblUserGreeting.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;btnAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblQuantity.Parent" xml:space="preserve">
+    <value>grpAddToCart</value>
+  </data>
+  <data name="&gt;&gt;btnCheckout.Name" xml:space="preserve">
+    <value>btnCheckout</value>
+  </data>
+  <data name="&gt;&gt;btnResetSort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblQuantity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="grpAddToCart.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lblUserGreeting.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnRemoveOrder.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblSortByType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 24</value>
+  </data>
+  <data name="lblQuantity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 43</value>
+  </data>
+  <data name="lblSortByNamePrice.Text" xml:space="preserve">
+    <value>Sort By Name/Price:</value>
+  </data>
+  <data name="grpCart.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;columnItemDiscount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="grpSorting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="btnAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;btnSubtract.Parent" xml:space="preserve">
+    <value>grpAddToCart</value>
+  </data>
+  <data name="&gt;&gt;lblUserGreeting.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="columnItemId.Width" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblSortByType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 14</value>
+  </data>
+  <data name="btnSubtract.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnResetSort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 22</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Consolas, 9pt</value>
+  </data>
+  <data name="&gt;&gt;grpSorting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblSortByNamePrice.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>TESCO Shopping</value>
+  </data>
+  <data name="lblSortByNamePrice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 24</value>
+  </data>
+  <data name="grpItemDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>167, 394</value>
+  </data>
+  <data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 22</value>
+  </data>
+  <data name="&gt;&gt;lblSortByType.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lblSortByNamePrice.Parent" xml:space="preserve">
+    <value>grpSorting</value>
+  </data>
+  <data name="&gt;&gt;lblItemDetails.Parent" xml:space="preserve">
+    <value>grpItemDetails</value>
+  </data>
+  <data name="cboSortByNamePrice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 41</value>
+  </data>
+  <data name="lblTotalAmount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 340</value>
+  </data>
+  <data name="&gt;&gt;grpAddToCart.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cboSortByType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 41</value>
+  </data>
+  <data name="columnCartItemQuantity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="btnSubtract.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;columnItemStocks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSortByNamePrice.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="grpAddToCart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 131</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 14</value>
+  </data>
+  <data name="btnCheckout.Text" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveOrder.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cboSortByNamePrice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 22</value>
+  </data>
+  <data name="btnCheckout.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;columnItemPrice.Name" xml:space="preserve">
+    <value>columnItemPrice</value>
+  </data>
+  <data name="btnAdd.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="lblSortByType.Text" xml:space="preserve">
+    <value>Sort By Type:</value>
+  </data>
+  <data name="lblSortByNamePrice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 14</value>
+  </data>
+  <data name="&gt;&gt;lblSortByType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>81, 39</value>
+  </data>
+  <data name="columnItemType.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="&gt;&gt;btnSubtract.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblUserGreeting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 19</value>
+  </data>
+  <data name="&gt;&gt;columnCartItemName.Name" xml:space="preserve">
+    <value>columnCartItemName</value>
+  </data>
+  <data name="&gt;&gt;grpAddToCart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblTotalAmount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="columnCartItemQuantity.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="grpCart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>376, 406</value>
+  </data>
+  <data name="&gt;&gt;btnAdd.Name" xml:space="preserve">
+    <value>btnAdd</value>
+  </data>
+  <data name="&gt;&gt;columnCartItemId.Name" xml:space="preserve">
+    <value>columnCartItemId</value>
+  </data>
+  <data name="&gt;&gt;grpCart.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblTotalAmount.Parent" xml:space="preserve">
+    <value>grpCart</value>
+  </data>
+  <data name="&gt;&gt;columnItemType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSortByType.Parent" xml:space="preserve">
+    <value>grpSorting</value>
+  </data>
+  <data name="&gt;&gt;btnSubtract.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnSignOff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;cboSortByNamePrice.Parent" xml:space="preserve">
+    <value>grpSorting</value>
+  </data>
+  <data name="grpSorting.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="columnItemStocks.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;columnItemName.Name" xml:space="preserve">
+    <value>columnItemName</value>
+  </data>
+  <data name="lblSortByNamePrice.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;lblSortByNamePrice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblUserGreeting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSignOff.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmShopping</value>
+  </data>
+  <data name="columnItemPrice.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="btnSubtract.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 22</value>
+  </data>
+  <data name="&gt;&gt;columnItemName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSortByNamePrice.Name" xml:space="preserve">
+    <value>lblSortByNamePrice</value>
+  </data>
+  <data name="&gt;&gt;grpSorting.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblQuantity.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;grpSorting.Name" xml:space="preserve">
+    <value>grpSorting</value>
+  </data>
+  <data name="lvCart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>364, 304</value>
+  </data>
+  <data name="&gt;&gt;btnCheckout.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="columnItemType.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="lblQuantity.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;grpItemDetails.Name" xml:space="preserve">
+    <value>grpItemDetails</value>
+  </data>
+  <data name="lblTotalAmount.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="grpAddToCart.Text" xml:space="preserve">
+    <value>Add To Cart</value>
+  </data>
+  <data name="&gt;&gt;cboSortByNamePrice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblQuantity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="grpItemDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>337, 131</value>
+  </data>
+  <data name="&gt;&gt;btnAdd.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;grpAddToCart.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpCart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAddToCart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveOrder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpCart.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnResetSort.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="columnItemDiscount.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="&gt;&gt;grpItemDetails.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="columnItemName.Width" type="System.Int32, mscorlib">
+    <value>240</value>
+  </data>
+  <data name="&gt;&gt;columnCartItemQuantity.Name" xml:space="preserve">
+    <value>columnCartItemQuantity</value>
+  </data>
+  <data name="columnItemId.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;btnSignOff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="columnCartItemAmount.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;btnSubtract.Name" xml:space="preserve">
+    <value>btnSubtract</value>
+  </data>
+  <data name="&gt;&gt;columnCartItemQuantity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="columnItemName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblSortByType.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;lblTotalAmount.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboSortByNamePrice.Name" xml:space="preserve">
+    <value>cboSortByNamePrice</value>
+  </data>
+  <data name="columnItemDiscount.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;lvItems.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboSortByType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnAddToCart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 70</value>
+  </data>
+  <data name="&gt;&gt;grpItemDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnAdd.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;grpItemDetails.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnAddToCart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveOrder.Name" xml:space="preserve">
+    <value>btnRemoveOrder</value>
+  </data>
+  <data name="&gt;&gt;lvCart.Name" xml:space="preserve">
+    <value>lvCart</value>
+  </data>
+  <data name="columnCartItemId.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;btnAddToCart.Name" xml:space="preserve">
+    <value>btnAddToCart</value>
+  </data>
+  <data name="&gt;&gt;columnCartItemAmount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAdd.Parent" xml:space="preserve">
+    <value>grpAddToCart</value>
+  </data>
+  <data name="&gt;&gt;btnResetSort.Parent" xml:space="preserve">
+    <value>grpSorting</value>
+  </data>
+  <data name="lvCart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="lvItems.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lvItems.Name" xml:space="preserve">
+    <value>lvItems</value>
+  </data>
+  <data name="&gt;&gt;lblItemDetails.Name" xml:space="preserve">
+    <value>lblItemDetails</value>
+  </data>
+  <data name="columnItemStocks.Text" xml:space="preserve">
+    <value>Stocks</value>
+  </data>
+  <data name="&gt;&gt;lblTotalAmount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnRemoveOrder.Text" xml:space="preserve">
+    <value>Remove Order</value>
+  </data>
+  <data name="columnItemDiscount.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="grpSorting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>507, 83</value>
+  </data>
+  <data name="&gt;&gt;columnCartItemName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblSortByType.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;grpCart.Name" xml:space="preserve">
+    <value>grpCart</value>
+  </data>
+  <data name="lvCart.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="columnCartItemName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="&gt;&gt;columnItemId.Name" xml:space="preserve">
+    <value>columnItemId</value>
+  </data>
+  <data name="btnCheckout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 23</value>
+  </data>
+  <data name="btnCheckout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>141, 373</value>
+  </data>
+  <data name="&gt;&gt;cboSortByType.Name" xml:space="preserve">
+    <value>cboSortByType</value>
+  </data>
+  <data name="btnSignOff.Text" xml:space="preserve">
+    <value>Sign Off</value>
+  </data>
+  <data name="btnAddToCart.Text" xml:space="preserve">
+    <value>Add To Cart</value>
+  </data>
+  <data name="columnCartItemQuantity.Text" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="btnRemoveOrder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 23</value>
+  </data>
+  <data name="&gt;&gt;btnSignOff.Name" xml:space="preserve">
+    <value>btnSignOff</value>
+  </data>
+  <data name="columnCartItemName.Width" type="System.Int32, mscorlib">
+    <value>210</value>
+  </data>
+  <data name="columnCartItemAmount.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="&gt;&gt;lvCart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCheckout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblUserGreeting.Text" xml:space="preserve">
+    <value>Hello,</value>
+  </data>
+  <data name="btnSignOff.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnRemoveOrder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 338</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveOrder.Parent" xml:space="preserve">
+    <value>grpCart</value>
+  </data>
+  <data name="btnRemoveOrder.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblItemDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 18</value>
+  </data>
+  <data name="lblItemDetails.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;cboSortByType.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnCheckout.Parent" xml:space="preserve">
+    <value>grpCart</value>
+  </data>
+  <data name="columnItemPrice.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="lvItems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 101</value>
+  </data>
+  <data name="btnSubtract.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 39</value>
+  </data>
+  <data name="lblTotalAmount.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;columnCartItemId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnResetSort.Name" xml:space="preserve">
+    <value>btnResetSort</value>
+  </data>
+  <data name="&gt;&gt;lvItems.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="grpItemDetails.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="lblUserGreeting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>561, 36</value>
+  </data>
+  <data name="grpCart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>545, 91</value>
+  </data>
+  <data name="&gt;&gt;cboSortByType.Parent" xml:space="preserve">
+    <value>grpSorting</value>
+  </data>
+  <data name="btnSignOff.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>933, 563</value>
+  </data>
+  <data name="&gt;&gt;lblTotalAmount.Name" xml:space="preserve">
+    <value>lblTotalAmount</value>
+  </data>
+  <data name="cboSortByNamePrice.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;grpAddToCart.Name" xml:space="preserve">
+    <value>grpAddToCart</value>
+  </data>
+  <data name="grpSorting.Text" xml:space="preserve">
+    <value>Sorting Details</value>
+  </data>
+  <data name="&gt;&gt;btnSignOff.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnSignOff.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnAddToCart.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="columnCartItemAmount.Text" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="&gt;&gt;lvCart.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;grpSorting.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="grpCart.Text" xml:space="preserve">
+    <value>Cart Details</value>
+  </data>
+  <data name="lblQuantity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 14</value>
+  </data>
+  <data name="&gt;&gt;columnItemStocks.Name" xml:space="preserve">
+    <value>columnItemStocks</value>
+  </data>
+  <data name="&gt;&gt;columnItemDiscount.Name" xml:space="preserve">
+    <value>columnItemDiscount</value>
+  </data>
+  <data name="&gt;&gt;columnItemType.Name" xml:space="preserve">
+    <value>columnItemType</value>
+  </data>
+  <data name="lblQuantity.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;lblItemDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboSortByNamePrice.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblTotalAmount.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="grpItemDetails.Text" xml:space="preserve">
+    <value>Item Details</value>
+  </data>
+  <data name="btnResetSort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>352, 41</value>
+  </data>
+  <data name="&gt;&gt;lblUserGreeting.Name" xml:space="preserve">
+    <value>lblUserGreeting</value>
+  </data>
+  <data name="btnResetSort.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btnResetSort.Text" xml:space="preserve">
+    <value>Reset Sort Order</value>
+  </data>
+  <data name="&gt;&gt;columnItemId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSignOff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>828, 32</value>
+  </data>
+  <data name="btnAddToCart.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblItemDetails.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="cboSortByType.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnAddToCart.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;lblSortByType.Name" xml:space="preserve">
+    <value>lblSortByType</value>
+  </data>
+  <data name="lblItemDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 70</value>
+  </data>
+  <data name="&gt;&gt;columnItemPrice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblQuantity.Name" xml:space="preserve">
+    <value>lblQuantity</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>sv-SE</value>
+  </metadata>
 </root>

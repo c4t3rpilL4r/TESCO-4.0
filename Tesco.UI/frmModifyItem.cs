@@ -5,7 +5,7 @@ using Tesco.BL.Managers;
 using Tesco.BL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+using _resource = Tesco.UI.Resources.Resources;
 
 
 namespace Tesco.UI
@@ -56,7 +56,7 @@ namespace Tesco.UI
 
 			if (checkItem == null) return;
 
-			if (MessageBox.Show(string.Format(_resource.ItemUpdateDataNotification,
+			if (MessageBox.Show(string.Format(_resource.NotificationItemUpdateData,
 					checkItem.Name,
 					_itemTypeManager.RetrieveDataById<ItemType>((int)checkItem.ItemTypeId).TypeDescription,
 					checkItem.Discount,
@@ -76,7 +76,7 @@ namespace Tesco.UI
 			}
 			else
 			{
-				MessageBox.Show(_resource.UsedItemNameNotification);
+				MessageBox.Show(_resource.NotificationUsedItemName);
 				txtItemName.Text = string.Empty;
 				txtItemName.Focus();
 			}
@@ -125,7 +125,7 @@ namespace Tesco.UI
 			}
 			else
 			{
-				MessageBox.Show(_resource.EmptyTextboxNotification);
+				MessageBox.Show(_resource.NotificationEmptyTextbox);
 			}
 
 			var frmItemInventory = new frmItemInventory(_user);

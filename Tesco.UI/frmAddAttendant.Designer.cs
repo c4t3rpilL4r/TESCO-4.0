@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddAttendant));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -41,87 +42,60 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 36);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 14);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Full Name:";
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtUsername);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtFullName);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(388, 133);
-            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Attendant Details";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(98, 89);
+            resources.ApplyResources(this.txtPassword, "txtPassword");
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(268, 22);
-            this.txtPassword.TabIndex = 5;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 92);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 14);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Password:";
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(98, 61);
+            resources.ApplyResources(this.txtUsername, "txtUsername");
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(268, 22);
-            this.txtUsername.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 64);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 14);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Username:";
             // 
             // txtFullName
             // 
-            this.txtFullName.Location = new System.Drawing.Point(98, 33);
+            resources.ApplyResources(this.txtFullName, "txtFullName");
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(268, 22);
-            this.txtFullName.TabIndex = 1;
             // 
             // btnAddAttendant
             // 
-            this.btnAddAttendant.Location = new System.Drawing.Point(128, 151);
+            resources.ApplyResources(this.btnAddAttendant, "btnAddAttendant");
             this.btnAddAttendant.Name = "btnAddAttendant";
-            this.btnAddAttendant.Size = new System.Drawing.Size(143, 24);
-            this.btnAddAttendant.TabIndex = 2;
-            this.btnAddAttendant.Text = "Add Attendant";
             this.btnAddAttendant.UseVisualStyleBackColor = true;
             this.btnAddAttendant.Click += new System.EventHandler(this.BtnAddAttendant_Click);
             // 
             // frmAddAttendant
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 183);
             this.Controls.Add(this.btnAddAttendant);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmAddAttendant";
-            this.Text = "TESCO Add Attendant";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

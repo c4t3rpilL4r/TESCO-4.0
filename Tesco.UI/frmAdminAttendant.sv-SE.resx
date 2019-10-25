@@ -117,102 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 14</value>
+  <data name="columnAttendantFullName.Text" xml:space="preserve">
+    <value>Fullständiga namn</value>
   </data>
-  <data name="btnLogoff.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 23</value>
+  <data name="columnAttendantUsername.Text" xml:space="preserve">
+    <value>Användarnamn</value>
   </data>
-  <data name="&gt;&gt;btnLogoff.Name" xml:space="preserve">
-    <value>btnLogoff</value>
+  <data name="columnAttendantPassword.Text" xml:space="preserve">
+    <value>Lösenord</value>
   </data>
-  <data name="&gt;&gt;btnItemInventory.Name" xml:space="preserve">
-    <value>btnItemInventory</value>
+  <data name="btnAddAttendant.Text" xml:space="preserve">
+    <value>Lägg till skötare</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnItemInventory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLogoff.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnItemInventory.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnEditLogin.Text" xml:space="preserve">
-    <value>Edit Login</value>
-  </data>
-  <data name="&gt;&gt;btnEditLogin.Name" xml:space="preserve">
-    <value>btnEditLogin</value>
-  </data>
-  <data name="btnEditLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 23</value>
-  </data>
-  <data name="btnItemInventory.Text" xml:space="preserve">
-    <value>Item Inventory</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>281, 72</value>
-  </data>
-  <data name="&gt;&gt;btnLogoff.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnLogoff.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="btnItemInventory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 23</value>
-  </data>
-  <data name="&gt;&gt;btnItemInventory.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="btnLogoff.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 40</value>
-  </data>
-  <data name="&gt;&gt;btnEditLogin.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnItemInventory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 11</value>
-  </data>
-  <data name="btnEditLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 11</value>
-  </data>
-  <data name="&gt;&gt;btnLogoff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnLogoff.Text" xml:space="preserve">
-    <value>Log off</value>
-  </data>
-  <data name="btnEditLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnEditLogin.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnEditLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Consolas, 9pt</value>
+  <data name="btnDeleteAttendant.Text" xml:space="preserve">
+    <value>Radera skötare</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>TESCO Attendant</value>
+    <value>TESCO Administratörssida</value>
   </data>
-  <data name="btnItemInventory.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>frmAttendant</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>sv-SE</value>
-  </metadata>
 </root>

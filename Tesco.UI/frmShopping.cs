@@ -6,7 +6,7 @@ using Tesco.BL.Interfaces;
 using Tesco.BL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+using _resource = Tesco.UI.Resources.Resources;
 
 
 namespace Tesco.UI
@@ -39,8 +39,8 @@ namespace Tesco.UI
 			btnSignOff.Enabled = _user != null;
 			btnSignOff.Visible = _user != null;
 			lblUserGreeting.Text = _user != null
-				? string.Format(_resource.UserGreeting, _user.FullName)
-				: _resource.GuestGreeting;
+				? string.Format(_resource.GreetingUser, _user.FullName)
+				: _resource.GreetingGuest;
 
 			if (_user != null)
 			{
@@ -73,11 +73,11 @@ namespace Tesco.UI
 
 			if (int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0)
 			{
-				lblQuantity.Text = Resources.Strings.en_US.Resources.QuantityLabelDefaultValue;
+				lblQuantity.Text = _resource.QuantityLabelDefaultValue;
 			}
 			else
 			{
-				MessageBox.Show(Resources.Strings.en_US.Resources.OutOfStocks);
+				MessageBox.Show(_resource.NotificationOutOfStocks);
 			}
 
 			btnAdd.Enabled = int.Parse(lvItems.SelectedItems[0].SubItems[5].Text) > 0;
@@ -188,7 +188,7 @@ namespace Tesco.UI
 				}
 				else
 				{
-					MessageBox.Show(_resource.LoginNotification);
+					MessageBox.Show(_resource.NotificationLogin);
 				
 					var login = new frmRegisterLogin(0, _user);
 					this.Hide();
@@ -197,7 +197,7 @@ namespace Tesco.UI
 			}
 			else
 			{
-				MessageBox.Show(_resource.SelectItemNotification);
+				MessageBox.Show(_resource.NotificationSelectItem);
 			}
 
 			KeepSelectedItemFocusInItemsListView();
@@ -267,7 +267,7 @@ namespace Tesco.UI
 
 		private void BtnSignOff_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show(_resource.SignOffNotification);
+			MessageBox.Show(_resource.NotificationSignOff);
 			
 			var welcome = new frmWelcome();
 			this.Hide();

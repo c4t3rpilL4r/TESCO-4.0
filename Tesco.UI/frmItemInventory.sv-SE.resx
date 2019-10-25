@@ -117,147 +117,86 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblEnterEmail.Text" xml:space="preserve">
-    <value>Please enter email:</value>
+  <data name="columnItemName.Text" xml:space="preserve">
+    <value>Namn</value>
   </data>
-  <data name="btnSendInstructions.Text" xml:space="preserve">
-    <value>Send Reset Instructions</value>
+  <data name="columnItemType.Text" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="columnItemDiscount.Text" xml:space="preserve">
+    <value>Rabatt</value>
+  </data>
+  <data name="columnItemPrice.Text" xml:space="preserve">
+    <value>Pris</value>
+  </data>
+  <data name="columnItemStocks.Text" xml:space="preserve">
+    <value>Lager</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Sortering</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 14</value>
+  <data name="btnResetSort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 74</value>
   </data>
-  <data name="&gt;&gt;lblEnterEmail.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="btnResetSort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
   </data>
-  <data name="btnSendInstructions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 77</value>
+  <data name="btnResetSort.Text" xml:space="preserve">
+    <value>Återställ Sortering</value>
   </data>
-  <data name="&gt;&gt;lblEnterEmail.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 14</value>
   </data>
-  <data name="&gt;&gt;lblEmail.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Efter Typ:</value>
   </data>
-  <data name="&gt;&gt;lblEmail.Parent" xml:space="preserve">
-    <value>grpForgotPassword</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Med Namn/Pris:</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblEnterEmail.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="btnEditItem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 24</value>
   </data>
-  <data name="&gt;&gt;txtEmail.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnEditItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 23</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnEditItem.Text" xml:space="preserve">
+    <value>Redigera objekt</value>
   </data>
-  <data name="btnSendInstructions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 23</value>
+  <data name="btnAddItem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 24</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>327, 152</value>
+  <data name="btnAddItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 23</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>frmForgotPassword</value>
+  <data name="btnAddItem.Text" xml:space="preserve">
+    <value>Lägg till vara</value>
   </data>
-  <data name="&gt;&gt;grpForgotPassword.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="btnDeleteItem.Text" xml:space="preserve">
+    <value>Radera sak</value>
   </data>
-  <data name="grpForgotPassword.Text" xml:space="preserve">
-    <value>Reset Password</value>
+  <data name="btnAddItemType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 64</value>
   </data>
-  <data name="&gt;&gt;txtEmail.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="btnAddItemType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 23</value>
   </data>
-  <data name="txtEmail.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="btnAddItemType.Text" xml:space="preserve">
+    <value>Lägg till artikeltyp</value>
   </data>
-  <data name="lblEmail.Text" xml:space="preserve">
-    <value>Email:</value>
+  <data name="btnDeleteItemType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 23</value>
   </data>
-  <data name="&gt;&gt;lblEnterEmail.Name" xml:space="preserve">
-    <value>lblEnterEmail</value>
+  <data name="btnDeleteItemType.Text" xml:space="preserve">
+    <value>Radera artikeltyp</value>
   </data>
-  <data name="lblEnterEmail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 29</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Artiklar</value>
   </data>
-  <data name="lblEmail.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;grpForgotPassword.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblEmail.Name" xml:space="preserve">
-    <value>lblEmail</value>
-  </data>
-  <data name="&gt;&gt;lblEmail.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="txtEmail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 22</value>
-  </data>
-  <data name="grpForgotPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 130</value>
-  </data>
-  <data name="btnSendInstructions.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lblEnterEmail.Parent" xml:space="preserve">
-    <value>grpForgotPassword</value>
-  </data>
-  <data name="&gt;&gt;grpForgotPassword.Name" xml:space="preserve">
-    <value>grpForgotPassword</value>
-  </data>
-  <data name="lblEmail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 23</value>
-  </data>
-  <data name="&gt;&gt;btnSendInstructions.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnSendInstructions.Name" xml:space="preserve">
-    <value>btnSendInstructions</value>
-  </data>
-  <data name="&gt;&gt;grpForgotPassword.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="grpForgotPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="lblEnterEmail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 17</value>
-  </data>
-  <data name="&gt;&gt;btnSendInstructions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnSendInstructions.Parent" xml:space="preserve">
-    <value>grpForgotPassword</value>
-  </data>
-  <data name="txtEmail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 49</value>
-  </data>
-  <data name="lblEmail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 52</value>
-  </data>
-  <data name="grpForgotPassword.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtEmail.Parent" xml:space="preserve">
-    <value>grpForgotPassword</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Consolas, 9pt</value>
+  <data name="grpItemTypes.Text" xml:space="preserve">
+    <value>Objektstyper</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>TESCO Forgot Password</value>
+    <value>TESCO Varulager Sida</value>
   </data>
-  <data name="&gt;&gt;txtEmail.Name" xml:space="preserve">
-    <value>txtEmail</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>sv-SE</value>
-  </metadata>
 </root>

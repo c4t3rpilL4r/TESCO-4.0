@@ -7,7 +7,7 @@ using Tesco.BL.Managers;
 using Tesco.BL.Models;
 using Tesco.UI.Helpers;
 using Tesco.UI.Interfaces;
-using _resource = Tesco.UI.Resources.Strings.en_US.Resources;
+using _resource = Tesco.UI.Resources.Resources;
 
 namespace Tesco.UI
 {
@@ -51,8 +51,8 @@ namespace Tesco.UI
 			{
 				if (_customerManager.RetrieveDataByWhereCondition(new Customer() { Email = txtEmail.Text }) == null) return;
 
-				if (MessageBox.Show(_resource.UsedEmailNotification,
-						_resource.UsedEmailTitle,
+				if (MessageBox.Show(_resource.NotificationUsedEmail,
+						_resource.TitleUsedEmail,
 						MessageBoxButtons.YesNo,
 						MessageBoxIcon.Question) == DialogResult.Yes)
 				{
@@ -61,14 +61,14 @@ namespace Tesco.UI
 				}
 				else
 				{
-					MessageBox.Show(_resource.ChangeEmailNotification);
+					MessageBox.Show(_resource.NotificationChangeEmail);
 				}
 			}
 			else
 			{
 				if (_pnlRegisterHeight != 0)
 				{
-					MessageBox.Show(_resource.InvalidEmailNotification);
+					MessageBox.Show(_resource.NotificationInvalidEmail);
 				}
 			}
 
@@ -132,7 +132,7 @@ namespace Tesco.UI
 				}
 				else
 				{
-					MessageBox.Show(_resource.EmptyTextboxNotification);
+					MessageBox.Show(_resource.NotificationEmptyTextbox);
 				}
 			}
 			else
@@ -163,21 +163,21 @@ namespace Tesco.UI
 
 						this.Hide();
 
-						if (_user.Type.Equals(User.UserTypes.admin))
+						if (_user.Type.Equals(User.UserTypes.admin.ToString()))
 						{
-							MessageBox.Show(string.Format(_resource.AdminGreeting, _user.FullName));
+							MessageBox.Show(string.Format(_resource.GreetingAdmin, _user.FullName));
 							
 							var admin = new frmAdmin(_user);
 							admin.Show();
 						}
-						else if (_user.Type.Equals(User.UserTypes.attendant))
+						else if (_user.Type.Equals(User.UserTypes.attendant.ToString()))
 						{
-							MessageBox.Show(string.Format(_resource.AttendantGreeting, _user.FullName));
+							MessageBox.Show(string.Format(_resource.GreetingAttendant, _user.FullName));
 							
 							var attendant = new frmAttendant(_user);
 							attendant.Show();
 						}
-						else if (_user.Type.Equals(User.UserTypes.customer))
+						else if (_user.Type.Equals(User.UserTypes.customer.ToString()))
 						{
 							if (_orderManager.RetrieveAll<Order>()
 									.Where(x => x.CustomerId == _user.CustomerId
@@ -185,8 +185,8 @@ namespace Tesco.UI
 												&& x.IsCancelled == false)
 									.ToList()
 									.Count > 0
-									&& MessageBox.Show(_resource.UnfinishedTransactionNotification,
-										_resource.UnfinishedTransactionTitle,
+									&& MessageBox.Show(_resource.NotificationUnfinishedTransaction,
+										_resource.TitleUnfinishedTransaction,
 										MessageBoxButtons.YesNo,
 										MessageBoxIcon.Question) == DialogResult.Yes)
 							{
@@ -209,7 +209,7 @@ namespace Tesco.UI
 				}
 				else
 				{
-					MessageBox.Show(_resource.EmptyTextboxNotification);
+					MessageBox.Show(_resource.NotificationEmptyTextbox);
 				}
 			}
 			else
@@ -240,8 +240,8 @@ namespace Tesco.UI
 			pnlRegister.Visible = _pnlRegisterHeight > 0;
 
 			this.Text = _pnlRegisterHeight > 0
-				? _resource.RegistrationTitle
-				: _resource.LoginTitle;
+				? _resource.TitleRegistration
+				: _resource.TitleLogin;
 			timer.Start();
 
 			ClearTextBoxes();
