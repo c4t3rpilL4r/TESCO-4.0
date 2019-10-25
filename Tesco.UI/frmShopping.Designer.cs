@@ -93,12 +93,12 @@
             // 
             // columnItemName
             // 
-            this.columnItemName.Text = "";
+            this.columnItemName.Text = "Name";
             this.columnItemName.Width = 240;
             // 
             // columnItemType
             // 
-            this.columnItemType.Text = "";
+            this.columnItemType.Text = "Type";
             this.columnItemType.Width = 100;
             // 
             // columnItemDiscount
@@ -109,13 +109,13 @@
             // 
             // columnItemPrice
             // 
-            this.columnItemPrice.Text = "";
+            this.columnItemPrice.Text = "Price";
             this.columnItemPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnItemPrice.Width = 50;
             // 
             // columnItemStocks
             // 
-            this.columnItemStocks.Text = "";
+            this.columnItemStocks.Text = "Stocks";
             this.columnItemStocks.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // grpSorting
@@ -130,6 +130,7 @@
             this.grpSorting.Size = new System.Drawing.Size(507, 83);
             this.grpSorting.TabIndex = 1;
             this.grpSorting.TabStop = false;
+            this.grpSorting.Text = "Sorting Details";
             // 
             // btnResetSort
             // 
@@ -137,6 +138,7 @@
             this.btnResetSort.Name = "btnResetSort";
             this.btnResetSort.Size = new System.Drawing.Size(140, 22);
             this.btnResetSort.TabIndex = 4;
+            this.btnResetSort.Text = "Reset Sort Order";
             this.btnResetSort.UseVisualStyleBackColor = true;
             this.btnResetSort.Click += new System.EventHandler(this.BtnResetSort_Click);
             // 
@@ -145,8 +147,9 @@
             this.lblSortByType.AutoSize = true;
             this.lblSortByType.Location = new System.Drawing.Point(181, 24);
             this.lblSortByType.Name = "lblSortByType";
-            this.lblSortByType.Size = new System.Drawing.Size(0, 14);
+            this.lblSortByType.Size = new System.Drawing.Size(98, 14);
             this.lblSortByType.TabIndex = 3;
+            this.lblSortByType.Text = "Sort By Type:";
             // 
             // cboSortByType
             // 
@@ -171,8 +174,9 @@
             this.lblSortByNamePrice.AutoSize = true;
             this.lblSortByNamePrice.Location = new System.Drawing.Point(10, 24);
             this.lblSortByNamePrice.Name = "lblSortByNamePrice";
-            this.lblSortByNamePrice.Size = new System.Drawing.Size(0, 14);
+            this.lblSortByNamePrice.Size = new System.Drawing.Size(140, 14);
             this.lblSortByNamePrice.TabIndex = 0;
+            this.lblSortByNamePrice.Text = "Sort By Name/Price:";
             // 
             // grpAddToCart
             // 
@@ -185,6 +189,7 @@
             this.grpAddToCart.Size = new System.Drawing.Size(134, 131);
             this.grpAddToCart.TabIndex = 2;
             this.grpAddToCart.TabStop = false;
+            this.grpAddToCart.Text = "Add To Cart";
             // 
             // btnAddToCart
             // 
@@ -193,6 +198,7 @@
             this.btnAddToCart.Name = "btnAddToCart";
             this.btnAddToCart.Size = new System.Drawing.Size(111, 22);
             this.btnAddToCart.TabIndex = 5;
+            this.btnAddToCart.Text = "Add To Cart";
             this.btnAddToCart.UseVisualStyleBackColor = true;
             this.btnAddToCart.Click += new System.EventHandler(this.BtnAddToCart_Click);
             // 
@@ -233,8 +239,9 @@
             this.lblItemDetails.AutoSize = true;
             this.lblItemDetails.Location = new System.Drawing.Point(25, 18);
             this.lblItemDetails.Name = "lblItemDetails";
-            this.lblItemDetails.Size = new System.Drawing.Size(0, 14);
+            this.lblItemDetails.Size = new System.Drawing.Size(70, 70);
             this.lblItemDetails.TabIndex = 8;
+            this.lblItemDetails.Text = "Name:\r\nType:\r\nPrice:\r\nQuantity:\r\nTotal:";
             // 
             // lvCart
             // 
@@ -261,18 +268,18 @@
             // 
             // columnCartItemName
             // 
-            this.columnCartItemName.Text = "";
+            this.columnCartItemName.Text = "Name";
             this.columnCartItemName.Width = 210;
             // 
             // columnCartItemQuantity
             // 
-            this.columnCartItemQuantity.Text = "";
+            this.columnCartItemQuantity.Text = "Quantity";
             this.columnCartItemQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnCartItemQuantity.Width = 75;
             // 
             // columnCartItemAmount
             // 
-            this.columnCartItemAmount.Text = "";
+            this.columnCartItemAmount.Text = "Amount";
             this.columnCartItemAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnCartItemAmount.Width = 75;
             // 
@@ -287,6 +294,7 @@
             this.grpCart.Size = new System.Drawing.Size(376, 406);
             this.grpCart.TabIndex = 4;
             this.grpCart.TabStop = false;
+            this.grpCart.Text = "Cart Details";
             // 
             // btnCheckout
             // 
@@ -295,6 +303,7 @@
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(109, 23);
             this.btnCheckout.TabIndex = 10;
+            this.btnCheckout.Text = "Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
             this.btnCheckout.Click += new System.EventHandler(this.BtnCheckout_Click);
             // 
@@ -315,6 +324,7 @@
             this.btnRemoveOrder.Name = "btnRemoveOrder";
             this.btnRemoveOrder.Size = new System.Drawing.Size(109, 23);
             this.btnRemoveOrder.TabIndex = 4;
+            this.btnRemoveOrder.Text = "Remove Order";
             this.btnRemoveOrder.UseVisualStyleBackColor = true;
             this.btnRemoveOrder.Click += new System.EventHandler(this.BtnRemoveOrder_Click);
             // 
@@ -326,6 +336,7 @@
             this.grpItemDetails.Size = new System.Drawing.Size(337, 131);
             this.grpItemDetails.TabIndex = 5;
             this.grpItemDetails.TabStop = false;
+            this.grpItemDetails.Text = "Item Details";
             // 
             // lblUserGreeting
             // 
@@ -333,6 +344,7 @@
             this.lblUserGreeting.Name = "lblUserGreeting";
             this.lblUserGreeting.Size = new System.Drawing.Size(241, 19);
             this.lblUserGreeting.TabIndex = 6;
+            this.lblUserGreeting.Text = "Hello,";
             // 
             // btnSignOff
             // 
@@ -341,6 +353,7 @@
             this.btnSignOff.Name = "btnSignOff";
             this.btnSignOff.Size = new System.Drawing.Size(75, 23);
             this.btnSignOff.TabIndex = 7;
+            this.btnSignOff.Text = "Sign Off";
             this.btnSignOff.UseVisualStyleBackColor = true;
             this.btnSignOff.Visible = false;
             this.btnSignOff.Click += new System.EventHandler(this.BtnSignOff_Click);
@@ -359,6 +372,7 @@
             this.Controls.Add(this.lvItems);
             this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmShopping";
+            this.Text = "TESCO Shopping";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShopping_FormClosing);
             this.Load += new System.EventHandler(this.FrmShopping_Load);
             this.grpSorting.ResumeLayout(false);

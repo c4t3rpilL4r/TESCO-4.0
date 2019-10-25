@@ -39,6 +39,7 @@ namespace Tesco.UI
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@ namespace Tesco.UI
             this.lblLoginPassword = new System.Windows.Forms.Label();
             this.lblLoginUserName = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.lblPassword = new System.Windows.Forms.Label();
             this.grpRegistrationDetails.SuspendLayout();
             this.pnlRegister.SuspendLayout();
             this.grpLogin.SuspendLayout();
@@ -79,6 +79,7 @@ namespace Tesco.UI
             this.grpRegistrationDetails.Size = new System.Drawing.Size(378, 217);
             this.grpRegistrationDetails.TabIndex = 0;
             this.grpRegistrationDetails.TabStop = false;
+            this.grpRegistrationDetails.Text = "Registration Details";
             // 
             // txtPassword
             // 
@@ -125,45 +126,59 @@ namespace Tesco.UI
             this.txtLastName.Size = new System.Drawing.Size(265, 22);
             this.txtLastName.TabIndex = 1;
             // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(35, 175);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(70, 14);
+            this.lblPassword.TabIndex = 10;
+            this.lblPassword.Text = "Password:";
+            // 
             // lblPhoneNumber
             // 
             this.lblPhoneNumber.AutoSize = true;
             this.lblPhoneNumber.Location = new System.Drawing.Point(7, 119);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
-            this.lblPhoneNumber.Size = new System.Drawing.Size(0, 14);
+            this.lblPhoneNumber.Size = new System.Drawing.Size(98, 14);
             this.lblPhoneNumber.TabIndex = 8;
+            this.lblPhoneNumber.Text = "Phone Number:";
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Location = new System.Drawing.Point(56, 91);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(0, 14);
+            this.lblEmail.Size = new System.Drawing.Size(49, 14);
             this.lblEmail.TabIndex = 6;
+            this.lblEmail.Text = "Email:";
             // 
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Location = new System.Drawing.Point(35, 147);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(0, 14);
+            this.lblUserName.Size = new System.Drawing.Size(70, 14);
             this.lblUserName.TabIndex = 4;
+            this.lblUserName.Text = "Username:";
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
             this.lblLastName.Location = new System.Drawing.Point(28, 63);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(0, 14);
+            this.lblLastName.Size = new System.Drawing.Size(77, 14);
             this.lblLastName.TabIndex = 2;
+            this.lblLastName.Text = "Last Name:";
             // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Location = new System.Drawing.Point(21, 35);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(0, 14);
+            this.lblFirstName.Size = new System.Drawing.Size(84, 14);
             this.lblFirstName.TabIndex = 0;
+            this.lblFirstName.Text = "First Name:";
             // 
             // btnLogIn
             // 
@@ -171,6 +186,7 @@ namespace Tesco.UI
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(75, 23);
             this.btnLogIn.TabIndex = 19;
+            this.btnLogIn.Text = "Login";
             this.btnLogIn.UseVisualStyleBackColor = true;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
@@ -180,6 +196,7 @@ namespace Tesco.UI
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(75, 23);
             this.btnRegister.TabIndex = 12;
+            this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
             // 
@@ -205,6 +222,7 @@ namespace Tesco.UI
             this.grpLogin.Size = new System.Drawing.Size(378, 217);
             this.grpLogin.TabIndex = 1;
             this.grpLogin.TabStop = false;
+            this.grpLogin.Text = "Login Details";
             // 
             // linkForgotPassword
             // 
@@ -213,6 +231,8 @@ namespace Tesco.UI
             this.linkForgotPassword.Name = "linkForgotPassword";
             this.linkForgotPassword.Size = new System.Drawing.Size(119, 23);
             this.linkForgotPassword.TabIndex = 19;
+            this.linkForgotPassword.TabStop = true;
+            this.linkForgotPassword.Text = "Forgot Password?";
             this.linkForgotPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkForgotPassword_LinkClicked);
             this.linkForgotPassword.MouseEnter += new System.EventHandler(this.linkForgotPassword_MouseEnter);
             this.linkForgotPassword.MouseLeave += new System.EventHandler(this.linkForgotPassword_MouseLeave);
@@ -236,28 +256,22 @@ namespace Tesco.UI
             this.lblLoginPassword.AutoSize = true;
             this.lblLoginPassword.Location = new System.Drawing.Point(21, 116);
             this.lblLoginPassword.Name = "lblLoginPassword";
-            this.lblLoginPassword.Size = new System.Drawing.Size(0, 14);
+            this.lblLoginPassword.Size = new System.Drawing.Size(70, 14);
             this.lblLoginPassword.TabIndex = 10;
+            this.lblLoginPassword.Text = "Password:";
             // 
             // lblLoginUserName
             // 
             this.lblLoginUserName.AutoSize = true;
             this.lblLoginUserName.Location = new System.Drawing.Point(21, 88);
             this.lblLoginUserName.Name = "lblLoginUserName";
-            this.lblLoginUserName.Size = new System.Drawing.Size(0, 14);
+            this.lblLoginUserName.Size = new System.Drawing.Size(70, 14);
             this.lblLoginUserName.TabIndex = 4;
+            this.lblLoginUserName.Text = "Username:";
             // 
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.Timer_Tick);
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(35, 175);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(0, 14);
-            this.lblPassword.TabIndex = 10;
             // 
             // frmRegisterLogin
             // 

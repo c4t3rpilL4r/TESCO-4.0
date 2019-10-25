@@ -16,15 +16,6 @@ namespace Tesco.UI
 			InitializeComponent();
 		}
 
-		private void frmForgotPassword_Load(object sender, EventArgs e)
-		{
-			this.Text = _resource.TextFormForgotPassword;
-			grpForgotPassword.Text = _resource.TextGroupboxForgotPasswordDetails;
-			lblEnterEmail.Text = _resource.TextLabelEnterEmail;
-			lblEmail.Text = _resource.TextLabelEmail;
-			btnSendInstructions.Text = _resource.TextButtonSendInstructions;
-		}
-
 		private void txtEmail_Leave(object sender, EventArgs e) => _emailValidationHelper.CheckEmailIfValid(txtEmail.Text);
 
 		private void btnSend_Click(object sender, EventArgs e) => MessageBox.Show(_resource.CheckEmailNotification);

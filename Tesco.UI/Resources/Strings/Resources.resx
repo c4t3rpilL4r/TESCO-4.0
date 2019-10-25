@@ -152,16 +152,16 @@ Price:     {2}
 Quantity:  {3}
 Total:     {4}</value>
   </data>
-  <data name="SortByAscending" xml:space="preserve">
+  <data name="ComboboxSortByAscending" xml:space="preserve">
     <value>By Name: Ascending</value>
   </data>
-  <data name="SortByBigToSmall" xml:space="preserve">
+  <data name="ComboboxSortByBigToSmall" xml:space="preserve">
     <value>By Price: Big to Small</value>
   </data>
-  <data name="SortByDescending" xml:space="preserve">
+  <data name="ComboboxSortByDescending" xml:space="preserve">
     <value>By Name: Descending</value>
   </data>
-  <data name="SortBySmallToBig" xml:space="preserve">
+  <data name="ComboboxSortBySmallToBig" xml:space="preserve">
     <value>By Price: Small to Big</value>
   </data>
   <data name="UpdateFailed" xml:space="preserve">
@@ -297,6 +297,10 @@ Is this the same item?</value>
   <data name="RegistrationTitle" xml:space="preserve">
     <value>TESCO Registration</value>
   </data>
+  <data name="TransactionAmount" xml:space="preserve">
+    <value>{0}
+</value>
+  </data>
   <data name="TransactionDetails" xml:space="preserve">
     <value>{0} @{1} x{2}
 </value>
@@ -328,10 +332,166 @@ Is this the same item?</value>
   <data name="ValidItemTypeNotification" xml:space="preserve">
     <value>Please enter a valid item type.</value>
   </data>
+  <data name="TextAddToCart" xml:space="preserve">
+    <value>Add To Cart</value>
+  </data>
+  <data name="TextButtonCheckout" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="TextButtonRemoveOrder" xml:space="preserve">
+    <value>Remove Order</value>
+  </data>
+  <data name="TextButtonResetSort" xml:space="preserve">
+    <value>Reset Sort Order</value>
+  </data>
+  <data name="TextButtonSignOff" xml:space="preserve">
+    <value>Sign Off</value>
+  </data>
+  <data name="TextButtonStartShopping" xml:space="preserve">
+    <value>Start Shopping &gt;&gt;&gt;</value>
+  </data>
+  <data name="TextFormShopping" xml:space="preserve">
+    <value>TESCO Shopping</value>
+  </data>
+  <data name="TextFormWelcome" xml:space="preserve">
+    <value>TESCO Welcome</value>
+  </data>
+  <data name="TextGroupboxCart" xml:space="preserve">
+    <value>Cart</value>
+  </data>
+  <data name="TextGroupboxItemDetails" xml:space="preserve">
+    <value>Item Details</value>
+  </data>
+  <data name="TextGroupboxSorting" xml:space="preserve">
+    <value>Sorting</value>
+  </data>
+  <data name="TextLabelSortByNamePrice" xml:space="preserve">
+    <value>By Name/Price:</value>
+  </data>
+  <data name="TextLabelSortByType" xml:space="preserve">
+    <value>By Type:</value>
+  </data>
+  <data name="TextLabelTo" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="TextLabelWelcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="TextButtonLinkLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="TextButtonLinkRegister" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="TextListViewColumnAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="TextListViewColumnName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="TextListViewColumnPrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="TextListViewColumnQuantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="TextListViewColumnStocks" xml:space="preserve">
+    <value>Stocks</value>
+  </data>
+  <data name="TextListViewColumnType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="TextButtonPayOrder" xml:space="preserve">
+    <value>Pay Order</value>
+  </data>
+  <data name="TextFormCheckout" xml:space="preserve">
+    <value>TESCO Checkout</value>
+  </data>
+  <data name="TextFormReceipt" xml:space="preserve">
+    <value>TESCO Receipt</value>
+  </data>
+  <data name="TextGroupboxCheckoutDetails" xml:space="preserve">
+    <value>Checkout Details</value>
+  </data>
+  <data name="TextGroupboxCustomerDetails" xml:space="preserve">
+    <value>Customer Details</value>
+  </data>
+  <data name="TextLabelAmountToPay" xml:space="preserve">
+    <value>Amount To Pay:</value>
+  </data>
+  <data name="TextLabelCashInHand" xml:space="preserve">
+    <value>Cash On Hand:</value>
+  </data>
+  <data name="TextLabelEmail" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="TextLabelFullName" xml:space="preserve">
+    <value>FullName:</value>
+  </data>
+  <data name="TextLabelPhoneNumber" xml:space="preserve">
+    <value>Phone Number:</value>
+  </data>
+  <data name="TextLabelCash" xml:space="preserve">
+    <value>CASH:</value>
+  </data>
+  <data name="TextLabelChange" xml:space="preserve">
+    <value>CHANGE:</value>
+  </data>
+  <data name="TextLabelEndOfTransaction" xml:space="preserve">
+    <value>**********   END OF TRANSACTION   **********</value>
+  </data>
+  <data name="TextLabelStartOfTransaction" xml:space="preserve">
+    <value>**********   START OF TRANSACTION   **********</value>
+  </data>
+  <data name="TextLabelTotal" xml:space="preserve">
+    <value>TOTAL:</value>
+  </data>
+  <data name="TextFormForgotPassword" xml:space="preserve">
+    <value>TESCO Forgot Password</value>
+  </data>
+  <data name="TextGroupboxLogInDetails" xml:space="preserve">
+    <value>Log In Details</value>
+  </data>
+  <data name="TextGroupboxRegistrationDetails" xml:space="preserve">
+    <value>Registration Details</value>
+  </data>
+  <data name="TextLabelFirstName" xml:space="preserve">
+    <value>First Name:</value>
+  </data>
+  <data name="TextLabelLastName" xml:space="preserve">
+    <value>Last Name:</value>
+  </data>
+  <data name="TextLabelPassword" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="TextLabelUserName" xml:space="preserve">
+    <value>Username:</value>
+  </data>
+  <data name="TextLinkForgotPassword" xml:space="preserve">
+    <value>Forgot Password?</value>
+  </data>
+  <data name="TextButtonSendInstructions" xml:space="preserve">
+    <value>Send Instructions</value>
+  </data>
+  <data name="TextGroupboxForgotPasswordDetails" xml:space="preserve">
+    <value>Forgot Password Details</value>
+  </data>
+  <data name="TextLabelEnterEmail" xml:space="preserve">
+    <value>Please enter your email:</value>
+  </data>
   <data name="FontFaceConsolas" xml:space="preserve">
     <value>Consolas</value>
   </data>
   <data name="DateTimeFormat" xml:space="preserve">
     <value>dddd, dd MMMM yyyy HH:mm:ss tt</value>
+  </data>
+  <data name="TextLabelLanguage" xml:space="preserve">
+    <value>Language:</value>
+  </data>
+  <data name="ComboboxLanguageEnglish" xml:space="preserve">
+    <value>en-US</value>
+  </data>
+  <data name="ComboboxLanguageSwedish" xml:space="preserve">
+    <value>sv-SE</value>
   </data>
 </root>

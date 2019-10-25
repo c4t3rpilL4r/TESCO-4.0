@@ -35,20 +35,6 @@ namespace Tesco.UI
 
 		private void FrmRegisterLogin_Load(object sender, System.EventArgs e)
 		{
-			grpRegistrationDetails.Text = _resource.TextGroupboxRegistrationDetails;
-			lblFirstName.Text = _resource.TextLabelFirstName;
-			lblLastName.Text = _resource.TextLabelLastName;
-			lblEmail.Text = _resource.TextLabelEmail;
-			lblPhoneNumber.Text = _resource.TextLabelPhoneNumber;
-			lblUserName.Text = _resource.TextLabelUserName;
-			lblPassword.Text = _resource.TextLabelPassword;
-			btnRegister.Text = _resource.TextButtonLinkRegister;
-			btnLogIn.Text = _resource.TextButtonLinkLogin;
-			grpLogin.Text = _resource.TextGroupboxLogInDetails;
-			lblLoginUserName.Text = _resource.TextLabelUserName;
-			lblLoginPassword.Text = _resource.TextLabelPassword;
-			linkForgotPassword.Text = _resource.TextLinkForgotPassword;
-
 			if (_pnlRegisterHeight > 0)
 			{
 				txtFirstName.Focus();

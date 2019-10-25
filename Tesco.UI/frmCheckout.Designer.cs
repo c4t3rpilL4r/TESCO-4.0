@@ -54,10 +54,11 @@
             // lblFullName
             // 
             this.lblFullName.AutoSize = true;
-            this.lblFullName.Location = new System.Drawing.Point(35, 30);
+            this.lblFullName.Location = new System.Drawing.Point(28, 30);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(0, 14);
+            this.lblFullName.Size = new System.Drawing.Size(77, 14);
             this.lblFullName.TabIndex = 1;
+            this.lblFullName.Text = "Full Name:";
             // 
             // txtFullName
             // 
@@ -85,6 +86,7 @@
             this.grpCustomerDetails.Size = new System.Drawing.Size(514, 182);
             this.grpCustomerDetails.TabIndex = 1;
             this.grpCustomerDetails.TabStop = false;
+            this.grpCustomerDetails.Text = "Customer Details";
             // 
             // lblAmount
             // 
@@ -101,8 +103,9 @@
             this.lblAmountToPay.AutoSize = true;
             this.lblAmountToPay.Location = new System.Drawing.Point(302, 114);
             this.lblAmountToPay.Name = "lblAmountToPay";
-            this.lblAmountToPay.Size = new System.Drawing.Size(0, 14);
+            this.lblAmountToPay.Size = new System.Drawing.Size(105, 14);
             this.lblAmountToPay.TabIndex = 6;
+            this.lblAmountToPay.Text = "Amount To Pay:";
             // 
             // btnPayOrder
             // 
@@ -111,6 +114,7 @@
             this.btnPayOrder.Name = "btnPayOrder";
             this.btnPayOrder.Size = new System.Drawing.Size(95, 23);
             this.btnPayOrder.TabIndex = 5;
+            this.btnPayOrder.Text = "Pay Order";
             this.btnPayOrder.UseVisualStyleBackColor = true;
             this.btnPayOrder.Click += new System.EventHandler(this.BtnPayOrder_Click);
             // 
@@ -119,16 +123,18 @@
             this.lblCashInHand.AutoSize = true;
             this.lblCashInHand.Location = new System.Drawing.Point(7, 114);
             this.lblCashInHand.Name = "lblCashInHand";
-            this.lblCashInHand.Size = new System.Drawing.Size(0, 14);
+            this.lblCashInHand.Size = new System.Drawing.Size(98, 14);
             this.lblCashInHand.TabIndex = 3;
+            this.lblCashInHand.Text = "Cash On Hand:";
             // 
             // lblPhoneNumber
             // 
             this.lblPhoneNumber.AutoSize = true;
             this.lblPhoneNumber.Location = new System.Drawing.Point(7, 86);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
-            this.lblPhoneNumber.Size = new System.Drawing.Size(0, 14);
+            this.lblPhoneNumber.Size = new System.Drawing.Size(98, 14);
             this.lblPhoneNumber.TabIndex = 3;
+            this.lblPhoneNumber.Text = "Phone Number:";
             // 
             // txtCashOnHand
             // 
@@ -144,8 +150,9 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Location = new System.Drawing.Point(56, 58);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(0, 14);
+            this.lblEmail.Size = new System.Drawing.Size(49, 14);
             this.lblEmail.TabIndex = 3;
+            this.lblEmail.Text = "Email:";
             // 
             // txtPhoneNumber
             // 
@@ -173,6 +180,7 @@
             this.grpCheckoutDetails.Size = new System.Drawing.Size(473, 271);
             this.grpCheckoutDetails.TabIndex = 5;
             this.grpCheckoutDetails.TabStop = false;
+            this.grpCheckoutDetails.Text = "Checkout Details";
             // 
             // lvCheckoutItems
             // 
@@ -199,23 +207,23 @@
             // 
             // columnOrderItemName
             // 
-            this.columnOrderItemName.Text = "";
+            this.columnOrderItemName.Text = "Name";
             this.columnOrderItemName.Width = 250;
             // 
             // columnOrderItemPrice
             // 
-            this.columnOrderItemPrice.Text = "";
+            this.columnOrderItemPrice.Text = "Price";
             this.columnOrderItemPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // columnOrderItemQuantity
             // 
-            this.columnOrderItemQuantity.Text = "";
+            this.columnOrderItemQuantity.Text = "Quantity";
             this.columnOrderItemQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnOrderItemQuantity.Width = 70;
             // 
             // columnOrderItemAmount
             // 
-            this.columnOrderItemAmount.Text = "";
+            this.columnOrderItemAmount.Text = "Amount";
             this.columnOrderItemAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnOrderItemAmount.Width = 70;
             // 
@@ -228,6 +236,7 @@
             this.Controls.Add(this.grpCustomerDetails);
             this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmCheckout";
+            this.Text = "TESCO Checkout";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCheckout_FormClosing);
             this.Load += new System.EventHandler(this.FrmCheckout_Load);
             this.grpCustomerDetails.ResumeLayout(false);

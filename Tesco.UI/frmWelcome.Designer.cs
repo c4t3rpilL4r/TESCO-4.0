@@ -42,8 +42,9 @@
             this.lblWelcome.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.Location = new System.Drawing.Point(96, 36);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(0, 28);
+            this.lblWelcome.Size = new System.Drawing.Size(103, 28);
             this.lblWelcome.TabIndex = 0;
+            this.lblWelcome.Text = "Welcome";
             this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTo
@@ -52,8 +53,9 @@
             this.lblTo.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTo.Location = new System.Drawing.Point(127, 64);
             this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(0, 28);
+            this.lblTo.Size = new System.Drawing.Size(38, 28);
             this.lblTo.TabIndex = 1;
+            this.lblTo.Text = "To";
             this.lblTo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
@@ -73,6 +75,7 @@
             this.btnStartShopping.Name = "btnStartShopping";
             this.btnStartShopping.Size = new System.Drawing.Size(166, 31);
             this.btnStartShopping.TabIndex = 3;
+            this.btnStartShopping.Text = "Start Shopping >>>";
             this.btnStartShopping.UseVisualStyleBackColor = true;
             this.btnStartShopping.Click += new System.EventHandler(this.BtnStartShopping_Click);
             // 
@@ -83,6 +86,8 @@
             this.linkRegister.Name = "linkRegister";
             this.linkRegister.Size = new System.Drawing.Size(63, 15);
             this.linkRegister.TabIndex = 4;
+            this.linkRegister.TabStop = true;
+            this.linkRegister.Text = "Register";
             this.linkRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkRegister_LinkClicked);
             this.linkRegister.MouseEnter += new System.EventHandler(this.linkRegister_MouseEnter);
             this.linkRegister.MouseLeave += new System.EventHandler(this.linkRegister_MouseLeave);
@@ -94,6 +99,8 @@
             this.linkLogIn.Name = "linkLogIn";
             this.linkLogIn.Size = new System.Drawing.Size(49, 15);
             this.linkLogIn.TabIndex = 5;
+            this.linkLogIn.TabStop = true;
+            this.linkLogIn.Text = "Login";
             this.linkLogIn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLogIn_LinkClicked);
             this.linkLogIn.MouseEnter += new System.EventHandler(this.linkLogIn_MouseEnter);
             this.linkLogIn.MouseLeave += new System.EventHandler(this.linkLogIn_MouseLeave);
@@ -111,6 +118,7 @@
             this.Controls.Add(this.lblWelcome);
             this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmWelcome";
+            this.Text = "TESCO Welcome";
             this.Load += new System.EventHandler(this.frmWelcome_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

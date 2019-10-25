@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tesco.UI.Resources.Strings.en_US {
+namespace Tesco.UI.Resources.Strings {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Tesco.UI.Resources.Strings.en_US {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tesco.UI.Resources.Strings.en_US.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tesco.UI.Resources.Strings.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -174,6 +174,60 @@ namespace Tesco.UI.Resources.Strings.en_US {
         internal static string CloseWindowTitle {
             get {
                 return ResourceManager.GetString("CloseWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to en-US.
+        /// </summary>
+        internal static string ComboboxLanguageEnglish {
+            get {
+                return ResourceManager.GetString("ComboboxLanguageEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sv-SE.
+        /// </summary>
+        internal static string ComboboxLanguageSwedish {
+            get {
+                return ResourceManager.GetString("ComboboxLanguageSwedish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Name: Ascending.
+        /// </summary>
+        internal static string ComboboxSortByAscending {
+            get {
+                return ResourceManager.GetString("ComboboxSortByAscending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Price: Big to Small.
+        /// </summary>
+        internal static string ComboboxSortByBigToSmall {
+            get {
+                return ResourceManager.GetString("ComboboxSortByBigToSmall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Name: Descending.
+        /// </summary>
+        internal static string ComboboxSortByDescending {
+            get {
+                return ResourceManager.GetString("ComboboxSortByDescending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Price: Small to Big.
+        /// </summary>
+        internal static string ComboboxSortBySmallToBig {
+            get {
+                return ResourceManager.GetString("ComboboxSortBySmallToBig", resourceCulture);
             }
         }
         
@@ -514,38 +568,462 @@ namespace Tesco.UI.Resources.Strings.en_US {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to By Name: Ascending.
+        ///   Looks up a localized string similar to Add To Cart.
         /// </summary>
-        internal static string SortByAscending {
+        internal static string TextAddToCart {
             get {
-                return ResourceManager.GetString("SortByAscending", resourceCulture);
+                return ResourceManager.GetString("TextAddToCart", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to By Price: Big to Small.
+        ///   Looks up a localized string similar to Checkout.
         /// </summary>
-        internal static string SortByBigToSmall {
+        internal static string TextButtonCheckout {
             get {
-                return ResourceManager.GetString("SortByBigToSmall", resourceCulture);
+                return ResourceManager.GetString("TextButtonCheckout", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to By Name: Descending.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
-        internal static string SortByDescending {
+        internal static string TextButtonLinkLogin {
             get {
-                return ResourceManager.GetString("SortByDescending", resourceCulture);
+                return ResourceManager.GetString("TextButtonLinkLogin", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to By Price: Small to Big.
+        ///   Looks up a localized string similar to Register.
         /// </summary>
-        internal static string SortBySmallToBig {
+        internal static string TextButtonLinkRegister {
             get {
-                return ResourceManager.GetString("SortBySmallToBig", resourceCulture);
+                return ResourceManager.GetString("TextButtonLinkRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pay Order.
+        /// </summary>
+        internal static string TextButtonPayOrder {
+            get {
+                return ResourceManager.GetString("TextButtonPayOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Order.
+        /// </summary>
+        internal static string TextButtonRemoveOrder {
+            get {
+                return ResourceManager.GetString("TextButtonRemoveOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Sort Order.
+        /// </summary>
+        internal static string TextButtonResetSort {
+            get {
+                return ResourceManager.GetString("TextButtonResetSort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Instructions.
+        /// </summary>
+        internal static string TextButtonSendInstructions {
+            get {
+                return ResourceManager.GetString("TextButtonSendInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign Off.
+        /// </summary>
+        internal static string TextButtonSignOff {
+            get {
+                return ResourceManager.GetString("TextButtonSignOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Shopping &gt;&gt;&gt;.
+        /// </summary>
+        internal static string TextButtonStartShopping {
+            get {
+                return ResourceManager.GetString("TextButtonStartShopping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TESCO Checkout.
+        /// </summary>
+        internal static string TextFormCheckout {
+            get {
+                return ResourceManager.GetString("TextFormCheckout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TESCO Forgot Password.
+        /// </summary>
+        internal static string TextFormForgotPassword {
+            get {
+                return ResourceManager.GetString("TextFormForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TESCO Receipt.
+        /// </summary>
+        internal static string TextFormReceipt {
+            get {
+                return ResourceManager.GetString("TextFormReceipt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TESCO Shopping.
+        /// </summary>
+        internal static string TextFormShopping {
+            get {
+                return ResourceManager.GetString("TextFormShopping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TESCO Welcome.
+        /// </summary>
+        internal static string TextFormWelcome {
+            get {
+                return ResourceManager.GetString("TextFormWelcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cart.
+        /// </summary>
+        internal static string TextGroupboxCart {
+            get {
+                return ResourceManager.GetString("TextGroupboxCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checkout Details.
+        /// </summary>
+        internal static string TextGroupboxCheckoutDetails {
+            get {
+                return ResourceManager.GetString("TextGroupboxCheckoutDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer Details.
+        /// </summary>
+        internal static string TextGroupboxCustomerDetails {
+            get {
+                return ResourceManager.GetString("TextGroupboxCustomerDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot Password Details.
+        /// </summary>
+        internal static string TextGroupboxForgotPasswordDetails {
+            get {
+                return ResourceManager.GetString("TextGroupboxForgotPasswordDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Details.
+        /// </summary>
+        internal static string TextGroupboxItemDetails {
+            get {
+                return ResourceManager.GetString("TextGroupboxItemDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log In Details.
+        /// </summary>
+        internal static string TextGroupboxLogInDetails {
+            get {
+                return ResourceManager.GetString("TextGroupboxLogInDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration Details.
+        /// </summary>
+        internal static string TextGroupboxRegistrationDetails {
+            get {
+                return ResourceManager.GetString("TextGroupboxRegistrationDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorting.
+        /// </summary>
+        internal static string TextGroupboxSorting {
+            get {
+                return ResourceManager.GetString("TextGroupboxSorting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount To Pay:.
+        /// </summary>
+        internal static string TextLabelAmountToPay {
+            get {
+                return ResourceManager.GetString("TextLabelAmountToPay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CASH:.
+        /// </summary>
+        internal static string TextLabelCash {
+            get {
+                return ResourceManager.GetString("TextLabelCash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cash On Hand:.
+        /// </summary>
+        internal static string TextLabelCashInHand {
+            get {
+                return ResourceManager.GetString("TextLabelCashInHand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CHANGE:.
+        /// </summary>
+        internal static string TextLabelChange {
+            get {
+                return ResourceManager.GetString("TextLabelChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email:.
+        /// </summary>
+        internal static string TextLabelEmail {
+            get {
+                return ResourceManager.GetString("TextLabelEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to **********   END OF TRANSACTION   **********.
+        /// </summary>
+        internal static string TextLabelEndOfTransaction {
+            get {
+                return ResourceManager.GetString("TextLabelEndOfTransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your email:.
+        /// </summary>
+        internal static string TextLabelEnterEmail {
+            get {
+                return ResourceManager.GetString("TextLabelEnterEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Name:.
+        /// </summary>
+        internal static string TextLabelFirstName {
+            get {
+                return ResourceManager.GetString("TextLabelFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FullName:.
+        /// </summary>
+        internal static string TextLabelFullName {
+            get {
+                return ResourceManager.GetString("TextLabelFullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language:.
+        /// </summary>
+        internal static string TextLabelLanguage {
+            get {
+                return ResourceManager.GetString("TextLabelLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name:.
+        /// </summary>
+        internal static string TextLabelLastName {
+            get {
+                return ResourceManager.GetString("TextLabelLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password:.
+        /// </summary>
+        internal static string TextLabelPassword {
+            get {
+                return ResourceManager.GetString("TextLabelPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone Number:.
+        /// </summary>
+        internal static string TextLabelPhoneNumber {
+            get {
+                return ResourceManager.GetString("TextLabelPhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Name/Price:.
+        /// </summary>
+        internal static string TextLabelSortByNamePrice {
+            get {
+                return ResourceManager.GetString("TextLabelSortByNamePrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Type:.
+        /// </summary>
+        internal static string TextLabelSortByType {
+            get {
+                return ResourceManager.GetString("TextLabelSortByType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to **********   START OF TRANSACTION   **********.
+        /// </summary>
+        internal static string TextLabelStartOfTransaction {
+            get {
+                return ResourceManager.GetString("TextLabelStartOfTransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        internal static string TextLabelTo {
+            get {
+                return ResourceManager.GetString("TextLabelTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOTAL:.
+        /// </summary>
+        internal static string TextLabelTotal {
+            get {
+                return ResourceManager.GetString("TextLabelTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username:.
+        /// </summary>
+        internal static string TextLabelUserName {
+            get {
+                return ResourceManager.GetString("TextLabelUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        internal static string TextLabelWelcome {
+            get {
+                return ResourceManager.GetString("TextLabelWelcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot Password?.
+        /// </summary>
+        internal static string TextLinkForgotPassword {
+            get {
+                return ResourceManager.GetString("TextLinkForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        internal static string TextListViewColumnAmount {
+            get {
+                return ResourceManager.GetString("TextListViewColumnAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string TextListViewColumnName {
+            get {
+                return ResourceManager.GetString("TextListViewColumnName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        internal static string TextListViewColumnPrice {
+            get {
+                return ResourceManager.GetString("TextListViewColumnPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantity.
+        /// </summary>
+        internal static string TextListViewColumnQuantity {
+            get {
+                return ResourceManager.GetString("TextListViewColumnQuantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stocks.
+        /// </summary>
+        internal static string TextListViewColumnStocks {
+            get {
+                return ResourceManager.GetString("TextListViewColumnStocks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        internal static string TextListViewColumnType {
+            get {
+                return ResourceManager.GetString("TextListViewColumnType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}
+        ///.
+        /// </summary>
+        internal static string TransactionAmount {
+            get {
+                return ResourceManager.GetString("TransactionAmount", resourceCulture);
             }
         }
         

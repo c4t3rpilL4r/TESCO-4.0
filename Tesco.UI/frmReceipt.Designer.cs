@@ -78,8 +78,9 @@
             this.lblStartTransaction.AutoSize = true;
             this.lblStartTransaction.Location = new System.Drawing.Point(21, 97);
             this.lblStartTransaction.Name = "lblStartTransaction";
-            this.lblStartTransaction.Size = new System.Drawing.Size(0, 14);
+            this.lblStartTransaction.Size = new System.Drawing.Size(329, 14);
             this.lblStartTransaction.TabIndex = 3;
+            this.lblStartTransaction.Text = "**********   START OF TRANSACTION   **********";
             // 
             // lblTransactionDetails
             // 
@@ -123,32 +124,36 @@
             this.lblTotal.AutoSize = true;
             this.lblTotal.Location = new System.Drawing.Point(222, 405);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(0, 14);
+            this.lblTotal.Size = new System.Drawing.Size(49, 14);
             this.lblTotal.TabIndex = 8;
+            this.lblTotal.Text = "Total:";
             // 
             // lblCash
             // 
             this.lblCash.AutoSize = true;
             this.lblCash.Location = new System.Drawing.Point(229, 423);
             this.lblCash.Name = "lblCash";
-            this.lblCash.Size = new System.Drawing.Size(0, 14);
+            this.lblCash.Size = new System.Drawing.Size(42, 14);
             this.lblCash.TabIndex = 9;
+            this.lblCash.Text = "Cash:";
             // 
             // lblChange
             // 
             this.lblChange.AutoSize = true;
             this.lblChange.Location = new System.Drawing.Point(215, 448);
             this.lblChange.Name = "lblChange";
-            this.lblChange.Size = new System.Drawing.Size(0, 14);
+            this.lblChange.Size = new System.Drawing.Size(56, 14);
             this.lblChange.TabIndex = 10;
+            this.lblChange.Text = "Change:";
             // 
             // lblEndTransaction
             // 
             this.lblEndTransaction.AutoSize = true;
             this.lblEndTransaction.Location = new System.Drawing.Point(27, 487);
             this.lblEndTransaction.Name = "lblEndTransaction";
-            this.lblEndTransaction.Size = new System.Drawing.Size(0, 14);
+            this.lblEndTransaction.Size = new System.Drawing.Size(315, 14);
             this.lblEndTransaction.TabIndex = 11;
+            this.lblEndTransaction.Text = "**********   END OF TRANSACTION   **********";
             // 
             // lblTotalAmount
             // 
@@ -202,6 +207,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmReceipt";
+            this.Text = "TESCO Receipt";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmReceipt_FormClosing);
             this.Load += new System.EventHandler(this.FrmReceipt_Load);
             this.ResumeLayout(false);

@@ -28,13 +28,6 @@ namespace Tesco.UI
 
 		private void FrmReceipt_Load(object sender, EventArgs e)
 		{
-			this.Text = _resource.TextFormReceipt;
-			lblStartTransaction.Text = _resource.TextLabelStartOfTransaction;
-			lblTotal.Text = _resource.TextLabelTotal;
-			lblCash.Text = _resource.TextLabelCash;
-			lblChange.Text = _resource.TextLabelChange;
-			lblEndTransaction.Text = _resource.TextLabelEndOfTransaction;
-
 			var transaction = _transactionManager.RetrieveDataById<Transaction>(_transactionId);
 			var total = 0;
 
@@ -52,7 +45,7 @@ namespace Tesco.UI
 						x.Amount / x.Quantity,
 						x.Quantity);
 
-					lblTransactionAmount.Text += string.Format(_resource.TransactionAmount, x.Amount);
+					lblTransactionAmount.Text += x.Amount;
 
 					total += (int) x.Amount;
 				});

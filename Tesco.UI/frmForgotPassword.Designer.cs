@@ -45,6 +45,7 @@ namespace Tesco.UI
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(49, 23);
             this.lblEmail.TabIndex = 0;
+            this.lblEmail.Text = "Email:";
             // 
             // grpForgotPassword
             // 
@@ -57,13 +58,15 @@ namespace Tesco.UI
             this.grpForgotPassword.Size = new System.Drawing.Size(304, 130);
             this.grpForgotPassword.TabIndex = 1;
             this.grpForgotPassword.TabStop = false;
+            this.grpForgotPassword.Text = "Reset Password";
             // 
             // btnSendInstructions
             // 
-            this.btnSendInstructions.Location = new System.Drawing.Point(81, 77);
+            this.btnSendInstructions.Location = new System.Drawing.Point(52, 77);
             this.btnSendInstructions.Name = "btnSendInstructions";
-            this.btnSendInstructions.Size = new System.Drawing.Size(144, 23);
+            this.btnSendInstructions.Size = new System.Drawing.Size(192, 23);
             this.btnSendInstructions.TabIndex = 1;
+            this.btnSendInstructions.Text = "Send Reset Instructions";
             this.btnSendInstructions.UseVisualStyleBackColor = true;
             this.btnSendInstructions.Click += new System.EventHandler(this.btnSend_Click);
             // 
@@ -73,6 +76,7 @@ namespace Tesco.UI
             this.lblEnterEmail.Name = "lblEnterEmail";
             this.lblEnterEmail.Size = new System.Drawing.Size(189, 17);
             this.lblEnterEmail.TabIndex = 2;
+            this.lblEnterEmail.Text = "Please enter email:";
             // 
             // txtEmail
             // 
@@ -90,7 +94,7 @@ namespace Tesco.UI
             this.Controls.Add(this.grpForgotPassword);
             this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmForgotPassword";
-            this.Load += new System.EventHandler(this.frmForgotPassword_Load);
+            this.Text = "TESCO Forgot Password";
             this.grpForgotPassword.ResumeLayout(false);
             this.grpForgotPassword.PerformLayout();
             this.ResumeLayout(false);
