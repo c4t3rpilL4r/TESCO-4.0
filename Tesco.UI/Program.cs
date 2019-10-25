@@ -12,8 +12,8 @@ namespace Tesco.UI
 		[STAThread]
 		static void Main()
 		{
-			Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("sv-SE");
-			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("sv-SE");
+			//Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("sv-SE");
+			//Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("sv-SE");
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new frmWelcome());
