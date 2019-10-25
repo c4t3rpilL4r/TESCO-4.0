@@ -211,6 +211,9 @@
     <EmbeddedResource Include="frmRegisterLogin.resx">
       <DependentUpon>frmRegisterLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRegisterLogin.sv-SE.resx">
+      <DependentUpon>frmRegisterLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmShopping.resx">
       <DependentUpon>frmShopping.cs</DependentUpon>
     </EmbeddedResource>
