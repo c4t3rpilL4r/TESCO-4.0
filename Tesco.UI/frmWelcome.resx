@@ -137,8 +137,8 @@
   <data name="btnStartShopping.Text" xml:space="preserve">
     <value>Start Shopping &gt;&gt;&gt;</value>
   </data>
-  <data name="linkRegister.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>94, 92</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -146,11 +146,17 @@
   <data name="linkLogIn.Location" type="System.Drawing.Point, System.Drawing">
     <value>232, 218</value>
   </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Consolas, 24pt</value>
+  </data>
   <data name="&gt;&gt;lblWelcome.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;linkRegister.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -158,8 +164,8 @@
   <data name="linkRegister.Text" xml:space="preserve">
     <value>Register</value>
   </data>
-  <data name="lblWelcome.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="lblTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 64</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmWelcome</value>
@@ -170,17 +176,11 @@
   <data name="lblWelcome.Font" type="System.Drawing.Font, System.Drawing">
     <value>Consolas, 18pt</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Consolas, 9pt</value>
-  </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="lblWelcome.Text" xml:space="preserve">
     <value>Welcome</value>
-  </data>
-  <data name="lblTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 64</value>
   </data>
   <data name="lblTo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -188,14 +188,14 @@
   <data name="linkLogIn.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 15</value>
   </data>
-  <data name="&gt;&gt;linkRegister.Name" xml:space="preserve">
-    <value>linkRegister</value>
-  </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;linkLogIn.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;lblWelcome.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkLogIn.Name" xml:space="preserve">
+    <value>linkLogIn</value>
   </data>
   <data name="&gt;&gt;lblTo.Parent" xml:space="preserve">
     <value>$this</value>
@@ -215,17 +215,20 @@
   <data name="lblTo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Consolas, 18pt</value>
   </data>
+  <data name="lblTo.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
   <data name="lblWelcome.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 37</value>
   </data>
-  <data name="&gt;&gt;linkRegister.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;linkRegister.Name" xml:space="preserve">
+    <value>linkRegister</value>
   </data>
-  <data name="btnStartShopping.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 132</value>
+  <data name="lblWelcome.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="lblWelcome.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 36</value>
@@ -238,9 +241,6 @@
   </data>
   <data name="&gt;&gt;lblTo.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 14</value>
   </data>
   <data name="&gt;&gt;btnStartShopping.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -266,8 +266,8 @@
   <data name="lblWelcome.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 92</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 14</value>
   </data>
   <data name="&gt;&gt;lblWelcome.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -278,8 +278,8 @@
   <data name="lblTo.Text" xml:space="preserve">
     <value>To</value>
   </data>
-  <data name="&gt;&gt;linkLogIn.Name" xml:space="preserve">
-    <value>linkLogIn</value>
+  <data name="&gt;&gt;linkLogIn.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="linkLogIn.Text" xml:space="preserve">
     <value>Login</value>
@@ -290,11 +290,11 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblWelcome.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnStartShopping.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 132</value>
   </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Consolas, 24pt</value>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Consolas, 9pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>TESCO Welcome</value>
@@ -305,13 +305,13 @@
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
   </data>
-  <data name="lblTo.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="linkRegister.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>sv-SE</value>
+    <value>en-US</value>
   </metadata>
 </root>

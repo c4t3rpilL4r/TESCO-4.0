@@ -134,21 +134,6 @@
   <data name="txtFullName.Location" type="System.Drawing.Point, System.Drawing">
     <value>144, 27</value>
   </data>
-  <data name="grpCustomerDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 57</value>
-  </data>
-  <data name="grpCustomerDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>545, 182</value>
-  </data>
-  <data name="grpCustomerDetails.Text" xml:space="preserve">
-    <value>Kunddetaljer</value>
-  </data>
-  <data name="lblAmount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>463, 112</value>
-  </data>
-  <data name="lblAmount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 19</value>
-  </data>
   <data name="lblAmountToPay.Location" type="System.Drawing.Point, System.Drawing">
     <value>331, 114</value>
   </data>
@@ -157,6 +142,12 @@
   </data>
   <data name="lblAmountToPay.Text" xml:space="preserve">
     <value>Summa att betala:</value>
+  </data>
+  <data name="lblAmount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>463, 112</value>
+  </data>
+  <data name="lblAmount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 19</value>
   </data>
   <data name="btnPayOrder.Location" type="System.Drawing.Point, System.Drawing">
     <value>216, 143</value>
@@ -202,6 +193,15 @@
   </data>
   <data name="txtEmail.Location" type="System.Drawing.Point, System.Drawing">
     <value>144, 55</value>
+  </data>
+  <data name="grpCustomerDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 57</value>
+  </data>
+  <data name="grpCustomerDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>545, 182</value>
+  </data>
+  <data name="grpCustomerDetails.Text" xml:space="preserve">
+    <value>Kunddetaljer</value>
   </data>
   <data name="columnOrderItemName.Text" xml:space="preserve">
     <value>Namn</value>

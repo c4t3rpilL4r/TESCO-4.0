@@ -164,9 +164,6 @@
   <data name="columnAttendantPassword.Width" type="System.Int32, mscorlib">
     <value>150</value>
   </data>
-  <data name="columnAttendantId.Text" xml:space="preserve">
-    <value>Id</value>
-  </data>
   <data name="columnAttendantFullName.Text" xml:space="preserve">
     <value>Full Name</value>
   </data>
@@ -185,9 +182,6 @@
   <data name="&gt;&gt;columnAttendantId.Name" xml:space="preserve">
     <value>columnAttendantId</value>
   </data>
-  <data name="lvAttendants.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
   <data name="&gt;&gt;btnDeleteAttendant.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -202,6 +196,9 @@
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmAdminAttendant</value>
+  </data>
+  <data name="&gt;&gt;btnAddAttendant.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="columnAttendantFullName.Width" type="System.Int32, mscorlib">
     <value>250</value>
@@ -224,6 +221,9 @@
   <data name="&gt;&gt;lvAttendants.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 14</value>
+  </data>
   <data name="btnDeleteAttendant.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 22</value>
   </data>
@@ -239,8 +239,8 @@
   <data name="&gt;&gt;lvAttendants.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 14</value>
+  <data name="lvAttendants.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
   </data>
   <data name="columnAttendantPassword.Text" xml:space="preserve">
     <value>Password</value>
@@ -251,8 +251,8 @@
   <data name="btnAddAttendant.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;btnAddAttendant.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="columnAttendantId.Text" xml:space="preserve">
+    <value>Id</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Consolas, 9pt</value>
@@ -261,6 +261,6 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>sv-SE</value>
+    <value>en-US</value>
   </metadata>
 </root>

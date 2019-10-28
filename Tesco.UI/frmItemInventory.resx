@@ -133,9 +133,6 @@
   <data name="&gt;&gt;cboSortByType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lvItems.Size" type="System.Drawing.Size, System.Drawing">
     <value>555, 333</value>
@@ -149,14 +146,11 @@
   <data name="grpItemTypes.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
-  <data name="&gt;&gt;grpItemTypes.Name" xml:space="preserve">
-    <value>grpItemTypes</value>
-  </data>
-  <data name="&gt;&gt;btnResetSort.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>By Type:</value>
+  </data>
+  <data name="&gt;&gt;columnItemName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -197,6 +191,9 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Consolas, 9pt</value>
   </data>
+  <data name="grpItemTypes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 121</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>TESCO Item Inventory Page</value>
   </data>
@@ -221,6 +218,9 @@
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;columnItemDiscount.Name" xml:space="preserve">
+    <value>columnItemDiscount</value>
   </data>
   <data name="&gt;&gt;columnItemStocks.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -279,9 +279,6 @@
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="btnDeleteItem.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
   <data name="txtType.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 31</value>
   </data>
@@ -291,11 +288,11 @@
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 14</value>
   </data>
+  <data name="&gt;&gt;cboSortByNamePrice.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
   <data name="btnDeleteItemType.Text" xml:space="preserve">
     <value>Delete Item Type</value>
-  </data>
-  <data name="columnItemStocks.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
   </data>
   <data name="&gt;&gt;columnItemName.Name" xml:space="preserve">
     <value>columnItemName</value>
@@ -318,8 +315,8 @@
   <data name="columnItemPrice.Width" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
-  <data name="&gt;&gt;columnItemName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnDeleteItem.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;cboSortByType.Name" xml:space="preserve">
     <value>cboSortByType</value>
@@ -329,12 +326,6 @@
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;btnAddItemType.Name" xml:space="preserve">
-    <value>btnAddItemType</value>
-  </data>
-  <data name="&gt;&gt;btnDeleteItem.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -357,6 +348,9 @@
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="&gt;&gt;grpItemTypes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;btnResetSort.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -365,9 +359,6 @@
   </data>
   <data name="columnItemDiscount.Width" type="System.Int32, mscorlib">
     <value>70</value>
-  </data>
-  <data name="btnAddItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 23</value>
   </data>
   <data name="grpItemTypes.Location" type="System.Drawing.Point, System.Drawing">
     <value>589, 223</value>
@@ -390,14 +381,14 @@
   <data name="columnItemName.Text" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="&gt;&gt;cboSortByType.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
   <data name="columnItemDiscount.Text" xml:space="preserve">
     <value>Discount</value>
   </data>
   <data name="txtType.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 22</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteItemType.Name" xml:space="preserve">
+    <value>btnDeleteItemType</value>
   </data>
   <data name="&gt;&gt;btnDeleteItem.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -432,8 +423,14 @@
   <data name="&gt;&gt;lvItems.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;columnItemPrice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="columnItemStocks.Text" xml:space="preserve">
     <value>Stocks</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="txtType.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -468,8 +465,8 @@
   <data name="&gt;&gt;txtType.Parent" xml:space="preserve">
     <value>grpItemTypes</value>
   </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnDeleteItem.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;columnItemId.Name" xml:space="preserve">
     <value>columnItemId</value>
@@ -528,6 +525,9 @@
   <data name="&gt;&gt;btnEditItem.Name" xml:space="preserve">
     <value>btnEditItem</value>
   </data>
+  <data name="&gt;&gt;cboSortByType.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
   <data name="grpItemTypes.Text" xml:space="preserve">
     <value>Item Types</value>
   </data>
@@ -549,17 +549,17 @@
   <data name="&gt;&gt;txtType.Name" xml:space="preserve">
     <value>txtType</value>
   </data>
-  <data name="&gt;&gt;btnDeleteItemType.Name" xml:space="preserve">
-    <value>btnDeleteItemType</value>
+  <data name="&gt;&gt;grpItemTypes.Name" xml:space="preserve">
+    <value>grpItemTypes</value>
   </data>
-  <data name="&gt;&gt;cboSortByNamePrice.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="&gt;&gt;btnResetSort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;columnItemStocks.Name" xml:space="preserve">
     <value>columnItemStocks</value>
   </data>
-  <data name="&gt;&gt;columnItemDiscount.Name" xml:space="preserve">
-    <value>columnItemDiscount</value>
+  <data name="columnItemStocks.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="btnResetSort.Text" xml:space="preserve">
     <value>Reset Sort Order</value>
@@ -567,8 +567,8 @@
   <data name="&gt;&gt;btnAddItemType.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;grpItemTypes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnAddItemType.Name" xml:space="preserve">
+    <value>btnAddItemType</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Sorting</value>
@@ -597,16 +597,16 @@
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>181, 24</value>
   </data>
-  <data name="grpItemTypes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>392, 121</value>
+  <data name="btnAddItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 23</value>
   </data>
-  <data name="&gt;&gt;columnItemPrice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>sv-SE</value>
+    <value>en-US</value>
   </metadata>
 </root>

@@ -126,9 +126,6 @@
     <value>28, 30</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="txtPhoneNumber.MaxLength" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
   <data name="lblFullName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -177,6 +174,9 @@
   <data name="lblCashInHand.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 114</value>
   </data>
+  <data name="lblAmount.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
   <data name="lblEmail.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -194,6 +194,9 @@
   </data>
   <data name="txtEmail.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtEmail.Name" xml:space="preserve">
+    <value>txtEmail</value>
   </data>
   <data name="&gt;&gt;lblPhoneNumber.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -222,11 +225,11 @@
   <data name="&gt;&gt;columnOrderItemAmount.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;lblPhoneNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;txtPhoneNumber.Name" xml:space="preserve">
     <value>txtPhoneNumber</value>
-  </data>
-  <data name="&gt;&gt;grpCustomerDetails.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="columnOrderItemName.Text" xml:space="preserve">
     <value>Name</value>
@@ -270,11 +273,14 @@
   <data name="&gt;&gt;grpCustomerDetails.Name" xml:space="preserve">
     <value>grpCustomerDetails</value>
   </data>
+  <data name="&gt;&gt;btnPayOrder.Name" xml:space="preserve">
+    <value>btnPayOrder</value>
+  </data>
   <data name="lblEmail.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 58</value>
   </data>
-  <data name="lvCheckoutItems.Size" type="System.Drawing.Size, System.Drawing">
-    <value>458, 242</value>
+  <data name="&gt;&gt;grpCustomerDetails.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="lblEmail.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -314,6 +320,9 @@
   </data>
   <data name="&gt;&gt;columnOrderItemPrice.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lvCheckoutItems.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="lblAmount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Right</value>
@@ -363,29 +372,26 @@
   <data name="&gt;&gt;lblAmountToPay.Parent" xml:space="preserve">
     <value>grpCustomerDetails</value>
   </data>
-  <data name="lblAmount.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="lblFullName.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="txtPhoneNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>390, 22</value>
   </data>
-  <data name="lblAmount.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="lvCheckoutItems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 242</value>
   </data>
   <data name="&gt;&gt;btnPayOrder.Parent" xml:space="preserve">
     <value>grpCustomerDetails</value>
   </data>
-  <data name="&gt;&gt;btnPayOrder.Name" xml:space="preserve">
-    <value>btnPayOrder</value>
+  <data name="&gt;&gt;lblEmail.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="&gt;&gt;txtEmail.Parent" xml:space="preserve">
     <value>grpCustomerDetails</value>
   </data>
-  <data name="&gt;&gt;lblPhoneNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="txtEmail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 22</value>
   </data>
   <data name="lvCheckoutItems.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -492,11 +498,8 @@
   <data name="columnOrderItemId.Width" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="txtEmail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>390, 22</value>
-  </data>
-  <data name="&gt;&gt;grpCustomerDetails.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="txtPhoneNumber.MaxLength" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
   <data name="txtPhoneNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>106, 83</value>
@@ -516,17 +519,14 @@
   <data name="txtFullName.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="columnOrderItemName.Width" type="System.Int32, mscorlib">
-    <value>250</value>
-  </data>
   <data name="lblPhoneNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 86</value>
   </data>
   <data name="lblAmountToPay.Text" xml:space="preserve">
     <value>Amount To Pay:</value>
   </data>
-  <data name="&gt;&gt;lblEmail.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;grpCustomerDetails.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="grpCustomerDetails.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 57</value>
@@ -546,11 +546,11 @@
   <data name="grpCustomerDetails.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="lvCheckoutItems.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblAmount.Text" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;txtEmail.Name" xml:space="preserve">
-    <value>txtEmail</value>
+  <data name="columnOrderItemName.Width" type="System.Int32, mscorlib">
+    <value>250</value>
   </data>
   <data name="columnOrderItemAmount.Width" type="System.Int32, mscorlib">
     <value>70</value>
@@ -559,6 +559,6 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>sv-SE</value>
+    <value>en-US</value>
   </metadata>
 </root>

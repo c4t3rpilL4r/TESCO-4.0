@@ -132,9 +132,6 @@
   <data name="columnItemStocks.Text" xml:space="preserve">
     <value>Lager</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Sortering</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnResetSort.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 74</value>
@@ -153,6 +150,9 @@
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Med Namn/Pris:</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Sortering</value>
   </data>
   <data name="btnEditItem.Location" type="System.Drawing.Point, System.Drawing">
     <value>143, 24</value>

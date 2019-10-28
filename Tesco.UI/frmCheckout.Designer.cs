@@ -32,8 +32,8 @@
             this.lblFullName = new System.Windows.Forms.Label();
             this.txtFullName = new System.Windows.Forms.TextBox();
             this.grpCustomerDetails = new System.Windows.Forms.GroupBox();
-            this.lblAmount = new System.Windows.Forms.Label();
             this.lblAmountToPay = new System.Windows.Forms.Label();
+            this.lblAmount = new System.Windows.Forms.Label();
             this.btnPayOrder = new System.Windows.Forms.Button();
             this.lblCashInHand = new System.Windows.Forms.Label();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
@@ -80,15 +80,15 @@
             this.grpCustomerDetails.Name = "grpCustomerDetails";
             this.grpCustomerDetails.TabStop = false;
             // 
-            // lblAmount
-            // 
-            resources.ApplyResources(this.lblAmount, "lblAmount");
-            this.lblAmount.Name = "lblAmount";
-            // 
             // lblAmountToPay
             // 
             resources.ApplyResources(this.lblAmountToPay, "lblAmountToPay");
             this.lblAmountToPay.Name = "lblAmountToPay";
+            // 
+            // lblAmount
+            // 
+            resources.ApplyResources(this.lblAmount, "lblAmount");
+            this.lblAmount.Name = "lblAmount";
             // 
             // btnPayOrder
             // 

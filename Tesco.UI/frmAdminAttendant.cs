@@ -45,7 +45,6 @@ namespace Tesco.UI
 
 		private void frmAdminAttendant_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !_closeWindowHelper.NotifyUserForCloseWindow(_user);
 
-
 		// <--------------------------------------------------     METHODS     -------------------------------------------------->
 
 		private void DisplayDataInAttendantListView()
